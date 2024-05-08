@@ -12,59 +12,38 @@ import "./assets/css/owl.css";
 import "./assets/css/responsive.css";
 import "./assets/css/style.css";
 import "./assets/css/timePicker.css";
-import About from "./components/About";
-import Banner from "./components/Banner";
-import Blog from "./components/Blog";
-import Booking from "./components/Booking";
-import Chooseus from "./components/Chooseus";
-import Event from "./components/Event";
+import About from "./pages/About";
 import Footer from "./components/Footer";
-import Funfact from "./components/Funfact";
-import Header from "./components/Header";
-import Industries from "./components/Industries";
-import Location from "./components/Location";
-import Service from "./components/Service";
+import Home from "./components/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import Commitment from "./pages/Commitment";
+import Products from "./pages/Products/Products";
+import ProductsDetails from "./pages/Products/ProductsDetails";
+import Gallery from "./pages/Gallery";
+import Certificate from "./pages/Certificate";
+import Contect from "./pages/Contect";
+import Cart from "./pages/Cart";
+import Productss from "./components/Productss";
+import Header from "./components/Header";
 
 function App() {
   return (
-
-
-  //   <BrowserRouter>
-  //   <Routes>
-  //     <Route path="/" element={<Header />}>
-  //       <Route path="/about" element={<About />} />
-  //       <Route path="/banner" element={<Banner />} />
-  //       <Route path="/blog" element={<Blog />} />
-  //       <Route path="/chooseus" element={<Chooseus />} />
-  //       <Route path="/booking" element={<Booking />} />
-  //       <Route path="/event" element={<Event />} />
-  //       <Route path="/service" element={<Service />} />
-  //       <Route path="/funfact" element={<Funfact />} />
-  //       <Route path="/industries" element={<Industries/>} />
-  //       <Route path="/location" element={<Location/>} />
-
-
-  //     </Route>
-  //   </Routes>
-  //   <Footer/>
-  // </BrowserRouter>
-
-    <>
-      <Header />
-      <Banner/>
-      <About/>
-      <Service/>
-      <Industries/>
-      <Chooseus/>s
-      <Funfact/>
-      <Blog/>
-      <Event/>
-      <Booking/>
-      <Location/>
-      <Footer/>
-    </>
+    <BrowserRouter>
+    <Header/>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/productss" element={<Productss />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/commitment" element={<Commitment />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/ProductsDetails" element={<ProductsDetails />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/certificate" element={<Certificate />} />
+        <Route path="/contect" element={<Contect />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 }
 
