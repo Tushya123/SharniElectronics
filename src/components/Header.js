@@ -3,6 +3,7 @@ import logo from "../assets/images/new-home/logo.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+
 export default function Header() {
   const [products, setProducts] = useState([]);
 
@@ -21,6 +22,8 @@ export default function Header() {
 
     fetchData();
   }, []);
+
+  
 
   const [isSticky, setIsSticky] = useState(false);
 
@@ -199,13 +202,11 @@ export default function Header() {
                           {products.map((product, index) => (
                             <li key={index}>
                               <Link
-                                to="/products"
-                                onClick={() =>
-                                  localStorage.setItem(
-                                    "selectedProductId",
-                                    product._id
-                                  )
-                                }
+                                
+                                onClick={() => {
+                                  window.location.href = '/products';
+                                  localStorage.setItem("selectedProductId", product.ProductGroup);
+                                }}
                               >
                                 {product.ProductGroup}
                               </Link>
