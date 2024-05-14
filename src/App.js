@@ -25,6 +25,11 @@ import Contect from "./pages/Contect";
 import Cart from "./pages/Cart";
 import Productss from "./components/Productss";
 import Header from "./components/Header";
+import Blog from "./components/Blog";
+import AboutUs from "./components/AboutUs";
+import Inquiry from "./components/Inquiry";
+import BlogsDetails from "./pages/BlogsDetails";
+import InnderGallery from "./pages/InnerGallery"
 
 function App() {
   return (
@@ -41,6 +46,16 @@ function App() {
         <Route path="/certificate" element={<Certificate />} />
         <Route path="/contect" element={<Contect />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/inquiry" element={<Inquiry />} />
+        <Route path="/blogdetails" element={<BlogsDetails />} />
+        <Route path="/innergallery/:id" component={<InnderGallery/>} />
+
+
+
+
+
       </Routes>
       <Footer />
     </BrowserRouter>

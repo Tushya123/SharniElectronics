@@ -1,35 +1,53 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../assets/images/new-home/logo.png";
 import Background from "../assets/images/new-home/breadcrumb-img.jpg";
 import footer from "../assets/images/new-home/footer-location-img.jpg";
 import skype from "../assets/images/new-home/skype.png";
 import wp from "../assets/images/new-home/whatsapp.png";
 import { logRoles } from "@testing-library/react";
-import shap10 from "../assets/images/shape/shape-10.png"
-import certificate1 from "../assets/images/new-home/certificate/certificate-1.jpg"
-import certificate2 from "../assets/images/new-home/certificate/certificate-2.jpg"
-import certificate3 from "../assets/images/new-home/certificate/certificate-3.jpg"
-import certificate4 from "../assets/images/new-home/certificate/certificate-4.jpg"
-import certificate5 from "../assets/images/new-home/certificate/certificate-5.jpg"
-import certificate6 from "../assets/images/new-home/certificate/certificate-6.jpg"
-import certificate7 from "../assets/images/new-home/certificate/certificate-7.jpg"
-import certificate8 from "../assets/images/new-home/certificate/certificate-8.jpg"
+import shap10 from "../assets/images/shape/shape-10.png";
+import certificate1 from "../assets/images/new-home/certificate/certificate-1.jpg";
+import certificate2 from "../assets/images/new-home/certificate/certificate-2.jpg";
+import certificate3 from "../assets/images/new-home/certificate/certificate-3.jpg";
+import certificate4 from "../assets/images/new-home/certificate/certificate-4.jpg";
+import certificate5 from "../assets/images/new-home/certificate/certificate-5.jpg";
+import certificate6 from "../assets/images/new-home/certificate/certificate-6.jpg";
+import certificate7 from "../assets/images/new-home/certificate/certificate-7.jpg";
+import certificate8 from "../assets/images/new-home/certificate/certificate-8.jpg";
 import Header from "../components/Header";
-
+import axios from "axios";
 
 export default function Certificate() {
+  const [certificate, setcertificate] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/listonly/Certificate`
+        );
+        console.log("Gallery Data:", response);
+        setcertificate(response.data);
+      } catch (error) {
+        console.error("Error fetching gallery data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <React.Fragment
       style={{ position: "relative", minHeight: "100%", top: "0px" }}
     >
       <div className="boxed_wrapper">
-        <Header/>
-       {/* <!-- page-title --> */}
+        <Header />
+        {/* <!-- page-title --> */}
         <section className="page-title">
           <div
             className="bg-layer"
             style={{ backgroundImage: `url(${Background})` }}
-            ></div>
+          ></div>
           <div className="auto-container">
             <div className="content-box">
               <h1>Certificate</h1>
@@ -49,248 +67,45 @@ export default function Certificate() {
         <section className="service-details sec-pad">
           <div className="auto-container">
             <div className="row clearfix">
-              <div className="col-lg-12 col-md-12 col-sm-12 content-side">
-                <div className="service-details-content">
-                  <div className="content-five">
-                    <div className="row clearfix">
-                      <div className="col-lg-3 col-md-6 col-sm-12 project-block gallery">
-                        <div className="project-block-one">
-                          <div className="inner-box">
-                            <div className="static-content">
-                              <figure className="image-box">
-                                <img src={certificate1} alt="" />
-                              </figure>
-                            </div>
-                            <div className="overlay-content">
-                              <div className="image-box">
-                                <figure className="image">
-                                  <img src={certificate1} alt="" />
-                                </figure>
-                                <div className="view-btn">
-                                  <a
-                                    href="assets/images/new-home/certificate/certificate1.jpg"
-                                    className="lightbox-image"
-                                    data-fancybox="gallery"
-                                  >
-                                    <i className="flaticon-zoom-in"></i>
-                                  </a>
-                                </div>
-                                {/* <!-- <div className="link-btn"><a href="index.html"><i className="flaticon-right-arrow"></i></a></div> --> */}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+              {certificate.map((item, index) => (
+                <div
+                  key={index}
+                  className="col-lg-3 col-md-6 col-sm-12 project-block gallery"
+                >
+                  <div className="project-block-one">
+                    <div className="inner-box">
+                      <div className="static-content">
+                        <figure className="image-box">
+                          <img
+                            src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${item.CertificateImage}`}
+                          />
+                        </figure>
+                        <h5 className="gal-txt">{item.Title}</h5>
                       </div>
-
-                      <div className="col-lg-3 col-md-6 col-sm-12 project-block gallery">
-                        <div className="project-block-one">
-                          <div className="inner-box">
-                            <div className="static-content">
-                              <figure className="image-box">
-                                <img src={certificate2} alt="" />
-                              </figure>
-                            </div>
-                            <div className="overlay-content">
-                              <div className="image-box">
-                                <figure className="image">
-                                  <img src={certificate2} alt="" />
-                                </figure>
-                                <div className="view-btn">
-                                  <a
-                                    href="assets/images/new-home/certificate/certificate2.jpg"
-                                    className="lightbox-image"
-                                    data-fancybox="gallery"
-                                  >
-                                    <i className="flaticon-zoom-in"></i>
-                                  </a>
-                                </div>
-                                {/* <!-- <div className="link-btn"><a href="index.html"><i className="flaticon-right-arrow"></i></a></div> --> */}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="col-lg-3 col-md-6 col-sm-12 project-block gallery">
-                        <div className="project-block-one">
-                          <div className="inner-box">
-                            <div className="static-content">
-                              <figure className="image-box">
-                                <img src={certificate3} alt="" />
-                              </figure>
-                            </div>
-                            <div className="overlay-content">
-                              <div className="image-box">
-                                <figure className="image">
-                                  <img src={certificate3} alt="" />
-                                </figure>
-                                <div className="view-btn">
-                                  <a
-                                    href="assets/images/new-home/certificate/certificate3.jpg"
-                                    className="lightbox-image"
-                                    data-fancybox="gallery"
-                                  >
-                                    <i className="flaticon-zoom-in"></i>
-                                  </a>
-                                </div>
-                                {/* <!-- <div className="link-btn"><a href="index.html"><i className="flaticon-right-arrow"></i></a></div> --> */}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="col-lg-3 col-md-6 col-sm-12 project-block gallery">
-                        <div className="project-block-one">
-                          <div className="inner-box">
-                            <div className="static-content">
-                              <figure className="image-box">
-                                <img src={certificate4} alt="" />
-                              </figure>
-                            </div>
-                            <div className="overlay-content">
-                              <div className="image-box">
-                                <figure className="image">
-                                  <img src={certificate4} alt="" />
-                                </figure>
-                                <div className="view-btn">
-                                  <a
-                                    href="assets/images/new-home/certificate/certificate4.jpg"
-                                    className="lightbox-image"
-                                    data-fancybox="gallery"
-                                  >
-                                    <i className="flaticon-zoom-in"></i>
-                                  </a>
-                                </div>
-                                {/* <!-- <div className="link-btn"><a href="index.html"><i className="flaticon-right-arrow"></i></a></div> --> */}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="col-lg-3 col-md-6 col-sm-12 project-block gallery">
-                        <div className="project-block-one">
-                          <div className="inner-box">
-                            <div className="static-content">
-                              <figure className="image-box">
-                                <img src={certificate5} alt="" />
-                              </figure>
-                            </div>
-                            <div className="overlay-content">
-                              <div className="image-box">
-                                <figure className="image">
-                                  <img src={certificate5} alt="" />
-                                </figure>
-                                <div className="view-btn">
-                                  <a
-                                    href="assets/images/new-home/certificate/certificate5.jpg"
-                                    className="lightbox-image"
-                                    data-fancybox="gallery"
-                                  >
-                                    <i className="flaticon-zoom-in"></i>
-                                  </a>
-                                </div>
-                                {/* <!-- <div className="link-btn"><a href="index.html"><i className="flaticon-right-arrow"></i></a></div> --> */}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="col-lg-3 col-md-6 col-sm-12 project-block gallery">
-                        <div className="project-block-one">
-                          <div className="inner-box">
-                            <div className="static-content">
-                              <figure className="image-box">
-                                <img src={certificate6} alt="" />
-                              </figure>
-                            </div>
-                            <div className="overlay-content">
-                              <div className="image-box">
-                                <figure className="image">
-                                  <img src={certificate6} alt="" />
-                                </figure>
-                                <div className="view-btn">
-                                  <a
-                                    href="assets/images/new-home/certificate/certificate6.jpg"
-                                    className="lightbox-image"
-                                    data-fancybox="gallery"
-                                  >
-                                    <i className="flaticon-zoom-in"></i>
-                                  </a>
-                                </div>
-                                {/* <!-- <div className="link-btn"><a href="index.html"><i className="flaticon-right-arrow"></i></a></div> --> */}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="col-lg-3 col-md-6 col-sm-12 project-block gallery">
-                        <div className="project-block-one">
-                          <div className="inner-box">
-                            <div className="static-content">
-                              <figure className="image-box">
-                                <img src={certificate7} alt="" />
-                              </figure>
-                            </div>
-                            <div className="overlay-content">
-                              <div className="image-box">
-                                <figure className="image">
-                                  <img src={certificate7} alt="" />
-                                </figure>
-                                <div className="view-btn">
-                                  <a
-                                    href="assets/images/new-home/certificate/certificate7.jpg"
-                                    className="lightbox-image"
-                                    data-fancybox="gallery"
-                                  >
-                                    <i className="flaticon-zoom-in"></i>
-                                  </a>
-                                </div>
-                                {/* <!-- <div className="link-btn"><a href="index.html"><i className="flaticon-right-arrow"></i></a></div> --> */}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="col-lg-3 col-md-6 col-sm-12 project-block gallery">
-                        <div className="project-block-one">
-                          <div className="inner-box">
-                            <div className="static-content">
-                              <figure className="image-box">
-                                <img src={certificate8} alt="" />
-                              </figure>
-                            </div>
-                            <div className="overlay-content">
-                              <div className="image-box">
-                                <figure className="image">
-                                  <img src={certificate8} alt="" />
-                                </figure>
-                                <div className="view-btn">
-                                  <a
-                                    href="assets/images/new-home/certificate/certificate8.jpg"
-                                    className="lightbox-image"
-                                    data-fancybox="gallery"
-                                  >
-                                    <i className="flaticon-zoom-in"></i>
-                                  </a>
-                                </div>
-                                {/* <!-- <div className="link-btn"><a href="index.html"><i className="flaticon-right-arrow"></i></a></div> --> */}
-                              </div>
-                            </div>
+                      <div className="overlay-content">
+                        <div className="image-box">
+                          <figure className="image">
+                            <img
+                              src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${item.CertificateImage}`}
+                              alt=""
+                            />
+                          </figure>
+                          <h5 className="gal-txt">{item.Title}</h5>
+                          <div className="view-btn">
+                            <a href={item.CertificateImage}>
+                              <i className="flaticon-zoom-in"></i>
+                            </a>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
+
         {/* <!-- service-details end --> */}
 
         {/* <!-- locations-section --> */}
@@ -298,7 +113,7 @@ export default function Certificate() {
           <div
             className="pattern-layer"
             style={{ backgroundImage: `url(${shap10})` }}
-            ></div>
+          ></div>
           <div className="auto-container">
             <div className="sec-title">
               <span className="sub-title">Locations</span>
@@ -404,7 +219,7 @@ export default function Certificate() {
                   src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7381.956093641144!2d73.167648!3d22.31667!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fcf6c89cabb19%3A0xf803cbcf27adf1aa!2sShreeji%20Pharma%20International!5e0!3m2!1sen!2sus!4v1712310707767!5m2!1sen!2sus"
                   width="600"
                   height="450"
-                  style={{border:0}}
+                  style={{ border: 0 }}
                   allowfullscreen=""
                   loading="lazy"
                   referrerpolicy="no-referrer-when-downgrade"
