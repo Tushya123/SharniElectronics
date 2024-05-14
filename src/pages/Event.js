@@ -1,35 +1,29 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../assets/images/new-home/logo.png";
 import Background from "../assets/images/new-home/breadcrumb-img.jpg";
 import footer from "../assets/images/new-home/footer-location-img.jpg";
 import skype from "../assets/images/new-home/skype.png";
 import wp from "../assets/images/new-home/whatsapp.png";
-import free from "../assets/images/new-home/free-delivery.png";
-import statuss from "../assets/images/new-home/transit-status.png";
-import sample from "../assets/images/new-home/sample-icon.png";
-import spot from "../assets/images/new-home/spot-response.png";
-import certification from "../assets/images/new-home/certifcation.png";
+import shap10 from "../assets/images/shape/shape-10.png";
 import Header from "../components/Header";
 import axios from "axios";
 
-export default function Commitment() {
-  const [commitments, setCommitment] = useState([]);
+export default function Gallery() {
+  const [galleryData, setGalleryData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(
-          `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/listonly/Commitment`
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/list/GalleryPhoto`
         );
-        setCommitment(res.data);
-        console.log(res);
-
-        console.log(res);
+        console.log("Gallery Data:", response);
+        setGalleryData(response.data);
       } catch (error) {
-        console.error("Error fetching testimonials:", error);
+        console.error("Error fetching gallery data:", error);
       }
     };
+
     fetchData();
   }, []);
 
@@ -47,57 +41,75 @@ export default function Commitment() {
           ></div>
           <div className="auto-container">
             <div className="content-box">
-              <h1>Commitment And Approach</h1>
+              <h1>Gallery</h1>
               <ul className="bread-crumb clearfix">
                 <li>
                   <a href="index.html">Home</a>
                 </li>
-                <li>Commitment</li>
-                <li>Commitment</li>
+                <li>Gallery</li>
+                <li>Event Name</li>
               </ul>
             </div>
           </div>
         </section>
         {/* <!-- page-title end -->
-    <!-- banner-section end -->
-    <!-- about-section -->
-   <!-- shop-details --> */}
-        <section class="shop-details commitment">
-          <div class="auto-container">
-            <div class="product-discription mb-0">
-              <div class="customer-comment mb-0">
-                <div class="row clearfix justify-content-center">
-                  {commitments.map((commitment, index) => (
-                    <div class="col-lg-7 col-md-6 col-sm-12 comment-column">
-                      <div class="single-comment-box">
-                        <div class="inner-box">
-                          <figure class="comment-thumb">  
-                            <img
-                              src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${commitment.CommitmentImage}`}
-                            />
-                          </figure>
-                          <div class="inner">
-                            <h3>{commitment.Title}</h3>
-                            <p>{commitment.Description}</p>
+      <!-- service-details --> */}
+        <section className="service-details sec-pad">
+          <div className="auto-container">
+            <div className="row clearfix">
+              <div className="col-lg-12 col-md-12 col-sm-12 content-side gal-type">
+                <div className="service-details-content">
+                  <div className="content-five">
+                    <div className="row clearfix">
+                      {galleryData.map((item, index) => (
+                        <div
+                          key={index}
+                          className="col-lg-3 col-md-6 col-sm-12 project-block gallery"
+                        >
+                          <div className="project-block-one">
+                            <div className="inner-box">
+                              <div className="static-content">
+                                <figure className="image-box">
+                                  <img
+                                    src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${item.imageURL}`}
+                                    alt=""
+                                  />
+                                </figure>
+                                <h5 className="gal-txt">{item.Category}</h5>
+                              </div>
+                              <div className="overlay-content">
+                                <div className="image-box">
+                                  <figure className="image">
+                                    <img
+                                      src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${item.imageURL}`}
+                                    />
+                                  </figure>
+                                  <h5 className="gal-txt">{item.Category}</h5>
+                                  <div className="view-btn">
+                                    <a href="gallery-detail.html">
+                                      <i className="flaticon-zoom-in"></i>
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      ))}
                     </div>
-                  ))}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* <!-- shop-details end -->
-    <!-- about-section end -->
-  
+        {/* <!-- service-details end -->
     <!-- locations-section --> */}
         <section className="locations-section sec-pad centred">
           <div
             className="pattern-layer"
-            // style="background-image: url(assets/images/shape/shape-10.png);"
+            style={{ backgroundImage: `url(${shap10})` }}
           ></div>
           <div className="auto-container">
             <div className="sec-title">
@@ -155,7 +167,6 @@ export default function Commitment() {
             </div>
           </div>
         </section>
-
         {/* <!-- locations-section end --> */}
         <div className="sticky-button">
           <a
@@ -179,6 +190,7 @@ export default function Commitment() {
             <img src={skype} className="img-responsive" />
           </a>
         </div>
+
         <div
           className="modal fade"
           id="exampleModa"

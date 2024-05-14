@@ -1,8 +1,27 @@
 import React, { useState, useEffect } from "react";
 import logo from "../assets/images/new-home/logo.png";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function Header() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/list/areatype`
+        );
+        console.log("Data:", response);
+        setProducts(response.data);
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
@@ -177,32 +196,15 @@ export default function Header() {
                       <li className="dropdown">
                         <Link to="/products">Products</Link>
                         <ul>
-                          <li>
-                            <Link to="/ProductsDetails">
-                              ACTIVE PHARMACEUTICAL INGREDIENTS
-                            </Link>
-                          </li>
-                          <li>
-                            <a href="#">VETERINARY APIS</a>
-                          </li>
-                          <li>
-                            <a href="#">EXCIPIENTS</a>
-                          </li>
-                          <li>
-                            <a href="#">PELLETS</a>
-                          </li>
-                          <li>
-                            <a href="#">PHYTOCHEMICALS</a>
-                          </li>
-                          <li>
-                            <a href="#">MINERAL FORTIFIERS</a>
-                          </li>
-                          <li>
-                            <a href="#">COSMETIC INGREDIENTS</a>
-                          </li>
-                          <li>
-                            <a href="#">Corticosteroids & Hormons</a>
-                          </li>
+                          {products.map((product, index) => (
+                            <li key={index}>
+                              <Link
+                                to={`/ProductsDetails/${product.ProductGroup}`}
+                              >
+                                {product.ProductGroup}
+                              </Link>
+                            </li>
+                          ))}
                         </ul>
                       </li>
                       <li>

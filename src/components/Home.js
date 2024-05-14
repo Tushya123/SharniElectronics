@@ -16,10 +16,6 @@ import industry from "../assets/images/new-home/industry-serve-bg-img.jpg";
 import chooseus from "../assets/images/background/chooseus-bg.jpg";
 import shape21 from "../assets/images/shape/shape-21.png";
 import funfact from "../assets/images/background/funfact-bg.jpg";
-import booking from "../assets/images/background/booking-bg.jpg";
-import shape7 from "../assets/images/shape/shape-7.png";
-import shape8 from "../assets/images/shape/shape-8.png";
-import shape9 from "../assets/images/shape/shape-9.png";
 import shape10 from "../assets/images/shape/shape-10.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -29,6 +25,10 @@ import banner2 from "../assets/images/new-home/banner-2.jpg";
 import { Link } from "react-router-dom";
 import Products from "./Productss";
 import Header from "./Header";
+import axios from "axios";
+import Blog from "./Blog";
+import AboutUs from "./AboutUs";
+import Inquiry from "./Inquiry";
 
 export default function Home() {
   const settings = {
@@ -38,8 +38,26 @@ export default function Home() {
     slidesToScroll: 1,
     autoplay: true,
     dots: true,
-    arrows: false,
+    arrows: true,
   };
+
+  const [banner, setBanner] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/listonly/Banner`
+        );
+        console.log("Gallery Data:", response);
+        setBanner(response.data);
+      } catch (error) {
+        console.error("Error fetching gallery data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <React.Fragment
@@ -49,199 +67,70 @@ export default function Home() {
         <Header />
         {/* <!-- banner-section --> */}
         <section className="banner-section banner-style-one">
-          <Slider
-            class="banner-carousel owl-theme owl-carousel owl-nav-none"
-            {...settings}
-          >
-            <div className="slide-item position-slider">
-              <div className="image-layer">
-                <img src={banner1} className="w-100" alt="" />
-              </div>
-              <div className="auto-container">
-                <div class="content-box">
-                  <div class="content-inner">
-                    <span class="count-text"></span>
-                    <ul class="custom-slider-icon">
-                      <li>
-                        <img src={star} alt="" />
-                      </li>
-                      <li>
-                        <img src={aeo} alt="" />
-                      </li>
-                      <li>
-                        <img src={iso} alt="" />
-                      </li>
-                    </ul>
-                    <h2
-                      style={{
-                        color: "white",
-                        fontSize: "45px",
-                        lineHeight: "65px",
-                        fontWeight: 500,
-                      }}
-                    >
-                      A Government of India <br /> recognised Star Export House
-                    </h2>
-                    <ul class="list clearfix">
-                      <li>
-                        <div class="icon-box">
-                          <i
-                            style={{ color: "white" }}
-                            class="flaticon-laboratory-1"
-                          ></i>
-                        </div>
-                        <h3
-                          style={{
-                            color: "white",
-                            fontSize: "36px",
-                            lineHeight: "44px",
-                            fontWeight: 500,
-                          }}
-                        >
-                          100+
-                        </h3>
-                        <h4
-                          style={{
-                            color: "white",
-                            fontSize: "36px",
-                            lineHeight: "44px",
-                            fontWeight: 500,
-                          }}
-                        >
-                          Quality Product
-                        </h4>
-                      </li>
-                    </ul>
-                  </div>
+          <Slider {...settings}>
+            {banner.map((bannerItem, index) => (
+              <div className="slide-item position-slider" key={index}>
+                <div className="image-layer">
+                  <img
+                    src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${bannerItem.bannerImage}`}
+                    className="w-100"
+                    alt=""
+                  />
                 </div>
-              </div>
-            </div>
-            <div className="slide-item position-slider">
-              <div className="image-layer">
-                <img src={banner2} className="w-100" alt="" />
-              </div>
-              <div className="auto-container">
-                <div class="content-box">
-                  <div class="content-inner">
-                    <span class="count-text"></span>
-                    <ul class="custom-slider-icon">
-                      <li>
-                        <img src={star} alt="" />
-                      </li>
-                      <li>
-                        <img src={aeo} alt="" />
-                      </li>
-                      <li>
-                        <img src={iso} alt="" />
-                      </li>
-                    </ul>
-                    <h2
-                      style={{
-                        color: "white",
-                        fontSize: "45px",
-                        lineHeight: "65px",
-                        fontWeight: 500,
-                      }}
-                    >
-                      A Government of India <br />
-                      recognised Star Export House
-                    </h2>
-                    <ul class="list clearfix">
-                      <li>
-                        <div class="icon-box">
-                          <i
-                            style={{ color: "white" }}
-                            class="flaticon-laboratory-1"
-                          ></i>
-                        </div>
-                        <h3
-                          style={{
-                            color: "white",
-                            fontSize: "36px",
-                            lineHeight: "44px",
-                            fontWeight: 500,
-                          }}
-                        >
-                          100+
-                        </h3>
-                        <h4
-                          style={{
-                            color: "white",
-                            fontSize: "36px",
-                            lineHeight: "44px",
-                            fontWeight: 500,
-                          }}
-                        >
-                          Quality Product
-                        </h4>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Slider>
-        </section>
-        {/* <!-- banner-section end --> */}
-        {/* <!-- about-section --> */}
-        <section className="about-section sec-pad">
-          <div className="auto-container">
-            <div className="row clearfix">
-              <div className="col-lg-6 col-md-12 col-sm-12 image-column">
-                <div className="image-box">
-                  <div className="shape-box">
-                    <div className="shape shape-1 hexagon_shape"></div>
-                    <div className="shape shape-2 hexagon_shape"></div>
-                    <div className="shape shape-3 hexagon_shape"></div>
-                  </div>
-                  <div className="image-inner hexagon_shape">
-                    <figure className="image">
-                      <img src={about} alt="" />
-                    </figure>
-                  </div>
-                  <div className="text">
-                    <div className="inner">
-                      <h2>
-                        20<span>+</span>
-                      </h2>
-                      <h6>
-                        Years of <br />
-                        Experience
-                      </h6>
+                <div className="auto-container">
+                  <div className="content-box">
+                    <div className="content-inner">
+                      <span className="count-text"></span>
+                      <ul className="custom-slider-icon">
+                        <li>
+                          <img src={star} alt="" />
+                        </li>
+                        <li>
+                          <img src={aeo} alt="" />
+                        </li>
+                        <li>
+                          <img src={iso} alt="" />
+                        </li>
+                      </ul>
+                      <h2  style={{color:"white"}}>{bannerItem.Description}</h2>
+                      <ul className="list clearfix">
+                        <li>
+                          <div className="icon-box">
+                            <i className="flaticon-laboratory-1"></i>
+                          </div>
+                          <h3
+                            style={{
+                              color: "white",
+                              fontSize: "36px",
+                              lineHeight: "44px",
+                              fontWeight: 500,
+                            }}
+                          >
+                            100+
+                          </h3>
+                          <h4
+                            style={{
+                              color: "white",
+                              fontSize: "36px",
+                              lineHeight: "44px",
+                              fontWeight: 500,
+                            }}
+                          >
+                            Quality Product
+                          </h4>
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="col-lg-6 col-md-12 col-sm-12 content-column">
-                <div className="content-box">
-                  <div className="sec-title">
-                    <span className="sub-title">
-                      Welcome to Shreeji Pharma International
-                    </span>
-                    <h2>About Us</h2>
-                  </div>
-                  <div className="text">
-                    <p>
-                      We SHREEJI PHARMA International, established in 2004, are
-                      proud to introduce ourselves as one of the leading
-                      Manufacturer , Exporters AND GLOBAL SOURCING COMPANY in
-                      India in the field of Active Pharma Ingredients,
-                      Chemicals, Pharmaceuticals Raw Materials, herbals,
-                      Phytochemicals &amp; Intermediates. We thus, mainly focus
-                      on the exports of the APIs with high levels of integrity,
-                      respect &amp; recognition.
-                    </p>
-                  </div>
-                  <div className="btn-box">
-                    <a href="about.html" className="theme-btn">
-                      Read More
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+            ))}
+          </Slider>
         </section>
+
+        {/* <!-- banner-section end --> */}
+        {/* <!-- about-section --> */}
+        <AboutUs />
         {/* <!-- about-section end --> */}
         {/* <!-- service-section --> */}
         <Products />
@@ -578,105 +467,7 @@ export default function Home() {
         </section>
         {/* <!-- funfact-section end --> */}
         {/* <!-- blog-grid --> */}
-        <section className="blog-grid news-style-two sec-pad sec-pad1">
-          <div className="auto-container">
-            <div className="sec-title">
-              <span className="sub-title">Blogs</span>
-              <h2>Explore our latest blogs</h2>
-              <div className="btn-box">
-                <a href="#" className="theme-btn">
-                  View All Blogs
-                </a>
-              </div>
-            </div>
-            <div className="row clearfix">
-              <div className="col-lg-6 col-md-6 col-sm-12 news-block">
-                <div
-                  className="news-block-one wow fadeInUp animated animated"
-                  data-wow-delay="00ms"
-                  data-wow-duration="1500ms"
-                  style={{
-                    visibility: "visible",
-                    animationDuration: "1500ms",
-                    animationDelay: "0ms",
-                    animationName: "fadeInUp",
-                  }}
-                >
-                  <div className="inner-box">
-                    <div className="image-box">
-                      <figure className="image">
-                        <img src={blog} alt="" />
-                      </figure>
-                      <div className="link-btn">
-                        <a href="">
-                          <i className="flaticon-zoom-in"></i>
-                        </a>
-                      </div>
-                    </div>
-                    <div className="lower-content">
-                      <div className="category">
-                        <a href="">Laboratory</a>
-                      </div>
-                      <ul className="post-info clearfix">
-                        <li>11 August, 2022</li>
-                      </ul>
-                      <h3>
-                        <a href="blog-details.html">Blog Title 1</a>
-                      </h3>
-                      <div className="lower-box">
-                        <div className="link">
-                          <a href="">Read More</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-6 col-md-6 col-sm-12 news-block">
-                <div
-                  className="news-block-one wow fadeInUp animated animated"
-                  data-wow-delay="00ms"
-                  data-wow-duration="1500ms"
-                  style={{
-                    visibility: "visible",
-                    animationDuration: "1500ms",
-                    animationDelay: "0ms",
-                    animationName: "fadeInUp",
-                  }}
-                >
-                  <div className="inner-box">
-                    <div className="image-box">
-                      <figure className="image">
-                        <img src={blog} alt="" />
-                      </figure>
-                      <div className="link-btn">
-                        <a href="">
-                          <i className="flaticon-zoom-in"></i>
-                        </a>
-                      </div>
-                    </div>
-                    <div className="lower-content">
-                      <div className="category">
-                        <a href="">Research</a>
-                      </div>
-                      <ul className="post-info clearfix">
-                        <li>21 July, 2022</li>
-                      </ul>
-                      <h3>
-                        <a href="">Blog Title 2</a>
-                      </h3>
-                      <div className="lower-box">
-                        <div className="link">
-                          <a href="">Read More</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Blog />
         {/* <!-- blog-grid end --> */}
         {/* <!-- news-section --> */}
         <section className="news-section sec-pad">
@@ -830,153 +621,7 @@ export default function Home() {
         </section>
         {/* <!-- news-section end --> */}
         {/* <!-- booking-section --> */}
-        <section className="booking-section sec-pad">
-          <div
-            className="bg-layer"
-            style={{ backgroundImage: `url(${booking})` }}
-          ></div>
-          <div className="pattern-layer">
-            <div
-              className="pattern-1"
-              style={{ backgroundImage: `url(${shape7})` }}
-            ></div>
-            <div
-              className="pattern-2"
-              style={{ backgroundImage: `url(${shape8})` }}
-            ></div>
-          </div>
-          <div className="auto-container">
-            <div className="row clearfix custom-form">
-              <div className="col-lg-5-new col-md-12 col-sm-12 content-column">
-                <div className="content-box">
-                  <span className="rotate-text">contact us</span>
-                  <div
-                    className="shape"
-                    style={{ backgroundImage: `url(${shape9})` }}
-                  ></div>
-                  <div className="sec-title light">
-                    <span className="sub-title">Inquiry Now</span>
-                    <h2>
-                      Get your solution by contact us we'll reach you soon
-                    </h2>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-6 col-md-12 col-sm-12 inner-column">
-                <div className="inner-content">
-                  <div className="form-inner">
-                    <form>
-                      <div className="row clearfix">
-                        <div className="col-lg-6 col-md-12 col-sm-12 form-group">
-                          <i className="fa-solid fa-circle-user"></i>
-                          <label>Name</label>
-                          <input
-                            type="text"
-                            name="name"
-                            placeholder="Enter your name"
-                            required=""
-                          />
-                        </div>
-                        <div className="col-lg-6 col-md-12 col-sm-12 form-group">
-                          <i className="fa-solid fa-phone"></i>
-                          <label>Number</label>
-                          <input
-                            type="text"
-                            name="phone"
-                            placeholder="Enter your number"
-                            required=""
-                          />
-                        </div>
-                        <div className="col-lg-6 col-md-12 col-sm-12 form-group">
-                          <i className="fa-solid fa-envelope"></i>
-                          <label>Email</label>
-                          <input
-                            type="email"
-                            name="email"
-                            required=""
-                            placeholder="Enter your Email"
-                          />
-                        </div>
-                        <div className="col-lg-6 col-md-12 col-sm-12 form-group">
-                          <label>Select Country</label>
-                          <div className="select-box">
-                            <select
-                              className="selectmenu"
-                              name="country"
-                              style={{ display: "none" }}
-                            >
-                              <option selected="selected">
-                                Select Country
-                              </option>
-                              <option>Australia</option>
-                              <option>Canada</option>
-                              <option>France</option>
-                              <option>Germany</option>
-                              <option>India</option>
-                              <option>Italy</option>
-                              <option>Japan</option>
-                            </select>
-                            <div
-                              className="nice-select selectmenu"
-                              tabindex="0"
-                            >
-                              <span className="current">Select Country</span>
-                              <ul className="list">
-                                <li
-                                  data-value="Select Country"
-                                  className="option selected"
-                                >
-                                  Select Country
-                                </li>
-                                <li data-value="Australia" className="option">
-                                  Australia
-                                </li>
-                                <li data-value="Canada" className="option">
-                                  Canada
-                                </li>
-                                <li data-value="France" className="option">
-                                  France
-                                </li>
-                                <li data-value="Germany" className="option">
-                                  Germany
-                                </li>
-                                <li data-value="India" className="option">
-                                  India
-                                </li>
-                                <li data-value="Italy" className="option">
-                                  Italy
-                                </li>
-                                <li data-value="Japan" className="option">
-                                  Japan
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-lg-12 col-md-12 col-sm-12 form-group">
-                          <label>Message</label>
-                          <textarea
-                            name="message"
-                            placeholder="Enter your message"
-                            rows="3"
-                            required=""
-                            className="custom-textarea"
-                          ></textarea>
-                        </div>
-
-                        <div className="col-lg-12 col-md-12 col-sm-12 form-group message-btn">
-                          <button type="submit" className="theme-btn">
-                            Submit Here
-                          </button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Inquiry />
         {/* <!-- booking-section end --> */}
         {/* <!-- locations-section --> */}
         <section className="locations-section sec-pad centred">

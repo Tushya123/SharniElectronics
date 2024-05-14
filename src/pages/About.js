@@ -7,8 +7,35 @@ import skype from "../assets/images/new-home/skype.png";
 import wp from "../assets/images/new-home/whatsapp.png";
 import Background1 from "../assets/images/background/funfact-bg.jpg";
 import Header from "../components/Header";
+import axios from "axios";
 
 export default function About() {
+  const [cmsDesc, setcmsDesc] = useState("");
+  const [title, setTitle] = useState("");
+  const [cmsImage, setcmsImage] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(
+          `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/listonly/cms`
+        );
+        console.log(res);
+        const data = res.data.find(
+          (entry) => entry._id === "663f4d5fef85cf304603e082"
+        );
+        console.log(data);
+        setcmsDesc(data.cmsDesc);
+        setTitle(data.Title);
+        setcmsImage(data.cmsImage);
+      } catch (error) {
+        console.error("Error fetching about us data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+
   
   return (
       <React.Fragment style={{ position: "relative", minHeight: "100%", top: "0px" }}>
@@ -36,72 +63,58 @@ export default function About() {
           {/* <!-- page-title end --> */}
           {/* <!-- banner-section end --> */}
           {/* <!-- about-section --> */}
-          <section class="about-section sec-pad">
-            <div class="auto-container">
-              <div class="row clearfix">
-                <div class="col-lg-6 col-md-12 col-sm-12 image-column">
-                  <div class="image-box">
-                    <div class="shape-box">
-                      <div class="shape shape-1 hexagon_shape"></div>
-                      <div class="shape shape-2 hexagon_shape"></div>
-                      <div class="shape shape-3 hexagon_shape"></div>
+          <section className="about-section sec-pad">
+            <div className="auto-container">
+                <div className="row clearfix">
+                    <div className="col-lg-6 col-md-12 col-sm-12 image-column">
+                        <div className="image-box">
+                            <div className="shape-box">
+                                <div className="shape shape-1 hexagon_shape"></div>
+                                <div className="shape shape-2 hexagon_shape"></div>
+                                <div className="shape shape-3 hexagon_shape"></div>
+                            </div>
+                            <div className="image-inner hexagon_shape">
+                                <figure className="image">
+                                <img
+                      src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${cmsImage}`}
+                      alt=""
+                    />
+                                </figure>
+                            </div>
+                            <div className="text">
+                                <div className="inner">
+                                    <h2>
+                                        20<span>+</span>
+                                    </h2>
+                                    <h6>
+                                        Years of <br />
+                                        Experience
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="image-inner hexagon_shape">
-                      <figure class="image">
-                        <img src={about} alt="" />
-                      </figure>
+                    <div className="col-lg-6 col-md-12 col-sm-12 content-column">
+                        <div className="content-box">
+                            <div className="sec-title">
+                                <span className="sub-title">
+                                    Welcome to Shreeji Pharma International
+                                </span>
+                                <h2>{title}</h2>
+                            </div>
+                            <div className="text">
+                            {React.createElement("div", {
+                    dangerouslySetInnerHTML: {
+                      __html: `${cmsDesc}<style>p{font-size:19px;font-weight:400}`,
+                    },
+                  })}
+                            </div>
+                        </div>
                     </div>
-                    <div class="text">
-                      <div class="inner">
-                        <h2>
-                          20<span>+</span>
-                        </h2>
-                        <h6>
-                          Years of <br />
-                          Experience
-                        </h6>
-                      </div>
-                    </div>
-                  </div>
                 </div>
-                <div class="col-lg-6 col-md-12 col-sm-12 content-column">
-                  <div class="content-box">
-                    <div class="sec-title">
-                      <span class="sub-title">
-                        Welcome to Shreeji Pharma International
-                      </span>
-                      <h2>About Us</h2>
-                    </div>
-                    <div class="text">
-                      <p>
-                        We SHREEJI PHARMA International, established in 2004,
-                        are proud to introduce ourselves as one of the leading
-                        Manufacturer , Exporters AND GLOBAL SOURCING COMPANY in
-                        India in the field of Active Pharma Ingredients,
-                        Chemicals, Pharmaceuticals Raw Materials, herbals,
-                        Phytochemicals &amp; Intermediates. We thus, mainly
-                        focus on the exports of the APIs with high levels of
-                        integrity, respect &amp; recognition.
-                      </p>
-                    </div>
-                    <div class="text">
-                      <p>
-                        The future of every business entity depends on three
-                        major factors viz. trust, quality and credibility.
-                        Fuelled with these basic factors, we, SHREEJI PHARMA
-                        INTERNATIONAL, have earned global recognition in a very
-                        limited span of time. Working with the sole motto of
-                        serving global clients with premium quality of bulk drug
-                        raw materials this notable player has acquired a major
-                        stake in its discipline. The company is a prominent
-                        merchant exporter of Active Pharmaceutical Ingredients .
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
-          </section>
+        </section>
+
           {/* <!-- about-section end --> */}
           {/* <!-- funfact-section --> */}
           <section class="funfact-section centred">

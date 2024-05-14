@@ -13875,3 +13875,21 @@ div#mCSB_1_container{
   top: 35%;
   z-index: 99;
 }
+.product-slider .slick-slide {
+  margin: 0 10px; /* Adjust the value to set the desired gap between images */
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+}
+.error {
+  border: 2px solid red !important; /* Increased specificity and used !important to override other styles */
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
