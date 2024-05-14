@@ -6,8 +6,26 @@ import skype from "../../assets/images/new-home/skype.png";
 import wp from "../../assets/images/new-home/whatsapp.png";
 import news from "../../assets/images/news/news-35.jpg";
 import Header from "../../components/Header";
+import axios from "axios";
 
 export default function ProductsDetails() {
+  const [productDetails, setProductDetails] = React.useState(null);
+
+  React.useEffect(() => {
+    const description = localStorage.getItem("description");
+    axios
+      .get(
+        `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/get/productdetail/${description}`
+      )
+      .then((response) => {
+        console.log("huncncjuhenchjbecvbevchj", response); // log the response data
+        setProductDetails(response.data);
+      })
+      .catch((error) => {
+        console.error(error); // log the error
+      });
+  }, []);
+
   return (
     <React.Fragment
       style={{ position: "relative", minHeight: "100%", top: "0px" }}
@@ -35,21 +53,21 @@ export default function ProductsDetails() {
         </section>
         {/* <!-- page-title end -->
     <!-- sidebar-page-container --> */}
-        <section class="sidebar-page-container blog-details sec-pad pro-det">
-          <div class="auto-container">
-            <div class="row clearfix">
-              <div class="col-lg-12 col-md-12 col-sm-12 content-side">
-                <div class="blog-details-content">
-                  <div class="content-one row mb-0">
-                    <div class="col-lg-6 col-12">
-                      <figure class="image-box">
+        <section className="sidebar-page-container blog-details sec-pad pro-det">
+          <div className="auto-container">
+            <div className="row clearfix">
+              <div className="col-lg-12 col-md-12 col-sm-12 content-side">
+                <div className="blog-details-content">
+                  <div className="content-one row mb-0">
+                    <div className="col-lg-6 col-12">
+                      <figure className="image-box">
                         <img src={news} alt="" />
                       </figure>
                     </div>
 
-                    <div class="col-lg-6 col-12">
+                    <div className="col-lg-6 col-12">
                       <h2>Title Here</h2>
-                      <p class="mb-3">
+                      <p className="mb-3">
                         Text Soon...Text Soon...Text Soon...Text Soon...Text
                         Soon...Text Soon... Text Soon...Text Soon...Text
                         Soon...Text Soon...Text Soon...Text Soon... Text
@@ -59,7 +77,7 @@ export default function ProductsDetails() {
                         Soon...Text Soon...Text Soon...Text Soon...Text
                         Soon...Text Soon...
                       </p>
-                      <p class="mb-3">
+                      <p className="mb-3">
                         Text Soon...Text Soon...Text Soon...Text Soon...Text
                         Soon...Text Soon... Text Soon...Text Soon...Text
                         Soon...Text Soon...Text Soon...Text Soon... Text
