@@ -194,12 +194,18 @@ export default function Header() {
                         <Link to="/commitment">Commitment</Link>
                       </li>
                       <li className="dropdown">
-                        <Link >Products</Link>
+                        <Link>Products</Link>
                         <ul>
                           {products.map((product, index) => (
                             <li key={index}>
                               <Link
                                 to="/products"
+                                onClick={() =>
+                                  localStorage.setItem(
+                                    "selectedProductId",
+                                    product._id
+                                  )
+                                }
                               >
                                 {product.ProductGroup}
                               </Link>
