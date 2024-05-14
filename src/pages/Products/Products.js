@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../../assets/images/new-home/logo.png";
 import Background from "../../assets/images/new-home/breadcrumb-img.jpg";
 import footer from "../../assets/images/new-home/footer-location-img.jpg";
@@ -10,11 +10,30 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
+
 export default function Products() {
   const [show, setShow] = useState(false);
+  const [data, setData] = useState([])
+
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/list/projectdetail`)
+      .then(response => response.json())
+      .then(data => {
+        data.sort((a, b) => a.Description.localeCompare(b.Description));
+        console.log(">>>>>>>>>>>>>>>>>>>>", data)
+        setData(data)
+      })
+
+      .catch(error => console.error('Error:', error));
+  }, []);
+
+  const productsStartingWithA = data.filter(product => product.Description.startsWith('A'));
+
+
 
   return (
     <React.Fragment
@@ -101,186 +120,32 @@ export default function Products() {
           <div className="auto-container">
             <div className="pro-list">
               <div className="sec-title">
-                <h3 className="title">Chemical By A</h3>
-              </div>
-              <div className="row">
-                <div className="col-lg-3 col-md-12 col-sm-12 content-side">
-                  <div className="news-block-one">
-                    <div className="inner-box">
-                      <a className="text" href="/productDetails">
-
-                        <h2>Acebrophylline</h2>
-                      </a>
-                      <div className="lower-box">
-                        {/* <!-- <div className="link"><a href="product-detail.html">View Deatils</a></div>--> */}
-                        <div className="link">
-                          <a
-                            type="button"
-                            data-bs-toggle="modal"
-                            data-bs-target="#inquiryModal"
-                            onClick={handleShow}
-                          >
-                            Inquiry
+                {productsStartingWithA.length > 0 && <h3 className="title">Chemical By A</h3>}
+                <div className="row">
+                  {/* Insert dynamic product list here */}
+                  {productsStartingWithA.map((item, index) => (
+                    <div key={index} className="col-lg-3 col-md-12 col-sm-12 content-side">
+                      <div className="news-block-one">
+                        <div className="inner-box">
+                          <a className="text" href="/productDetails">
+                            <h2>{item.Description}</h2>
                           </a>
+                          <div className="lower-box">
+                            <div className="link">
+                              <a
+                                type="button"
+                                data-bs-toggle="modal"
+                                data-bs-target="#inquiryModal"
+                                onClick={handleShow}
+                              >
+                                Inquiry
+                              </a>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-md-12 col-sm-12 content-side">
-                  <div className="news-block-one">
-                    <div className="inner-box">
-                      <a className="text" href="/productDetails">
-                          <h2>Acetaminophen</h2>
-                      </a>
-                      <div className="lower-box">
-                        {/* <!-- <div className="link"><a href="product-detail.html">View Deatils</a></div>--> */}
-                        <div className="link">
-                          <a
-                            type="button"
-                            data-bs-toggle="modal"
-                            data-bs-target="#inquiryModal"
-                            onClick={handleShow}
-                          >
-                            Inquiry
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-md-12 col-sm-12 content-side">
-                  <div className="news-block-one">
-                    <div className="inner-box">
-                      <a className="text" href="/productDetails">
-                        <h2>Asprin</h2>
-                      </a>
-                      <div className="lower-box">
-                        {/* <!-- <div className="link"><a href="product-detail.html">View Deatils</a></div>--> */}
-                        <div className="link">
-                          <a
-                            type="button"
-                            data-bs-toggle="modal"
-                            data-bs-target="#inquiryModal"
-                            onClick={handleShow}
-                          >
-                            Inquiry
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-md-12 col-sm-12 content-side">
-                  <div className="news-block-one">
-                    <div className="inner-box">
-                      <a className="text" href="/productDetails">
-                        <h2>Acebrophylline</h2>
-                      </a>
-                      <div className="lower-box">
-                        {/* <!-- <div className="link"><a href="product-detail.html">View Deatils</a></div>--> */}
-                        <div className="link">
-                          <a
-                            type="button"
-                            data-bs-toggle="modal"
-                            data-bs-target="#inquiryModal"
-                            onClick={handleShow}
-                          >
-                            Inquiry
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-md-12 col-sm-12 content-side">
-                  <div className="news-block-one">
-                    <div className="inner-box">
-                      <a className="text" href="/productDetails">
-                        <h2>Acetaminophen</h2>
-                      </a>
-                      <div className="lower-box">
-                        {/* <!-- <div className="link"><a href="product-detail.html">View Deatils</a></div>--> */}
-                        <div className="link">
-                          <a
-                            type="button"
-                            data-bs-toggle="modal"
-                            data-bs-target="#inquiryModal"
-                            onClick={handleShow}
-                          >
-                            Inquiry
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-md-12 col-sm-12 content-side">
-                  <div className="news-block-one">
-                    <div className="inner-box">
-                      <a className="text" href="/productDetails">
-                        <h2>Asprin</h2>
-                      </a>
-                      <div className="lower-box">
-                        {/* <!-- <div className="link"><a href="product-detail.html">View Deatils</a></div>--> */}
-                        <div className="link">
-                          <a
-                            type="button"
-                            data-bs-toggle="modal"
-                            data-bs-target="#inquiryModal"
-                            onClick={handleShow}
-                          >
-                            Inquiry
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-lg-3 col-md-12 col-sm-12 content-side">
-                  <div className="news-block-one">
-                    <div className="inner-box">
-                      <a className="text" href="/productDetails">
-                        <h2>Acefylline</h2>
-                      </a>
-                      <div className="lower-box">
-                        {/* <!-- <div className="link"><a href="product-detail.html">View Deatils</a></div>--> */}
-                        <div className="link">
-                          <a
-                            type="button"
-                            data-bs-toggle="modal"
-                            data-bs-target="#inquiryModal"
-                            onClick={handleShow}
-                          >
-                            Inquiry
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-md-12 col-sm-12 content-side">
-                  <div className="news-block-one">
-                    <div className="inner-box">
-                      <a className="text" href="/productDetails">
-                        <h2>Atenolol</h2>
-                      </a>
-                      <div className="lower-box">
-                        {/* <!-- <div className="link"><a href="product-detail.html">View Deatils</a></div>--> */}
-                        <div className="link">
-                          <a
-                            type="button"
-                            data-bs-toggle="modal"
-                            data-bs-target="#inquiryModal"
-                            onClick={handleShow}
-                          >
-                            Inquiry
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -312,160 +177,7 @@ export default function Products() {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-3 col-md-12 col-sm-12 content-side">
-                  <div className="news-block-one">
-                    <div className="inner-box">
-                      <a className="text" href="/productDetails">
-                        <h2>Biperiden HCL</h2>
-                      </a>
-                      <div className="lower-box">
-                        {/* <!-- <div className="link"><a href="product-detail.html">View Deatils</a></div>--> */}
-                        <div className="link">
-                          <a
-                            type="button"
-                            data-bs-toggle="modal"
-                            data-bs-target="#inquiryModal"
-                            onClick={handleShow}
-                          >
-                            Inquiry
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-md-12 col-sm-12 content-side">
-                  <div className="news-block-one">
-                    <div className="inner-box">
-                      <a className="text" href="/productDetails">
-                        <h2>Bisacodyl</h2>
-                      </a>
-                      <div className="lower-box">
-                        {/* <!-- <div className="link"><a href="product-detail.html">View Deatils</a></div>--> */}
-                        <div className="link">
-                          <a
-                            type="button"
-                            data-bs-toggle="modal"
-                            data-bs-target="#inquiryModal"
-                            onClick={handleShow}
-                          >
-                            Inquiry
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-md-12 col-sm-12 content-side">
-                  <div className="news-block-one">
-                    <div className="inner-box">
-                      <a className="text" href="/productDetails">
-                        <h2>Bromhexine HCL</h2>
-                      </a>
-                      <div className="lower-box">
-                        {/* <!-- <div className="link"><a href="product-detail.html">View Deatils</a></div>--> */}
-                        <div className="link">
-                          <a
-                            type="button"
-                            data-bs-toggle="modal"
-                            data-bs-target="#inquiryModal"
-                            onClick={handleShow}
-                          >
-                            Inquiry
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-md-12 col-sm-12 content-side">
-                  <div className="news-block-one">
-                    <div className="inner-box">
-                      <a className="text" href="/productDetails">
-                        <h2>Brompherniramine Maleate </h2>
-                      </a>
-                      <div className="lower-box">
-                        {/* <!-- <div className="link"><a href="product-detail.html">View Deatils</a></div>--> */}
-                        <div className="link">
-                          <a
-                            type="button"
-                            data-bs-toggle="modal"
-                            data-bs-target="#inquiryModal"
-                            onClick={handleShow}
-                          >
-                            Inquiry
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-md-12 col-sm-12 content-side">
-                  <div className="news-block-one">
-                    <div className="inner-box">
-                      <a className="text" href="/productDetails">
-                        <h2>Bupivacaine Base &amp; HCL</h2>
-                      </a>
-                      <div className="lower-box">
-                        {/* <!-- <div className="link"><a href="product-detail.html">View Deatils</a></div>--> */}
-                        <div className="link">
-                          <a
-                            type="button"
-                            data-bs-toggle="modal"
-                            data-bs-target="#inquiryModal"
-                            onClick={handleShow}
-                          >
-                            Inquiry
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-md-12 col-sm-12 content-side">
-                  <div className="news-block-one">
-                    <div className="inner-box">
-                      <a className="text" href="/productDetails">
-                        <h2>Betahistine HCL</h2>
-                      </a>
-                      <div className="lower-box">
-                        {/* <!-- <div className="link"><a href="product-detail.html">View Deatils</a></div>--> */}
-                        <div className="link">
-                          <a
-                            type="button"
-                            data-bs-toggle="modal"
-                            data-bs-target="#inquiryModal"
-                            onClick={handleShow}
-                          >
-                            Inquiry
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-md-12 col-sm-12 content-side">
-                  <div className="news-block-one">
-                    <div className="inner-box">
-                      <a className="text" href="/productDetails">
-                        <h2>Benzyl Amine HCL</h2>
-                      </a>
-                      <div className="lower-box">
-                        {/* <!-- <div className="link"><a href="product-detail.html">View Deatils</a></div>--> */}
-                        <div className="link">
-                          <a
-                            type="button"
-                            data-bs-toggle="modal"
-                            data-bs-target="#inquiryModal"
-                            onClick={handleShow}
-                          >
-                            Inquiry
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+
               </div>
             </div>
           </div>
