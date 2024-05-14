@@ -31,6 +31,15 @@ export default function Products() {
       .catch(error => console.error('Error:', error));
   }, []);
 
+  const productsByStartingLetter = data.reduce((acc, product) => {
+    const startingLetter = product.Description[0];
+    if (!acc[startingLetter]) {
+      acc[startingLetter] = [];
+    }
+    acc[startingLetter].push(product);
+    return acc;
+  }, {});
+
   const productsStartingWithA = data.filter(product => product.Description.startsWith('A'));
 
 
@@ -116,72 +125,43 @@ export default function Products() {
         </Modal>
 
         {/* <!-- sidebar-page-container --> */}
-        <section className="sidebar-page-container blog-large-image news-style-two sec-pad product-sec">
-          <div className="auto-container">
-            <div className="pro-list">
-              <div className="sec-title">
-                {productsStartingWithA.length > 0 && <h3 className="title">Chemical By A</h3>}
-                <div className="row">
-                  {/* Insert dynamic product list here */}
-                  {productsStartingWithA.map((item, index) => (
-                    <div key={index} className="col-lg-3 col-md-12 col-sm-12 content-side">
-                      <div className="news-block-one">
-                        <div className="inner-box">
-                          <a className="text" href="/productDetails">
-                            <h2>{item.Description}</h2>
-                          </a>
-                          <div className="lower-box">
-                            <div className="link">
-                              <a
-                                type="button"
-                                data-bs-toggle="modal"
-                                data-bs-target="#inquiryModal"
-                                onClick={handleShow}
-                              >
-                                Inquiry
-                              </a>
+        {Object.entries(productsByStartingLetter).map(([letter, products]) => (
+          <section className="sidebar-page-container blog-large-image news-style-two sec-pad product-sec">
+            <div className="auto-container">
+              <div className="pro-list">
+                <div className="sec-title">
+                  <h3 className="title">Chemical By {letter}</h3>
+                  <div className="row">
+                    {products.map((item, index) => (
+                      <div key={index} className={`col-lg-${products.length === 1 ? '3' : '3'} col-md-12 col-sm-12 content-side`}>
+                        <div className="news-block-one">
+                          <div className="inner-box">
+                            <a className="text" href="/productDetails">
+                              <h2>{item.Description}</h2>
+                            </a>
+                            <div className="lower-box">
+                              <div className="link">
+                                <a
+                                  type="button"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#inquiryModal"
+                                  onClick={handleShow}
+                                >
+                                  Inquiry
+                                </a>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="pro-list">
-              <div className="sec-title">
-                <h3 className="title">Chemical By B</h3>
-              </div>
-              <div className="row">
-                <div className="col-lg-3 col-md-12 col-sm-12 content-side">
-                  <div className="news-block-one">
-                    <div className="inner-box">
-                      <a className="text" href="/productDetails">
-                        <h2>Betahestine HCL</h2>
-                      </a>
-                      <div className="lower-box">
-                        {/* <!-- <div className="link"><a href="product-detail.html">View Deatils</a></div>--> */}
-                        <div className="link">
-                          <a
-                            type="button"
-                            data-bs-toggle="modal"
-                            data-bs-target="#inquiryModal"
-                            onClick={handleShow}
-                          >
-                            Inquiry
-                          </a>
-                        </div>
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
-
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        ))}
+
         {/* <!-- sidebar-page-container end --> */}
 
         {/* <!-- locations-section --> */}
