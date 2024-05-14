@@ -194,12 +194,12 @@ export default function Header() {
                         <Link to="/commitment">Commitment</Link>
                       </li>
                       <li className="dropdown">
-                        <Link to="/products">Products</Link>
+                        <Link >Products</Link>
                         <ul>
                           {products.map((product, index) => (
                             <li key={index}>
                               <Link
-                                to={`/ProductsDetails/${product.ProductGroup}`}
+                                to="/products"
                               >
                                 {product.ProductGroup}
                               </Link>
