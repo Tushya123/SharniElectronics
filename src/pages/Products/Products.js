@@ -10,22 +10,23 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
-
 export default function Products() {
   const [show, setShow] = useState(false);
   const [data, setData] = useState([]);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  
 
   useEffect(() => {
-    const xyz = localStorage.getItem("selectedProductId"); 
+    const xyz = localStorage.getItem("selectedProductId");
     fetch(
       `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/list/projectdetail`
     )
       .then((response) => response.json())
       .then((data) => {
-        data = data.filter(item => item.ProductDetail && item.ProductDetail.ProductGroup === xyz);
+        data = data.filter(
+          (item) =>
+            item.ProductDetail && item.ProductDetail.ProductGroup === xyz
+        );
         data.sort((a, b) => a.Description.localeCompare(b.Description));
         setData(data);
       })
@@ -128,7 +129,7 @@ export default function Products() {
 
         {/* <!-- sidebar-page-container --> */}
         {Object.entries(productsByStartingLetter).map(([letter, products]) => {
-          let paddingValue = (Math.max(5, products.length * 2)); 
+          let paddingValue = Math.max(5, products.length * 2);
           return (
             <section
               style={{ padding: `${paddingValue}px`, paddingTop: "30px" }}
@@ -148,7 +149,16 @@ export default function Products() {
                         >
                           <div className="news-block-one">
                             <div className="inner-box">
-                              <a className="text" href="/productDetails" name="123">
+                              <a
+                                className="text"
+                                href="/productDetails"
+                                onClick={() =>
+                                  localStorage.setItem(
+                                    "description",
+                                    item.Description
+                                  )
+                                }
+                              >
                                 <h2>{item.Description}</h2>
                               </a>
                               <div className="lower-box">
