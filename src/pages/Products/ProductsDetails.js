@@ -13,13 +13,13 @@ export default function ProductsDetails() {
       style={{ position: "relative", minHeight: "100%", top: "0px" }}
     >
       <div className="boxed_wrapper">
-        <Header/>
-       {/* <!-- page-title --> */} 
+        <Header />
+        {/* <!-- page-title --> */}
         <section className="page-title">
           <div
             className="bg-layer"
             style={{ backgroundImage: `url(${Background})` }}
-            ></div>
+          ></div>
           <div className="auto-container">
             <div className="content-box">
               <h1>Product Deatils</h1>
@@ -35,21 +35,21 @@ export default function ProductsDetails() {
         </section>
         {/* <!-- page-title end -->
     <!-- sidebar-page-container --> */}
-        <section className="sidebar-page-container blog-details sec-pad pro-det">
-          <div className="auto-container">
-            <div className="row clearfix">
-              <div className="col-lg-12 col-md-12 col-sm-12 content-side">
-                <div className="blog-details-content">
-                  <div className="content-one row mb-0">
-                    <div className="col-lg-6 col-12">
-                      <figure className="image-box">
+        <section class="sidebar-page-container blog-details sec-pad pro-det">
+          <div class="auto-container">
+            <div class="row clearfix">
+              <div class="col-lg-12 col-md-12 col-sm-12 content-side">
+                <div class="blog-details-content">
+                  <div class="content-one row mb-0">
+                    <div class="col-lg-6 col-12">
+                      <figure class="image-box">
                         <img src={news} alt="" />
                       </figure>
                     </div>
 
-                    <div className="col-lg-6 col-12">
+                    <div class="col-lg-6 col-12">
                       <h2>Title Here</h2>
-                      <p className="mb-3">
+                      <p class="mb-3">
                         Text Soon...Text Soon...Text Soon...Text Soon...Text
                         Soon...Text Soon... Text Soon...Text Soon...Text
                         Soon...Text Soon...Text Soon...Text Soon... Text
@@ -59,7 +59,7 @@ export default function ProductsDetails() {
                         Soon...Text Soon...Text Soon...Text Soon...Text
                         Soon...Text Soon...
                       </p>
-                      <p className="mb-3">
+                      <p class="mb-3">
                         Text Soon...Text Soon...Text Soon...Text Soon...Text
                         Soon...Text Soon... Text Soon...Text Soon...Text
                         Soon...Text Soon...Text Soon...Text Soon... Text
@@ -125,7 +125,7 @@ export default function ProductsDetails() {
                   src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7381.956093641144!2d73.167648!3d22.31667!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fcf6c89cabb19%3A0xf803cbcf27adf1aa!2sShreeji%20Pharma%20International!5e0!3m2!1sen!2sus!4v1712310707767!5m2!1sen!2sus"
                   width="600"
                   height="450"
-                  style={{border:0}}
+                  style={{ border: 0 }}
                   allowfullscreen=""
                   loading="lazy"
                   referrerpolicy="no-referrer-when-downgrade"

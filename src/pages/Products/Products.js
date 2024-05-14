@@ -107,7 +107,8 @@ export default function Products() {
                 <div className="col-lg-3 col-md-12 col-sm-12 content-side">
                   <div className="news-block-one">
                     <div className="inner-box">
-                      <a className="text" href="product-detail.html">
+                      <a className="text" href="/productDetails">
+
                         <h2>Acebrophylline</h2>
                       </a>
                       <div className="lower-box">
@@ -129,8 +130,8 @@ export default function Products() {
                 <div className="col-lg-3 col-md-12 col-sm-12 content-side">
                   <div className="news-block-one">
                     <div className="inner-box">
-                      <a className="text" href="product-detail.html">
-                        <h2>Acetaminophen</h2>
+                      <a className="text" href="/productDetails">
+                          <h2>Acetaminophen</h2>
                       </a>
                       <div className="lower-box">
                         {/* <!-- <div className="link"><a href="product-detail.html">View Deatils</a></div>--> */}
@@ -151,7 +152,7 @@ export default function Products() {
                 <div className="col-lg-3 col-md-12 col-sm-12 content-side">
                   <div className="news-block-one">
                     <div className="inner-box">
-                      <a className="text" href="product-detail.html">
+                      <a className="text" href="/productDetails">
                         <h2>Asprin</h2>
                       </a>
                       <div className="lower-box">
@@ -173,7 +174,7 @@ export default function Products() {
                 <div className="col-lg-3 col-md-12 col-sm-12 content-side">
                   <div className="news-block-one">
                     <div className="inner-box">
-                      <a className="text" href="product-detail.html">
+                      <a className="text" href="/productDetails">
                         <h2>Acebrophylline</h2>
                       </a>
                       <div className="lower-box">
@@ -195,7 +196,7 @@ export default function Products() {
                 <div className="col-lg-3 col-md-12 col-sm-12 content-side">
                   <div className="news-block-one">
                     <div className="inner-box">
-                      <a className="text" href="product-detail.html">
+                      <a className="text" href="/productDetails">
                         <h2>Acetaminophen</h2>
                       </a>
                       <div className="lower-box">
@@ -217,7 +218,7 @@ export default function Products() {
                 <div className="col-lg-3 col-md-12 col-sm-12 content-side">
                   <div className="news-block-one">
                     <div className="inner-box">
-                      <a className="text" href="product-detail.html">
+                      <a className="text" href="/productDetails">
                         <h2>Asprin</h2>
                       </a>
                       <div className="lower-box">
@@ -240,7 +241,7 @@ export default function Products() {
                 <div className="col-lg-3 col-md-12 col-sm-12 content-side">
                   <div className="news-block-one">
                     <div className="inner-box">
-                      <a className="text" href="product-detail.html">
+                      <a className="text" href="/productDetails">
                         <h2>Acefylline</h2>
                       </a>
                       <div className="lower-box">
@@ -262,7 +263,7 @@ export default function Products() {
                 <div className="col-lg-3 col-md-12 col-sm-12 content-side">
                   <div className="news-block-one">
                     <div className="inner-box">
-                      <a className="text" href="product-detail.html">
+                      <a className="text" href="/productDetails">
                         <h2>Atenolol</h2>
                       </a>
                       <div className="lower-box">
@@ -292,7 +293,7 @@ export default function Products() {
                 <div className="col-lg-3 col-md-12 col-sm-12 content-side">
                   <div className="news-block-one">
                     <div className="inner-box">
-                      <a className="text" href="product-detail.html">
+                      <a className="text" href="/productDetails">
                         <h2>Betahestine HCL</h2>
                       </a>
                       <div className="lower-box">
@@ -314,7 +315,7 @@ export default function Products() {
                 <div className="col-lg-3 col-md-12 col-sm-12 content-side">
                   <div className="news-block-one">
                     <div className="inner-box">
-                      <a className="text" href="product-detail.html">
+                      <a className="text" href="/productDetails">
                         <h2>Biperiden HCL</h2>
                       </a>
                       <div className="lower-box">
@@ -336,7 +337,7 @@ export default function Products() {
                 <div className="col-lg-3 col-md-12 col-sm-12 content-side">
                   <div className="news-block-one">
                     <div className="inner-box">
-                      <a className="text" href="product-detail.html">
+                      <a className="text" href="/productDetails">
                         <h2>Bisacodyl</h2>
                       </a>
                       <div className="lower-box">
@@ -358,7 +359,7 @@ export default function Products() {
                 <div className="col-lg-3 col-md-12 col-sm-12 content-side">
                   <div className="news-block-one">
                     <div className="inner-box">
-                      <a className="text" href="product-detail.html">
+                      <a className="text" href="/productDetails">
                         <h2>Bromhexine HCL</h2>
                       </a>
                       <div className="lower-box">
@@ -380,7 +381,7 @@ export default function Products() {
                 <div className="col-lg-3 col-md-12 col-sm-12 content-side">
                   <div className="news-block-one">
                     <div className="inner-box">
-                      <a className="text" href="product-detail.html">
+                      <a className="text" href="/productDetails">
                         <h2>Brompherniramine Maleate </h2>
                       </a>
                       <div className="lower-box">
@@ -402,7 +403,7 @@ export default function Products() {
                 <div className="col-lg-3 col-md-12 col-sm-12 content-side">
                   <div className="news-block-one">
                     <div className="inner-box">
-                      <a className="text" href="product-detail.html">
+                      <a className="text" href="/productDetails">
                         <h2>Bupivacaine Base &amp; HCL</h2>
                       </a>
                       <div className="lower-box">
@@ -424,7 +425,7 @@ export default function Products() {
                 <div className="col-lg-3 col-md-12 col-sm-12 content-side">
                   <div className="news-block-one">
                     <div className="inner-box">
-                      <a className="text" href="product-detail.html">
+                      <a className="text" href="/productDetails">
                         <h2>Betahistine HCL</h2>
                       </a>
                       <div className="lower-box">
@@ -446,7 +447,7 @@ export default function Products() {
                 <div className="col-lg-3 col-md-12 col-sm-12 content-side">
                   <div className="news-block-one">
                     <div className="inner-box">
-                      <a className="text" href="product-detail.html">
+                      <a className="text" href="/productDetails">
                         <h2>Benzyl Amine HCL</h2>
                       </a>
                       <div className="lower-box">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../assets/images/new-home/logo.png";
 import Background from "../assets/images/new-home/breadcrumb-img.jpg";
 import footer from "../assets/images/new-home/footer-location-img.jpg";
@@ -6,8 +6,15 @@ import skype from "../assets/images/new-home/skype.png";
 import wp from "../assets/images/new-home/whatsapp.png";
 import pillicon from "../assets/images/new-home/pill-icon.png";
 import Header from "../components/Header";
+import Modal from "react-bootstrap/Modal";
+import { Link } from "react-router-dom";
 
 export default function Cart() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <>
       <React.Fragment
@@ -35,7 +42,114 @@ export default function Cart() {
             </div>
           </section>
           {/* <!-- page-title end -->
-    <!-- banner-section end -->
+
+
+        {/* Modal */}
+          <Modal
+            show={show}
+            onHide={handleClose}
+            backdrop="static"
+            keyboard={false}
+          >
+            <Modal.Header closeButton>
+              <Modal.Title>Make Inquiry</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <div className="modal-body">
+                <div className="contact-section">
+                  <div className="form-inner">
+                    <form id="contact-form" noValidate>
+                      <div className="row clearfix">
+                        <div className="col-lg-8 col-md-6 col-sm-12 form-group">
+                          <label>Contact Person</label>
+                          <input
+                            type="text"
+                            name="username"
+                            placeholder="Contact Person"
+                          />
+                        </div>
+                        <div className="col-lg-8 col-md-6 col-sm-12 form-group">
+                          <label>Company Name</label>
+                          <input
+                            type="text"
+                            name="email"
+                            placeholder="Company Name"
+                          />
+                        </div>
+                        <div className="col-lg-6 col-md-6 col-sm-12 form-group">
+                          <label>Phone</label>
+                          <input
+                            type="text"
+                            name="phone"
+                            placeholder="Phone"
+                          />
+                        </div>
+                        <div className="col-lg-6 col-md-6 col-sm-12 form-group">
+                          <label>Fax</label>
+                          <input
+                            type="number"
+                            name="fax"
+                            placeholder="Fax"
+                          />
+                        </div>
+                        <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                          <label>Mobile</label>
+                          <input
+                            type="text"
+                            name="mobile"
+                            placeholder="Mobile"
+                          />
+                        </div>
+                        <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                          <label>Email</label>
+                          <input
+                            type="text"
+                            name="email"
+                            placeholder="Email"
+                          />
+                        </div>
+                        <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                          <label>Address</label>
+                          <textarea
+                            name="address"
+                            placeholder="Address"
+                            rows="1"
+                          ></textarea>
+                        </div>
+                        <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                          <label>Reference</label>
+                          <textarea
+                            name="reference"
+                            placeholder="Reference"
+                            rows="1"
+                          ></textarea>
+                        </div>
+                        <div className="col-lg-8 col-md-6 col-sm-12 form-group">
+                          <label>Comments</label>
+                          <textarea
+                            name="comments"
+                            placeholder="Comments"
+                            rows="1"
+                          ></textarea>
+                        </div>
+                        <div className="col-lg-4 col-md-12 col-sm-12 form-group message-btn text-center align-content-center">
+                          <button
+                            type="submit"
+                            className="theme-btn"
+                            data-bs-dismiss="modal"
+                          >
+                            Submit
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </Modal.Body>
+          </Modal>
+
+          {/* <!-- banner-section end -->
     <!--cart section--> */}
           <section class="cart-section">
             <div class="auto-container">
@@ -87,6 +201,7 @@ export default function Cart() {
                         class="checkout-btn theme-btn"
                         data-bs-toggle="modal"
                         data-bs-target="#inquiryModal"
+                        onClick={handleShow}
                       >
                         Make Inquiry
                       </button>

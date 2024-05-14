@@ -41,7 +41,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/commitment" element={<Commitment />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/ProductsDetails" element={<ProductsDetails />} />
+        <Route path="/productDetails" element={<ProductsDetails />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/certificate" element={<Certificate />} />
         <Route path="/contect" element={<Contect />} />
