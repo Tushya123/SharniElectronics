@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import small1 from "../assets/images/new-home/photo-gallery/1-small.jpg";
 import small2 from "../assets/images/new-home/photo-gallery/2-small.jpg";
 import small3 from "../assets/images/new-home/photo-gallery/3-small.jpg";
@@ -9,8 +9,47 @@ import small7 from "../assets/images/new-home/photo-gallery/7-small.jpg";
 import small8 from "../assets/images/new-home/photo-gallery/8-small.jpg";
 import small9 from "../assets/images/new-home/photo-gallery/9-small.jpg";
 import small10 from "../assets/images/new-home/photo-gallery/10-small.jpg";
+import axios from "axios";
 
 export default function Footer() {
+  const [cmsDesc, setcmsDesc] = useState("");
+  const [galleryData, setGalleryData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/list/GalleryPhoto`
+        );
+        console.log("Gallery Data:", response);
+        setGalleryData(response.data);
+      } catch (error) {
+        console.error("Error fetching gallery data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(
+          `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/listonly/cms`
+        );
+        console.log(res);
+        const data = res.data.find(
+          (entry) => entry._id === "663f0071ef85cf304603e046"
+        );
+        console.log(data);
+        setcmsDesc(data.cmsDesc);
+      } catch (error) {
+        console.error("Error fetching about us data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <>
       {/* <!-- main-footer --> */}
@@ -24,12 +63,11 @@ export default function Footer() {
                     <h3>About Us</h3>
                   </div>
                   <div className="text">
-                    <p>
-                      We SHREEJI PHARMA International, established in 2004, are
-                      proud to introduce ourselves as one of the leading
-                      Manufacturer , Exporters AND GLOBAL SOURCING COMPANY in
-                      India in the field of Active Pharma Ingredient
-                    </p>
+                    {React.createElement("div", {
+                      dangerouslySetInnerHTML: {
+                        __html: `${cmsDesc}<style>p{font-size:19px;font-weight:400}`,
+                      },
+                    })}
                   </div>
                   <div className="lower-box">
                     <div className="icon-box">
@@ -75,126 +113,23 @@ export default function Footer() {
                   </div>
                   <div className="widget-content">
                     <ul className="image-list clearfix">
-                      <li>
-                        <figure className="image">
-                          <img src={small1} alt="" />
-                          <a
-                            href="assets/images/new-home/photo-gallery/1.jpg"
-                            className="lightbox-image"
-                            data-fancybox="gallery"
-                          >
-                            <i className="flaticon-zoom-in"></i>
-                          </a>
-                        </figure>
-                      </li>
-                      <li>
-                        <figure className="image">
-                          <img src={small2} alt="" />
-                          <a
-                            href="assets/images/new-home/photo-gallery/2.jpg"
-                            className="lightbox-image"
-                            data-fancybox="gallery"
-                          >
-                            <i className="flaticon-zoom-in"></i>
-                          </a>
-                        </figure>
-                      </li>
-                      <li>
-                        <figure className="image">
-                          <img src={small3} alt="" />
-                          <a
-                            href="assets/images/new-home/photo-gallery/3.jpg"
-                            className="lightbox-image"
-                            data-fancybox="gallery"
-                          >
-                            <i className="flaticon-zoom-in"></i>
-                          </a>
-                        </figure>
-                      </li>
-                      <li>
-                        <figure className="image">
-                          <img src={small4} alt="" />
-                          <a
-                            href="assets/images/new-home/photo-gallery/4.jpg"
-                            className="lightbox-image"
-                            data-fancybox="gallery"
-                          >
-                            <i className="flaticon-zoom-in"></i>
-                          </a>
-                        </figure>
-                      </li>
-                      <li>
-                        <figure className="image">
-                          <img src={small5} alt="" />
-                          <a
-                            href="assets/images/new-home/photo-gallery/5.jpg"
-                            className="lightbox-image"
-                            data-fancybox="gallery"
-                          >
-                            <i className="flaticon-zoom-in"></i>
-                          </a>
-                        </figure>
-                      </li>
-                      <li>
-                        <figure className="image">
-                          <img src={small6} alt="" />
-                          <a
-                            href="assets/images/new-home/photo-gallery/6.jpg"
-                            className="lightbox-image"
-                            data-fancybox="gallery"
-                          >
-                            <i className="flaticon-zoom-in"></i>
-                          </a>
-                        </figure>
-                      </li>
-                      <li>
-                        <figure className="image">
-                          <img src={small7} alt="" />
-                          <a
-                            href="assets/images/new-home/photo-gallery/7.jpg"
-                            className="lightbox-image"
-                            data-fancybox="gallery"
-                          >
-                            <i className="flaticon-zoom-in"></i>
-                          </a>
-                        </figure>
-                      </li>
-                      <li>
-                        <figure className="image">
-                          <img src={small8} alt="" />
-                          <a
-                            href="assets/images/new-home/photo-gallery/8.jpg"
-                            className="lightbox-image"
-                            data-fancybox="gallery"
-                          >
-                            <i className="flaticon-zoom-in"></i>
-                          </a>
-                        </figure>
-                      </li>
-                      <li>
-                        <figure className="image">
-                          <img src={small9} alt="" />
-                          <a
-                            href="assets/images/new-home/photo-gallery/9.jpg"
-                            className="lightbox-image"
-                            data-fancybox="gallery"
-                          >
-                            <i className="flaticon-zoom-in"></i>
-                          </a>
-                        </figure>
-                      </li>
-                      <li>
-                        <figure className="image">
-                          <img src={small10} alt="" />
-                          <a
-                            href="assets/images/new-home/photo-gallery/10.jpg"
-                            className="lightbox-image"
-                            data-fancybox="gallery"
-                          >
-                            <i className="flaticon-zoom-in"></i>
-                          </a>
-                        </figure>
-                      </li>
+                      {galleryData.map((item, index) => (
+                        <li key={index}>
+                          <figure className="image">
+                            <img
+                              src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${item.imageURL}`}
+                              alt=""
+                            />
+                            <a
+                              href={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${item.imageURL}`}
+                              className="lightbox-image"
+                              data-fancybox="gallery"
+                            >
+                              <i className="flaticon-zoom-in"></i>
+                            </a>
+                          </figure>
+                        </li>
+                      ))}
                     </ul>
                   </div>
                 </div>

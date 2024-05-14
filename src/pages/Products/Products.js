@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../assets/images/new-home/logo.png";
 import Background from "../../assets/images/new-home/breadcrumb-img.jpg";
 import footer from "../../assets/images/new-home/footer-location-img.jpg";
@@ -6,8 +6,16 @@ import skype from "../../assets/images/new-home/skype.png";
 import wp from "../../assets/images/new-home/whatsapp.png";
 import shape10 from "../../assets/images/shape/shape-10.png";
 import Header from "../../components/Header";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 export default function Products() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <React.Fragment
       style={{ position: "relative", minHeight: "100%", top: "0px" }}
@@ -33,10 +41,62 @@ export default function Products() {
             </div>
           </div>
         </section>
-        {/* <!-- page-title end -->
-   
-    
-     <!-- sidebar-page-container --> */}
+
+        {/* Modal */}
+        <Modal
+          show={show}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Make Inquiry</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <div className="modal-body">
+              <div className="contact-section new">
+                <div className="form-inner">
+                  <form id="contact-form" noValidate>
+                    <div className="row clearfix">
+                      <div className="col-lg-12 col-md-6 col-sm-12 form-group">
+                        <label>Product Name</label>
+                        <input
+                          type="text"
+                          name="username"
+                          placeholder="Product Name Here"
+                          required
+                          readOnly
+                          aria-required="true"
+                        />
+                      </div>
+                      <div className="col-lg-12 col-md-6 col-sm-12 form-group">
+                        <label>Quantity</label>
+                        <input
+                          type="number"
+                          name="email"
+                          required
+                          placeholder="Quantity"
+                          aria-required="true"
+                        />
+                      </div>
+                      <div className="col-lg-12 col-md-12 col-sm-12 form-group message-btn text-center">
+                        <button
+                          type="submit"
+                          className="theme-btn"
+                          name="submit-form"
+                        >
+                          <Link to="/cart">Add To Cart</Link>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </Modal.Body>
+        </Modal>
+
+        {/* <!-- sidebar-page-container --> */}
         <section className="sidebar-page-container blog-large-image news-style-two sec-pad product-sec">
           <div className="auto-container">
             <div className="pro-list">
@@ -57,6 +117,7 @@ export default function Products() {
                             type="button"
                             data-bs-toggle="modal"
                             data-bs-target="#inquiryModal"
+                            onClick={handleShow}
                           >
                             Inquiry
                           </a>
@@ -78,6 +139,7 @@ export default function Products() {
                             type="button"
                             data-bs-toggle="modal"
                             data-bs-target="#inquiryModal"
+                            onClick={handleShow}
                           >
                             Inquiry
                           </a>
@@ -99,6 +161,7 @@ export default function Products() {
                             type="button"
                             data-bs-toggle="modal"
                             data-bs-target="#inquiryModal"
+                            onClick={handleShow}
                           >
                             Inquiry
                           </a>
@@ -120,6 +183,7 @@ export default function Products() {
                             type="button"
                             data-bs-toggle="modal"
                             data-bs-target="#inquiryModal"
+                            onClick={handleShow}
                           >
                             Inquiry
                           </a>
@@ -141,6 +205,7 @@ export default function Products() {
                             type="button"
                             data-bs-toggle="modal"
                             data-bs-target="#inquiryModal"
+                            onClick={handleShow}
                           >
                             Inquiry
                           </a>
@@ -162,6 +227,7 @@ export default function Products() {
                             type="button"
                             data-bs-toggle="modal"
                             data-bs-target="#inquiryModal"
+                            onClick={handleShow}
                           >
                             Inquiry
                           </a>
@@ -184,6 +250,7 @@ export default function Products() {
                             type="button"
                             data-bs-toggle="modal"
                             data-bs-target="#inquiryModal"
+                            onClick={handleShow}
                           >
                             Inquiry
                           </a>
@@ -205,6 +272,7 @@ export default function Products() {
                             type="button"
                             data-bs-toggle="modal"
                             data-bs-target="#inquiryModal"
+                            onClick={handleShow}
                           >
                             Inquiry
                           </a>
@@ -234,6 +302,7 @@ export default function Products() {
                             type="button"
                             data-bs-toggle="modal"
                             data-bs-target="#inquiryModal"
+                            onClick={handleShow}
                           >
                             Inquiry
                           </a>
@@ -255,6 +324,7 @@ export default function Products() {
                             type="button"
                             data-bs-toggle="modal"
                             data-bs-target="#inquiryModal"
+                            onClick={handleShow}
                           >
                             Inquiry
                           </a>
@@ -276,6 +346,7 @@ export default function Products() {
                             type="button"
                             data-bs-toggle="modal"
                             data-bs-target="#inquiryModal"
+                            onClick={handleShow}
                           >
                             Inquiry
                           </a>
@@ -297,6 +368,7 @@ export default function Products() {
                             type="button"
                             data-bs-toggle="modal"
                             data-bs-target="#inquiryModal"
+                            onClick={handleShow}
                           >
                             Inquiry
                           </a>
@@ -318,6 +390,7 @@ export default function Products() {
                             type="button"
                             data-bs-toggle="modal"
                             data-bs-target="#inquiryModal"
+                            onClick={handleShow}
                           >
                             Inquiry
                           </a>
@@ -339,6 +412,7 @@ export default function Products() {
                             type="button"
                             data-bs-toggle="modal"
                             data-bs-target="#inquiryModal"
+                            onClick={handleShow}
                           >
                             Inquiry
                           </a>
@@ -360,6 +434,7 @@ export default function Products() {
                             type="button"
                             data-bs-toggle="modal"
                             data-bs-target="#inquiryModal"
+                            onClick={handleShow}
                           >
                             Inquiry
                           </a>
@@ -381,6 +456,7 @@ export default function Products() {
                             type="button"
                             data-bs-toggle="modal"
                             data-bs-target="#inquiryModal"
+                            onClick={handleShow}
                           >
                             Inquiry
                           </a>

@@ -4,16 +4,18 @@ import Background from "../assets/images/new-home/breadcrumb-img.jpg";
 import footer from "../assets/images/new-home/footer-location-img.jpg";
 import skype from "../assets/images/new-home/skype.png";
 import wp from "../assets/images/new-home/whatsapp.png";
-import pillicon from "../assets/images/new-home/pill-icon.png"
+import pillicon from "../assets/images/new-home/pill-icon.png";
 import Header from "../components/Header";
 
 export default function Cart() {
   return (
     <>
-      <React.Fragment style={{ position: "relative", minHeight: "100%", top: "0px" }}>
+      <React.Fragment
+        style={{ position: "relative", minHeight: "100%", top: "0px" }}
+      >
         <div className="boxed_wrapper">
-          <Header/>
-    {/* <!-- page-title -->  */}
+          <Header />
+          {/* <!-- page-title -->  */}
           <section className="page-title">
             <div
               className="bg-layer"
@@ -35,69 +37,58 @@ export default function Cart() {
           {/* <!-- page-title end -->
     <!-- banner-section end -->
     <!--cart section--> */}
-          <section className="cart-section">
-            <div className="auto-container">
-              <div className="cart-outer">
-                <div className="totle-table clearfix">
-                  <div className="item pull-left">
+          <section class="cart-section">
+            <div class="auto-container">
+              <div class="cart-outer">
+                <div class="totle-table clearfix">
+                  <div class="item pull-left">
                     <p>Your Cart: 1 Items</p>
                   </div>
-                  <div className="total pull-right">
-                    <p>
-                      <b>
-                        Total: <span>1545 Rs.</span>
-                      </b>
-                    </p>
-                  </div>
                 </div>
-                <div className="table-outer">
-                  <table className="cart-table">
-                    <thead className="cart-header">
-                      <tr>
-                        <th>Your Product</th>
-                        <th>Quantity</th>
-                        <th className="price">Price</th>
-                        <th>Total</th>
-                        <th>Remove</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="prod-column">
-                          <div className="column-box">
-                            <figure className="prod-thumb">
-                              <a href="#">
-                                <img src={pillicon} alt="" />
+                <div class="row clearfix">
+                  <div class="col-lg-8 col-md-12 col-sm-12 column clearfix">
+                    <div class="table-outer">
+                      <table class="cart-table">
+                        <thead class="cart-header">
+                          <tr>
+                            <th>Sr. No</th>
+                            <th>Your Product</th>
+                            <th>Quantity</th>
+                            {/* <!-- <th class="price">Price</th>
+                                    <th>Total</th> --> */}
+                            <th>Remove</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1</td>
+                            <td class="prod-column">
+                              <h5>Product Name Here</h5>
+                            </td>
+                            <td class="prod-column">
+                              <h5>200</h5>
+                            </td>
+                            {/* <!-- <td class="sub-total">1545 Rs.</td>
+                                    <td class="total-price">1545 Rs</td> --> */}
+                            <td>
+                              <a href="#" class="remove-btn">
+                                <i class="fa-solid fa-xmark"></i>
                               </a>
-                            </figure>
-                            <h5>
-                              Product Name <br />
-                              Here
-                            </h5>
-                          </div>
-                        </td>
-                        <td className="qty">
-                          <input type="number" value="1" name="quantity" />
-                        </td>
-                        <td className="sub-total">1545 Rs.</td>
-                        <td className="total-price">1545 Rs</td>
-                        <td>
-                          <a href="#" className="remove-btn">
-                            <i className="fa-solid fa-xmark"></i>
-                          </a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div className="row clearfix">
-                  <div className="col-lg-12 col-md-12 col-sm-12 column clearfix">
-                    <div className="btn-box pull-right clearfix">
-                      <button type="button" className="cart-btn theme-btn">
-                        Update Cart
-                      </button>
-                      <button type="button" className="checkout-btn theme-btn">
-                        Checkout
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-12 col-sm-12 column clearfix center-btn align-content-center">
+                    <div class="btn-box clearfix">
+                      <button
+                        type="button"
+                        class="checkout-btn theme-btn"
+                        data-bs-toggle="modal"
+                        data-bs-target="#inquiryModal"
+                      >
+                        Make Inquiry
                       </button>
                     </div>
                   </div>
@@ -155,7 +146,7 @@ export default function Cart() {
                     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7381.956093641144!2d73.167648!3d22.31667!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fcf6c89cabb19%3A0xf803cbcf27adf1aa!2sShreeji%20Pharma%20International!5e0!3m2!1sen!2sus!4v1712310707767!5m2!1sen!2sus"
                     width="600"
                     height="450"
-                    style={{border:0}}
+                    style={{ border: 0 }}
                     allowfullscreen=""
                     loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"
