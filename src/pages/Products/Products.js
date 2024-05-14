@@ -10,25 +10,25 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
-
 export default function Products() {
   const [show, setShow] = useState(false);
-  const [data, setData] = useState([])
-
+  const [data, setData] = useState([]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/list/projectdetail`)
-      .then(response => response.json())
-      .then(data => {
+    fetch(
+      `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/list/projectdetail`
+    )
+      .then((response) => response.json())
+      .then((data) => {
         data.sort((a, b) => a.Description.localeCompare(b.Description));
-        console.log(">>>>>>>>>>>>>>>>>>>>", data)
-        setData(data)
+        console.log(">>>>>>>>>>>>>>>>>>>>", data);
+        setData(data);
       })
 
-      .catch(error => console.error('Error:', error));
+      .catch((error) => console.error("Error:", error));
   }, []);
 
   const productsByStartingLetter = data.reduce((acc, product) => {
@@ -40,9 +40,9 @@ export default function Products() {
     return acc;
   }, {});
 
-  const productsStartingWithA = data.filter(product => product.Description.startsWith('A'));
-
-
+  const productsStartingWithA = data.filter((product) =>
+    product.Description.startsWith("A")
+  );
 
   return (
     <React.Fragment
@@ -125,42 +125,53 @@ export default function Products() {
         </Modal>
 
         {/* <!-- sidebar-page-container --> */}
-        {Object.entries(productsByStartingLetter).map(([letter, products]) => (
-          <section className="sidebar-page-container blog-large-image news-style-two sec-pad product-sec">
-            <div className="auto-container">
-              <div className="pro-list">
-                <div className="sec-title">
-                  <h3 className="title">Chemical By {letter}</h3>
-                  <div className="row">
-                    {products.map((item, index) => (
-                      <div key={index} className={`col-lg-${products.length === 1 ? '3' : '3'} col-md-12 col-sm-12 content-side`}>
-                        <div className="news-block-one">
-                          <div className="inner-box">
-                            <a className="text" href="/productDetails">
-                              <h2>{item.Description}</h2>
-                            </a>
-                            <div className="lower-box">
-                              <div className="link">
-                                <a
-                                  type="button"
-                                  data-bs-toggle="modal"
-                                  data-bs-target="#inquiryModal"
-                                  onClick={handleShow}
-                                >
-                                  Inquiry
-                                </a>
+        {Object.entries(productsByStartingLetter).map(([letter, products]) => {
+          let paddingValue = Math.max(5, products.length * 2); // Calculate padding based on products length
+          return (
+            <section
+              style={{ padding: `${paddingValue}px`, paddingTop: "30px" }}
+              className="sidebar-page-container blog-large-image news-style-two sec-pad product-sec"
+            >
+              <div className="auto-container">
+                <div className="pro-list">
+                  <div className="sec-title">
+                    <h3 className="title">Chemical By {letter}</h3>
+                    <div className="row">
+                      {products.map((item, index) => (
+                        <div
+                          key={index}
+                          className={`col-lg-${
+                            products.length === 1 ? "3" : "3"
+                          } col-md-12 col-sm-12 content-side`}
+                        >
+                          <div className="news-block-one">
+                            <div className="inner-box">
+                              <a className="text" href="/productDetails">
+                                <h2>{item.Description}</h2>
+                              </a>
+                              <div className="lower-box">
+                                <div className="link">
+                                  <a
+                                    type="button"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#inquiryModal"
+                                    onClick={handleShow}
+                                  >
+                                    Inquiry
+                                  </a>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </section>
-        ))}
+            </section>
+          );
+        })}
 
         {/* <!-- sidebar-page-container end --> */}
 
