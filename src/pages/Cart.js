@@ -60,7 +60,7 @@ export default function Cart() {
                   <div className="form-inner">
                     <form id="contact-form" noValidate>
                       <div className="row clearfix">
-                        <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                        <div className="col-lg-8 col-md-6 col-sm-12 form-group">
                           <label>Contact Person</label>
                           <input
                             type="text"
@@ -68,7 +68,7 @@ export default function Cart() {
                             placeholder="Contact Person"
                           />
                         </div>
-                        <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                        <div className="col-lg-8 col-md-6 col-sm-12 form-group">
                           <label>Company Name</label>
                           <input
                             type="text"
@@ -76,7 +76,7 @@ export default function Cart() {
                             placeholder="Company Name"
                           />
                         </div>
-                        <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                        <div className="col-lg-6 col-md-6 col-sm-12 form-group">
                           <label>Phone</label>
                           <input
                             type="text"
@@ -84,7 +84,7 @@ export default function Cart() {
                             placeholder="Phone"
                           />
                         </div>
-                        <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                        <div className="col-lg-6 col-md-6 col-sm-12 form-group">
                           <label>Fax</label>
                           <input
                             type="number"
