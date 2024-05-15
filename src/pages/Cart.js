@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../assets/images/new-home/logo.png";
 import Background from "../assets/images/new-home/breadcrumb-img.jpg";
 import footer from "../assets/images/new-home/footer-location-img.jpg";
@@ -8,8 +8,44 @@ import pillicon from "../assets/images/new-home/pill-icon.png";
 import Header from "../components/Header";
 import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 export default function Cart() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    // Retrieve the array of product IDs from local storage
+    const productIds = JSON.parse(localStorage.getItem('productIds')) || [];
+  
+    // Use a Set to store unique product IDs
+    const uniqueProductIds = new Set(productIds);
+  
+    // Fetch product details for each unique product ID
+    Promise.all(Array.from(uniqueProductIds).map(async (productId) => {
+      try {
+        // Send a GET request to fetch the corresponding product details
+        const response = await axios.get(`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/getbyid/InquiryProduct/${productId}`);
+        
+        // Store the fetched product details
+        setProducts(prevProducts => [
+          ...prevProducts,
+          {
+            id: response.data._id,
+            productDetail: response.data.ProductDetail,
+            productDetailLabel: response.data.ProductDetailLabel,
+            quantity: response.data.Quantity
+          }
+        ]);
+      } catch (error) {
+        console.error('Error fetching product details:', error);
+      }
+    }));
+  }, []);
+  
+  console.log("This is Product",products)
+  
+
+  const [product,setproductid]=useState("");
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
