@@ -9,7 +9,7 @@ import Header from "../../components/Header";
 import axios from "axios";
 
 export default function ProductsDetails() {
-  const [productDetails, setProductDetails] = React.useState(null);
+  const [productDetailsss, setProductDetails] = React.useState(null);
 
   React.useEffect(() => {
     const description = localStorage.getItem("description");
@@ -25,6 +25,8 @@ export default function ProductsDetails() {
         console.error(error); // log the error
       });
   }, []);
+
+  console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>", productDetailsss);
 
   return (
     <React.Fragment
@@ -66,25 +68,70 @@ export default function ProductsDetails() {
                     </div>
 
                     <div className="col-lg-6 col-12">
-                      <h2>Title Here</h2>
-                      <p className="mb-3">
-                        Text Soon...Text Soon...Text Soon...Text Soon...Text
-                        Soon...Text Soon... Text Soon...Text Soon...Text
-                        Soon...Text Soon...Text Soon...Text Soon... Text
-                        Soon...Text Soon...Text Soon...Text Soon...Text
-                        Soon...Text Soon... Text Soon...Text Soon...Text
-                        Soon...Text Soon...Text Soon...Text Soon... Text
-                        Soon...Text Soon...Text Soon...Text Soon...Text
-                        Soon...Text Soon...
-                      </p>
-                      <p className="mb-3">
-                        Text Soon...Text Soon...Text Soon...Text Soon...Text
-                        Soon...Text Soon... Text Soon...Text Soon...Text
-                        Soon...Text Soon...Text Soon...Text Soon... Text
-                        Soon...Text Soon ...Text Soon...Text Soon...Text
-                        Soon...Text Soon... Text Soon...Text Soon...Text
-                        Soon...Text Soon...Text Soon...Text Soon...
-                      </p>
+                      <h2>
+                        {productDetailsss
+                          ? productDetailsss.Description
+                          : "Loading..."}
+                      </h2>
+                      <table
+                        style={{
+                          width: "100%",
+                          textAlign: "left",
+                          borderCollapse: "collapse",
+                        }}
+                      >
+                        <thead>
+                          <tr>
+                            <th
+                              style={{
+                                border: "1px solid #ddd",
+                                padding: "8px",
+                              }}
+                            >
+                              Product Key
+                            </th>
+                            <th
+                              style={{
+                                border: "1px solid #ddd",
+                                padding: "8px",
+                              }}
+                            >
+                              Product Value
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {productDetailsss &&
+                            productDetailsss.ProductDetailDescription.map(
+                              (item, index) => (
+                                <tr
+                                  key={index}
+                                  style={{
+                                    backgroundColor:
+                                      index % 2 === 0 ? "#f2f2f2" : "white",
+                                  }}
+                                >
+                                  <td
+                                    style={{
+                                      border: "1px solid #ddd",
+                                      padding: "8px",
+                                    }}
+                                  >
+                                    {item.ProductKey}
+                                  </td>
+                                  <td
+                                    style={{
+                                      border: "1px solid #ddd",
+                                      padding: "8px",
+                                    }}
+                                  >
+                                    {item.ProductValue}
+                                  </td>
+                                </tr>
+                              )
+                            )}
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
