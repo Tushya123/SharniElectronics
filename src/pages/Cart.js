@@ -14,6 +14,7 @@ export default function Cart() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  console.log(localStorage.getItem("productIds"))
 
   return (
     <>
@@ -84,7 +85,7 @@ export default function Cart() {
                             placeholder="Phone"
                           />
                         </div>
-                        <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                        {/* <div className="col-lg-4 col-md-6 col-sm-12 form-group">
                           <label>Fax</label>
                           <input
                             type="number"
@@ -99,7 +100,7 @@ export default function Cart() {
                             name="mobile"
                             placeholder="Mobile"
                           />
-                        </div>
+                        </div> */}
                         <div className="col-lg-4 col-md-6 col-sm-12 form-group">
                           <label>Email</label>
                           <input
@@ -108,7 +109,7 @@ export default function Cart() {
                             placeholder="Email"
                           />
                         </div>
-                        <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                        {/* <div className="col-lg-4 col-md-6 col-sm-12 form-group">
                           <label>Address</label>
                           <textarea
                             name="address"
@@ -123,7 +124,7 @@ export default function Cart() {
                             placeholder="Reference"
                             rows="1"
                           ></textarea>
-                        </div>
+                        </div> */}
                         <div className="col-lg-8 col-md-6 col-sm-12 form-group">
                           <label>Comments</label>
                           <textarea

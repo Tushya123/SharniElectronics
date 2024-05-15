@@ -9,13 +9,33 @@ import Header from "../../components/Header";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import axios from 'axios';
+
 
 export default function Products() {
+  const [productData, setProductData] = useState({
+    // Assuming you have some product data to send
+    ProductDetail2: "",
+    ProductDetailLabel: "",
+    Group:"",
+    Quantity: "",
+    
+    
+
+  });
+  
   const [show, setShow] = useState(false);
   const [data, setData] = useState([]);
+  const [quantity, setQuantity] = useState(0); 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  const [name,setname]=useState("");
+  const [id,setid]=useState("");
+  const [desc,setDescription]=useState("");
+  const handleQuantityChange = (event) => {
+    setQuantity(event.target.value);
+  };
+console.log("id",id)
   useEffect(() => {
     const xyz = localStorage.getItem("selectedProductId");
     fetch(
@@ -33,6 +53,36 @@ export default function Products() {
 
       .catch((error) => console.error("Error:", error));
   }, []);
+  
+
+  useEffect(() => {
+    setProductData({
+      Quantity: quantity,
+      Group: desc,
+      ProductDetailLabel: name,
+      ProductDetail2: id,
+    });
+  }, [quantity, desc, name, id]);
+
+
+ 
+  console.log("THis is:",productData)
+  const handleAddToCart = async () => {
+    try {
+       const response = await axios.post(`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/create/InquiryProduct`, productData);
+      console.log('Response:', response.data.data._id);
+      let productIds = JSON.parse(localStorage.getItem('productIds')) || [];
+
+      // Add the new product ID to the array
+      productIds.push(response.data.data._id);
+
+      // Save the updated array back to local storage
+      localStorage.setItem('productIds', JSON.stringify(productIds));
+      
+    } catch (error) {
+      console.error('Error adding product to cart:', error);
+    }
+  };
 
   const productsByStartingLetter = data.reduce((acc, product) => {
     const startingLetter = product.Description[0];
@@ -96,18 +146,26 @@ export default function Products() {
                           name="username"
                           placeholder="Product Name Here"
                           required
-                          readOnly
+                          isDisabled={true}
+                          value={name}
+                          // placeholder={name}
+                          
+
                           aria-required="true"
                         />
+
                       </div>
                       <div className="col-lg-12 col-md-6 col-sm-12 form-group">
                         <label>Quantity</label>
                         <input
                           type="number"
-                          name="email"
+                          name="quantity"
                           required
-                          placeholder="Quantity"
+                          
+                          placeholder="Enter Quantity"
                           aria-required="true"
+                          value={quantity} // Bind the input value to the state
+          onChange={handleQuantityChange}
                         />
                       </div>
                       <div className="col-lg-12 col-md-12 col-sm-12 form-group message-btn text-center">
@@ -116,7 +174,7 @@ export default function Products() {
                           className="theme-btn"
                           name="submit-form"
                         >
-                          <Link to="/cart">Add To Cart</Link>
+                          <Link to="/cart" onClick={handleAddToCart}>Add To Cart</Link>
                         </button>
                       </div>
                     </div>
@@ -141,6 +199,7 @@ export default function Products() {
                     <h3 className="title">Chemical By {letter}</h3>
                     <div className="row">
                       {products.map((item, index) => (
+                        
                         <div
                           key={index}
                           className={`col-lg-${
@@ -167,7 +226,13 @@ export default function Products() {
                                     type="button"
                                     data-bs-toggle="modal"
                                     data-bs-target="#inquiryModal"
-                                    onClick={handleShow}
+                                    onClick={()=>{
+                                      setShow(true);
+                                      setname(item.Description);
+                                      setid(item._id);
+                                      setDescription(item.ProductDetail.ProductGroup);
+
+                                    }}
                                   >
                                     Inquiry
                                   </a>
