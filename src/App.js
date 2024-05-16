@@ -28,7 +28,7 @@ import Header from "./components/Header";
 import Blog from "./components/Blog";
 import AboutUs from "./components/AboutUs";
 import Inquiry from "./components/Inquiry";
-import BlogsDetails from "./pages/BlogsDetails";
+import BlogsDetails from "./pages/Blogs/BlogsDetails";
 import InnderGallery from "./pages/InnerGallery"
 
 function App() {

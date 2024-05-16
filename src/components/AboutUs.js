@@ -76,7 +76,7 @@ export default function AboutUs() {
                   })}
                 </div>
                 <div className="btn-box">
-                  <a href="about.html" className="theme-btn">
+                  <a href="/about" className="theme-btn">
                     Read More
                   </a>
                 </div>

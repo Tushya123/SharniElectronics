@@ -1,13 +1,32 @@
 import React, { useState, useEffect } from "react";
-import Background from "../assets/images/new-home/breadcrumb-img.jpg";
-import skype from "../assets/images/new-home/skype.png";
-import news from "../assets/images/news/news-35.jpg";
-import wp from "../assets/images/new-home/whatsapp.png";
-import Header from "../components/Header";
-import { useParams } from "react-router-dom";
+import Background from "../../assets/images/new-home/breadcrumb-img.jpg";
+import skype from "../../assets/images/new-home/skype.png";
+import news from "../../assets/images/news/news-35.jpg";
+import wp from "../../assets/images/new-home/whatsapp.png";
+import Header from "../../components/Header";
+import { useParams ,Link} from "react-router-dom";
 import axios from "axios";
 
 export default function BlogsDetails() {
+
+  const [Blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/listonly/Blog`
+        );
+        console.log("Data:", response);
+        setBlogs(response.data);
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const { id } = useParams();
   console.log(id, "avaniid");
   const [blog, setBlog] = useState(null);
@@ -88,55 +107,28 @@ export default function BlogsDetails() {
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side">
-                <div class="blog-sidebar">
-                  <div class="sidebar-widget category-widget">
-                    <div class="widget-title">
-                      <h3>Blogs</h3>
-                    </div>
-                    <div class="widget-content">
-                      <ul class="category-list clearfix">
-                        <li>
-                          <a href="blog-details.html">
-                            Blog Title...Blog Title
-                            <i class="flaticon-right-arrow"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="blog-details.html">
-                            Blog Title...Blog Title
-                            <i class="flaticon-right-arrow"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="blog-details.html">
-                            Blog Title...Blog Title
-                            <i class="flaticon-right-arrow"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="blog-details.html">
-                            Blog Title...Blog Title
-                            <i class="flaticon-right-arrow"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="blog-details.html">
-                            Blog Title...Blog Title
-                            <i class="flaticon-right-arrow"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="blog-details.html">
-                            Blog Title...Blog Title
-                            <i class="flaticon-right-arrow"></i>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <div className="col-lg-4 col-md-12 col-sm-12 sidebar-side">
+      <div className="blog-sidebar">
+        <div className="sidebar-widget category-widget">
+          <div className="widget-title">
+            <h3>Blogs</h3>
+          </div>
+          <div className="widget-content">
+            <ul className="category-list clearfix">
+              {Blogs.map((blog) => (
+                <li key={blog._id}>
+                  <Link to={`/blogdetails/${blog._id}`}>
+                    {blog.Category}
+                    <i className="flaticon-right-arrow"></i>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
             </div>
           </div>
         </section>

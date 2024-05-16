@@ -20,6 +20,8 @@ export default function Blog() {
 
     fetchData();
   }, []);
+  const firstBlogId = Blogs.length > 0 ? Blogs[0]._id : null;
+
 
   return (
     <section className="blog-grid news-style-two sec-pad sec-pad1">
@@ -27,11 +29,13 @@ export default function Blog() {
         <div className="sec-title">
           <span className="sub-title">Blogs</span>
           <h2>Explore our latest blogs</h2>
-          <div className="btn-box">
-            <Link to="/blogs" className="theme-btn">
-              View All Blogs
-            </Link>
-          </div>
+          {firstBlogId && (
+            <div className="btn-box">
+              <Link to={`/blogdetails/${firstBlogId}`} className="theme-btn">
+                View Blog Details
+              </Link>
+            </div>
+          )}
         </div>
         <div className="row clearfix">
           {Blogs.map((blog, index) => (
