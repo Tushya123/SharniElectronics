@@ -52,7 +52,7 @@ export default function About() {
                 <h1>About Us</h1>
                 <ul class="bread-crumb clearfix">
                   <li>
-                    <a href="index.html">Home</a>
+                    <a href="/">Home</a>
                   </li>
                   <li>About</li>
                   <li>About Us</li>

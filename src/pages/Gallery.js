@@ -74,7 +74,7 @@ export default function Gallery() {
                                     alt={item.Category}
                                   />
                                 </figure>
-                                <h5 className="gal-txt">{item.Category}</h5>
+                                <h5 className="gal-txt">{item.GalleryTypeDetails[0].Category}</h5>
                               </div>
                               <div className="overlay-content">
                                 <div className="image-box">
@@ -84,7 +84,7 @@ export default function Gallery() {
                                       alt={item.Category}
                                     />
                                   </figure>
-                                  <h5 className="gal-txt">{item.Category}</h5>
+                                  <h5 className="gal-txt">{item.GalleryTypeDetails[0].Category}</h5>
                                   <div className="view-btn">
                                     <i className="flaticon-zoom-in"></i>
                                   </div>
