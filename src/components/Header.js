@@ -6,6 +6,18 @@ import axios from "axios";
 
 export default function Header() {
   const [products, setProducts] = useState([]);
+  const [prod, setProd] = useState([]);
+
+  useEffect(() => {
+    const storedProductIds = localStorage.getItem('productIds');
+    if (storedProductIds) {
+      setProd(JSON.parse(storedProductIds));
+    }
+  }, [prod]);
+
+  useEffect(() => {
+    console.log(prod.length);
+  }, [prod]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -228,16 +240,19 @@ export default function Header() {
                 </nav>
               </div>
               <ul className="menu-right-content">
-                <li className="support-box">
-                  <div className="icon-box">
-                    <i className="fas fa-shopping-cart"></i>
-                  </div>
-                  <Link to="/cart">My Cart</Link>
-                </li>
-                <li className="search-box-outer search-toggler">
-                  <i className="flaticon-magnifying-glass"></i>
-                </li>
-              </ul>
+  <li className="support-box">
+    <div className="icon-box">
+      <i className="fas fa-shopping-cart"></i>
+      <span className="cart-badge">{prod.length}</span>
+    </div>
+    <Link to="/cart">My Cart</Link>
+  </li>
+  <li className="search-box-outer search-toggler">
+    <i className="flaticon-magnifying-glass"></i>
+  </li>
+</ul>
+
+
             </div>
           </div>
         </div>
