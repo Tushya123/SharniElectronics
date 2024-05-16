@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+
+import 'react-magic-slider-dots/dist/magic-dots.css';
 import footer from "../assets/images/new-home/footer-location-img.jpg";
 import skype from "../assets/images/new-home/skype.png";
 import wp from "../assets/images/new-home/whatsapp.png";

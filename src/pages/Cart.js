@@ -404,7 +404,7 @@ ProductDetail:JSON.parse(localStorage.getItem('productIds')),
             <Modal.Header closeButton>
               <Modal.Title>Make Inquiry</Modal.Title>
             </Modal.Header>
-
+            <Modal.Body>
         <div className="modal-body">
           <div className="contact-section">
             <div className="form-inner">
