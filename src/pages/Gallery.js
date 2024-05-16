@@ -1,5 +1,7 @@
+// src/pages/Gallery.js
+
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Header from "../components/Header";
 import Background from "../assets/images/new-home/breadcrumb-img.jpg";
@@ -14,7 +16,6 @@ export default function Gallery() {
         const response = await axios.get(
           `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/list/GalleryPhoto`
         );
-        console.log("Gallery Data:", response);
         setGalleryData(response.data);
       } catch (error) {
         console.error("Error fetching gallery data:", error);
@@ -24,16 +25,16 @@ export default function Gallery() {
     fetchData();
   }, []);
 
-  function gallaryChange(id) {
-    localStorage.setItem("galleryId", id);
-    navigate(`/innergallery/${id}`); // Navigate to the '/gallery/:id' route
-  }
+  const handleClick = (index) => {
+    navigate(`/innergallery/${index}`, {
+      state: { galleryData},
+    });
+  };
 
   return (
     <React.Fragment>
       <div className="boxed_wrapper">
         <Header />
-        {/* <!-- page-title --> */}
         <section className="page-title">
           <div
             className="bg-layer"
@@ -44,16 +45,13 @@ export default function Gallery() {
               <h1>Gallery</h1>
               <ul className="bread-crumb clearfix">
                 <li>
-                  <a href="index.html">Home</a>
+                  <a href="/">Home</a>
                 </li>
-                <li>Gallery</li>
                 <li>Gallery</li>
               </ul>
             </div>
           </div>
         </section>
-
-        {/* <!-- service-details --> */}
         <section className="service-details sec-pad">
           <div className="auto-container">
             <div className="row clearfix">
@@ -65,6 +63,7 @@ export default function Gallery() {
                         <div
                           key={index}
                           className="col-lg-3 col-md-6 col-sm-12 project-block gallery"
+                          onClick={() => handleClick(index)}
                         >
                           <div className="project-block-one">
                             <div className="inner-box">
@@ -72,7 +71,7 @@ export default function Gallery() {
                                 <figure className="image-box">
                                   <img
                                     src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${item.imageURL}`}
-                                    alt=""
+                                    alt={item.Category}
                                   />
                                 </figure>
                                 <h5 className="gal-txt">{item.Category}</h5>
@@ -82,13 +81,12 @@ export default function Gallery() {
                                   <figure className="image">
                                     <img
                                       src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${item.imageURL}`}
+                                      alt={item.Category}
                                     />
                                   </figure>
                                   <h5 className="gal-txt">{item.Category}</h5>
                                   <div className="view-btn">
-                                    <a onClick={() => gallaryChange(item._id)}>
-                                      <i className="flaticon-zoom-in"></i>
-                                    </a>
+                                    <i className="flaticon-zoom-in"></i>
                                   </div>
                                 </div>
                               </div>

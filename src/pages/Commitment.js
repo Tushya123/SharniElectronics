@@ -68,7 +68,7 @@ export default function Commitment() {
               <div class="customer-comment mb-0">
                 <div class="row clearfix justify-content-center">
                   {commitments.map((commitment, index) => (
-                    <div class="col-lg-7 col-md-6 col-sm-12 comment-column">
+                    <div class="col-lg-6 col-md-6 col-sm-12 comment-column">
                       <div class="single-comment-box">
                         <div class="inner-box">
                           <figure class="comment-thumb">  
