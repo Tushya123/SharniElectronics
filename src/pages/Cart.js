@@ -8,8 +8,8 @@ import pillicon from "../assets/images/new-home/pill-icon.png";
 import Header from "../components/Header";
 import Modal from "react-bootstrap/Modal";
 // import Form from "react-bootstrap/Form";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -218,20 +218,17 @@ const countriesArray = [
 ];
 
 export default function Cart() {
+
   const validationSchema = Yup.object().shape({
-    ContactPerson: Yup.string().required("Contact Person is required"),
-    CompanyName: Yup.string().required("Company Name is required"),
-    Mobile: Yup.string()
-      .matches(
-        /^[0-9]{10}$/,
-        "Mobile number must be exactly 10 digits without any special characters"
-      )
-      .required("Mobile is required"),
-    Email: Yup.string().email("Invalid email").required("Email is required"),
-    Country: Yup.string().required("Country is required"),
-    Comments: Yup.string().required("Comments are required"),
+    ContactPerson: Yup.string().required('Contact Person is required'),
+    CompanyName: Yup.string().required('Company Name is required'),
+    Mobile: Yup.string().required('Phone is required'),
+    Email: Yup.string().email('Invalid email').required('Email is required'),
+    Country: Yup.string().required('Country is required'),
+    Comments: Yup.string().required('Comments is required'),
   });
-    const [products, setProducts] = useState([]);
+
+  const [products, setProducts] = useState([]);
   const productIds = JSON.parse(localStorage.getItem("productIds")) || [];
   const [productData, setProductData] = useState({
     // Assuming you have some product data to send
@@ -351,17 +348,17 @@ export default function Cart() {
     setProductData({ ...productData, [name]: value });
   };
   console.log("THis is", productData);
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (values, { setSubmitting }) => {
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/create/inquiry`,
-        productData
+        values
       );
-      console.log("This is response", response);
       console.log("Data submitted successfully:", response.data);
       handleClose(); // Close the modal after successful submission
-
+  
+      // Clear form values after submission
+      setSubmitting(false);
       setProductData({
         ProductDetail: JSON.parse(localStorage.getItem("productIds")),
         ContactPerson: "",
@@ -376,11 +373,8 @@ export default function Cart() {
       console.error("Error submitting data:", error);
       // Handle error accordingly, e.g., show an error message to the user
     }
-
-    // Handle the form submission logic here, such as sending the data to an API
-    console.log(productData);
-    handleClose(); // Close the modal after submission
   };
+  
 
   return (
     <>
@@ -400,7 +394,7 @@ export default function Cart() {
                 <h1>Cart</h1>
                 <ul className="bread-crumb clearfix">
                   <li>
-                    <a href="/">Home</a>
+                    <a href="index.html">Home</a>
                   </li>
                   <li>Cart</li>
                   <li>Cart</li>
@@ -423,135 +417,102 @@ export default function Cart() {
               <Modal.Title>Make Inquiry</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <div className="modal-body">
-                <div className="contact-section">
-                  <div className="form-inner">
-                    <Formik
-                      initialValues={productData}
-                      validationSchema={validationSchema}
-                      onSubmit={(values) => handleSubmit(values)}
-                    >
-                      {({ values, handleChange, handleSubmit }) => (
-                        <form id="contact-form" onSubmit={handleSubmit}>
-                          <div className="row clearfix">
-                            <div className="col-lg-4 col-md-6 col-sm-12 form-group">
-                              <label>Contact Person</label>
-                              <Field
-                                type="text"
-                                name="ContactPerson"
-                                placeholder="Contact Person"
-                                value={productData.ContactPerson}
-                                onChange={handleInputChange}
-                              />
-                              <ErrorMessage
-                                name="ContactPerson"
-                                component="div"
-                                className="text-danger"
-                              />
-                            </div>
-                            <div className="col-lg-4 col-md-6 col-sm-12 form-group">
-                              <label>Company Name</label>
-                              <Field
-                                type="text"
-                                name="CompanyName"
-                                placeholder="Company Name"
-                                value={productData.CompanyName}
-                                onChange={handleInputChange}
-                              />
-                              <ErrorMessage
-                                name="CompanyName"
-                                component="div"
-                                className="text-danger"
-                              />
-                            </div>
-                            <div className="col-lg-4 col-md-6 col-sm-12 form-group">
-                              <label>Phone</label>
-                              <Field
-                                type="text"
-                                name="Mobile"
-                                placeholder="Phone"
-                                value={productData.Mobile}
-                                onChange={handleInputChange}
-                              />
-                              <ErrorMessage
-                                name="Mobile"
-                                component="div"
-                                className="text-danger"
-                              />
-                            </div>
-                            <div className="col-lg-4 col-md-6 col-sm-12 form-group">
-                              <label>Email</label>
-                              <Field
-                                type="email"
-                                name="Email"
-                                placeholder="Email"
-                                value={productData.Email}
-                                onChange={handleInputChange}
-                              />
-                              <ErrorMessage
-                                name="Email"
-                                component="div"
-                                className="text-danger"
-                              />
-                            </div>
-                            <div className="col-lg-4 col-md-6 col-sm-12 form-group">
-                              <label>Country</label>
-                              <Field
-                                as="select"
-                                name="Country"
-                                value={productData.Country}
-                                onChange={handleInputChange}
-                                className="form-control"
-                              >
-                                <option value="">Select Country</option>
-                                {countriesArray.map((country) => (
-                                  <option
-                                    key={country.label}
-                                    value={country.value}
-                                  >
-                                    {country.value}
-                                  </option>
-                                ))}
-                              </Field>
-                              <ErrorMessage
-                                name="Country"
-                                component="div"
-                                className="text-danger"
-                              />
-                            </div>
-                            <div className="col-lg-8 col-md-6 col-sm-12 form-group">
-                              <label>Comments</label>
-                              <Field
-                                as="textarea"
-                                name="Comments"
-                                placeholder="Comments"
-                                rows="1"
-                                value={productData.Comments}
-                                onChange={handleInputChange}
-                              ></Field>
-                              <ErrorMessage
-                                name="Comments"
-                                component="div"
-                                className="text-danger"
-                              />
-                            </div>
-                            <div className="col-lg-4 col-md-12 col-sm-12 form-group message-btn text-center align-content-center">
-                              <button
-                                type="submit"
-                                className="theme-btn"
-                                data-bs-dismiss="modal"
-                              >
-                                Submit
-                              </button>
-                            </div>
-                          </div>
-                        </form>
-                      )}
-                    </Formik>
+      <div className="modal-body">
+        <div className="contact-section">
+          <div className="form-inner">
+            <Formik
+              initialValues={productData}
+              onSubmit={handleSubmit}
+              validationSchema={validationSchema}
+            >
+              {({ errors, touched }) => (
+                <Form id="contact-form">
+                  <div className="row clearfix">
+                    <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                      <label>Contact Person</label>
+                      <Field
+                        type="text"
+                        name="ContactPerson"
+                        placeholder="Contact Person"
+                        className={`form-control ${errors.ContactPerson && touched.ContactPerson && 'is-invalid'}`}
+                      />
+                      <ErrorMessage name="ContactPerson" component="div" className="invalid-feedback" />
+                    </div>
+                    <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                      <label>Company Name</label>
+                      <Field
+                        type="text"
+                        name="CompanyName"
+                        placeholder="Company Name"
+                        className={`form-control ${errors.CompanyName && touched.CompanyName && 'is-invalid'}`}
+                      />
+                      <ErrorMessage name="CompanyName" component="div" className="invalid-feedback" />
+                    </div>
+                    <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                      <label>Phone</label>
+                      <Field
+                        type="text"
+                        name="Mobile"
+                        placeholder="Phone"
+                        className={`form-control ${errors.Mobile && touched.Mobile && 'is-invalid'}`}
+                      />
+                      <ErrorMessage name="Mobile" component="div" className="invalid-feedback" />
+                    </div>
+                    <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                      <label>Email</label>
+                      <Field
+                        type="email"
+                        name="Email"
+                        placeholder="Email"
+                        className={`form-control ${errors.Email && touched.Email && 'is-invalid'}`}
+                      />
+                      <ErrorMessage name="Email" component="div" className="invalid-feedback" />
+                    </div>
+                    <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                      <label>Country</label>
+                      <Field
+                        as="select"
+                        name="Country"
+                        className={`form-control ${errors.Country && touched.Country && 'is-invalid'}`}
+                      >
+                        <option value="">Select Country</option>
+                        {countriesArray.map((country) => (
+                          <option key={country.label} value={country.value}>
+                            {country.value}
+                          </option>
+                        ))}
+                      </Field>
+                      <ErrorMessage name="Country" component="div" className="invalid-feedback" />
+                    </div>
+                    <div className="col-lg-8 col-md-6 col-sm-12 form-group">
+                      <label>Comments</label>
+                      <Field
+                        as="textarea"
+                        name="Comments"
+                        placeholder="Comments"
+                        rows="1"
+                        className={`form-control ${errors.Comments && touched.Comments && 'is-invalid'}`}
+                      />
+                      <ErrorMessage name="Comments" component="div" className="invalid-feedback" />
+                    </div>
+                    <div className="col-lg-4 col-md-12 col-sm-12 form-group message-btn text-center align-content-center">
+                      <button
+                        type="submit"
+                        className="theme-btn"
+                        data-bs-dismiss="modal"
+                      >
+                        Submit
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </Modal.Body>
+                </Form>
+              )}
+            </Formik>
+          </div>
+        </div>
+      </div>
+    </Modal.Body>
+
           </Modal>
 
           {/* <!-- banner-section end -->
