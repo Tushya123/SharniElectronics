@@ -7,7 +7,9 @@ import wp from "../assets/images/new-home/whatsapp.png";
 import pillicon from "../assets/images/new-home/pill-icon.png";
 import Header from "../components/Header";
 import Modal from "react-bootstrap/Modal";
-import Form from "react-bootstrap/Form";
+// import Form from "react-bootstrap/Form";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -216,7 +218,20 @@ const countriesArray = [
 ];
 
 export default function Cart() {
-  const [products, setProducts] = useState([]);
+  const validationSchema = Yup.object().shape({
+    ContactPerson: Yup.string().required("Contact Person is required"),
+    CompanyName: Yup.string().required("Company Name is required"),
+    Mobile: Yup.string()
+      .matches(
+        /^[0-9]{10}$/,
+        "Mobile number must be exactly 10 digits without any special characters"
+      )
+      .required("Mobile is required"),
+    Email: Yup.string().email("Invalid email").required("Email is required"),
+    Country: Yup.string().required("Country is required"),
+    Comments: Yup.string().required("Comments are required"),
+  });
+    const [products, setProducts] = useState([]);
   const productIds = JSON.parse(localStorage.getItem("productIds")) || [];
   const [productData, setProductData] = useState({
     // Assuming you have some product data to send
@@ -411,85 +426,128 @@ export default function Cart() {
               <div className="modal-body">
                 <div className="contact-section">
                   <div className="form-inner">
-                    <form id="contact-form" onSubmit={handleSubmit}>
-                      <div className="row clearfix">
-                        <div className="col-lg-4 col-md-6 col-sm-12 form-group">
-                          <label>Contact Person</label>
-                          <input
-                            type="text"
-                            name="ContactPerson"
-                            placeholder="Contact Person"
-                            value={productData.ContactPerson}
-                            onChange={handleInputChange}
-                          />
-                        </div>
-                        <div className="col-lg-4 col-md-6 col-sm-12 form-group">
-                          <label>Company Name</label>
-                          <input
-                            type="text"
-                            name="CompanyName"
-                            placeholder="Company Name"
-                            value={productData.CompanyName}
-                            onChange={handleInputChange}
-                          />
-                        </div>
-                        <div className="col-lg-4 col-md-6 col-sm-12 form-group">
-                          <label>Phone</label>
-                          <input
-                            type="text"
-                            name="Mobile"
-                            placeholder="Phone"
-                            value={productData.Mobile}
-                            onChange={handleInputChange}
-                          />
-                        </div>
-                        <div className="col-lg-4 col-md-6 col-sm-12 form-group">
-                          <label>Email</label>
-                          <input
-                            type="email"
-                            name="Email"
-                            placeholder="Email"
-                            value={productData.Email}
-                            onChange={handleInputChange}
-                          />
-                        </div>
-                        <div className="col-lg-4 col-md-6 col-sm-12 form-group">
-                          <label>Country</label>
-                          <select
-                            name="Country"
-                            value={productData.Country}
-                            onChange={handleInputChange}
-                            className="form-control"
-                          >
-                            <option value="">Select Country</option>
-                            {countriesArray.map((country) => (
-                              <option key={country.label} value={country.value}>
-                                {country.value}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                        <div className="col-lg-8 col-md-6 col-sm-12 form-group">
-                          <label>Comments</label>
-                          <textarea
-                            name="Comments"
-                            placeholder="Comments"
-                            rows="1"
-                            value={productData.Comments}
-                            onChange={handleInputChange}
-                          ></textarea>
-                        </div>
-                        <div className="col-lg-4 col-md-12 col-sm-12 form-group message-btn text-center align-content-center">
-                          <button
-                            type="submit"
-                            className="theme-btn"
-                            data-bs-dismiss="modal"
-                          >
-                            Submit
-                          </button>
-                        </div>
-                      </div>
-                    </form>
+                    <Formik
+                      initialValues={productData}
+                      validationSchema={validationSchema}
+                      onSubmit={(values) => handleSubmit(values)}
+                    >
+                      {({ values, handleChange, handleSubmit }) => (
+                        <form id="contact-form" onSubmit={handleSubmit}>
+                          <div className="row clearfix">
+                            <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                              <label>Contact Person</label>
+                              <Field
+                                type="text"
+                                name="ContactPerson"
+                                placeholder="Contact Person"
+                                value={productData.ContactPerson}
+                                onChange={handleInputChange}
+                              />
+                              <ErrorMessage
+                                name="ContactPerson"
+                                component="div"
+                                className="text-danger"
+                              />
+                            </div>
+                            <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                              <label>Company Name</label>
+                              <Field
+                                type="text"
+                                name="CompanyName"
+                                placeholder="Company Name"
+                                value={productData.CompanyName}
+                                onChange={handleInputChange}
+                              />
+                              <ErrorMessage
+                                name="CompanyName"
+                                component="div"
+                                className="text-danger"
+                              />
+                            </div>
+                            <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                              <label>Phone</label>
+                              <Field
+                                type="text"
+                                name="Mobile"
+                                placeholder="Phone"
+                                value={productData.Mobile}
+                                onChange={handleInputChange}
+                              />
+                              <ErrorMessage
+                                name="Mobile"
+                                component="div"
+                                className="text-danger"
+                              />
+                            </div>
+                            <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                              <label>Email</label>
+                              <Field
+                                type="email"
+                                name="Email"
+                                placeholder="Email"
+                                value={productData.Email}
+                                onChange={handleInputChange}
+                              />
+                              <ErrorMessage
+                                name="Email"
+                                component="div"
+                                className="text-danger"
+                              />
+                            </div>
+                            <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                              <label>Country</label>
+                              <Field
+                                as="select"
+                                name="Country"
+                                value={productData.Country}
+                                onChange={handleInputChange}
+                                className="form-control"
+                              >
+                                <option value="">Select Country</option>
+                                {countriesArray.map((country) => (
+                                  <option
+                                    key={country.label}
+                                    value={country.value}
+                                  >
+                                    {country.value}
+                                  </option>
+                                ))}
+                              </Field>
+                              <ErrorMessage
+                                name="Country"
+                                component="div"
+                                className="text-danger"
+                              />
+                            </div>
+                            <div className="col-lg-8 col-md-6 col-sm-12 form-group">
+                              <label>Comments</label>
+                              <Field
+                                as="textarea"
+                                name="Comments"
+                                placeholder="Comments"
+                                rows="1"
+                                value={productData.Comments}
+                                onChange={handleInputChange}
+                              ></Field>
+                              <ErrorMessage
+                                name="Comments"
+                                component="div"
+                                className="text-danger"
+                              />
+                            </div>
+                            <div className="col-lg-4 col-md-12 col-sm-12 form-group message-btn text-center align-content-center">
+                              <button
+                                type="submit"
+                                className="theme-btn"
+                                data-bs-dismiss="modal"
+                              >
+                                Submit
+                              </button>
+                            </div>
+                          </div>
+                        </form>
+                      )}
+                    </Formik>
                   </div>
                 </div>
               </div>
