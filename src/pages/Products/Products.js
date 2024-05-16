@@ -78,6 +78,8 @@ console.log("id",id)
 
       // Save the updated array back to local storage
       localStorage.setItem('productIds', JSON.stringify(productIds));
+      setQuantity(0);
+
       
     } catch (error) {
       console.error('Error adding product to cart:', error);
@@ -174,7 +176,12 @@ console.log("id",id)
                           className="theme-btn"
                           name="submit-form"
                         >
-                          <Link to="/cart" onClick={handleAddToCart}>Add To Cart</Link>
+                          <Link onClick={()=>{
+                                      setShow(false);
+                                      handleAddToCart();
+                                    
+
+                                    }}>Add To Cart</Link>
                         </button>
                       </div>
                     </div>

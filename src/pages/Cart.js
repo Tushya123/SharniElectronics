@@ -9,36 +9,310 @@ import Header from "../components/Header";
 import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import {Row} from 'reactstrap'
+const countriesArray = [
+  { label: "AX", value : "ALAND ISLANDS" },
+  { label: "AL", value : "ALBANIA" },
+  { label: "DZ", value : "ALGERIA" },
+  { label: "AS", value : "AMERICAN SAMOA" },
+  { label: "AD", value : "ANDORRA" },
+  { label: "AI", value : "ANGUILLA" },
+  { label: "AQ", value : "ANTARCTICA" },
+  { label: "AG", value : "ANTIGUA AND BARBUDA" },
+  { label: "AR", value : "ARGENTINA" },
+  { label: "AM", value : "ARMENIA" },
+  { label: "AW", value : "ARUBA" },
+  { label: "AU", value : "AUSTRALIA" },
+  { label: "AT", value : "AUSTRIA" },
+  { label: "AZ", value : "AZERBAIJAN" },
+  { label: "BS", value : "BAHAMAS" },
+  { label: "BH", value : "BAHRAIN" },
+  { label: "BD", value : "BANGLADESH" },
+  { label: "BB", value : "BARBADOS" },
+  { label: "BE", value : "BELGIUM" },
+  { label: "BZ", value : "BELIZE" },
+  { label: "BJ", value : "BENIN" },
+  { label: "BM", value : "BERMUDA" },
+  { label: "BT", value : "BHUTAN" },
+  { label: "BA", value : "BOSNIA-HERZEGOVINA" },
+  { label: "BW", value : "BOTSWANA" },
+  { label: "BV", value : "BOUVET ISLAND" },
+  { label: "BR", value : "BRAZIL" },
+  { label: "BN", value : "BRUNEI DARUSSALAM" },
+  { label: "BG", value : "BULGARIA" },
+  { label: "BF", value : "BURKINA FASO" },
+  { label: "CA", value : "CANADA" },
+  { label: "CV", value : "CAPE VERDE" },
+  { label: "KY", value : "CAYMAN ISLANDS" },
+  { label: "CF", value : "CENTRAL AFRICAN REPUBLIC" },
+  { label: "CL", value : "CHILE" },
+  { label: "CN", value : "CHINA" },
+  { label: "CX", value : "CHRISTMAS ISLAND" },
+  { label: "CC", value : "COCOS (KEELING) ISLANDS" },
+  { label: "CO", value : "COLOMBIA" },
+  { label: "CK", value : "COOK ISLANDS" },
+  { label: "CR", value : "COSTA RICA" },
+  { label: "CY", value : "CYPRUS" },
+  { label: "CZ", value : "CZECH REPUBLIC" },
+  { label: "DK", value : "DENMARK" },
+  { label: "DJ", value : "DJIBOUTI" },
+  { label: "DM", value : "DOMINICA" },
+  { label: "DO", value : "DOMINICAN REPUBLIC" },
+  { label: "EC", value : "ECUADOR" },
+  { label: "EG", value : "EGYPT" },
+  { label: "SV", value : "EL SALVADOR" },
+  { label: "EE", value : "ESTONIA" },
+  { label: "FK", value : "FALKLAND ISLANDS (MALVINAS)" },
+  { label: "FO", value : "FAROE ISLANDS" },
+  { label: "FJ", value : "FIJI" },
+  { label: "FI", value : "FINLAND" },
+  { label: "FR", value : "FRANCE" },
+  { label: "GF", value : "FRENCH GUIANA" },
+  { label: "PF", value : "FRENCH POLYNESIA" },
+  { label: "TF", value : "FRENCH SOUTHERN TERRITORIES" },
+  { label: "GA", value : "GABON" },
+  { label: "GM", value : "GAMBIA" },
+  { label: "GE", value : "GEORGIA" },
+  { label: "DE", value : "GERMANY" },
+  { label: "GH", value : "GHANA" },
+  { label: "GI", value : "GIBRALTAR" },
+  { label: "GR", value : "GREECE" },
+  { label: "GL", value : "GREENLAND" },
+  { label: "GD", value : "GRENADA" },
+  { label: "GP", value : "GUADELOUPE" },
+  { label: "GU", value : "GUAM" },
+  { label: "GG", value : "GUERNSEY" },
+  { label: "GY", value : "GUYANA" },
+  { label: "VA", value : "HOLY SEE (VATICAN CITY STATE)" },
+  { label: "HN", value : "HONDURAS" },
+  { label: "HK", value : "HONG KONG" },
+  { label: "HU", value : "HUNGARY" },
+  { label: "IS", value : "ICELAND" },
+  { label: "IN", value : "INDIA" },
+  { label: "ID", value : "INDONESIA" },
+  { label: "IE", value : "IRELAND" },
+  { label: "IM", value : "ISLE OF MAN" },
+  { label: "IL", value : "ISRAEL" },
+  { label: "IT", value : "ITALY" },
+  { label: "JM", value : "JAMAICA" },
+  { label: "JP", value : "JAPAN" },
+  { label: "JE", value : "JERSEY" },
+  { label: "JO", value : "JORDAN" },
+  { label: "KZ", value : "KAZAKHSTAN" },
+  { label: "KI", value : "KIRIBATI" },
+  { label: "KR", value : "KOREA, REPUBLIC OF" },
+  { label: "KW", value : "KUWAIT" },
+  { label: "KG", value : "KYRGYZSTAN" },
+  { label: "LV", value : "LATVIA" },
+  { label: "LS", value : "LESOTHO" },
+  { label: "LI", value : "LIECHTENSTEIN" },
+  { label: "LT", value : "LITHUANIA" },
+  { label: "LU", value : "LUXEMBOURG" },
+  { label: "MO", value : "MACAO" },
+  { label: "MK", value : "MACEDONIA" },
+  { label: "LI", value : "LIECHTENSTEIN" },
+  { label: "LT", value : "LITHUANIA" },
+  { label: "LU", value : "LUXEMBOURG" },
+  { label: "MO", value : "MACAO" },
+  { label: "MK", value : "MACEDONIA" },
+  { label: "MG", value : "MADAGASCAR" },
+  { label: "MW", value : "MALAWI" },
+  { label: "MY", value : "MALAYSIA" },
+  { label: "MT", value : "MALTA" },
+  { label: "MH", value : "MARSHALL ISLANDS" },
+  { label: "MQ", value : "MARTINIQUE" },
+  { label: "MR", value : "MAURITANIA" },
+  { label: "MU", value : "MAURITIUS" },
+  { label: "YT", value : "MAYOTTE" },
+  { label: "MX", value : "MEXICO" },
+  { label: "MD", value : "MOLDOVA, REPUBLIC OF" },
+  { label: "MC", value : "MONACO" },
+  { label: "MN", value : "MONGOLIA" },
+  { label: "ME", value : "MONTENEGRO" },
+  { label: "MS", value : "MONTSERRAT" },
+  { label: "MA", value : "MOROCCO" },
+  { label: "MZ", value : "MOZAMBIQUE" },
+  { label: "NA", value : "NAMIBIA" },
+  { label: "NR", value : "NAURU" },
+  { label: "NP", value : "NEPAL" },
+  { label: "NL", value : "NETHERLANDS" },
+  { label: "AN", value : "NETHERLANDS ANTILLES" },
+  { label: "NC", value : "NEW CALEDONIA" },
+  { label: "NZ", value : "NEW ZEALAND" },
+  { label: "NI", value : "NICARAGUA" },
+  { label: "NE", value : "NIGER" },
+  { label: "NU", value : "NIUE" },
+  { label: "NF", value : "NORFOLK ISLAND" },
+  { label: "MP", value : "NORTHERN MARIANA ISLANDS" },
+  { label: "NO", value : "NORWAY" },
+  { label: "OM", value : "OMAN" },
+  { label: "PW", value : "PALAU" },
+  { label: "PS", value : "PALESTINE" },
+  { label: "PA", value : "PANAMA" },
+  { label: "PY", value : "PARAGUAY" },
+  { label: "PE", value : "PERU" },
+  { label: "PH", value : "PHILIPPINES" },
+  { label: "PN", value : "PITCAIRN" },
+  { label: "PL", value : "POLAND" },
+  { label: "PT", value : "PORTUGAL" },
+  { label: "PR", value : "PUERTO RICO" },
+  { label: "QA", value : "QATAR" },
+  { label: "RE", value : "REUNION" },
+  { label: "RO", value : "ROMANIA" },
+  { label: "RU", value : "RUSSIAN FEDERATION" },
+  { label: "RW", value : "RWANDA" },
+  { label: "SH", value : "SAINT HELENA" },
+  { label: "KN", value : "SAINT KITTS AND NEVIS" },
+  { label: "LC", value : "SAINT LUCIA" },
+  { label: "PM", value : "SAINT PIERRE AND MIQUELON" },
+  { label: "WS", value : "SAMOA" },
+  { label: "SM", value : "SAN MARINO" },
+  { label: "ST", value : "SAO TOME AND PRINCIPE" },
+  { label: "SA", value : "SAUDI ARABIA" },
+  { label: "SN", value : "SENEGAL" },
+  { label: "RS", value : "SERBIA" },
+  { label: "SC", value : "SEYCHELLES" },
+  { label: "SG", value : "SINGAPORE" },
+  { label: "SK", value : "SLOVAKIA" },
+  { label: "SI", value : "SLOVENIA" },
+  { label: "SB", value : "SOLOMON ISLANDS" },
+  { label: "ZA", value : "SOUTH AFRICA" },
+  { label: "ES", value : "SPAIN" },
+  { label: "SR", value : "SURINAME" },
+  { label: "SJ", value : "SVALBARD AND JAN MAYEN" },
+  { label: "SZ", value : "SWAZILAND" },
+  { label: "SE", value : "SWEDEN" },
+  { label: "CH", value : "SWITZERLAND" },
+  { label: "TW", value : "TAIWAN, PROVINCE OF CHINA" },
+  { label: "TZ", value : "TANZANIA, UNITED REPUBLIC OF" },
+  { label: "TH", value : "THAILAND" },
+  { label: "TL", value : "TIMOR-LESTE" },
+  { label: "TG", value : "TOGO" },
+  { label: "TK", value : "TOKELAU" },
+  { label: "TO", value : "TONGA" },
+  { label: "TT", value : "TRINIDAD AND TOBAGO" },
+  { label: "TN", value : "TUNISIA" },
+  { label: "TR", value : "TURKEY" },
+  { label: "TM", value : "TURKMENISTAN" },
+  { label: "TC", value : "TURKS AND CAICOS ISLANDS" },
+  { label: "TV", value : "TUVALU" },
+  { label: "UG", value : "UGANDA" },
+  { label: "UA", value : "UKRAINE" },
+  { label: "AE", value : "UNITED ARAB EMIRATES" },
+  { label: "GB", value : "UNITED KINGDOM" },
+  { label: "US", value : "UNITED STATES" },
+  { label: "UM", value : "URUGUAY" },
+  { label: "UZ", value : "UZBEKISTAN" },
+  { label: "VU", value : "VANUATU" },
+  { label: "VE", value : "VENEZUELA" },
+  { label: "VN", value : "VIET NAM" },
+  { label: "VG", value : "VIRGIN ISLANDS, BRITISH" },
+  { label: "VI", value : "VIRGIN ISLANDS, U.S." },
+  { label: "WF", value : "WALLIS AND FUTUNA" },
+  { label: "EH", value : "WESTERN SAHARA" },
+  { label: "ZM", value : "ZAMBIA" }
+];
 
-export default function Cart() {
+export default function Cart() {  
   const [products, setProducts] = useState([]);
+  const productIds = JSON.parse(localStorage.getItem('productIds')) || [];
+  const [productData, setProductData] = useState({
+    // Assuming you have some product data to send
+    ProductDetail: [],
+    ContactPerson: "",
+    CompanyName:"",
+    Country: "",
+    Mobile:"",
+    Email:"",
+    Comments:"",
+    IsActive:true
+  });
+const remove_inquiry=async(new_id)=>{
+  console.log("hii",new_id)
+  try{
+    const response = await axios.delete(`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/remove/InquiryProduct/${new_id}`);
+    if (response) {
+      let productIds = JSON.parse(localStorage.getItem('productIds')) || [];
+      productIds = productIds.filter(productId => productId !== new_id);
+      localStorage.setItem('productIds', JSON.stringify(productIds));
+      setProductData({
+        ProductDetail:JSON.parse(localStorage.getItem('productIds')),
+      })
+      // Update the state
+      setProducts(prevProducts => prevProducts.filter(product => product.id !== new_id));
+    }
+    
+  }
+  catch(error){
+    console.log(error)
+  }
+ 
 
+}
+  // useEffect(() => {
+  //   // Retrieve the array of product IDs from local storage
+  //   const productIds = JSON.parse(localStorage.getItem('productIds')) || [];
+
+  //   // Use a Set to store unique product IDs
+  //   const uniqueProductIds = Array.from(new Set(productIds));
+
+  //   // Fetch product details for each unique product ID
+  //   const fetchProductDetails = async () => {
+  //     try {
+  //       const productDetails = await Promise.all(
+  //         uniqueProductIds.map(async (productId) => {
+  //           const response = await axios.get(`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/getbyid/InquiryProduct/${productId}`);
+  //           return {
+  //             id: response.data._id,
+  //             productDetail: response.data.ProductDetail,
+  //             productDetailLabel: response.data.ProductDetailLabel,
+  //             quantity: response.data.Quantity
+  //           };
+  //         })
+  //       );
+  //       // Update the state once with all fetched product details
+  //       setProducts(productDetails);
+  //     } catch (error) {
+  //       console.error('Error fetching product details:', error);
+  //     }
+  //   };
+
+  //   fetchProductDetails();
+  // }, []);
   useEffect(() => {
     // Retrieve the array of product IDs from local storage
     const productIds = JSON.parse(localStorage.getItem('productIds')) || [];
-  
+
     // Use a Set to store unique product IDs
-    const uniqueProductIds = new Set(productIds);
-  
+    const uniqueProductIds = Array.from(new Set(productIds));
+
     // Fetch product details for each unique product ID
-    Promise.all(Array.from(uniqueProductIds).map(async (productId) => {
+    const fetchProductDetails = async () => {
       try {
-        // Send a GET request to fetch the corresponding product details
-        const response = await axios.get(`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/getbyid/InquiryProduct/${productId}`);
-        
-        // Store the fetched product details
-        setProducts(prevProducts => [
-          ...prevProducts,
-          {
-            id: response.data._id,
-            productDetail: response.data.ProductDetail,
-            productDetailLabel: response.data.ProductDetailLabel,
-            quantity: response.data.Quantity
-          }
-        ]);
+        const productDetails = await Promise.all(
+          uniqueProductIds.map(async (productId) => {
+            const response = await axios.get(`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/getbyid/InquiryProduct/${productId}`);
+            return {
+              id: response.data._id,
+              productDetail: response.data.ProductDetail,
+              productDetailLabel: response.data.ProductDetailLabel,
+              quantity: response.data.Quantity
+            };
+          })
+        );
+        // Update the state once with all fetched product details
+        setProducts(productDetails);
       } catch (error) {
         console.error('Error fetching product details:', error);
       }
+    };
+
+    fetchProductDetails();
+
+    // Set the product details in productData state from localStorage
+    setProductData(prevData => ({
+      ...prevData,
+      ProductDetail: productIds
     }));
   }, []);
   
@@ -51,6 +325,42 @@ export default function Cart() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   console.log(localStorage.getItem("productIds"))
+  // setProductData({
+  //   ProductDetail:localStorage.getItem("productIds"),
+  // })
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setProductData({ ...productData, [name]: value });
+  };
+console.log("THis is",productData)
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/create/inquiry`, productData);
+      console.log("This is response",response)
+      console.log('Data submitted successfully:', response.data);
+      handleClose(); // Close the modal after successful submission
+
+      setProductData({
+ProductDetail:JSON.parse(localStorage.getItem('productIds')),
+        ContactPerson: "",
+        CompanyName: "",
+        Country: "",
+        Mobile: "",
+        Email: "",
+        Comments: "",
+        IsActive: true
+      });
+
+    } catch (error) {
+      console.error('Error submitting data:', error);
+      // Handle error accordingly, e.g., show an error message to the user
+    }
+  
+    // Handle the form submission logic here, such as sending the data to an API
+    console.log(productData);
+    handleClose(); // Close the modal after submission
+  };
 
   return (
     <>
@@ -92,98 +402,92 @@ export default function Cart() {
               <Modal.Title>Make Inquiry</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <div className="modal-body">
-                <div className="contact-section">
-                  <div className="form-inner">
-                    <form id="contact-form">
-                      <div className="row clearfix">
-                        <div className="col-lg-4 col-md-6 col-sm-12 form-group">
-                          <label>Contact Person</label>
-                          <input
-                            type="text"
-                            name="username"
-                            placeholder="Contact Person"
-                          />
-                        </div>
-                        <div className="col-lg-4 col-md-6 col-sm-12 form-group">
-                          <label>Company Name</label>
-                          <input
-                            type="text"
-                            name="email"
-                            placeholder="Company Name"
-                          />
-                        </div>
-                        <div className="col-lg-4 col-md-6 col-sm-12 form-group">
-                          <label>Phone</label>
-                          <input
-                            type="text"
-                            name="phone"
-                            placeholder="Phone"
-                          />
-                        </div>
-                        {/* <div className="col-lg-4 col-md-6 col-sm-12 form-group">
-                          <label>Fax</label>
-                          <input
-                            type="number"
-                            name="fax"
-                            placeholder="Fax"
-                          />
-                        </div>
-                        <div className="col-lg-4 col-md-6 col-sm-12 form-group">
-                          <label>Mobile</label>
-                          <input
-                            type="text"
-                            name="mobile"
-                            placeholder="Mobile"
-                          />
-                        </div> */}
-                        <div className="col-lg-4 col-md-6 col-sm-12 form-group">
-                          <label>Email</label>
-                          <input
-                            type="text"
-                            name="email"
-                            placeholder="Email"
-                          />
-                        </div>
-                        {/* <div className="col-lg-4 col-md-6 col-sm-12 form-group">
-                          <label>Address</label>
-                          <textarea
-                            name="address"
-                            placeholder="Address"
-                            rows="1"
-                          ></textarea>
-                        </div>
-                        <div className="col-lg-4 col-md-6 col-sm-12 form-group">
-                          <label>Reference</label>
-                          <textarea
-                            name="reference"
-                            placeholder="Reference"
-                            rows="1"
-                          ></textarea>
-                        </div> */}
-                        <div className="col-lg-8 col-md-6 col-sm-12 form-group">
-                          <label>Comments</label>
-                          <textarea
-                            name="comments"
-                            placeholder="Comments"
-                            rows="1"
-                          ></textarea>
-                        </div>
-                        <div className="col-lg-4 col-md-12 col-sm-12 form-group message-btn text-center align-content-center">
-                          <button
-                            type="submit"
-                            className="theme-btn"
-                            data-bs-dismiss="modal"
-                          >
-                            Submit
-                          </button>
-                        </div>
-                      </div>
-                    </form>
+        <div className="modal-body">
+          <div className="contact-section">
+            <div className="form-inner">
+              <form id="contact-form" onSubmit={handleSubmit}>
+                <div className="row clearfix">
+                  <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                    <label>Contact Person</label>
+                    <input
+                      type="text"
+                      name="ContactPerson"
+                      placeholder="Contact Person"
+                      value={productData.ContactPerson}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                  <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                    <label>Company Name</label>
+                    <input
+                      type="text"
+                      name="CompanyName"
+                      placeholder="Company Name"
+                      value={productData.CompanyName}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                  <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                    <label>Phone</label>
+                    <input
+                      type="text"
+                      name="Mobile"
+                      placeholder="Phone"
+                      value={productData.Mobile}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                  <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                    <label>Email</label>
+                    <input
+                      type="email"
+                      name="Email"
+                      placeholder="Email"
+                      value={productData.Email}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                  <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+        <label>Country</label>
+        <select
+          name="Country"
+          value={productData.Country}
+          onChange={handleInputChange}
+          className="form-control"
+        >
+          <option value="">Select Country</option>
+          {countriesArray.map((country) => (
+            <option key={country.label} value={country.value}>
+              {country.value}
+            </option>
+          ))}
+        </select>
+      </div>
+                  <div className="col-lg-8 col-md-6 col-sm-12 form-group">
+                    <label>Comments</label>
+                    <textarea
+                      name="Comments"
+                      placeholder="Comments"
+                      rows="1"
+                      value={productData.Comments}
+                      onChange={handleInputChange}
+                    ></textarea>
+                  </div>
+                  <div className="col-lg-4 col-md-12 col-sm-12 form-group message-btn text-center align-content-center">
+                    <button
+                      type="submit"
+                      className="theme-btn"
+                      data-bs-dismiss="modal"
+                    >
+                      Submit
+                    </button>
                   </div>
                 </div>
-              </div>
-            </Modal.Body>
+              </form>
+            </div>
+          </div>
+        </div>
+      </Modal.Body>
           </Modal>
 
           {/* <!-- banner-section end -->
@@ -193,14 +497,16 @@ export default function Cart() {
               <div class="cart-outer">
                 <div class="totle-table clearfix">
                   <div class="item pull-left">
-                    <p>Your Cart: 1 Items</p>
+                    <p>Your Cart: {products.length} Items</p>
                   </div>
                 </div>
                 <div class="row clearfix">
+            
                   <div class="col-lg-8 col-md-12 col-sm-12 column clearfix">
                     <div class="table-outer">
                       <table class="cart-table">
                         <thead class="cart-header">
+
                           <tr>
                             <th>Sr. No</th>
                             <th>Your Product</th>
@@ -211,27 +517,33 @@ export default function Cart() {
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>1</td>
+                        {products.map((item,index)=>{
+                  return(
+                    <tr>
+                            <td>{index+1}</td>
                             <td class="prod-column">
-                              <h5>Product Name Here</h5>
+                              <h5>{item.productDetailLabel}</h5>
                             </td>
                             <td class="prod-column">
-                              <h5>200</h5>
+                              <h5>{item.quantity}</h5>
                             </td>
                             {/* <!-- <td class="sub-total">1545 Rs.</td>
                                     <td class="total-price">1545 Rs</td> --> */}
-                            <td>
-                              <a href="#" class="remove-btn">
-                                <i class="fa-solid fa-xmark"></i>
-                              </a>
-                            </td>
+                                    <td>
+              <a href="#" className="remove-btn" onClick={() => remove_inquiry(item.id)}>
+                <i className="fa-solid fa-xmark"></i>
+              </a>
+            </td>
                           </tr>
+                  )
+                })}
+                          
                         </tbody>
                       </table>
                     </div>
                   </div>
-                  <div class="col-lg-4 col-md-12 col-sm-12 column clearfix center-btn align-content-center">
+                 <Row>
+                 <div class="col-lg-4 col-md-12 col-sm-12 column clearfix center-btn align-content-center">
                     <div class="btn-box clearfix">
                       <button
                         type="button"
@@ -244,6 +556,7 @@ export default function Cart() {
                       </button>
                     </div>
                   </div>
+                 </Row>
                 </div>
               </div>
             </div>
