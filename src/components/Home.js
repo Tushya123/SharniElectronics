@@ -43,7 +43,7 @@ export default function Home() {
     slidesToShow: 1,
     slidesToScroll: 1,
     appendDots: dots => {
-      return <MagicSliderDots dots={dots} numDotsToShow={4} dotWidth={30} />;
+      return <MagicSliderDots dots={dots} numDotsToShow={4} dotWidth={30} autoplay={true} speed={500}  slidesToScroll={1} slidesToShow={1}/>;
     }
   };
 
@@ -103,7 +103,7 @@ export default function Home() {
                       <ul className="list clearfix">
                         <li>
                           <div className="icon-box">
-                            <i className="flaticon-laboratory-1"></i>
+                            {/* <i className="flaticon-laboratory-1"></i> */}
                           </div>
                           <h3
                             style={{
