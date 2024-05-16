@@ -1,31 +1,33 @@
 import React, { useState, useEffect } from "react";
-import logo from "../assets/images/new-home/logo.png";
 import Background from "../assets/images/new-home/breadcrumb-img.jpg";
-import footer from "../assets/images/new-home/footer-location-img.jpg";
 import skype from "../assets/images/new-home/skype.png";
+import news from "../assets/images/news/news-35.jpg";
 import wp from "../assets/images/new-home/whatsapp.png";
-import shap10 from "../assets/images/shape/shape-10.png";
 import Header from "../components/Header";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
-export default function Gallery() {
-  const [galleryData, setGalleryData] = useState([]);
-
+export default function BlogsDetails() {
+  const { id } = useParams();
+  console.log(id, "avaniid");
+  const [blog, setBlog] = useState(null);
+  console.log(blog, "blog");
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchBlog = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/list/GalleryPhoto`
+          `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/get/Blog/${id}`
         );
-        console.log("Gallery Data:", response);
-        setGalleryData(response.data);
+        setBlog(response.data);
       } catch (error) {
-        console.error("Error fetching gallery data:", error);
+        console.error("Error fetching blog data:", error);
       }
     };
 
-    fetchData();
-  }, []);
+    fetchBlog();
+  }, [id]);
+
+  if (!blog) return <div>Loading...</div>;
 
   return (
     <React.Fragment
@@ -41,7 +43,7 @@ export default function Gallery() {
           ></div>
           <div className="auto-container">
             <div className="content-box">
-              <h1>Blog Name</h1>
+              <h1>{blog.Name}</h1>
               <ul className="bread-crumb clearfix">
                 <li>
                   <a href="index.html">Home</a>
@@ -61,25 +63,24 @@ export default function Gallery() {
                 <div class="blog-details-content">
                   <div class="content-one">
                     <figure class="image-box">
-                      <img src="assets/images/news/news-35.jpg" alt="" />
+                      <img
+                        src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${blog.BlogImage}`}
+                        alt=""
+                      />
                     </figure>
                   </div>
                   <div class="content-four pb-5">
-                    <h2>Title Here</h2>
-                    <p>
-                      Text Here...Text Here...Text Here...Text Here...Text
-                      Here...Text Here...Text Here...Text Here...Text
-                      Here...Text Here... Text Here...Text Here...Text
-                      Here...Text Here...Text Here...Text Here...Text
-                      Here...Text Here...Text Here...Text Here...
-                    </p>
+                    <h2>{blog.Title}</h2>
+                    {
+                      <span style={{ width: "300px" }}>
+                        {React.createElement("div", {
+                          dangerouslySetInnerHTML: { __html: blog.Description },
+                        })}
+                      </span>
+                    }
 
-                    <p>
-                      Text Here...Text Here...Text Here...Text Here...Text
-                      Here...Text Here...Text Here...Text Here...Text
-                      Here...Text Here...
-                    </p>
-                    <h4>Title Here...Title Here</h4>
+                    <p></p>
+                    <h4>{blog.Category}</h4>
                     <ul class="list-item clearfix">
                       <li>Text Here...Text Here...Text Here...</li>
                       <li>Text Here...Text Here...Text Here...</li>

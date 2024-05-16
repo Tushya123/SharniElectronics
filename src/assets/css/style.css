@@ -2177,7 +2177,9 @@ div#mCSB_1_container{
   z-index: 1;
   visibility: visible;
 }
-
+.service-block-one{
+  width: auto !important;
+}
 .service-block-one .inner-box{
   position: relative;
   display: block;
@@ -10684,7 +10686,7 @@ div#mCSB_1_container{
 
 .cart-outer .cart-table{
   width:100%;
-  min-width:900px;
+  min-width:100%;
   border-bottom:1px solid #e6ebed;
 }
 
@@ -13639,6 +13641,7 @@ div#mCSB_1_container{
 .contact-section .form-inner .form-group input[type='number'],
 .contact-section .form-inner .form-group input[type='email'],
 .contact-section .form-inner .form-group textarea,
+.contact-section .form-inner .form-group select,
 .contact-section .form-inner .form-group .nice-select{
   position: relative;
   display: block;
@@ -13656,7 +13659,7 @@ div#mCSB_1_container{
 }
 
 .contact-section .form-inner .form-group textarea{
-  height: 150px;
+  /* height: 150px; */
   resize: none;
 }
 
@@ -13893,3 +13896,24 @@ div#mCSB_1_container{
   margin-top: 5px;
 }
 
+
+.banner-section .slick-dots{
+  bottom: 0 !important;
+  position: absolute !important;
+  right: 0 !important;
+  top: 50% !important;
+}
+.banner-section  .slick-dots li{
+  display: block !important;
+}
+
+.banner-section  .magic-dots.slick-dots ul{
+  display: block !important;
+}
+
+.service-section .slick-slider {
+  text-align: center !important;
+}
+.slick-dots li button:before{
+  color: white !important;
+}

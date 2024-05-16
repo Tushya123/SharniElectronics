@@ -7,6 +7,8 @@ import wp from "../assets/images/new-home/whatsapp.png";
 import pillicon from "../assets/images/new-home/pill-icon.png";
 import Header from "../components/Header";
 import Modal from "react-bootstrap/Modal";
+import Form from "react-bootstrap/Form";
+
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import {Row} from 'reactstrap'
@@ -397,11 +399,12 @@ ProductDetail:JSON.parse(localStorage.getItem('productIds')),
             onHide={handleClose}
             backdrop="static"
             keyboard={false}
+            dialogClassName="modal-xl"
           >
             <Modal.Header closeButton>
               <Modal.Title>Make Inquiry</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
+
         <div className="modal-body">
           <div className="contact-section">
             <div className="form-inner">

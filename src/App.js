@@ -32,6 +32,8 @@ import BlogsDetails from "./pages/BlogsDetails";
 import InnderGallery from "./pages/InnerGallery"
 
 function App() {
+
+  
   return (
     <BrowserRouter>
     <Header/>
@@ -49,12 +51,8 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/inquiry" element={<Inquiry />} />
-        <Route path="/blogdetails" element={<BlogsDetails />} />
-        <Route path="/innergallery/:id" component={<InnderGallery/>} />
-
-
-
-
+        <Route path="/blogdetails/:id" element={<BlogsDetails/>} />
+        <Route path="/innergallery/:index" element={<InnderGallery />} />
 
       </Routes>
       <Footer />

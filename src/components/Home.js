@@ -29,16 +29,22 @@ import axios from "axios";
 import Blog from "./Blog";
 import AboutUs from "./AboutUs";
 import Inquiry from "./Inquiry";
+import MagicSliderDots from 'react-magic-slider-dots';
+import 'react-magic-slider-dots/dist/magic-dots.css';
+
 
 export default function Home() {
   const settings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
     dots: true,
     arrows: true,
+    infinite: false,
+    speed: 500,
+    autoplay:true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    appendDots: dots => {
+      return <MagicSliderDots dots={dots} numDotsToShow={4} dotWidth={30} autoplay={true} speed={500}  slidesToScroll={1} slidesToShow={1}/>;
+    }
   };
 
   const [banner, setBanner] = useState([]);
@@ -68,6 +74,7 @@ export default function Home() {
         {/* <!-- banner-section --> */}
         <section className="banner-section banner-style-one">
           <Slider {...settings}>
+            
             {banner.map((bannerItem, index) => (
               <div className="slide-item position-slider" key={index}>
                 <div className="image-layer">
@@ -96,7 +103,7 @@ export default function Home() {
                       <ul className="list clearfix">
                         <li>
                           <div className="icon-box">
-                            <i className="flaticon-laboratory-1"></i>
+                            {/* <i className="flaticon-laboratory-1"></i> */}
                           </div>
                           <h3
                             style={{
