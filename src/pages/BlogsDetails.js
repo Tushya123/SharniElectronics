@@ -46,7 +46,7 @@ export default function BlogsDetails() {
               <h1>{blog.Name}</h1>
               <ul className="bread-crumb clearfix">
                 <li>
-                  <a href="index.html">Home</a>
+                  <a href="/">Home</a>
                 </li>
                 <li>Blog</li>
                 <li>Blog Name</li>
@@ -70,7 +70,7 @@ export default function BlogsDetails() {
                     </figure>
                   </div>
                   <div class="content-four pb-5">
-                    <h2>{blog.Title}</h2>
+                    <h2>{blog.Category}</h2>
                     {
                       <span style={{ width: "300px" }}>
                         {React.createElement("div", {
@@ -78,14 +78,13 @@ export default function BlogsDetails() {
                         })}
                       </span>
                     }
-
                     <p></p>
-                    <h4>{blog.Category}</h4>
-                    <ul class="list-item clearfix">
+                    <h4>{blog.Title}</h4>
+                    {/* <ul class="list-item clearfix">
                       <li>Text Here...Text Here...Text Here...</li>
                       <li>Text Here...Text Here...Text Here...</li>
                       <li>Text Here...Text Here...Text Here...</li>
-                    </ul>
+                    </ul> */}
                   </div>
                 </div>
               </div>

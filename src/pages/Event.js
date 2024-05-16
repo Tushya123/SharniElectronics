@@ -44,7 +44,7 @@ export default function Gallery() {
               <h1>Gallery</h1>
               <ul className="bread-crumb clearfix">
                 <li>
-                  <a href="index.html">Home</a>
+                  <a href="/">Home</a>
                 </li>
                 <li>Gallery</li>
                 <li>Event Name</li>

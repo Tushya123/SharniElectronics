@@ -53,7 +53,7 @@ export default function Certificate() {
               <h1>Certificate</h1>
               <ul className="bread-crumb clearfix">
                 <li>
-                  <a href="index.html">Home</a>
+                  <a href="/">Home</a>
                 </li>
                 <li>Certificate</li>
                 <li>Certificate</li>

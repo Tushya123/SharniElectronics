@@ -35,7 +35,7 @@ export default function Cart() {
                 <h1>Cart</h1>
                 <ul className="bread-crumb clearfix">
                   <li>
-                    <a href="index.html">Home</a>
+                    <a href="/">Home</a>
                   </li>
                   <li>Cart</li>
                   <li>Cart</li>

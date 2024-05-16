@@ -57,7 +57,7 @@ export default function Contact() {
             <div className="content-box">
               <h1>Contact</h1>
               <ul className="bread-crumb clearfix">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li>Contact</li>
                 <li>Contact</li>
               </ul>

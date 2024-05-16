@@ -50,7 +50,7 @@ export default function Commitment() {
               <h1>Commitment And Approach</h1>
               <ul className="bread-crumb clearfix">
                 <li>
-                  <a href="index.html">Home</a>
+                  <a href="/">Home</a>
                 </li>
                 <li>Commitment</li>
                 <li>Commitment</li>
