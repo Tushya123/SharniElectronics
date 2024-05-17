@@ -13,11 +13,11 @@ export default function Header() {
     if (storedProductIds) {
       setProd(JSON.parse(storedProductIds));
     }
-  }, [prod]);
+  }, [localStorage.getItem('productIds')]);
 
-  useEffect(() => {
-    console.log(prod.length);
-  }, [prod]);
+  // useEffect(() => {
+  //   console.log(prod.length);
+  // }, [prod]);
 
   useEffect(() => {
     const fetchData = async () => {
