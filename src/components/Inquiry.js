@@ -6,6 +6,42 @@ import shape9 from "../assets/images/shape/shape-9.png";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+const countriesArray = [
+  { label: "DZ", value: "ALGERIA" },
+  { label: "AR", value: "ARGENTINA" },
+  { label: "AU", value: "AUSTRALIA" },
+  { label: "BD", value: "BANGLADESH" },
+  { label: "BE", value: "BELGIUM" },
+  { label: "BR", value: "BRAZIL" },
+  { label: "CA", value: "CANADA" },
+  { label: "CN", value: "CHINA" },
+  { label: "EG", value: "EGYPT" },
+  { label: "FR", value: "FRANCE" },
+  { label: "DE", value: "GERMANY" },
+  { label: "IN", value: "INDIA" },
+  { label: "IL", value: "ISRAEL" },
+  { label: "IT", value: "ITALY" },
+  { label: "JP", value: "JAPAN" },
+  { label: "MY", value: "MALAYSIA" },
+  { label: "MX", value: "MEXICO" },
+  ,
+  { label: "NP", value: "NEPAL" },
+  { label: "NL", value: "NETHERLANDS" },
+  { label: "NZ", value: "NEW ZEALAND" },
+  { label: "PH", value: "PHILIPPINES" },
+  { label: "PT", value: "PORTUGAL" },
+  { label: "QA", value: "QATAR" },
+  { label: "ZA", value: "SOUTH AFRICA" },
+  { label: "ES", value: "SPAIN" },
+  { label: "SE", value: "SWEDEN" },
+  { label: "CH", value: "SWITZERLAND" },
+  { label: "TR", value: "TURKEY" },
+  { label: "UA", value: "UKRAINE" },
+  { label: "AE", value: "UNITED ARAB EMIRATES" },
+  { label: "GB", value: "UNITED KINGDOM" },
+  { label: "US", value: "UNITED STATES" },
+];
+
 
 export default function Inquiry() {
   const validationSchema = Yup.object().shape({
@@ -128,21 +164,22 @@ export default function Inquiry() {
                               <div className="select-box">
                                 <Field
                                   as="select"
-                                  className='nice-select selectmenu'
+                                  className={`nice-select selectmenu  ${
+                                    errors.Country &&
+                                    touched.Country &&
+                                    "is-Invalid"
+                                  }`}
                                   name="Country"
                                 >
-                                  <option value="">Select Country</option>
-                                  <option value="Australia">Australia</option>
-                                  <option value="Canada">Canada</option>
-                                  <option value="France">France</option>
-                                  <option value="Germany">Germany</option>
-                                  <option value="India">India</option>
-                                  <option value="Italy">Italy</option>
-                                  <option value="Japan">Japan</option>
-                                  <option value="Mexico">Mexico</option>
-                                  <option value="Russia">Russia</option>
-                                  <option value="United Kingdom">United Kingdom</option>
-                                  <option value="United States">United States</option>
+                                <option value="">Select Country</option>
+                                {countriesArray.map((country) => (
+                                  <option
+                                    key={country.label}
+                                    value={country.value}
+                                  >
+                                    {country.value}
+                                  </option>
+                                ))}
                                 </Field>
                                 <ErrorMessage name="Country" component="div" className="error-message" />
                               </div>
