@@ -13917,3 +13917,29 @@ div#mCSB_1_container{
 .slick-dots li button:before{
   color: white !important;
 }
+.product-sec .pro-list{
+  padding: 40px;
+  border: 1px solid #16436f;
+  margin-bottom: 30px;
+  border-radius: 10px ;
+}
+.product-sec .pro-list .sec-title{
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #eee;
+}
+.product-sec .pro-list .sec-title .title{
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+}
+.row{
+  --bs-gutter-x:30px
+}
+.sidebar-page-container .content-side{
+  position: relative;
+}
+.product-sec.sidebar-page-container .news-block-one .inner-box{
+  margin-bottom: 15px ;
+  box-shadow: none;
+}

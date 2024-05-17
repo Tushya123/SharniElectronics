@@ -151,7 +151,7 @@ export default function Contact() {
                                 type="text"
                                 name="ContactPerson"
                                 placeholder="Enter your name"
-                                className={touched.ContactPerson && errors.ContactPerson ? 'error' : ''}
+                                // className={touched.ContactPerson && errors.ContactPerson ? 'error' : ''}
                                 required=""
                               />
                               <ErrorMessage name="ContactPerson" component="div" className="error-message" />
@@ -163,7 +163,7 @@ export default function Contact() {
                                 type="text"
                                 name="Mobile"
                                 placeholder="Enter your number"
-                                className={touched.Mobile && errors.Mobile ? 'error' : ''}
+                                // className={touched.Mobile && errors.Mobile ? 'error' : ''}
                                 required=""
                               />
                               <ErrorMessage name="Mobile" component="div" className="error-message" />
@@ -174,7 +174,7 @@ export default function Contact() {
                               <Field
                                 type="email"
                                 name="Email"
-                                className={touched.Email && errors.Email ? 'error' : ''}
+                                // className={touched.Email && errors.Email ? 'error' : ''}
                                 required=""
                                 placeholder="Enter your Email"
                               />
@@ -185,7 +185,7 @@ export default function Contact() {
                               <div className="select-box">
                                 <Field
                                   as="select"
-                                  className={`nice-select selectmenu ${touched.Country && errors.Country ? 'error' : ''}`}
+                                  className='nice-select selectmenu'
                                   name="Country"
                                 >
                                   <option value="">Select Country</option>
@@ -212,7 +212,7 @@ export default function Contact() {
                                 rows="3"
                                 required=""
                                 as="textarea"
-                                className={`custom-textarea ${touched.Message && errors.Message ? 'error' : ''}`}
+                                className='custom-textarea'
                               ></Field>
                               <ErrorMessage name="Message" component="div" className="error-message" />
                             </div>

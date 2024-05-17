@@ -204,7 +204,9 @@ console.log("id",id)
                 <div className="pro-list">
                   <div className="sec-title">
                     <h3 className="title">Chemical By {letter}</h3>
-                    <div className="row">
+                   
+                  </div>
+                  <div className="row">
                       {products.map((item, index) => (
                         
                         <div
@@ -250,7 +252,6 @@ console.log("id",id)
                         </div>
                       ))}
                     </div>
-                  </div>
                 </div>
               </div>
             </section>
