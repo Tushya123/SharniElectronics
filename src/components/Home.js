@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import 'react-magic-slider-dots/dist/magic-dots.css';
+import "react-magic-slider-dots/dist/magic-dots.css";
 import footer from "../assets/images/new-home/footer-location-img.jpg";
 import skype from "../assets/images/new-home/skype.png";
 import wp from "../assets/images/new-home/whatsapp.png";
@@ -31,9 +31,9 @@ import axios from "axios";
 import Blog from "./Blog";
 import AboutUs from "./AboutUs";
 import Inquiry from "./Inquiry";
-import MagicSliderDots from 'react-magic-slider-dots';
-import 'react-magic-slider-dots/dist/magic-dots.css';
-
+import MagicSliderDots from "react-magic-slider-dots";
+import "react-magic-slider-dots/dist/magic-dots.css";
+import NewsEvent from "./NewsEvent";
 
 export default function Home() {
   const settings = {
@@ -45,9 +45,19 @@ export default function Home() {
     autoplaySpeed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    appendDots: dots =>{
-      return <MagicSliderDots dots={dots} numDotsToShow={4} dotWidth={30} autoplay={true} speed={500} slidesToScroll={1} slidesToShow={1}></MagicSliderDots>
-    }
+    appendDots: (dots) => {
+      return (
+        <MagicSliderDots
+          dots={dots}
+          numDotsToShow={4}
+          dotWidth={30}
+          autoplay={true}
+          speed={500}
+          slidesToScroll={1}
+          slidesToShow={1}
+        ></MagicSliderDots>
+      );
+    },
   };
 
   const [banner, setBanner] = useState([]);
@@ -77,7 +87,6 @@ export default function Home() {
         {/* <!-- banner-section --> */}
         <section className="banner-section banner-style-one">
           <Slider {...settings}>
-            
             {banner.map((bannerItem, index) => (
               <div className="slide-item position-slider" key={index}>
                 <div className="image-layer">
@@ -102,7 +111,9 @@ export default function Home() {
                           <img src={iso} alt="" />
                         </li>
                       </ul>
-                      <h2  style={{color:"white"}}>{bannerItem.Description}</h2>
+                      <h2 style={{ color: "white" }}>
+                        {bannerItem.Description}
+                      </h2>
                       <ul className="list clearfix">
                         <li>
                           <div className="icon-box">
@@ -480,155 +491,8 @@ export default function Home() {
         <Blog />
         {/* <!-- blog-grid end --> */}
         {/* <!-- news-section --> */}
-        <section className="news-section sec-pad">
-          <div className="auto-container">
-            <div className="sec-title">
-              <span className="sub-title">News &amp; Events</span>
-              <h2>Explore our latest post</h2>
-              <div className="btn-box">
-                <a href="#" className="theme-btn">
-                  View All News
-                </a>
-              </div>
-            </div>
-            <div className="row clearfix">
-              <div className="col-lg-4 col-md-6 col-sm-12 news-block">
-                <div
-                  className="news-block-one wow fadeInUp animated animated"
-                  data-wow-delay="00ms"
-                  data-wow-duration="1500ms"
-                  style={{
-                    visibility: "visible",
-                    animationDuration: "1500ms",
-                    animationDelay: "0ms",
-                    animationName: "fadeInUp",
-                  }}
-                >
-                  <div className="inner-box">
-                    <div className="image-box">
-                      <figure className="image">
-                        <img src={news} alt="" />
-                      </figure>
-                      <div className="link-btn">
-                        <a href="#">
-                          <i className="flaticon-zoom-in"></i>
-                        </a>
-                      </div>
-                    </div>
-                    <div className="lower-content">
-                      <div className="category">
-                        <a href="#">Shreeji Pharma</a>
-                      </div>
-                      <ul className="post-info clearfix">
-                        <li>24 October, 2023</li>
-                      </ul>
-                      <h3>
-                        <a href="#">
-                          Kindly visit our Booth at CPHI – Worldwide, Barcelona
-                        </a>
-                      </h3>
-                      <div className="lower-box">
-                        <div className="link">
-                          <a href="#">Read More</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6 col-sm-12 news-block">
-                <div
-                  className="news-block-one wow fadeInUp animated animated"
-                  data-wow-delay="00ms"
-                  data-wow-duration="1500ms"
-                  style={{
-                    visibility: "visible",
-                    animationDuration: "1500ms",
-                    animationDelay: "0ms",
-                    animationName: "fadeInUp",
-                  }}
-                >
-                  <div className="inner-box">
-                    <div className="image-box">
-                      <figure className="image">
-                        <img src={news} alt="" />
-                      </figure>
-                      <div className="link-btn">
-                        <a href="#">
-                          <i className="flaticon-zoom-in"></i>
-                        </a>
-                      </div>
-                    </div>
-                    <div className="lower-content">
-                      <div className="category">
-                        <a href="#" v="">
-                          Shreeji Pharma
-                        </a>
-                      </div>
-                      <ul className="post-info clearfix">
-                        <li>24 October, 2023</li>
-                      </ul>
-                      <h3>
-                        <a href="#">
-                          Kindly visit our Booth at CPHI – Worldwide, Barcelona
-                        </a>
-                      </h3>
-                      <div className="lower-box">
-                        <div className="link">
-                          <a href="#">Read More</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6 col-sm-12 news-block">
-                <div
-                  className="news-block-one wow fadeInUp animated animated"
-                  data-wow-delay="00ms"
-                  data-wow-duration="1500ms"
-                  style={{
-                    visibility: "visible",
-                    animationDuration: "1500ms",
-                    animationDelay: "0ms",
-                    animationName: "fadeInUp",
-                  }}
-                >
-                  <div className="inner-box">
-                    <div className="image-box">
-                      <figure className="image">
-                        <img src={news} alt="" />
-                      </figure>
-                      <div className="link-btn">
-                        <a href="#">
-                          <i className="flaticon-zoom-in"></i>
-                        </a>
-                      </div>
-                    </div>
-                    <div className="lower-content">
-                      <div className="category">
-                        <a href="#">Shreeji Pharma</a>
-                      </div>
-                      <ul className="post-info clearfix">
-                        <li>24 October, 2023</li>
-                      </ul>
-                      <h3>
-                        <a href="#">
-                          Kindly visit our Booth at CPHI – Worldwide, Barcelona
-                        </a>
-                      </h3>
-                      <div className="lower-box">
-                        <div className="link">
-                          <a href="#">Read More</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+
+        <NewsEvent />
         {/* <!-- news-section end --> */}
         {/* <!-- booking-section --> */}
         <Inquiry />

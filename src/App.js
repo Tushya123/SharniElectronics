@@ -30,6 +30,7 @@ import AboutUs from "./components/AboutUs";
 import Inquiry from "./components/Inquiry";
 import BlogsDetails from "./pages/Blogs/BlogsDetails";
 import InnderGallery from "./pages/InnerGallery"
+import NewsEvent from "./components/NewsEvent";
 
 function App() {
 
@@ -53,6 +54,8 @@ function App() {
         <Route path="/inquiry" element={<Inquiry />} />
         <Route path="/blogdetails/:id" element={<BlogsDetails/>} />
         <Route path="/innergallery/:index" element={<InnderGallery />} />
+        <Route path="/newsevent" element={<NewsEvent />} />
+
 
       </Routes>
       <Footer />

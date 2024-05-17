@@ -223,7 +223,7 @@ console.log("id",id)
                           } col-md-12 col-sm-12 content-side`}
                         >
                           <div className="news-block-one">
-                            <div className="inner-box">
+                            <div className="inner-box" style={{boxShadow:'none'}}>
                               <a
                                 className="text"
                                 href="/productDetails"
