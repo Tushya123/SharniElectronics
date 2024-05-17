@@ -113,13 +113,13 @@ console.log("id",id)
           ></div>
           <div className="auto-container">
             <div className="content-box">
-              <h1>Active Pharmaceuticals Ingrediants (API)</h1>
+              <h1>{localStorage.getItem("selectedProductId")}</h1>
               <ul className="bread-crumb clearfix">
                 <li>
                   <a href="index.html">Home</a>
                 </li>
                 <li>Products</li>
-                <li>Active Pharmaceuticals Ingrediants (API)</li>
+                <li>{localStorage.getItem("selectedProductId")}</li>
               </ul>
             </div>
           </div>
