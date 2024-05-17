@@ -13886,14 +13886,9 @@ div#mCSB_1_container{
   width: 100%;
   height: auto;
 }
-.error {
-  border: 2px solid red !important; /* Increased specificity and used !important to override other styles */
-}
 
 .error-message {
   color: red;
-  font-size: 12px;
-  margin-top: 5px;
 }
 
 
@@ -13941,5 +13936,5 @@ div#mCSB_1_container{
 }
 .product-sec.sidebar-page-container .news-block-one .inner-box{
   margin-bottom: 15px ;
-  box-shadow: none;
+  box-shadow: n;
 }

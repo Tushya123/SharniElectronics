@@ -42,7 +42,9 @@ const countriesArray = [
   { label: "AE", value: "UNITED ARAB EMIRATES" },
   { label: "GB", value: "UNITED KINGDOM" },
   { label: "US", value: "UNITED STATES" },
+
 ];
+
 
 export default function Contact() {
   const validationSchema = Yup.object().shape({
@@ -50,9 +52,7 @@ export default function Contact() {
     Mobile: Yup.string()
       .matches(/^\d{10}$/, "Invalid phone number")
       .required("Enter Your Mobile Number!"),
-    Email: Yup.string()
-      .email("Invalid email")
-      .required("Enter your Email Address!"),
+    Email: Yup.string().email("Invalid email").required("Enter your Email Address!"),
     Country: Yup.string().required("Enter Country!"),
     Message: Yup.string().required("Enter your Message!"),
   });
@@ -84,24 +84,17 @@ export default function Contact() {
   };
 
   return (
-    <React.Fragment
-      style={{ position: "relative", minHeight: "100%", top: "0px" }}
-    >
+    <React.Fragment style={{ position: "relative", minHeight: "100%", top: "0px" }}>
       <div className="boxed_wrapper">
         <Header />
         {/* <!-- page-title --> */}
         <section className="page-title">
-          <div
-            className="bg-layer"
-            style={{ backgroundImage: `url(${Background})` }}
-          ></div>
+          <div className="bg-layer" style={{ backgroundImage: `url(${Background})` }}></div>
           <div className="auto-container">
             <div className="content-box">
               <h1>Contact</h1>
               <ul className="bread-crumb clearfix">
-                <li>
-                  <a href="/">Home</a>
-                </li>
+                <li><a href="/">Home</a></li>
                 <li>Contact</li>
                 <li>Contact</li>
               </ul>
@@ -120,10 +113,7 @@ export default function Contact() {
                       <i className="flaticon-pin"></i>
                     </div>
                     <h3>Location</h3>
-                    <p>
-                      311, Atlantis Heights, Sarabhai Main Road, Vadiwadi,
-                      Vadodara - 390 007
-                    </p>
+                    <p>311, Atlantis Heights, Sarabhai Main Road, Vadiwadi, Vadodara - 390 007</p>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-6 col-sm-12 single-column">
@@ -131,12 +121,8 @@ export default function Contact() {
                     <div className="icon-box">
                       <i className="flaticon-phone-call-1"></i>
                     </div>
-                    <h3>
-                      <a href="tel:+91 8866002331">+91 8866002331</a>
-                    </h3>
-                    <p>
-                      Mon to Sat: 10.00am to 6.00pm <br /> Sunday: Closed
-                    </p>
+                    <h3><a href="tel:+91 8866002331">+91 8866002331</a></h3>
+                    <p>Mon to Sat: 10.00am to 6.00pm <br /> Sunday: Closed</p>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-6 col-sm-12 single-column">
@@ -146,9 +132,7 @@ export default function Contact() {
                     </div>
                     <h3>
                       <i className="flaticon-dial-pad"></i>
-                      <a href="mailto:contact@shreejipharma.com">
-                        contact@shreejipharma.com
-                      </a>
+                      <a href="mailto:contact@shreejipharma.com">contact@shreejipharma.com</a>
                     </h3>
                     <h3>
                       <i className="fa-brands fa-skype"></i>
@@ -156,10 +140,7 @@ export default function Contact() {
                     </h3>
                     <h3>
                       <i className="fa-brands fa-whatsapp"></i>
-                      <a
-                        href="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
-                        target="_blank"
-                      >
+                      <a href="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -" target="_blank">
                         +91 8866002331
                       </a>
                     </h3>
@@ -187,9 +168,7 @@ export default function Contact() {
                 <div className="inner-box">
                   <div className="sec-title">
                     <span className="sub-title">Send a Message</span>
-                    <h2>
-                      Drop a line &amp; get a reply <br /> from our team
-                    </h2>
+                    <h2>Drop a line &amp; get a reply <br /> from our team</h2>
                   </div>
                   <div className="form-inner">
                     <Formik
@@ -212,11 +191,7 @@ export default function Contact() {
                                 // className={touched.ContactPerson && errors.ContactPerson ? 'error' : ''}
                                 required=""
                               />
-                              <ErrorMessage
-                                name="ContactPerson"
-                                component="div"
-                                className="error-message"
-                              />
+                              <ErrorMessage name="ContactPerson" component="div" className="error-message" />
                             </div>
                             <div className="col-lg-6 col-md-12 col-sm-12 form-group">
                               <i className="fa-solid fa-phone"></i>
@@ -228,11 +203,7 @@ export default function Contact() {
                                 // className={touched.Mobile && errors.Mobile ? 'error' : ''}
                                 required=""
                               />
-                              <ErrorMessage
-                                name="Mobile"
-                                component="div"
-                                className="error-message"
-                              />
+                              <ErrorMessage name="Mobile" component="div" className="error-message" />
                             </div>
                             <div className="col-lg-6 col-md-12 col-sm-12 form-group">
                               <i className="fa-solid fa-envelope"></i>
@@ -244,39 +215,27 @@ export default function Contact() {
                                 required=""
                                 placeholder="Enter your Email"
                               />
-                              <ErrorMessage
-                                name="Email"
-                                component="div"
-                                className="error-message"
-                              />
+                              <ErrorMessage name="Email" component="div" className="error-message" />
                             </div>
                             <div className="col-lg-6 col-md-12 col-sm-12 form-group">
                               <label>Select Country</label>
                               <div className="select-box">
                                 <Field
                                   as="select"
-                                  className={`form-control ${
-                                    errors.Country &&
-                                    touched.Country &&
-                                    "is-invalid"
-                                  }`}
+                                  className='nice-select selectmenu'
                                   name="Country"
                                 >
-                                  <option value="">Select Country</option>
-                                  {countriesArray.map((country) => (
-                                    <option
-                                      key={country.label}
-                                      value={country.value}
-                                    >
-                                      {country.value}
-                                    </option>
-                                  ))}
+                                <option value="">Select Country</option>
+                                {countriesArray.map((country) => (
+                                  <option
+                                    key={country.label}
+                                    value={country.value}
+                                  >
+                                    {country.value}
+                                  </option>
+                                ))}
                                 </Field>
-                                <ErrorMessage
-                                  name="Country"
-                                  component="div"
-                                  className="error-message"
-                                />
+                                <ErrorMessage name="Country" component="div" className="error-message" />
                               </div>
                             </div>
                             <div className="col-lg-12 col-md-12 col-sm-12 form-group">
@@ -287,13 +246,9 @@ export default function Contact() {
                                 rows="3"
                                 required=""
                                 as="textarea"
-                                className="custom-textarea"
+                                className='custom-textarea '
                               ></Field>
-                              <ErrorMessage
-                                name="Message"
-                                component="div"
-                                className="error-message"
-                              />
+                              <ErrorMessage name="Message" component="div" className="error-message" />
                             </div>
                             <div className="col-lg-12 col-md-12 col-sm-12 form-group message-btn">
                               <button
@@ -316,19 +271,12 @@ export default function Contact() {
         </section>
         {/* <!-- contact-section end --> */}
         <div className="sticky-button">
-          <a
-            href="assets/catalogue-shreeji-pharma.pdf"
-            target="__blank"
-            download=""
-          >
+          <a href="assets/catalogue-shreeji-pharma.pdf" target="__blank" download="">
             Download Brochure
           </a>
         </div>
         <div className="sticky-whatsapp">
-          <a
-            href="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
-            target="_blank"
-          >
+          <a href="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -" target="_blank">
             <img src={wp} className="img-responsive" />
           </a>
         </div>
@@ -337,25 +285,12 @@ export default function Contact() {
             <img src={skype} className="img-responsive" />
           </a>
         </div>
-        <div
-          className="modal fade"
-          id="exampleModa"
-          tabindex="-1"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
+        <div className="modal fade" id="exampleModa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div className="modal-dialog">
             <div className="modal-content custom-model-content">
               <div className="modal-header">
-                <h1 className="modal-title fs-5" id="exampleModalLabel">
-                  Vadiwadi, Vadodara
-                </h1>
-                <button
-                  type="button"
-                  className="btn-close custom-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
+                <h1 className="modal-title fs-5" id="exampleModalLabel">Vadiwadi, Vadodara</h1>
+                <button type="button" className="btn-close custom-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div className="modal-body">
                 <iframe
