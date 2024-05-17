@@ -176,7 +176,7 @@ console.log("id",id)
                           className="theme-btn"
                           name="submit-form"
                         >
-                          <Link onClick={()=>{
+                          <Link style={{color:'white'}} onClick={()=>{
                                       setShow(false);
                                       handleAddToCart();
                                     

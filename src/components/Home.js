@@ -41,11 +41,12 @@ export default function Home() {
     arrows: true,
     infinite: false,
     speed: 500,
-    autoplay:true,
+    autoplay: true,
+    autoplaySpeed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    appendDots: dots => {
-      return <MagicSliderDots dots={dots} numDotsToShow={4} dotWidth={30} autoplay={true} speed={500}  slidesToScroll={1} slidesToShow={1}/>;
+    appendDots: dots =>{
+      return <MagicSliderDots dots={dots} numDotsToShow={4} dotWidth={30} autoplay={true} speed={500} slidesToScroll={1} slidesToShow={1}></MagicSliderDots>
     }
   };
 
