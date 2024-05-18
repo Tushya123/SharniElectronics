@@ -69,29 +69,33 @@ console.log("id",id)
   console.log("THis is:",productData)
   const handleAddToCart = async () => {
     try {
-       const response = await axios.post(`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/create/InquiryProduct`, productData);
+      const response = await axios.post(`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/create/InquiryProduct`, productData);
       console.log('Response:', response.data.data._id);
       const productId = response.data.data._id;
       console.log('Product ID from response:', productId);
-
-      // Retrieve existing product IDs from localStorage
-      let productIds = JSON.parse(localStorage.getItem('productIds'));
+  
+      // Retrieve existing product IDs from localStorage, initialize as an empty array if null
+      let productIds = JSON.parse(localStorage.getItem('productIds')) || [];
       console.log('Current product IDs in localStorage:', productIds);
-
+  
       // Add the new product ID to the array
       productIds.push(productId);
       console.log('Updated product IDs:', productIds);
-
+  
       // Save the updated array back to localStorage
       localStorage.setItem('productIds', JSON.stringify(productIds));
       console.log('Updated product IDs saved to localStorage');
-
+  
       // Reset the quantity
       setQuantity(0);
+      if(response){
+        setShow(false);
+      }
     } catch (error) {
       console.error('Error adding product to cart:', error);
     }
   };
+  
 
   const productsByStartingLetter = data.reduce((acc, product) => {
     const startingLetter = product.Description[0];
@@ -184,7 +188,7 @@ console.log("id",id)
                           name="submit-form"
                         >
                           <Link style={{color:'white'}} onClick={()=>{
-                                      setShow(false);
+                                     
                                       handleAddToCart();
                                     
 
