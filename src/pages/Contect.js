@@ -96,7 +96,6 @@ export default function Contact() {
               <ul className="bread-crumb clearfix">
                 <li><a href="/">Home</a></li>
                 <li>Contact</li>
-                <li>Contact</li>
               </ul>
             </div>
           </div>

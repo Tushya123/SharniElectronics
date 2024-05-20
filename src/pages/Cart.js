@@ -229,7 +229,6 @@ export default function Cart() {
                     <a href="index.html">Home</a>
                   </li>
                   <li>Cart</li>
-                  <li>Cart</li>
                 </ul>
               </div>
             </div>
@@ -457,6 +456,8 @@ export default function Cart() {
                           data-bs-toggle="modal"
                           data-bs-target="#inquiryModal"
                           onClick={handleShow}
+                            disabled={products.length === 0} // Disable button when products array is empty
+
                         >
                           Make Inquiry
                         </button>

@@ -9,33 +9,29 @@ import Header from "../../components/Header";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-import axios from 'axios';
-
+import axios from "axios";
 
 export default function Products() {
   const [productData, setProductData] = useState({
     // Assuming you have some product data to send
     ProductDetail2: "",
     ProductDetailLabel: "",
-    Group:"",
+    Group: "",
     Quantity: "",
-    
-    
-
   });
-  
+
   const [show, setShow] = useState(false);
   const [data, setData] = useState([]);
-  const [quantity, setQuantity] = useState(0); 
+  const [quantity, setQuantity] = useState(0);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [name,setname]=useState("");
-  const [id,setid]=useState("");
-  const [desc,setDescription]=useState("");
+  const [name, setname] = useState("");
+  const [id, setid] = useState("");
+  const [desc, setDescription] = useState("");
   const handleQuantityChange = (event) => {
     setQuantity(event.target.value);
   };
-console.log("id",id)
+  console.log("id", id);
   useEffect(() => {
     const xyz = localStorage.getItem("selectedProductId");
     fetch(
@@ -53,7 +49,6 @@ console.log("id",id)
 
       .catch((error) => console.error("Error:", error));
   }, []);
-  
 
   useEffect(() => {
     setProductData({
@@ -64,32 +59,33 @@ console.log("id",id)
     });
   }, [quantity, desc, name, id]);
 
-
- 
-  console.log("THis is:",productData)
+  console.log("THis is:", productData);
   const handleAddToCart = async () => {
     try {
-       const response = await axios.post(`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/create/InquiryProduct`, productData);
-      console.log('Response:', response.data.data._id);
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/create/InquiryProduct`,
+        productData
+      );
+      console.log("Response:", response.data.data._id);
       const productId = response.data.data._id;
-      console.log('Product ID from response:', productId);
+      console.log("Product ID from response:", productId);
 
       // Retrieve existing product IDs from localStorage
-      let productIds = JSON.parse(localStorage.getItem('productIds'));
-      console.log('Current product IDs in localStorage:', productIds);
+      let productIds = JSON.parse(localStorage.getItem("productIds"));
+      console.log("Current product IDs in localStorage:", productIds);
 
       // Add the new product ID to the array
       productIds.push(productId);
-      console.log('Updated product IDs:', productIds);
+      console.log("Updated product IDs:", productIds);
 
       // Save the updated array back to localStorage
-      localStorage.setItem('productIds', JSON.stringify(productIds));
-      console.log('Updated product IDs saved to localStorage');
+      localStorage.setItem("productIds", JSON.stringify(productIds));
+      console.log("Updated product IDs saved to localStorage");
 
       // Reset the quantity
       setQuantity(0);
     } catch (error) {
-      console.error('Error adding product to cart:', error);
+      console.error("Error adding product to cart:", error);
     }
   };
 
@@ -158,11 +154,9 @@ console.log("id",id)
                           isDisabled={true}
                           value={name}
                           // placeholder={name}
-                          
 
                           aria-required="true"
                         />
-
                       </div>
                       <div className="col-lg-12 col-md-6 col-sm-12 form-group">
                         <label>Quantity</label>
@@ -170,11 +164,10 @@ console.log("id",id)
                           type="number"
                           name="quantity"
                           required
-                          
                           placeholder="Enter Quantity"
                           aria-required="true"
                           value={quantity} // Bind the input value to the state
-          onChange={handleQuantityChange}
+                          onChange={handleQuantityChange}
                         />
                       </div>
                       <div className="col-lg-12 col-md-12 col-sm-12 form-group message-btn text-center">
@@ -183,12 +176,15 @@ console.log("id",id)
                           className="theme-btn"
                           name="submit-form"
                         >
-                          <Link style={{color:'white'}} onClick={()=>{
-                                      setShow(false);
-                                      handleAddToCart();
-                                    
-
-                                    }}>Add To Cart</Link>
+                          <Link
+                            style={{ color: "white" }}
+                            onClick={() => {
+                              setShow(false);
+                              handleAddToCart();
+                            }}
+                          >
+                            Add To Cart
+                          </Link>
                         </button>
                       </div>
                     </div>
@@ -211,54 +207,56 @@ console.log("id",id)
                 <div className="pro-list">
                   <div className="sec-title">
                     <h3 className="title">Chemical By {letter}</h3>
-                   
                   </div>
                   <div className="row">
-                      {products.map((item, index) => (
-                        
-                        <div
-                          key={index}
-                          className={`col-lg-${
-                            products.length === 1 ? "3" : "3"
-                          } col-md-12 col-sm-12 content-side`}
-                        >
-                          <div className="news-block-one">
-                            <div className="inner-box" style={{boxShadow:'none'}}>
-                              <a
-                                className="text"
-                                href="/productDetails"
-                                onClick={() =>
-                                  localStorage.setItem(
-                                    "description",
-                                    item.Description
-                                  )
-                                }
-                              >
-                                <h2>{item.Description}</h2>
-                              </a>
-                              <div className="lower-box">
-                                <div className="link">
-                                  <a
-                                    type="button"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#inquiryModal"
-                                    onClick={()=>{
-                                      setShow(true);
-                                      setname(item.Description);
-                                      setid(item._id);
-                                      setDescription(item.ProductDetail.ProductGroup);
-
-                                    }}
-                                  >
-                                    Inquiry
-                                  </a>
-                                </div>
+                    {products.map((item, index) => (
+                      <div
+                        key={index}
+                        className={`col-lg-${
+                          products.length === 1 ? "3" : "3"
+                        } col-md-12 col-sm-12 content-side`}
+                      >
+                        <div className="news-block-one">
+                          <div
+                            className="inner-box"
+                            style={{ boxShadow: "none" }}
+                          >
+                            <a
+                              className="text"
+                              href="/productDetails"
+                              onClick={() =>
+                                localStorage.setItem(
+                                  "description",
+                                  item.Description
+                                )
+                              }
+                            >
+                              <h2>{item.Description}</h2>
+                            </a>
+                            <div className="lower-box">
+                              <div className="link">
+                                <a
+                                  type="button"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#inquiryModal"
+                                  onClick={() => {
+                                    setShow(true);
+                                    setname(item.Description);
+                                    setid(item._id);
+                                    setDescription(
+                                      item.ProductDetail.ProductGroup
+                                    );
+                                  }}
+                                >
+                                  Inquiry
+                                </a>
                               </div>
                             </div>
                           </div>
                         </div>
-                      ))}
-                    </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </section>

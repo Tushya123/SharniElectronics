@@ -7,46 +7,47 @@ import Header from "../../components/Header";
 import { useParams ,Link} from "react-router-dom";
 import axios from "axios";
 
-export default function BlogsDetails() {
+export default function NewsDetails() {
 
   const [Blogs, setBlogs] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/listonly/Blog`
-        );
-        console.log("Data:", response);
-        setBlogs(response.data);
-      } catch (error) {
-        console.error("Error fetching product data:", error);
-      }
-    };
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         const response = await axios.get(
+//           `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/listonly/Blog`
+//         );
+//         console.log("Data:", response);
+//         setBlogs(response.data);
+//       } catch (error) {
+//         console.error("Error fetching product data:", error);
+//       }
+//     };
 
-    fetchData();
-  }, []);
+//     fetchData();
+//   }, []);
 
   const { id } = useParams();
   console.log(id, "avaniid");
-  const [blog, setBlog] = useState(null);
-  console.log(blog, "blog");
+//   const [Blogs, setBlog] = useState(null);
+  console.log(Blogs, "Blogs");
   useEffect(() => {
     const fetchBlog = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/get/Blog/${id}`
+          `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/get/Newsletter/${id}`
         );
-        setBlog(response.data);
+        console.log(response.data);
+        setBlogs(response.data);
       } catch (error) {
-        console.error("Error fetching blog data:", error);
+        console.error("Error fetching Blogs data:", error);
       }
     };
 
     fetchBlog();
   }, [id]);
-
-  if (!blog) return <div>Loading...</div>;
+console.log(Blogs);
+  if (!Blogs) return <div>Loading...</div>;
 
   return (
     <React.Fragment
@@ -62,43 +63,44 @@ export default function BlogsDetails() {
           ></div>
           <div className="auto-container">
             <div className="content-box">
-              <h1>{blog.Name}</h1>
+              <h1>{Blogs.Name}</h1>
               <ul className="bread-crumb clearfix">
                 <li>
                   <a href="/">Home</a>
                 </li>
-                <li>Blog</li>
-                <li>{blog.Category}</li>
+                <li>News</li>
+                <li>{Blogs.Title}</li>
               </ul>
             </div>
           </div>
         </section>
         {/* <!-- page-title end -->
       <!-- service-details --> */}
-        <section class="sidebar-page-container blog-details sec-pad">
+        <section class="sidebar-page-container Blogs-details sec-pad">
           <div class="auto-container">
             <div class="row clearfix">
               <div class="col-lg-8 col-md-12 col-sm-12 content-side">
-                <div class="blog-details-content">
+                <div class="Blogs-details-content">
                   <div class="content-one">
                     <figure class="image-box">
                       <img
-                        src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${blog.BlogImage}`}
+                        src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${Blogs.NewsletterImage}`}
                         alt=""
                       />
                     </figure>
                   </div>
                   <div class="content-four pb-5">
-                    <h2>{blog.Category}</h2>
+                    <h2>{Blogs.Title}</h2>
+                    
                     {
                       <span style={{ width: "300px" }}>
                         {React.createElement("div", {
-                          dangerouslySetInnerHTML: { __html: blog.Description },
+                          dangerouslySetInnerHTML: { __html: Blogs.Description },
                         })}
                       </span>
                     }
                     <p></p>
-                    <h4>{blog.Title}</h4>
+                    {/* <h4>{Blogs.Title}</h4> */}
                     {/* <ul class="list-item clearfix">
                       <li>Text Here...Text Here...Text Here...</li>
                       <li>Text Here...Text Here...Text Here...</li>
@@ -107,18 +109,18 @@ export default function BlogsDetails() {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-4 col-md-12 col-sm-12 sidebar-side">
-      <div className="blog-sidebar">
+              {/* <div className="col-lg-4 col-md-12 col-sm-12 sidebar-side">
+      <div className="Blogs-sidebar">
         <div className="sidebar-widget category-widget">
           <div className="widget-title">
             <h3>Blogs</h3>
           </div>
           <div className="widget-content">
             <ul className="category-list clearfix">
-              {Blogs.map((blog) => (
-                <li key={blog._id}>
-                  <Link to={`/blogdetails/${blog._id}`}>
-                    {blog.Category}
+              {Blogs.map((Blogs) => (
+                <li key={Blogs._id}>
+                  <Link to={`/blogdetails/${Blogs._id}`}>
+                    {Blogs.Category}
                     <i className="flaticon-right-arrow"></i>
                   </Link>
                 </li>
@@ -127,7 +129,7 @@ export default function BlogsDetails() {
           </div>
         </div>
       </div>
-    </div>
+    </div> */}
 
             </div>
           </div>

@@ -63,7 +63,11 @@ export default function ProductsDetails() {
                   <div className="content-one row mb-0">
                     <div className="col-lg-6 col-12">
                       <figure className="image-box">
-                        <img src={news} alt="" />
+                        {productDetailsss && (
+                          <img
+                            src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${productDetailsss.ImageUrl}`}
+                          />
+                        )}
                       </figure>
                     </div>
 

@@ -53,7 +53,6 @@ export default function Commitment() {
                   <a href="/">Home</a>
                 </li>
                 <li>Commitment</li>
-                <li>Commitment</li>
               </ul>
             </div>
           </div>

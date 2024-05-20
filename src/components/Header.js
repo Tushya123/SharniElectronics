@@ -2,18 +2,24 @@ import React, { useState, useEffect } from "react";
 import logo from "../assets/images/new-home/logo.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 export default function Header() {
   const [products, setProducts] = useState([]);
   const [prod, setProd] = useState([]);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleClose = () => setShowModal(false);
+  const handleShow = () => setShowModal(true);
 
   useEffect(() => {
-    const storedProductIds = localStorage.getItem('productIds');
+    const storedProductIds = localStorage.getItem("productIds");
     if (storedProductIds) {
       setProd(JSON.parse(storedProductIds));
     }
-  }, [localStorage.getItem('productIds')]);
+  }, [localStorage.getItem("productIds")]);
 
   // useEffect(() => {
   //   console.log(prod.length);
@@ -34,8 +40,6 @@ export default function Header() {
 
     fetchData();
   }, []);
-
-  
 
   const [isSticky, setIsSticky] = useState(false);
 
@@ -211,19 +215,25 @@ export default function Header() {
                       <li className="dropdown">
                         <Link>Products</Link>
                         <ul>
-                          {products.map((product, index) => (
-                            <li key={index}>
-                              <Link
-                                
-                                onClick={() => {
-                                  window.location.href = '/products';
-                                  localStorage.setItem("selectedProductId", product.ProductGroup);
-                                }}
-                              >
-                                {product.ProductGroup}
-                              </Link>
-                            </li>
-                          ))}
+                          {products
+                            .sort((a, b) =>
+                              a.ProductGroup.localeCompare(b.ProductGroup)
+                            )
+                            .map((product, index) => (
+                              <li key={index}>
+                                <Link
+                                  onClick={() => {
+                                    window.location.href = "/products";
+                                    localStorage.setItem(
+                                      "selectedProductId",
+                                      product.ProductGroup
+                                    );
+                                  }}
+                                >
+                                  {product.ProductGroup}
+                                </Link>
+                              </li>
+                            ))}
                         </ul>
                       </li>
                       <li>
@@ -240,19 +250,67 @@ export default function Header() {
                 </nav>
               </div>
               <ul className="menu-right-content">
-  <li className="support-box">
-    <div className="icon-box">
-      <i className="fas fa-shopping-cart"></i>
-      <span className="cart-badge">{prod.length}</span>
-    </div>
-    <Link to="/cart">My Cart</Link>
-  </li>
-  <li className="search-box-outer search-toggler">
-    <i className="flaticon-magnifying-glass"></i>
-  </li>
-</ul>
+                <li className="support-box">
+                  <div className="icon-box">
+                    <i className="fas fa-shopping-cart"></i>
+                    <span className="cart-badge">{prod.length}</span>
+                  </div>
+                  <Link to="/cart">My Cart</Link>
+                </li>
 
+                {/* //search */}
+                <li
+                  className="search-box-outer search-toggler"
+                  onClick={handleShow}
+                >
+                  <i className="flaticon-magnifying-glass"></i>
+                </li>
 
+                <Modal show={showModal} onHide={handleClose}>
+                  <Modal.Header closeButton>
+                    <div className="upper-box clearfix">
+                      <figure className="logo-box pull-left">
+                        <a href="#">
+                          <img src={logo} alt="Logo" />
+                        </a>
+                      </figure>
+                      <div
+                        className="close-search pull-right"
+                        onClick={handleClose}
+                      >
+                        <i className="fa-solid fa-xmark"></i>
+                      </div>
+                    </div>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <div className="overlay-layer"></div>
+                    <div className="auto-container">
+                      <div className="search-form">
+                        <form
+                          method="post"
+                          action="https://st.ourhtmldemo.com/new/Biogenix/#"
+                        >
+                          <div className="form-group">
+                            <fieldset>
+                              <input
+                                type="search"
+                                className="form-control"
+                                name="search-input"
+                                value=""
+                                placeholder="Type your keyword and hit"
+                                required=""
+                              />
+                              <button type="submit">
+                                <i className="flaticon-magnifying-glass"></i>
+                              </button>
+                            </fieldset>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </Modal.Body>
+                </Modal>
+              </ul>
             </div>
           </div>
         </div>
@@ -260,64 +318,39 @@ export default function Header() {
         {/* // sticky header */}
       </header>
       {/* <!-- Mobile Menu  --> */}
-      <div class="mobile-menu">
-        <div class="menu-backdrop"></div>
-        <div class="close-btn">
-          <i class="fas fa-times"></i>
+      <div className={`mobile-menu ${isMobileMenuOpen ? "active" : ""}`}>
+        <div
+          className="menu-backdrop"
+          onClick={() => setIsMobileMenuOpen(false)}
+        ></div>
+        <div className="close-btn" onClick={() => setIsMobileMenuOpen(false)}>
+          <i className="fas fa-times"></i>
         </div>
-
-        <nav class="menu-box">
-          <div class="nav-logo">
+        <nav className="menu-box">
+          <div className="nav-logo">
             <a href="#">
               <img src={logo} alt="" title="" />
             </a>
           </div>
-          <div class="menu-outer">
-            {/* <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--> */}
-          </div>
-          <div class="contact-info">
-            <h4>Contact Info</h4>
-            <ul>
-              <li>Chicago 12, Melborne City, USA</li>
-              <li>
-                <a href="tel:+8801682648101">+88 01682648101</a>
-              </li>
-              <li>
-                <a href="mailto:info@example.com">info@example.com</a>
-              </li>
+          <div className="menu-outer">
+            <ul className="navigation clearfix">
+              {/* Render your navigation links here */}
             </ul>
           </div>
-          <div class="social-links">
-            <ul class="clearfix">
-              <li>
-                <a href="#">
-                  <span class="fab fa-twitter"></span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="fab fa-facebook-square"></span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="fab fa-pinterest-p"></span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="fab fa-instagram"></span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="fab fa-youtube"></span>
-                </a>
-              </li>
-            </ul>
-          </div>
+          {/* Render your contact info and social links here */}
         </nav>
       </div>
+
+      {/* Add a button or icon to toggle the mobile menu */}
+      <div
+        className="mobile-nav-toggler"
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      >
+        <i className="icon-bar"></i>
+        <i className="icon-bar"></i>
+        <i className="icon-bar"></i>
+      </div>
+
       {/* <!-- End Mobile Menu --> */}
     </>
   );

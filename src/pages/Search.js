@@ -1,48 +1,49 @@
-import React, { useState, useEffect } from "react";
-import logo from "../assets/images/new-home/logo.png";
+import React,{useState,useEffect} from "react";
+import Header from "../components/Header";
 import Background from "../assets/images/new-home/breadcrumb-img.jpg";
 import footer from "../assets/images/new-home/footer-location-img.jpg";
 import skype from "../assets/images/new-home/skype.png";
 import wp from "../assets/images/new-home/whatsapp.png";
-import { logRoles } from "@testing-library/react";
 import shap10 from "../assets/images/shape/shape-10.png";
-import certificate1 from "../assets/images/new-home/certificate/certificate-1.jpg";
-import certificate2 from "../assets/images/new-home/certificate/certificate-2.jpg";
-import certificate3 from "../assets/images/new-home/certificate/certificate-3.jpg";
-import certificate4 from "../assets/images/new-home/certificate/certificate-4.jpg";
-import certificate5 from "../assets/images/new-home/certificate/certificate-5.jpg";
-import certificate6 from "../assets/images/new-home/certificate/certificate-6.jpg";
-import certificate7 from "../assets/images/new-home/certificate/certificate-7.jpg";
-import certificate8 from "../assets/images/new-home/certificate/certificate-8.jpg";
-import Header from "../components/Header";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
-export default function Certificate() {
-  const [certificate, setcertificate] = useState([]);
 
+export default function Search() {
+      // State to hold the products
+  const [products, setProducts] = useState([]);
+  // State to hold the search query
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Fetch products data (assuming you fetch it from an API)
   useEffect(() => {
+    // Example fetch request
     const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/listonly/Certificate`
-        );
-        console.log("Gallery Data:", response);
-        setcertificate(response.data);
-      } catch (error) {
-        console.error("Error fetching gallery data:", error);
-      }
-    };
+        try {
+          const response = await axios.get(
+            `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/list/areatype`
+          );
+          console.log("Data:", response);
+          setProducts(response.data);
+        } catch (error) {
+          console.error("Error fetching product data:", error);
+        }
+      };
+  
+      fetchData();
+    }, []); // Empty dependency array means this effect runs only once after the component mounts
 
-    fetchData();
-  }, []);
+  // Filter products based on search query
+  const filteredProducts = products.filter((product) =>
+    product.ProductGroup.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
 
   return (
-    <React.Fragment
-      style={{ position: "relative", minHeight: "100%", top: "0px" }}
-    >
+
+    <>
       <div className="boxed_wrapper">
         <Header />
-        {/* <!-- page-title --> */}
         <section className="page-title">
           <div
             className="bg-layer"
@@ -50,62 +51,52 @@ export default function Certificate() {
           ></div>
           <div className="auto-container">
             <div className="content-box">
-              <h1>Certificate</h1>
+              <h1>Search Result</h1>
               <ul className="bread-crumb clearfix">
                 <li>
                   <a href="/">Home</a>
                 </li>
-                <li>Certificate</li>
+                <li>Search</li>
               </ul>
             </div>
           </div>
         </section>
-        {/* <!-- page-title end --> */}
-        {/* <!-- banner-section end --> */}
-        {/* <!-- service-details --> */}
-        <section className="service-details sec-pad">
+        <br />
+        <section className="new-prod sidebar-page-container blog-large-image news-style-two product-sec">
           <div className="auto-container">
-            <div className="row clearfix">
-              {certificate.map((item, index) => (
-                <div
-                  key={index}
-                  className="col-lg-3 col-md-6 col-sm-12 project-block gallery"
-                >
-                  <div className="project-block-one">
-                    <div className="inner-box">
-                      <div className="static-content">
-                        <figure className="image-box">
-                          <img
-                            src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${item.CertificateImage}`}
-                          />
-                        </figure>
-                        <h5 className="gal-txt">{item.Title}</h5>
-                      </div>
-                      <div className="overlay-content">
-                        <div className="image-box">
-                          <figure className="image">
-                            <img
-                              src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${item.CertificateImage}`}
-                              alt=""
-                            />
-                          </figure>
-                          <h5 className="gal-txt">{item.Title}</h5>
-                          <div className="view-btn">
-                            <a href={item.CertificateImage}>
-                              <i className="flaticon-zoom-in"></i>
-                            </a>
+            <div className="pro-list">
+              <div className="sec-title">
+                <h3 className="title">Search results for : "{searchQuery}"</h3>
+              </div>
+
+              {/* Render filtered products */}
+              <div className="row">
+                {filteredProducts.map((product, index) => (
+                  <div className="col-lg-3 col-md-12 col-sm-12 content-side" key={index}>
+                    <div className="news-block-one">
+                      <div className="inner-box">
+                        <Link className="text" to="/product-detail.html">
+                          <h2>{product.ProductGroup}</h2>
+                        </Link>
+                        <div className="lower-box">
+                          <div className="link">
+                            <button
+                              type="button"
+                              data-bs-toggle="modal"
+                              data-bs-target="#inquiryModal"
+                            >
+                              Inquiry
+                            </button>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </section>
-
-        {/* <!-- service-details end --> */}
 
         {/* <!-- locations-section --> */}
         <section className="locations-section sec-pad centred">
@@ -233,6 +224,6 @@ export default function Certificate() {
           <i className="flaticon-up-arrow"></i>
         </button>
       </div>
-    </React.Fragment>
+    </>
   );
 }

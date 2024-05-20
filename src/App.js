@@ -29,15 +29,15 @@ import Blog from "./components/Blog";
 import AboutUs from "./components/AboutUs";
 import Inquiry from "./components/Inquiry";
 import BlogsDetails from "./pages/Blogs/BlogsDetails";
-import InnderGallery from "./pages/InnerGallery"
+import InnderGallery from "./pages/InnerGallery";
 import NewsEvent from "./components/NewsEvent";
+import NewsDetails from "./pages/News/NewsDetails";
+import Search from "./pages/Search";
 
 function App() {
-
-  
   return (
     <BrowserRouter>
-    <Header/>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/productss" element={<Productss />} />
@@ -52,10 +52,12 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/inquiry" element={<Inquiry />} />
-        <Route path="/blogdetails/:id" element={<BlogsDetails/>} />
+        <Route path="/blogdetails/:id" element={<BlogsDetails />} />
         <Route path="/innergallery/:index" element={<InnderGallery />} />
         <Route path="/newsevent" element={<NewsEvent />} />
-
+        {/* <Route path="/newsdetails" component={<NewsDetails/>} /> */}
+        <Route path='/detailNews/:id' element ={<NewsDetails />} />
+        <Route path='/search' element ={<Search />} />
 
       </Routes>
       <Footer />

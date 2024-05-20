@@ -54,7 +54,6 @@ export default function About() {
                   <li>
                     <a href="/">Home</a>
                   </li>
-                  <li>About</li>
                   <li>About Us</li>
                 </ul>
               </div>
