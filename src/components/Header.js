@@ -4,15 +4,30 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { useSearch } from "../pages/Search/SearchProvider";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [products, setProducts] = useState([]);
   const [prod, setProd] = useState([]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const {
+    searchQuery,
+    setSearchQuery,
+    showModal,
+    handleShow,
+    handleClose,
+    productsData,
+  } = useSearch();
+  
 
-  const handleClose = () => setShowModal(false);
-  const handleShow = () => setShowModal(true);
+  console.log(productsData,'productsData');
+
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate(`/search?query=${encodeURIComponent(searchQuery)}`);
+  };
 
   useEffect(() => {
     const storedProductIds = localStorage.getItem("productIds");
@@ -259,6 +274,7 @@ export default function Header() {
                 </li>
 
                 {/* //search */}
+                {/* Search Box Trigger */}
                 <li
                   className="search-box-outer search-toggler"
                   onClick={handleShow}
@@ -266,6 +282,7 @@ export default function Header() {
                   <i className="flaticon-magnifying-glass"></i>
                 </li>
 
+                {/* Search Modal */}
                 <Modal show={showModal} onHide={handleClose}>
                   <Modal.Header closeButton>
                     <div className="upper-box clearfix">
@@ -286,17 +303,15 @@ export default function Header() {
                     <div className="overlay-layer"></div>
                     <div className="auto-container">
                       <div className="search-form">
-                        <form
-                          method="post"
-                          action="https://st.ourhtmldemo.com/new/Biogenix/#"
-                        >
+                        <form method="post" action="#" onSubmit={handleSubmit}>
                           <div className="form-group">
                             <fieldset>
                               <input
                                 type="search"
                                 className="form-control"
                                 name="search-input"
-                                value=""
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
                                 placeholder="Type your keyword and hit"
                                 required=""
                               />

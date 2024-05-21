@@ -8,7 +8,6 @@ import "./assets/css/jquery-ui.css";
 import "./assets/css/jquery.fancybox.min.css";
 import "./assets/css/nice-select.css";
 import "./assets/css/owl.css";
-// import "./assets/css/owl.video.play.html";
 import "./assets/css/responsive.css";
 import "./assets/css/style.css";
 import "./assets/css/timePicker.css";
@@ -32,12 +31,17 @@ import BlogsDetails from "./pages/Blogs/BlogsDetails";
 import InnderGallery from "./pages/InnerGallery";
 import NewsEvent from "./components/NewsEvent";
 import NewsDetails from "./pages/News/NewsDetails";
-import Search from "./pages/Search";
+// import Search from "./pages/Search/Search";
+import { SearchProvider } from "./pages/Search/SearchProvider";
+import Search from "./pages/Search/Search";
 
 function App() {
   return (
+    <SearchProvider>
+
     <BrowserRouter>
       <Header />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/productss" element={<Productss />} />
@@ -57,11 +61,14 @@ function App() {
         <Route path="/newsevent" element={<NewsEvent />} />
         {/* <Route path="/newsdetails" component={<NewsDetails/>} /> */}
         <Route path='/detailNews/:id' element ={<NewsDetails />} />
-        <Route path='/search' element ={<Search />} />
+        {/* <Route path='/search' element ={<Search />} /> */}
+        <Route path="/search" element={<Search/>} />
 
       </Routes>
       <Footer />
     </BrowserRouter>
+    </SearchProvider>
+
   );
 }
 

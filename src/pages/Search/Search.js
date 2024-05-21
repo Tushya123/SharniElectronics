@@ -1,0 +1,402 @@
+import React, { useState, useEffect } from "react";
+import Header from "../../components/Header";
+import Background from "../../assets/images/new-home/breadcrumb-img.jpg";
+import footer from "../../assets/images/new-home/footer-location-img.jpg";
+import skype from "../../assets/images/new-home/skype.png";
+import wp from "../../assets/images/new-home/whatsapp.png";
+import { Link } from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
+import axios from "axios";
+
+import { useSearch } from "./SearchProvider";
+
+export default function Search() {
+  const [productData, setProductData] = useState({
+    // Assuming you have some product data to send
+    ProductDetail2: "",
+    ProductDetailLabel: "",
+    Group: "",
+    Quantity: "",
+  });
+
+  const { searchQuery, productsData } = useSearch();
+  const [dataInfo, setDataInfo] = useState([]);
+  const [show, setShow] = useState(false);
+  const [name, setname] = useState("");
+  const [id, setid] = useState("");
+  const [desc, setDescription] = useState("");
+  const [quantity, setQuantity] = useState(0);
+  const handleClose = () => setShow(false);
+  const handleQuantityChange = (event) => {
+    setQuantity(event.target.value);
+  };
+  useEffect(() => {
+    setProductData({
+      Quantity: quantity,
+      Group: desc,
+      ProductDetailLabel: name,
+      ProductDetail2: id,
+    });
+  }, [quantity, desc, name, id]);
+
+  const handleAddToCart = async () => {
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/create/InquiryProduct`,
+        productData
+      );
+      console.log("Response:", response.data.data._id);
+      const productId = response.data.data._id;
+      console.log("Product ID from response:", productId);
+
+      // Retrieve existing product IDs from localStorage
+      let productIds = JSON.parse(localStorage.getItem("productIds"));
+      console.log("Current product IDs in localStorage:", productIds);
+
+      // Add the new product ID to the array
+      productIds.push(productId);
+      console.log("Updated product IDs:", productIds);
+
+      // Save the updated array back to localStorage
+      localStorage.setItem("productIds", JSON.stringify(productIds));
+      console.log("Updated product IDs saved to localStorage");
+
+      // Reset the quantity
+      setQuantity(0);
+      if (response) {
+        setShow(false);
+      }
+    } catch (error) {
+      console.error("Error adding product to cart:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (productsData && productsData.length > 0 && productsData[0].data) {
+      setDataInfo(productsData[0].data);
+    }
+  }, [productsData]);
+
+  return (
+    <React.Fragment
+      style={{ position: "relative", minHeight: "100%", top: "0px" }}
+    >
+      <div className="boxed_wrapper">
+        <Header />
+        <section className="page-title">
+          <div
+            className="bg-layer"
+            style={{ backgroundImage: `url(${Background})` }}
+          ></div>
+          <div className="auto-container">
+            <div className="content-box">
+              <h1>Search Result</h1>
+              <ul className="bread-crumb clearfix">
+                <li>
+                  <a href="/">Home</a>
+                </li>
+                <li>Search</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Modal */}
+        <Modal
+          show={show}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Make Inquiry</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <div className="modal-body">
+              <div className="contact-section new">
+                <div className="form-inner">
+                  <form id="contact-form" noValidate>
+                    <div className="row clearfix">
+                      <div className="col-lg-12 col-md-6 col-sm-12 form-group">
+                        <label>Product Name</label>
+                        <input
+                          type="text"
+                          name="username"
+                          placeholder="Product Name Here"
+                          required
+                          isDisabled={true}
+                          value={name}
+                          // placeholder={name}
+
+                          aria-required="true"
+                        />
+                      </div>
+                      <div className="col-lg-12 col-md-6 col-sm-12 form-group">
+                        <label>Quantity</label>
+                        <input
+                          type="number"
+                          name="quantity"
+                          required
+                          placeholder="Enter Quantity"
+                          aria-required="true"
+                          value={quantity} // Bind the input value to the state
+                          onChange={handleQuantityChange}
+                        />
+                      </div>
+                      <div className="col-lg-12 col-md-12 col-sm-12 form-group message-btn text-center">
+                        <button
+                          type="submit"
+                          className="theme-btn"
+                          name="submit-form"
+                        >
+                          <Link
+                            style={{ color: "white" }}
+                            onClick={() => {
+                              setShow(false);
+                              handleAddToCart();
+                            }}
+                          >
+                            Add To Cart
+                          </Link>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </Modal.Body>
+        </Modal>
+
+        <section
+          className="new-prod sidebar-page-container blog-large-image news-style-two product-sec"
+          style={{ padding: "40px 0px" }}
+        >
+          <div className="auto-container">
+            <div className="pro-list">
+              <div className="sec-title">
+                <h3 className="title">Search results for: "{searchQuery}"</h3>
+              </div>
+              <div className="title">
+                <div
+                  className="title-cat"
+                  style={{ padding: "20px", textAlign: "center" }}
+                >
+                  <h6
+                    style={{
+                      fontSize: "20px",
+                      fontWeight: "600",
+                      padding: "10px",
+                      color: "#16436f",
+                    }}
+                  >
+                    Product Category : ACTIVE PHARMACEUTICAL INGREDIENTS
+                  </h6>
+                </div>
+              </div>
+              <div className="row">
+                {dataInfo.length > 0 ? (
+                  dataInfo.map((product, index) => (
+                    <div
+                      className="col-lg-3 col-md-12 col-sm-12 content-side"
+                      key={index}
+                    >
+                      <div className="news-block-one">
+                        <div
+                          className="inner-box"
+                          style={{ boxShadow: "none" }}
+                        >
+                          <Link className="text" to="/productDetails">
+                            <h2>{product.Description}</h2>
+                          </Link>
+                          <div className="lower-box">
+                            <div className="link">
+                              <button
+                                style={{
+                                  fontSize: "16px",
+                                  color: "#16436f",
+                                  fontWeight: "600",
+                                }}
+                                type="button"
+                                data-bs-toggle="modal"
+                                data-bs-target="#inquiryModal"
+                                onClick={() => {
+                                  setShow(true);
+                                  setname(product.Description);
+                                  setid(product._id);
+                                  setDescription(
+                                    product.ProductDetail.ProductGroup
+                                  );
+                                }}
+                              >
+                                Inquiry
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <p>No products found.</p>
+                )}
+              </div>
+
+              <div className="title">
+                <div
+                  className="title-cat"
+                  style={{ padding: "20px", textAlign: "center" }}
+                >
+                  <h6
+                    style={{
+                      fontSize: "20px",
+                      fontWeight: "600",
+                      padding: "10px",
+                      color: "#16436f",
+                    }}
+                  >
+                    Product Category : VETERINARY APIS
+                  </h6>
+                </div>
+              </div>
+
+              <div className="row">
+                {dataInfo.length > 0 ? (
+                  dataInfo.map((product, index) => (
+                    <div
+                      className="col-lg-3 col-md-12 col-sm-12 content-side"
+                      key={index}
+                    >
+                      <div className="news-block-one">
+                        <div
+                          className="inner-box"
+                          style={{ boxShadow: "none" }}
+                        >
+                          <Link className="text" to="/productDetails">
+                            <h2>{product.Description}</h2>
+                          </Link>
+                          <div className="lower-box">
+                            <div className="link">
+                              <button
+                                style={{
+                                  fontSize: "16px",
+                                  color: "#16436f",
+                                  fontWeight: "600",
+                                }}
+                                type="button"
+                                data-bs-toggle="modal"
+                                data-bs-target="#inquiryModal"
+                                onClick={() => {
+                                  setShow(true);
+                                  setname(product.Description);
+                                  setid(product._id);
+                                  setDescription(
+                                    product.ProductDetail.ProductGroup
+                                  );
+                                }}
+                              >
+                                Inquiry
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <p>No products found.</p>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* <!-- locations-section --> */}
+        <section className="locations-section sec-pad centred">
+          <div className="pattern-layer"></div>
+          <div className="auto-container">
+            <div className="sec-title">
+              <span className="sub-title">Locations</span>
+              <h2>
+                Support across 50+ countries <br />
+                around the world
+              </h2>
+            </div>
+            <div className="row clearfix justify-content-center">
+              <div className="col-lg-6 col-md-6 col-sm-12 location-block mt-5">
+                <div className="location-block-one">
+                  <div className="inner-box">
+                    <figure className="image-box">
+                      <img src={footer} alt="" />
+                    </figure>
+                    <h6>SHREEJI PHARMA INTERNATIONAL</h6>
+                    <h3>
+                      311, Atlantis Heights, Sarabhai Main Road, Vadiwadi,
+                      Vadodara - 390 007, Gujarat, INDIA.
+                    </h3>
+                    <div className="custom-info">
+                      <div className="link">
+                        <a href="mailto:contact@shreejipharma.com">
+                          Email : contact@shreejipharma.com
+                          <i className="flaticon-right-arrow"></i>
+                        </a>
+                      </div>
+                      <div className="link">
+                        <a href="tel:8866002331">
+                          Contact : +91 8866002331{" "}
+                          <i className="flaticon-right-arrow"></i>
+                        </a>
+                      </div>
+                      <div className="link">
+                        <a href="skype:Nilesh.sheth70?Call">
+                          Skype ID: Nilesh.sheth70{" "}
+                          <i className="flaticon-right-arrow"></i>
+                        </a>
+                      </div>
+                    </div>
+                    <div className="link">
+                      <a
+                        href="#"
+                        target="_blank"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModa"
+                      >
+                        Locate Us <i className="flaticon-right-arrow"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* <!-- locations-section end --> */}
+        <div className="sticky-button">
+          <a
+            href="assets/catalogue-shreeji-pharma.pdf"
+            target="__blank"
+            download=""
+          >
+            Download Brochure
+          </a>
+        </div>
+        <div className="sticky-whatsapp">
+          <a
+            href="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
+            target="_blank"
+          >
+            <img src={wp} className="img-responsive" />
+          </a>
+        </div>
+        <div className="sticky-skype">
+          <a href="skype:Nilesh.sheth70?Call" target="_blank">
+            <img src={skype} className="img-responsive" />
+          </a>
+        </div>
+      </div>
+      <button className="scroll-top scroll-to-target" data-target="html">
+        <i className="flaticon-up-arrow"></i>
+      </button>
+    </React.Fragment>
+  );
+}
