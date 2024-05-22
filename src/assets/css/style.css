@@ -1753,7 +1753,7 @@ div#mCSB_1_container{
 .banner-section{
   position: relative;
   overflow: hidden;
-  height: 90vh;
+  height: 100%;
 }
   
 .banner-carousel .slide-item{

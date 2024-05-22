@@ -13,6 +13,7 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const {
     searchQuery,
+    setQuery,
     setSearchQuery,
     showModal,
     handleShow,
@@ -278,6 +279,8 @@ export default function Header() {
                 <li
                   className="search-box-outer search-toggler"
                   onClick={handleShow}
+                  onChange={(e) => setQuery(e.target.value)}
+
                 >
                   <i className="flaticon-magnifying-glass"></i>
                 </li>
