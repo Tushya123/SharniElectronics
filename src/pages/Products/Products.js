@@ -92,32 +92,40 @@ export default function Products() {
   
     try {
         const response = await axios.post(`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/create/InquiryProduct`, productData);
-        console.log('Response:', response.data.data._id);
-        const productId = response.data.data._id;
-        console.log('Product ID from response:', productId);
-
-        // Retrieve existing product IDs from localStorage
-        let productIds = JSON.parse(localStorage.getItem('productIds'));
-        console.log('Current product IDs in localStorage:', productIds);
-
-        // Initialize productIds if it doesn't exist
-        if (!productIds) {
-            productIds = [];
-        }
-
-        // Add the new product ID to the array
-        productIds.push(productId);
-        console.log('Updated product IDs:', productIds);
-
-        // Save the updated array back to localStorage
-        localStorage.setItem('productIds', JSON.stringify(productIds));
-        console.log('Updated product IDs saved to localStorage');
-
-        // Reset the quantity
-        setQuantity(0);
-        if (response) {
+        if (!response.data || !response.data.data || !response.data.data._id) {
+          throw new Error('Invalid response from the server');
+      }
+        if(response){
+          console.log('Response:', response.data.data._id);
+          const productId = response.data.data._id;
+          console.log('Product ID from response:', productId);
+  
+          // Retrieve existing product IDs from localStorage
+          let productIds = JSON.parse(localStorage.getItem('productIds'));
+          console.log('Current product IDs in localStorage:', productIds);
+  
+          // Initialize productIds if it doesn't exist
+          if (!productIds) {
+              productIds = [];
+          }
+  
+          // Add the new product ID to the array
+          productIds.push(productId);
+          console.log('Updated product IDs:', productIds);
+  
+          // Save the updated array back to localStorage
+          localStorage.setItem('productIds', JSON.stringify(productIds));
+          console.log('Updated product IDs saved to localStorage');
+  
+          // Reset the quantity
+          const storedProductIds = JSON.parse(localStorage.getItem('productIds'));
+          console.log('Verified product IDs in localStorage:', storedProductIds);
+          setQuantity(0);
+          if (storedProductIds.includes(productId)) {
             setShow(false);
         }
+        }
+       
     } catch (error) {
         console.error("Error adding product to cart:", error);
     }
