@@ -117,7 +117,22 @@ export default function Home() {
                       <ul className="list clearfix">
                         <li>
                           <div className="icon-box">
-                            {/* <i className="flaticon-laboratory-1"></i> */}
+                            <div
+                              class="icon-box"
+                              style={{
+                                position: "absolute",
+                                left: "0px",
+                                top: "10px",
+                                width: "70px",
+                                height: "60px",
+                                lineHeight: "70px",
+                                fontSize: "32px",
+                                color: "#fff",
+                                textAlign: "center",  
+                              }}
+                            >
+                              <i class="flaticon-laboratory-1"></i>
+                            </div>{" "}
                           </div>
                           <h3
                             style={{

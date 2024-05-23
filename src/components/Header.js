@@ -20,9 +20,8 @@ export default function Header() {
     handleClose,
     productsData,
   } = useSearch();
-  
 
-  console.log(productsData,'productsData');
+  console.log(productsData, "productsData");
 
   const navigate = useNavigate();
   const handleSubmit = (e) => {
@@ -280,13 +279,16 @@ export default function Header() {
                   className="search-box-outer search-toggler"
                   onClick={handleShow}
                   onChange={(e) => setQuery(e.target.value)}
-
                 >
                   <i className="flaticon-magnifying-glass"></i>
                 </li>
 
                 {/* Search Modal */}
-                <Modal show={showModal} onHide={handleClose}>
+                <Modal
+                  show={showModal}
+                  onHide={handleClose}
+                  dialogClassName="modal-fullscreen"
+                >
                   <Modal.Header closeButton>
                     <div className="upper-box clearfix">
                       <figure className="logo-box pull-left">
@@ -298,7 +300,7 @@ export default function Header() {
                         className="close-search pull-right"
                         onClick={handleClose}
                       >
-                        <i className="fa-solid fa-xmark"></i>
+                        {/* <i className="fa-solid fa-xmark"></i> */}
                       </div>
                     </div>
                   </Modal.Header>
@@ -360,14 +362,14 @@ export default function Header() {
       </div>
 
       {/* Add a button or icon to toggle the mobile menu */}
-      <div
+      {/* <div
         className="mobile-nav-toggler"
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       >
         <i className="icon-bar"></i>
         <i className="icon-bar"></i>
         <i className="icon-bar"></i>
-      </div>
+      </div> */}
 
       {/* <!-- End Mobile Menu --> */}
     </>

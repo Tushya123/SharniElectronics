@@ -101,9 +101,10 @@
 
 
 @media only screen and (max-width: 1200px){
-
+  .header-lower.sticky-header {
+    display: block !important;
+}
   .main-menu,
-  .sticky-header,
   .main-header.style-one .outer-container:before{
     display: none !important;
   }
@@ -209,7 +210,11 @@
     padding-left: 25px;
     padding-right: 20px;
   }
-
+  .position-slider .content-box {
+    position: absolute;
+    top: 50%;
+    z-index: 99;
+}
 
 }
 

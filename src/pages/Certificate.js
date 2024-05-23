@@ -6,19 +6,12 @@ import skype from "../assets/images/new-home/skype.png";
 import wp from "../assets/images/new-home/whatsapp.png";
 import { logRoles } from "@testing-library/react";
 import shap10 from "../assets/images/shape/shape-10.png";
-import certificate1 from "../assets/images/new-home/certificate/certificate-1.jpg";
-import certificate2 from "../assets/images/new-home/certificate/certificate-2.jpg";
-import certificate3 from "../assets/images/new-home/certificate/certificate-3.jpg";
-import certificate4 from "../assets/images/new-home/certificate/certificate-4.jpg";
-import certificate5 from "../assets/images/new-home/certificate/certificate-5.jpg";
-import certificate6 from "../assets/images/new-home/certificate/certificate-6.jpg";
-import certificate7 from "../assets/images/new-home/certificate/certificate-7.jpg";
-import certificate8 from "../assets/images/new-home/certificate/certificate-8.jpg";
 import Header from "../components/Header";
 import axios from "axios";
 
 export default function Certificate() {
   const [certificate, setcertificate] = useState([]);
+  const [selectedCertificate, setSelectedCertificate] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,6 +28,15 @@ export default function Certificate() {
 
     fetchData();
   }, []);
+  const handleZoomInClick = (certificateImage) => {
+    setSelectedCertificate(certificateImage);
+  };
+
+  const closeModal = () => {
+    setSelectedCertificate(null);
+  };
+
+
 
   return (
     <React.Fragment

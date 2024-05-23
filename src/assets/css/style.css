@@ -1753,9 +1753,13 @@ div#mCSB_1_container{
 .banner-section{
   position: relative;
   overflow: hidden;
-  height: 100%;
+  height: 90vh;
 }
-  
+  /* @media screen  and (max-width:768px) {
+    .banner-section{
+      height: 100%;
+    }
+  } */
 .banner-carousel .slide-item{
   position: relative;
   padding: 257px 0px 10px 0px;
@@ -2213,11 +2217,12 @@ div#mCSB_1_container{
   background: #16436f;
 }
 
-.service-block-one .inner-box .image-box .image img{
+.service-block-one .inner-box .image-box .image img {
   width: 100%;
+  height: 330px;
+  object-fit: cover;
   transition: all 500ms ease;
 }
-
 .service-block-one .inner-box:hover .image-box .image img{
   opacity: 0.3;
   transform: scale(1.05);
@@ -2269,7 +2274,7 @@ div#mCSB_1_container{
 .service-block-one .inner-box .lower-content{
   position: relative;
   display: block;
-  padding: 29px 15px 27px 30px;
+  padding: 20px ;
 }
 
 .service-block-one .inner-box .lower-content h3{
@@ -2277,7 +2282,9 @@ div#mCSB_1_container{
   font-size: 26px;
   line-height: 32px;
   font-weight: 500;
-  margin-bottom: 11px;
+  margin-bottom: 0;
+  min-height: 65px;
+  align-content: center;
 }
 
 .service-block-one .inner-box .lower-content h3 a{
@@ -13938,3 +13945,20 @@ div#mCSB_1_container{
   margin-bottom: 15px ;
   box-shadow: n;
 }
+.slick-arrow slick-next {
+  top:'-83px' !important
+}
+
+.slick-slide .image-layer img {
+  display: block;
+  height: 90vh;
+  width: 100%;
+  object-fit: cover;
+}
+.error-message {
+  font-size: 14px;
+}
+.email-input {
+  text-transform: none; /* Reset text transformation */
+}
+

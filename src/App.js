@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import "./assets/css/animate.css";
 import "./assets/css/bootstrap.css";
@@ -8,8 +9,8 @@ import "./assets/css/jquery-ui.css";
 import "./assets/css/jquery.fancybox.min.css";
 import "./assets/css/nice-select.css";
 import "./assets/css/owl.css";
-import "./assets/css/responsive.css";
 import "./assets/css/style.css";
+import "./assets/css/responsive.css";
 import "./assets/css/timePicker.css";
 import About from "./pages/About";
 import Footer from "./components/Footer";
@@ -31,44 +32,49 @@ import BlogsDetails from "./pages/Blogs/BlogsDetails";
 import InnderGallery from "./pages/InnerGallery";
 import NewsEvent from "./components/NewsEvent";
 import NewsDetails from "./pages/News/NewsDetails";
-// import Search from "./pages/Search/Search";
 import { SearchProvider } from "./pages/Search/SearchProvider";
 import Search from "./pages/Search/Search";
+import Preloader from "./components/PreLoader";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <SearchProvider>
+      <BrowserRouter>
+        <Header />
+        {loading && <Preloader />}
 
-    <BrowserRouter>
-      <Header />
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/productss" element={<Productss />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/commitment" element={<Commitment />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/productDetails" element={<ProductsDetails />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/certificate" element={<Certificate />} />
-        <Route path="/contect" element={<Contect />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/inquiry" element={<Inquiry />} />
-        <Route path="/blogdetails/:id" element={<BlogsDetails />} />
-        <Route path="/innergallery/:index" element={<InnderGallery />} />
-        <Route path="/newsevent" element={<NewsEvent />} />
-        {/* <Route path="/newsdetails" component={<NewsDetails/>} /> */}
-        <Route path='/detailNews/:id' element ={<NewsDetails />} />
-        {/* <Route path='/search' element ={<Search />} /> */}
-        <Route path="/search" element={<Search/>} />
-
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/productss" element={<Productss />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/commitment" element={<Commitment />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/productDetails" element={<ProductsDetails />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/certificate" element={<Certificate />} />
+          <Route path="/contect" element={<Contect />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/inquiry" element={<Inquiry />} />
+          <Route path="/blogdetails/:id" element={<BlogsDetails />} />
+          <Route path="/innergallery/:index" element={<InnderGallery />} />
+          <Route path="/newsevent" element={<NewsEvent />} />
+          {/* <Route path="/newsdetails" component={<NewsDetails/>} /> */}
+          <Route path="/detailNews/:id" element={<NewsDetails />} />
+          {/* <Route path='/search' element ={<Search />} /> */}
+          <Route path="/search" element={<Search />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </SearchProvider>
-
   );
 }
 

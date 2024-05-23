@@ -12,6 +12,8 @@ import spot from "../assets/images/new-home/spot-response.png";
 import certification from "../assets/images/new-home/certifcation.png";
 import Header from "../components/Header";
 import axios from "axios";
+import shape10 from "../assets/images/shape/shape-10.png";
+
 
 export default function Commitment() {
   const [commitments, setCommitment] = useState([]);
@@ -96,7 +98,7 @@ export default function Commitment() {
         <section className="locations-section sec-pad centred">
           <div
             className="pattern-layer"
-            // style="background-image: url(assets/images/shape/shape-10.png);"
+            style={{ backgroundImage: `url(${shape10})` }}
           ></div>
           <div className="auto-container">
             <div className="sec-title">
