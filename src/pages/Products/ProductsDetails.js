@@ -6,12 +6,13 @@ import skype from "../../assets/images/new-home/skype.png";
 import wp from "../../assets/images/new-home/whatsapp.png";
 import news from "../../assets/images/news/news-35.jpg";
 import Header from "../../components/Header";
+import html2canvas from 'html2canvas';
+
 import axios from "axios";
 import banner from "../../assets/images/new-home/product-banner.jpg"
 import { Container, Row, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { jsPDF } from "jspdf";
-import html2canvas from "html2canvas";
 
 export default function ProductsDetails() {
   const [productDetailsss, setProductDetails] = React.useState(null);
@@ -24,6 +25,25 @@ export default function ProductsDetails() {
         `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/get/productdetail/${description}`
       )
       .then((response) => {
+        console.log("huncncjuhenchjbecvbevchj", response); // log the response data
+        setProductDetails(response.data);
+      })
+      .catch((error) => {
+        console.error(error); // log the error
+      });
+  }, []);
+
+  useEffect(() => {
+    const storedProductIds = localStorage.getItem("productIds");
+    if (storedProductIds) {
+      setProd(JSON.parse(storedProductIds));
+    }
+  }, [localStorage.getItem("productIds")]);
+  useEffect(() => {
+    const description = localStorage.getItem("description");
+    axios
+      .get(`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/get/productdetail/${description}`)
+      .then((response) => {
         console.log("Response data", response);
         setProductDetails(response.data);
       })
@@ -31,6 +51,7 @@ export default function ProductsDetails() {
         console.error(error);
       });
   }, []);
+
   useEffect(() => {
     const storedProductIds = localStorage.getItem("productIds");
     if (storedProductIds) {
@@ -38,55 +59,78 @@ export default function ProductsDetails() {
     }
   }, [localStorage.getItem("productIds")]);
 
-  const generatePdf = () => {
-    const input = document.getElementById("pdf-content");
-    const images = input.getElementsByTagName("img");
-    const promises = [];
 
+  const generatePdf = () => {
+    const input = document.getElementById('pdf-content');
+    console.log("input",input)
+    const images = input.getElementsByTagName('img');
+    console.log("images",images)
+    const promises = [];
+  
     for (let i = 0; i < images.length; i++) {
       const img = images[i];
       if (!img.complete) {
-        promises.push(new Promise((resolve) => {
-          img.onload = img.onerror = resolve;
-        }));
+        promises.push(
+          new Promise((resolve) => {
+            img.onload = img.onerror = resolve;
+          })
+        );
       }
     }
-
-    Promise.all(promises).then(() => {
-      html2canvas(input)
-        .then((canvas) => {
-          const imgData = canvas.toDataURL("image/png");
-          const pdf = new jsPDF();
-          const imgWidth = 210; // A4 width in mm
-          const pageHeight = 297; // A4 height in mm
-          const imgHeight = (canvas.height * imgWidth) / canvas.width;
-          let heightLeft = imgHeight;
-          let position = 0;
-
-          pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-          heightLeft -= pageHeight;
-
-          while (heightLeft > 0) {
-            position = heightLeft - imgHeight;
-            pdf.addPage();
-            pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-            heightLeft -= pageHeight;
-          }
-          pdf.save("brochure.pdf");
+  
+    Promise.all(promises)
+      .then(() => {
+        html2canvas(input, { 
+   
+          
+          useCORS: true, 
+      
         })
-        .catch((error) => console.error("Error generating PDF: ", error));
-    });
+          .then((canvas) => {
+            console.log("canvas",canvas)
+            const imgData = canvas.toDataURL('image/jpeg');
+            const pdf = new jsPDF();
+            const imgWidth = 180; // A4 width in mm
+            const pageHeight = 287; // A4 height in mm
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+            let heightLeft = imgHeight;
+            let position = 10;
+  
+            while (heightLeft >= 0) {
+              pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+              heightLeft -= pageHeight;
+              if (heightLeft >= 0) {
+                pdf.addPage();
+              }
+              position = heightLeft - imgHeight + 10; 
+            }
+            pdf.save('brochure.pdf');
+          })
+          .catch((error) => console.error('Error generating PDF: ', error));
+      })
+      .catch((error) => {
+        console.error('Error adding images to PDF:', error);
+      });
   };
 
+
+  console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>", productDetailsss);
+
   return (
-    <React.Fragment style={{ position: "relative", minHeight: "100%", top: "0px" }}>
+    <React.Fragment
+      style={{ position: "relative", minHeight: "100%", top: "0px" }}
+    >
       <div className="boxed_wrapper">
         <Header />
+        {/* <!-- page-title --> */}
         <section className="page-title">
-          <div className="bg-layer" style={{ backgroundImage: `url(${Background})` }}></div>
+          <div
+            className="bg-layer"
+            style={{ backgroundImage: `url(${Background})` }}
+          ></div>
           <div className="auto-container">
             <div className="content-box">
-              <h1>Product Details</h1>
+              <h1>Product Deatils</h1>
               <ul className="bread-crumb clearfix">
                 <li>
                   <a href="index.html">Home</a>
@@ -98,9 +142,6 @@ export default function ProductsDetails() {
                     : "Loading..."}
                 </li>{" "}
                 {/* Updated line */}
-                <li><a href="index.html">Home</a></li>
-                <li>Product Name</li>
-                <li>Product Details</li>
               </ul>
             </div>
           </div>
@@ -110,15 +151,10 @@ export default function ProductsDetails() {
         <section className="sidebar-page-container blog-details sec-pad pro-det ptb-60">
           <Container className="auto-container">
             <Row className="row clearfix">
-        <section className="sidebar-page-container blog-details sec-pad pro-det">
-          <div className="auto-container">
-            <div className="row clearfix">
-              <div className="col-lg-12 col-md-12 col-sm-12 content-side">
-                <div className="blog-details-content" id="pdf-content">
+              <div className="col-lg-12 col-md-12 col-sm-12 content-side" id="pdf-content">
+                <div className="blog-details-content" >
                   <div className="content-one row mb-0">
-                    {/* <div className="col-lg-12 col-12">
-                  <h2>Abacavir Sulfate</h2>
-                </div> */}
+                 
 
                     <div className="col-lg-12 col-12">
                       <div className="row justify-content-center">
@@ -126,8 +162,10 @@ export default function ProductsDetails() {
                         <figure className="image-box">
                         {productDetailsss && (
                           <img
+                          
                             src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${productDetailsss.ImageUrl}`}
-                            alt="Product"
+                            onLoad={() => console.log('Image loaded successfully')}
+        onError={() => console.error('Error loading image')}
                           />
                         )}
                       </figure>
@@ -137,15 +175,12 @@ export default function ProductsDetails() {
                         </div>
                         <div className="col-lg-5 col-12 text-right mt-4">
                           <div className="btn-box clearfix">
-                            <a
-                              className="checkout-btn theme-btn"
-                              href="assets/images/shreeji-pdf.pdf"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              Download Brochure
-                            </a>
-                          </div>
+                          
+        
+        <button className="checkout-btn theme-btn"
+ onClick={generatePdf}>Download Brochure</button>
+      </div>
+                        
                         </div>
                       </div>
                     </div>
@@ -243,38 +278,6 @@ export default function ProductsDetails() {
                     </table>
                   </div>
                 </div> */}
-                    </div>
-                    <div className="col-lg-6 col-12">
-                      <h2>
-                        {productDetailsss ? productDetailsss.Description : "Loading..."}
-                      </h2>
-                      <table style={{ width: "100%", textAlign: "left", borderCollapse: "collapse" }}>
-                        <thead>
-                          <tr>
-                            <th style={{ border: "1px solid #ddd", padding: "8px" }}>Product Key</th>
-                            <th style={{ border: "1px solid #ddd", padding: "8px" }}>Product Value</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {productDetailsss &&
-                            productDetailsss.ProductDetailDescription.map((item, index) => (
-                              <tr
-                                key={index}
-                                style={{
-                                  backgroundColor: index % 2 === 0 ? "#f2f2f2" : "white",
-                                }}
-                              >
-                                <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                                  {item.ProductKey}
-                                </td>
-                                <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                                  {item.ProductValue}
-                                </td>
-                              </tr>
-                            ))}
-                        </tbody>
-                      </table>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -285,40 +288,34 @@ export default function ProductsDetails() {
         {/* <!-- sidebar-page-container end -->
     <!-- about-section end --> */}
 
-        <div className="sticky-button">
-          <Link
-            to="assets/catalogue-shreeji-pharma.pdf"
-            target="__blank"
-            download=""
-          >
-            Download Brochure
-          </Link>
-          <button onClick={generatePdf}>Download Brochure</button>
-        </div>
+ 
         <div className="sticky-whatsapp">
           <Link
             to="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
             target="_blank"
-            rel="noopener noreferrer"
           >
             <img src={wp} className="img-responsive" />
           </Link>
-            <img src={wp} className="img-responsive" alt="WhatsApp" />
-          </a>
         </div>
         <div className="sticky-skype">
           <Link to="skype:Nilesh.sheth70?Call" target="_blank">
             <img src={skype} className="img-responsive" />
           </Link>
-          <a href="skype:Nilesh.sheth70?Call" target="_blank" rel="noopener noreferrer">
-            <img src={skype} className="img-responsive" alt="Skype" />
-          </a>
         </div>
-        <div className="modal fade" id="exampleModa" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        <div
+          className="modal fade"
+          id="exampleModa"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
           <div className="modal-dialog">
             <div className="modal-content custom-model-content">
               <div className="modal-header">
-                <h1 className="modal-title fs-5" id="exampleModalLabel">Vadiwadi, Vadodara</h1>
+                <h1 className="modal-title fs-5" id="exampleModalLabel">
+                  Vadiwadi, Vadodara
+                </h1>
                 <button
                   type="button"
                   className="btn-close custom-close"
@@ -332,14 +329,16 @@ export default function ProductsDetails() {
                   width="600"
                   height="450"
                   style={{ border: 0 }}
-                  allowFullScreen=""
+                  allowfullscreen=""
                   loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
+                  referrerpolicy="no-referrer-when-downgrade"
                 ></iframe>
               </div>
             </div>
           </div>
         </div>
+
+        {/* <!-- scroll to top --> */}
         <button className="scroll-top scroll-to-target" data-target="html">
           <i className="flaticon-up-arrow"></i>
         </button>
