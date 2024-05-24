@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import "react-magic-slider-dots/dist/magic-dots.css";
 import footer from "../assets/images/new-home/footer-location-img.jpg";
 import skype from "../assets/images/new-home/skype.png";
@@ -7,24 +6,10 @@ import wp from "../assets/images/new-home/whatsapp.png";
 import star from "../assets/images/new-home/star.png";
 import aeo from "../assets/images/new-home/aeo.png";
 import iso from "../assets/images/new-home/iso.png";
-import about from "../assets/images/new-home/about-img.jpg";
-import pharmaceutical from "../assets/images/new-home/pharmaceutical.svg";
-import cosmetics from "../assets/images/new-home/cosmetics.svg";
-import conveyor from "../assets/images/new-home/conveyor-belt.svg";
-import blog from "../assets/images/new-home/blog-banner.png";
-import news from "../assets/images/new-home/news-blog.jpg";
-import shape3 from "../assets/images/shape/shape-3.png";
-import industry from "../assets/images/new-home/industry-serve-bg-img.jpg";
-import chooseus from "../assets/images/background/chooseus-bg.jpg";
-import shape21 from "../assets/images/shape/shape-21.png";
-import funfact from "../assets/images/background/funfact-bg.jpg";
 import shape10 from "../assets/images/shape/shape-10.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import banner1 from "../assets/images/new-home/banner-1.jpg";
-import banner2 from "../assets/images/new-home/banner-2.jpg";
-import { Link } from "react-router-dom";
 import Products from "./Productss";
 import Header from "./Header";
 import axios from "axios";
@@ -34,6 +19,9 @@ import Inquiry from "./Inquiry";
 import MagicSliderDots from "react-magic-slider-dots";
 import "react-magic-slider-dots/dist/magic-dots.css";
 import NewsEvent from "./NewsEvent";
+import Industries from "./Industries";
+import Strenghts from "./Strenghts";
+import Facts from "./Facts";
 
 export default function Home() {
   const settings = {
@@ -69,7 +57,10 @@ export default function Home() {
           `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/listonly/Banner`
         );
         console.log("Gallery Data:", response);
-        setBanner(response.data);
+        const activeCertificates = response.data.filter(
+          (Banner) => Banner.IsActive
+        );
+        setBanner(activeCertificates);
       } catch (error) {
         console.error("Error fetching gallery data:", error);
       }
@@ -128,7 +119,7 @@ export default function Home() {
                                 lineHeight: "70px",
                                 fontSize: "32px",
                                 color: "#fff",
-                                textAlign: "center",  
+                                textAlign: "center",
                               }}
                             >
                               <i class="flaticon-laboratory-1"></i>
@@ -163,355 +154,15 @@ export default function Home() {
             ))}
           </Slider>
         </section>
-
-        {/* <!-- banner-section end --> */}
-        {/* <!-- about-section --> */}
         <AboutUs />
-        {/* <!-- about-section end --> */}
-        {/* <!-- service-section --> */}
         <Products />
-        {/* <!-- service-section end --> */}
-        {/* <!-- industries-section end --> */}
-        <section className="industries-section sec-pad">
-          <div
-            className="pattern-layer"
-            style={{ backgroundImage: `url(${shape3})` }}
-          ></div>
-          <div className="auto-container">
-            <div className="inner-container">
-              <div
-                className="bg-layer"
-                style={{ backgroundImage: `url(${industry})` }}
-              ></div>
-              <div className="content-box">
-                <div className="shape-box">
-                  <div className="shape shape-1 hexagon_shape"></div>
-                  <div className="shape shape-2 hexagon_shape"></div>
-                </div>
-                <div className="row clearfix">
-                  <div className="col-lg-3 col-md-6 col-sm-12 industries-block">
-                    <div className="industries-block-one"></div>
-                  </div>
-                  <div className="col-lg-3 col-md-6 col-sm-12 industries-block">
-                    <div className="industries-block-one">
-                      <div className="inner-box">
-                        <div className="icon-box icon-box1">
-                          <img src={pharmaceutical} alt="" />
-                        </div>
-                        <h6>Industry 01</h6>
-                        <h3>
-                          <a href="#">Pharmaceuticals</a>
-                        </h3>
-                        <p>Advancing health, improving lives.</p>
-                        <div className="link">
-                          <a href="#">
-                            <i className="flaticon-right-arrow"></i>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-3 col-md-6 col-sm-12 industries-block">
-                    <div className="industries-block-one">
-                      <div className="inner-box">
-                        <div className="icon-box icon-box1">
-                          <img src={cosmetics} alt="" />
-                        </div>
-                        <h6>Industry 02</h6>
-                        <h3>
-                          <a href="#">Cosmetic Industries</a>
-                        </h3>
-                        <p>Beauty and personal care products.</p>
-                        <div className="link">
-                          <a href="#">
-                            <i className="flaticon-right-arrow"></i>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-3 col-md-6 col-sm-12 industries-block">
-                    <div className="industries-block-one ">
-                      <div className="inner-box ">
-                        <div className="icon-box icon-box1">
-                          <img src={conveyor} alt="" />
-                        </div>
-                        <h6>Industry 03</h6>
-                        <h3>
-                          <a href="#">Food Industries</a>
-                        </h3>
-                        <p>Nutritious, quality food production.</p>
-                        <div className="link">
-                          <a href="#">
-                            <i className="flaticon-right-arrow"></i>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-6 col-md-12 col-sm-12 title-column">
-                    <div className="sec-title mr-0 light">
-                      <span className="sub-title">our industries</span>
-                      <h2>
-                        Industries <br />
-                        that we served
-                      </h2>
-                    </div>
-                  </div>
-                  <div className="col-lg-3 col-md-6 col-sm-12 industries-block">
-                    <div className="industries-block-one">
-                      <div className="inner-box">
-                        <div className="icon-box">
-                          <i className="flaticon-bread"></i>
-                        </div>
-                        <h6>Industry 04</h6>
-                        <h3>
-                          <a href="#">Nutraceuticals </a>
-                        </h3>
-                        <p>Enhanced health supplement foods.</p>
-                        <div className="link">
-                          <a href="#">
-                            <i className="flaticon-right-arrow"></i>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-3 col-md-6 col-sm-12 industries-block">
-                    <div className="industries-block-one">
-                      <div className="inner-box">
-                        <div className="icon-box">
-                          <i className="flaticon-automobile"></i>
-                        </div>
-                        <h6>Industry 05</h6>
-                        <h3>
-                          <a href="#">Veterinary industries</a>
-                        </h3>
-                        <p>Animal health and wellness.</p>
-                        <div className="link">
-                          <a href="#">
-                            <i className="flaticon-right-arrow"></i>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        {/* <!-- industries-section end --> */}
-        {/* <!-- chooseus-section --> */}
-        <section className="chooseus-section bg-color-1">
-          <div
-            className="bg-layer"
-            style={{ backgroundImage: `url(${chooseus})` }}
-          ></div>
-          <div className="auto-container">
-            <div className="sec-title">
-              <span className="sub-title">Why Choose Us</span>
-              <h2>Our Strenghts</h2>
-            </div>
-            <div className="row clearfix">
-              <div className="col-lg-4 col-md-6 col-sm-12 chooseus-block">
-                <div className="chooseus-block-one">
-                  <div className="inner-box">
-                    <div
-                      className="shape"
-                      style={{ backgroundImage: `url(${shape21})` }}
-                    ></div>
-                    <div className="icon-box">
-                      <i className="flaticon-check-mark"></i>
-                    </div>
-
-                    <h4>
-                      Wide selection of world className pharmaceutical bulk
-                      drugs offered under one roof.
-                    </h4>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6 col-sm-12 chooseus-block">
-                <div className="chooseus-block-one">
-                  <div className="inner-box">
-                    <div
-                      className="shape"
-                      style={{ backgroundImage: `url(${shape21})` }}
-                    ></div>
-                    <div className="icon-box">
-                      <i className="flaticon-check-mark"></i>
-                    </div>
-
-                    <h4>
-                      A transparent working system for fair business dealings.
-                    </h4>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-4 col-md-6 col-sm-12 chooseus-block">
-                <div className="chooseus-block-one">
-                  <div className="inner-box">
-                    <div
-                      className="shape"
-                      style={{ backgroundImage: `url(${shape21})` }}
-                    ></div>
-                    <div className="icon-box">
-                      <i className="flaticon-check-mark"></i>
-                    </div>
-
-                    <h4>
-                      Vigorous supply-chain management for efficient collection
-                      and delivery of products.
-                    </h4>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6 col-sm-12 chooseus-block">
-                <div className="chooseus-block-one">
-                  <div className="inner-box">
-                    <div
-                      className="shape"
-                      style={{ backgroundImage: `url(${shape21})` }}
-                    ></div>
-                    <div className="icon-box">
-                      <i className="flaticon-check-mark"></i>
-                    </div>
-
-                    <h4>
-                      Impeccable quality, utmost customer satisfaction and
-                      excellence--our hallmark.
-                    </h4>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6 col-sm-12 chooseus-block">
-                <div className="chooseus-block-one">
-                  <div className="inner-box">
-                    <div
-                      className="shape"
-                      style={{ backgroundImage: `url(${shape21})` }}
-                    ></div>
-                    <div className="icon-box">
-                      <i className="flaticon-check-mark"></i>
-                    </div>
-
-                    <h4>
-                      No compromises on quality as it represents the image of
-                      our company.
-                    </h4>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6 col-sm-12 chooseus-block">
-                <div className="chooseus-block-one">
-                  <div className="inner-box">
-                    <div
-                      className="shape"
-                      style={{ backgroundImage: `url(${shape21})` }}
-                    ></div>
-                    <div className="icon-box">
-                      <i className="flaticon-check-mark"></i>
-                    </div>
-
-                    <h4>
-                      We have a long association with the pharma industry &amp;
-                      can offer you excellent service.
-                    </h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        {/* <!-- chooseus-section end --> */}
-        {/* <!-- funfact-section --> */}
-        <section className="funfact-section centred">
-          <div
-            className="bg-layer"
-            style={{ backgroundImage: `url(${funfact})` }}
-          ></div>
-          <div className="auto-container">
-            <div className="sec-title light">
-              <span className="sub-title">Interesting Numbers</span>
-              <h2>Facts that will blow your mind</h2>
-            </div>
-            <div className="inner-content">
-              <div className="row clearfix">
-                <div className="col-lg-4 col-md-6 col-sm-12 funfact-block">
-                  <div className="funfact-block-one">
-                    <div className="inner-box">
-                      <div className="icon-box">
-                        <i className="flaticon-rating"></i>
-                      </div>
-                      <div className="count-outer count-box counted">
-                        <span
-                          className="count-text"
-                          data-speed="1500"
-                          data-stop="1000"
-                        >
-                          1000
-                        </span>
-                      </div>
-                      <h3>Our Happy Clients</h3>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-6 col-sm-12 funfact-block">
-                  <div className="funfact-block-one">
-                    <div className="inner-box">
-                      <div className="icon-box">
-                        <i className="flaticon-atom"></i>
-                      </div>
-                      <div className="count-outer count-box counted">
-                        <span
-                          className="count-text"
-                          data-speed="1500"
-                          data-stop="100"
-                        >
-                          100
-                        </span>
-                      </div>
-                      <h3>Our Qulity Products</h3>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-6 col-sm-12 funfact-block">
-                  <div className="funfact-block-one">
-                    <div className="inner-box">
-                      <div className="icon-box">
-                        <i className="flaticon-lab"></i>
-                      </div>
-                      <div className="count-outer count-box counted">
-                        <span
-                          className="count-text"
-                          data-speed="1500"
-                          data-stop="100"
-                        >
-                          100
-                        </span>
-                        <span>%</span>
-                      </div>
-                      <h3>Accurate and Precise in Test Results</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        {/* <!-- funfact-section end --> */}
-        {/* <!-- blog-grid --> */}
+        <Industries />
+        <Strenghts />
+        <Facts />
         <Blog />
-        {/* <!-- blog-grid end --> */}
-        {/* <!-- news-section --> */}
-
         <NewsEvent />
-        {/* <!-- news-section end --> */}
-        {/* <!-- booking-section --> */}
         <Inquiry />
-        {/* <!-- booking-section end --> */}
+
         {/* <!-- locations-section --> */}
         <section className="locations-section sec-pad centred">
           <div
@@ -631,12 +282,11 @@ export default function Home() {
             </div>
           </div>
         </div>
-
-        {/* <!-- scroll to top --> */}
-        <button className="scroll-top scroll-to-target open" data-target="html">
-          <i className="flaticon-up-arrow"></i>
-        </button>
       </div>
+      <button className="scroll-top scroll-to-target open" data-target="html">
+        <i className="flaticon-up-arrow"></i>
+      </button>
+      ;
     </React.Fragment>
   );
 }

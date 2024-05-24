@@ -11,6 +11,8 @@ export default function Products() {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
+    autoplay: true, // Enable autoplay
+    autoplaySpeed: 2000, // Set autoplay speed in milliseconds (e.g., 3000 ms = 3 seconds)
     responsive: [
       {
         breakpoint: 1024,
@@ -39,6 +41,8 @@ export default function Products() {
     ],
   };
 
+
+
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -58,34 +62,37 @@ export default function Products() {
   }, []);
 
   return (
-    <section className="service-section bg-color-1 sec-pad">
-      <div className="auto-container">
-        <div className="sec-title">
-          <span className="sub-title">Our Products</span>
-          <h2>We Provide Quality Product</h2>
-        </div>
-        <Slider {...settings}>
-          {products.map((product, index) => (
-            <div className="service-block-one" key={index}>
-              <div className="inner-box">
-                <div className="image-box">
-                  <figure className="image">
-                    <img
-                      src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${product.ImageUrl}`}
-                    />
-                  </figure>
-                  <div className="icon-box">
-                    <i className="flaticon-biochemistry"></i>
+    <React.Fragment>
+      {" "}
+      <section className="service-section bg-color-1 sec-pad">
+        <div className="auto-container">
+          <div className="sec-title">
+            <span className="sub-title">Our Products</span>
+            <h2>We Provide Quality Product</h2>
+          </div>
+          <Slider {...settings}>
+            {products.map((product, index) => (
+              <div className="service-block-one" key={index}>
+                <div className="inner-box">
+                  <div className="image-box">
+                    <figure className="image">
+                      <img
+                        src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${product.ImageUrl}`}
+                      />
+                    </figure>
+                    <div className="icon-box">
+                      <i className="flaticon-biochemistry"></i>
+                    </div>
+                  </div>
+                  <div className="lower-content">
+                    <h3>{product.ProductGroup}</h3>
                   </div>
                 </div>
-                <div className="lower-content">
-                  <h3>{product.ProductGroup}</h3>
-                </div>
               </div>
-            </div>
-          ))}
-        </Slider>
-      </div>
-    </section>
+            ))}
+          </Slider>
+        </div>
+      </section>
+    </React.Fragment>
   );
 }

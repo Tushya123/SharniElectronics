@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import about from "../assets/images/new-home/about-img.jpg";
 import axios from "axios";
+import { Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export default function AboutUs() {
   const [cmsDesc, setcmsDesc] = useState("");
@@ -15,7 +17,7 @@ export default function AboutUs() {
         );
         console.log(res);
         const data = res.data.find(
-          (entry) => entry._id === "663f4d5fef85cf304603e082"
+          (entry) => entry._id === "663f0071ef85cf304603e046"
         );
         console.log(data);
         setcmsDesc(data.cmsDesc);
@@ -29,9 +31,9 @@ export default function AboutUs() {
   }, []);
 
   return (
-    <>
+    <React.Fragment>
       <section className="about-section sec-pad">
-        <div className="auto-container">
+        <Container className="auto-container">
           <div className="row clearfix">
             <div className="col-lg-6 col-md-12 col-sm-12 image-column">
               <div className="image-box">
@@ -64,8 +66,9 @@ export default function AboutUs() {
             <div className="col-lg-6 col-md-12 col-sm-12 content-column">
               <div className="content-box">
                 <div className="sec-title">
-                  <span className="sub-title">WELCOME TO SHREEJI PHARMA INTERNATIONAL
-</span>
+                  <span className="sub-title">
+                    WELCOME TO SHREEJI PHARMA INTERNATIONAL
+                  </span>
                   <h2>About Us</h2>
                 </div>
                 <div className="text">
@@ -76,15 +79,15 @@ export default function AboutUs() {
                   })}
                 </div>
                 <div className="btn-box">
-                  <a href="/about" className="theme-btn">
+                  <Link to="/about" className="theme-btn">
                     Read More
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
-    </>
+    </React.Fragment>
   );
 }

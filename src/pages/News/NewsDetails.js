@@ -4,32 +4,31 @@ import skype from "../../assets/images/new-home/skype.png";
 import news from "../../assets/images/news/news-35.jpg";
 import wp from "../../assets/images/new-home/whatsapp.png";
 import Header from "../../components/Header";
-import { useParams ,Link} from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 
 export default function NewsDetails() {
-
   const [Blogs, setBlogs] = useState([]);
 
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         const response = await axios.get(
-//           `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/listonly/Blog`
-//         );
-//         console.log("Data:", response);
-//         setBlogs(response.data);
-//       } catch (error) {
-//         console.error("Error fetching product data:", error);
-//       }
-//     };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/listonly/Blog`
+        );
+        console.log("Data:", response);
+        setBlogs(response.data);
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+      }
+    };
 
-//     fetchData();
-//   }, []);
+    fetchData();
+  }, []);
 
   const { id } = useParams();
   console.log(id, "avaniid");
-//   const [Blogs, setBlog] = useState(null);
+  //   const [Blogs, setBlog] = useState(null);
   console.log(Blogs, "Blogs");
   useEffect(() => {
     const fetchBlog = async () => {
@@ -46,7 +45,7 @@ export default function NewsDetails() {
 
     fetchBlog();
   }, [id]);
-console.log(Blogs);
+  console.log(Blogs);
   if (!Blogs) return <div>Loading...</div>;
 
   return (
@@ -91,11 +90,13 @@ console.log(Blogs);
                   </div>
                   <div class="content-four pb-5">
                     <h2>{Blogs.Title}</h2>
-                    
+
                     {
                       <span style={{ width: "300px" }}>
                         {React.createElement("div", {
-                          dangerouslySetInnerHTML: { __html: Blogs.Description },
+                          dangerouslySetInnerHTML: {
+                            __html: Blogs.Description,
+                          },
                         })}
                       </span>
                     }
@@ -110,27 +111,26 @@ console.log(Blogs);
                 </div>
               </div>
               {/* <div className="col-lg-4 col-md-12 col-sm-12 sidebar-side">
-      <div className="Blogs-sidebar">
-        <div className="sidebar-widget category-widget">
-          <div className="widget-title">
-            <h3>Blogs</h3>
-          </div>
-          <div className="widget-content">
-            <ul className="category-list clearfix">
-              {Blogs.map((Blogs) => (
-                <li key={Blogs._id}>
-                  <Link to={`/blogdetails/${Blogs._id}`}>
-                    {Blogs.Category}
-                    <i className="flaticon-right-arrow"></i>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div> */}
-
+                <div className="Blogs-sidebar">
+                  <div className="sidebar-widget category-widget">
+                    <div className="widget-title">
+                      <h3>News</h3>
+                    </div>
+                    <div className="widget-content">
+                      <ul className="category-list clearfix">
+                        {Blogs.map((Blogs) => (
+                          <li key={Blogs._id}>
+                            <Link to={`/blogdetails/${Blogs._id}`}>
+                              {Blogs.Category}
+                              <i className="flaticon-right-arrow"></i>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div> */}
             </div>
           </div>
         </section>

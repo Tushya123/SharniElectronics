@@ -12,7 +12,8 @@ export default function NewsEvent() {
           `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/listonly/Newsletter`
         );
         console.log("Data:", response.data);
-        setNews(response.data);
+        const activeCertificates = response.data.filter(News => News.IsActive);
+        setNews(activeCertificates);
       } catch (error) {
         console.error("Error fetching product data:", error);
       }
@@ -27,6 +28,7 @@ export default function NewsEvent() {
   };
 
   return (
+    <React.Fragment>
     <section className="news-section sec-pad">
       <div className="auto-container">
         <div className="sec-title">
@@ -96,5 +98,6 @@ export default function NewsEvent() {
         </div>
       </div>
     </section>
+    </React.Fragment>
   );
 }

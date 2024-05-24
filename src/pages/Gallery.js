@@ -16,7 +16,9 @@ export default function Gallery() {
         const response = await axios.get(
           `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/list/GalleryPhoto`
         );
-        setGalleryData(response.data);
+        const activeCertificates = response.data.filter(Gallery => Gallery.IsActive);
+        setGalleryData(activeCertificates);
+
       } catch (error) {
         console.error("Error fetching gallery data:", error);
       }

@@ -13959,6 +13959,29 @@ div#mCSB_1_container{
   font-size: 14px;
 }
 .email-input {
-  text-transform: none; /* Reset text transformation */
+  text-transform: capitalize; /* Reset text transformation */
+}
+.capitalize-first-letter input[type="text"],
+.capitalize-first-letter textarea {
+  text-transform: capitalize;
+}
+.product-image-banner img{
+  width: 70% !important;
+  display: block;
+  margin: 0 auto;
+  max-width: max-content !important;
+
+}
+.product-image-banner figure{
+  border: 1px solid #b2cae1;
 }
 
+.product-detail-table .cart-table thead tr th{
+  line-height: 28px;
+  padding:10px 10px;
+  font-weight: 500;
+  font-size: 20px;
+  color: #16436f;
+  border-right: 1 px solid #16436f;
+
+}

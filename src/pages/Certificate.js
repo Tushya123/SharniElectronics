@@ -4,13 +4,13 @@ import Background from "../assets/images/new-home/breadcrumb-img.jpg";
 import footer from "../assets/images/new-home/footer-location-img.jpg";
 import skype from "../assets/images/new-home/skype.png";
 import wp from "../assets/images/new-home/whatsapp.png";
-import { logRoles } from "@testing-library/react";
 import shap10 from "../assets/images/shape/shape-10.png";
 import Header from "../components/Header";
 import axios from "axios";
+import { Modal, Button, Container, Row, Col } from "react-bootstrap";
 
 export default function Certificate() {
-  const [certificate, setcertificate] = useState([]);
+  const [certificate, setCertificate] = useState([]);
   const [selectedCertificate, setSelectedCertificate] = useState(null);
 
   useEffect(() => {
@@ -20,7 +20,10 @@ export default function Certificate() {
           `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/listonly/Certificate`
         );
         console.log("Gallery Data:", response);
-        setcertificate(response.data);
+        const activeCertificates = response.data.filter(
+          (certificate) => certificate.IsActive
+        );
+        setCertificate(activeCertificates);
       } catch (error) {
         console.error("Error fetching gallery data:", error);
       }
@@ -28,6 +31,7 @@ export default function Certificate() {
 
     fetchData();
   }, []);
+
   const handleZoomInClick = (certificateImage) => {
     setSelectedCertificate(certificateImage);
   };
@@ -35,8 +39,6 @@ export default function Certificate() {
   const closeModal = () => {
     setSelectedCertificate(null);
   };
-
-
 
   return (
     <React.Fragment
@@ -93,9 +95,12 @@ export default function Certificate() {
                           </figure>
                           <h5 className="gal-txt">{item.Title}</h5>
                           <div className="view-btn">
-                            <a href={item.CertificateImage}>
+                            <Button
+                              variant="link"
+                              onClick={() => handleZoomInClick(item.CertificateImage)}
+                            >
                               <i className="flaticon-zoom-in"></i>
-                            </a>
+                            </Button>
                           </div>
                         </div>
                       </div>
@@ -234,6 +239,20 @@ export default function Certificate() {
         <button className="scroll-top scroll-to-target" data-target="html">
           <i className="flaticon-up-arrow"></i>
         </button>
+
+        <Modal show={!!selectedCertificate} onHide={closeModal}>
+          <Modal.Header closeButton>
+            {/* <Modal.Title>Certificate Preview</Modal.Title> */}
+          </Modal.Header>
+          <Modal.Body>
+            {selectedCertificate && (
+              <img
+                src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${selectedCertificate}`}
+                style={{ width: "100%" }}
+              />
+            )}
+          </Modal.Body>
+        </Modal>
       </div>
     </React.Fragment>
   );

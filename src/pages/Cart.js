@@ -48,14 +48,15 @@ const countriesArray = [
   { label: "AE", value: "UNITED ARAB EMIRATES" },
   { label: "GB", value: "UNITED KINGDOM" },
   { label: "US", value: "UNITED STATES" },
-
 ];
 
 export default function Cart() {
   const validationSchema = Yup.object().shape({
     ContactPerson: Yup.string().required("Contact Person is required"),
     CompanyName: Yup.string().required("Company Name is required"),
-    Mobile: Yup.string().required("Phone is required"),
+    Mobile: Yup.string()
+      .required("Phone is required")
+      .matches(/^[0-9]{10}$/, "Invalid phone number"),
     Email: Yup.string().email("Invalid email").required("Email is required"),
     Country: Yup.string().required("Country is required"),
     Comments: Yup.string().required("Comments is required"),
@@ -74,8 +75,9 @@ export default function Cart() {
     Comments: "",
     IsActive: true,
   });
-  const remove_inquiry = async (new_id) => {
-    console.log("hii", new_id);
+  const remove_inquiry = async (new_id, event) => {
+    event.preventDefault(); // Prevent default action
+
     try {
       const response = await axios.delete(
         `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/remove/InquiryProduct/${new_id}`
@@ -96,6 +98,7 @@ export default function Cart() {
       console.log(error);
     }
   };
+
   // useEffect(() => {
   //   // Retrieve the array of product IDs from local storage
   //   const productIds = JSON.parse(localStorage.getItem('productIds')) || [];
@@ -435,7 +438,9 @@ export default function Cart() {
                                   <a
                                     href="#"
                                     className="remove-btn"
-                                    onClick={() => remove_inquiry(item.id)}
+                                    onClick={(event) =>
+                                      remove_inquiry(item.id, event)
+                                    } // Pass event here
                                   >
                                     <i className="fa-solid fa-xmark"></i>
                                   </a>
@@ -456,8 +461,7 @@ export default function Cart() {
                           data-bs-toggle="modal"
                           data-bs-target="#inquiryModal"
                           onClick={handleShow}
-                            disabled={products.length === 0} // Disable button when products array is empty
-
+                          disabled={products.length === 0} // Disable button when products array is empty
                         >
                           Make Inquiry
                         </button>
