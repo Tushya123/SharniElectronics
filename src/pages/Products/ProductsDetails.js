@@ -90,7 +90,7 @@ export default function ProductsDetails() {
             console.log("canvas",canvas)
             const imgData = canvas.toDataURL('image/jpeg');
             const pdf = new jsPDF();
-            const imgWidth = 180; // A4 width in mm
+            const imgWidth = 200; // A4 width in mm
             const pageHeight = 287; // A4 height in mm
             const imgHeight = (canvas.height * imgWidth) / canvas.width;
             let heightLeft = imgHeight;
@@ -102,7 +102,7 @@ export default function ProductsDetails() {
               if (heightLeft >= 0) {
                 pdf.addPage();
               }
-              position = heightLeft - imgHeight + 10; 
+              position = heightLeft - imgHeight ; 
             }
             pdf.save('brochure.pdf');
           })
@@ -130,7 +130,7 @@ export default function ProductsDetails() {
           ></div>
           <div className="auto-container">
             <div className="content-box">
-              <h1>Product Deatils</h1>
+              <h1>Product Details</h1>
               <ul className="bread-crumb clearfix">
                 <li>
                   <a href="index.html">Home</a>
