@@ -92,21 +92,19 @@ export default function Products() {
   //   }
   // };
   const handleAddToCart = async () => {
-  
     try {
         const response = await axios.post(`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/create/InquiryProduct`, productData);
-        console.log('Response:', response.data.data._id);
+        
+        if (!response.data || !response.data.data || !response.data.data._id) {
+            throw new Error('Invalid response from the server');
+        }
+
         const productId = response.data.data._id;
         console.log('Product ID from response:', productId);
 
         // Retrieve existing product IDs from localStorage
-        let productIds = JSON.parse(localStorage.getItem('productIds'));
+        let productIds = JSON.parse(localStorage.getItem('productIds')) || [];
         console.log('Current product IDs in localStorage:', productIds);
-
-        // Initialize productIds if it doesn't exist
-        if (!productIds) {
-            productIds = [];
-        }
 
         // Add the new product ID to the array
         productIds.push(productId);
@@ -116,15 +114,22 @@ export default function Products() {
         localStorage.setItem('productIds', JSON.stringify(productIds));
         console.log('Updated product IDs saved to localStorage');
 
+        // Verify if the localStorage update was successful
+        const storedProductIds = JSON.parse(localStorage.getItem('productIds'));
+        console.log('Verified product IDs in localStorage:', storedProductIds);
+
         // Reset the quantity
         setQuantity(0);
-        if (response) {
+
+        // Only close the popup if the product ID is in localStorage
+        if (storedProductIds.includes(productId)) {
             setShow(false);
         }
     } catch (error) {
         console.error("Error adding product to cart:", error);
     }
 };
+
 
   
 
@@ -210,19 +215,14 @@ export default function Products() {
                         />
                       </div>
                       <div className="col-lg-12 col-md-12 col-sm-12 form-group message-btn text-center">
-                        <button
-                          type="submit"
-                          className="theme-btn"
-                          name="submit-form"
-                        >
-                          <Link style={{color:'white'}} onClick={()=>{
-                                    
-                                      handleAddToCart();
-                                    
-
-                                    }}>Add To Cart</Link>
-                        </button>
-                      </div>
+  <button
+    type="button"
+    className="theme-btn"
+    onClick={handleAddToCart}
+  >
+    Add To Cart
+  </button>
+</div>
                     </div>
                   </form>
                 </div>
