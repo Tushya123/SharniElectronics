@@ -174,12 +174,7 @@ export default function ProductsDetails() {
                           <h3>Abacavir Sulfate : Chemical Name</h3>
                         </div>
                         <div className="col-lg-5 col-12 text-right mt-4">
-                          <div className="btn-box clearfix">
-                          
-        
-        <button className="checkout-btn theme-btn"
- onClick={generatePdf}>Download Brochure</button>
-      </div>
+       
                         
                         </div>
                       </div>
@@ -194,93 +189,29 @@ export default function ProductsDetails() {
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td>IUPAC Name</td>
-                              <td className="prod-column">
-                                <h5>
-                                  2-[2-[2-[(2,6-dichlorophenyl)amino]phenyl]acetyl]oxyacetic
-                                  acid
-                                </h5>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>CAS Number</td>
-                              <td className="prod-column">
-                                <h5>89796-99-6</h5>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Molecular Formula</td>
-                              <td className="prod-column">
-                                <h5>C16H13Cl2NO4</h5>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Synonyms</td>
-                              <td className="prod-column">
-                                <h5>
-                                  {/* 2-(2-(2-(2,6-dichlorophenyl)aminophenyl)acetyl)oxyacetic acid; 2-((2,6-dichlorophenyl)amino)-benzeneacetic aci carboxymethyl ester; [({2-[(2,6-dichlorophenyl)amino]phenyl}acetyl)oxy]acetic acid */}
-                                </h5>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Application</td>
-                              <td className="prod-column">
-                                <h5>Relief of pain and inflammation</h5>
-                              </td>
-                            </tr>
-                          </tbody>
+                        {productDetailsss && productDetailsss.ProductDetailDescription.map((detail, index) => (
+                          <tr key={index}>
+                            <td>{detail.ProductKey}</td>
+                            <td className="prod-column">
+                              <h5>{detail.ProductValue}</h5>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
                         </Table>
                       </div>
                     </div>
 
-                    {/* <div className="col-lg-12 col-12 mt-3">
-                  <div className="table-outer product-detail-table">
-                    <table className="cart-table">
-                      <thead className="cart-header">
-                        <tr>
-                          <th>Name</th>
-                          <th>Detail</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>IUPAC Name</td>
-                          <td className="prod-column">
-                            <h5>2-[2-[2-[(2,6-dichlorophenyl)amino]phenyl]acetyl]oxyacetic acid</h5>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>CAS Number</td>
-                          <td className="prod-column">
-                            <h5>89796-99-6</h5>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Molecular Formula</td>
-                          <td className="prod-column">
-                            <h5>C16H13Cl2NO4</h5>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Synonyms</td>
-                          <td className="prod-column">
-                            <h5>2-(2-(2-(2,6-dichlorophenyl)aminophenyl)acetyl)oxyacetic acid; 2-((2,6-dichlorophenyl)amino)-benzeneacetic aci carboxymethyl ester; [({2-[(2,6-dichlorophenyl)amino]phenyl}acetyl)oxy]acetic acid</h5>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Application</td>
-                          <td className="prod-column">
-                            <h5>Relief of pain and inflammation</h5>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div> */}
+                   
                   </div>
                 </div>
               </div>
+              <div className="btn-box clearfix mt-5 justify-content-center">
+                          
+        
+                          <button className="checkout-btn theme-btn"
+                   onClick={generatePdf}>Download Brochure</button>
+                        </div>
             </Row>
           </Container>
         </section>
