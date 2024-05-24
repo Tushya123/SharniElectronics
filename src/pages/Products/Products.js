@@ -269,7 +269,7 @@ export default function Products() {
                             >
                               <h2>{item.Description}</h2>
                             </a>
-                            <div className="lower-box">
+                            <div className="lower-box ">
                               <div className="link">
                                 <a
                                   type="button"

@@ -13,13 +13,14 @@ import banner from "../../assets/images/new-home/product-banner.jpg"
 import { Container, Row, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { jsPDF } from "jspdf";
+const description = localStorage.getItem("description");
 
 export default function ProductsDetails() {
   const [productDetailsss, setProductDetails] = React.useState(null);
   const [prod, setProd] = useState([]);
 
   React.useEffect(() => {
-    const description = localStorage.getItem("description");
+    
     axios
       .get(
         `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/get/productdetail/${description}`
@@ -171,7 +172,7 @@ export default function ProductsDetails() {
                       </figure>
                         </div>
                         <div className="col-lg-7 mt-4 product-name align-items-center d-flex">
-                          <h3>Abacavir Sulfate : Chemical Name</h3>
+                          <h3>{description} : Chemical Name</h3>
                         </div>
                         <div className="col-lg-5 col-12 text-right mt-4">
        
