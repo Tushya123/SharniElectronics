@@ -39,16 +39,19 @@ export default function Products() {
     )
       .then((response) => response.json())
       .then((data) => {
+        // Filter out inactive products
         data = data.filter(
           (item) =>
-            item.ProductDetail && item.ProductDetail.ProductGroup === xyz
+            item.ProductDetail && 
+            item.ProductDetail.ProductGroup === xyz &&
+            item.IsActive // Assuming "active" is the field indicating product status
         );
         data.sort((a, b) => a.Description.localeCompare(b.Description));
         setData(data);
       })
-
       .catch((error) => console.error("Error:", error));
   }, []);
+  
 
   useEffect(() => {
     setProductData({
@@ -531,10 +534,11 @@ export default function Products() {
         </div>
 
         {/* <!-- scroll to top --> */}
-        <button className="scroll-top scroll-to-target" data-target="html">
+      </div>
+      <button className="scroll-top scroll-to-target" data-target="html">
           <i className="flaticon-up-arrow"></i>
         </button>
-      </div>
+
     </React.Fragment>
   );
 }

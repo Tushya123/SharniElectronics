@@ -35,6 +35,9 @@ import NewsDetails from "./pages/News/NewsDetails";
 import { SearchProvider } from "./pages/Search/SearchProvider";
 import Search from "./pages/Search/Search";
 import Preloader from "./components/PreLoader";
+import Industries from "./components/Industries";
+import Strenghts from "./components/Strenghts";
+import Facts from "./components/Facts";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -67,10 +70,13 @@ function App() {
           <Route path="/blogdetails/:id" element={<BlogsDetails />} />
           <Route path="/innergallery/:index" element={<InnderGallery />} />
           <Route path="/newsevent" element={<NewsEvent />} />
-          {/* <Route path="/newsdetails" component={<NewsDetails/>} /> */}
           <Route path="/detailNews/:id" element={<NewsDetails />} />
-          {/* <Route path='/search' element ={<Search />} /> */}
           <Route path="/search" element={<Search />} />
+          <Route path="/industries" element={<Industries/>} />
+          <Route path="/strenghts" element={<Strenghts/>} />
+          <Route path="/Facts" element={<Facts/>} />
+
+
         </Routes>
         <Footer />
       </BrowserRouter>

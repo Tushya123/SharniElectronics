@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from "react";
-import small1 from "../assets/images/new-home/photo-gallery/1-small.jpg";
-import small2 from "../assets/images/new-home/photo-gallery/2-small.jpg";
-import small3 from "../assets/images/new-home/photo-gallery/3-small.jpg";
-import small4 from "../assets/images/new-home/photo-gallery/4-small.jpg";
-import small5 from "../assets/images/new-home/photo-gallery/5-small.jpg";
-import small6 from "../assets/images/new-home/photo-gallery/6-small.jpg";
-import small7 from "../assets/images/new-home/photo-gallery/7-small.jpg";
-import small8 from "../assets/images/new-home/photo-gallery/8-small.jpg";
-import small9 from "../assets/images/new-home/photo-gallery/9-small.jpg";
-import small10 from "../assets/images/new-home/photo-gallery/10-small.jpg";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { Button, Figure, Row } from "react-bootstrap";
 
 export default function Footer() {
   const [cmsDesc, setcmsDesc] = useState("");
@@ -51,7 +43,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <>
+    <React.Fragment>
       {/* <!-- main-footer --> */}
       <footer className="main-footer footer-style-two">
         <div className="auto-container">
@@ -85,22 +77,22 @@ export default function Footer() {
                   <div className="widget-content">
                     <ul className="links-list clearfix">
                       <li>
-                        <a href="#">Home</a>
+                        <Link to="/">Home</Link>
                       </li>
                       <li>
-                        <a href="#">About Us</a>
+                        <Link to="/about">About Us</Link>
                       </li>
                       <li>
-                        <a href="#">COMMITMENT</a>
+                        <Link to="/commitment">Commitment</Link>
                       </li>
                       <li>
-                        <a href="#">Products</a>
+                        <Link to="/products">Products</Link>
                       </li>
                       <li>
-                        <a href="#">Certificate</a>
+                        <Link to="/certificate">Certificate</Link>
                       </li>
                       <li>
-                        <a href="#">Contact Us</a>
+                        <Link to="/contect">Contact Us</Link>
                       </li>
                     </ul>
                   </div>
@@ -115,19 +107,19 @@ export default function Footer() {
                     <ul className="image-list clearfix">
                       {galleryData.map((item, index) => (
                         <li key={index}>
-                          <figure className="image">
+                          <Figure className="image">
                             <img
                               src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${item.imageURL}`}
                               alt=""
                             />
-                            <a
-                              href={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${item.imageURL}`}
+                            <Link
+                              to={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${item.imageURL}`}
                               className="lightbox-image"
                               data-fancybox="gallery"
                             >
                               <i className="flaticon-zoom-in"></i>
-                            </a>
-                          </figure>
+                            </Link>
+                          </Figure>
                         </li>
                       ))}
                     </ul>
@@ -137,7 +129,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="footer-bottom">
-            <div className="row">
+            <Row className="row">
               <div className="col-lg-6 col-md-12">
                 <div className="copyright">
                   <p>
@@ -156,7 +148,7 @@ export default function Footer() {
                   </p>
                 </div>
               </div>
-            </div>
+            </Row>
           </div>
         </div>
       </footer>
@@ -199,9 +191,9 @@ export default function Footer() {
       </div>
 
       {/* <!-- scroll to top --> */}
-      <button className="scroll-top scroll-to-target" data-target="html">
+      <Button className="scroll-top scroll-to-target" data-target="html">
         <i className="flaticon-up-arrow"></i>
-      </button>
-    </>
+      </Button>
+    </React.Fragment>
   );
 }

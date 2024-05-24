@@ -100,16 +100,7 @@ export default function About() {
                     <span className="sub-title">
                       Welcome to Shreeji Pharma International
                     </span>
-                    <h2
-                      style={{
-                        fontSize: "40px",
-                        lineHeight: "62px",
-                        fontWeight: "500",
-                        color: "#16436f",
-                      }}
-                    >
-                      {title}
-                    </h2>
+                    <h2>About US</h2>
                   </div>
                   <div className="text">
                     {React.createElement("div", {

@@ -4,6 +4,7 @@ import React from 'react';
 import logo from "../assets/images/new-home/logo.png"
 
 const Preloader = () => (
+  <React.Fragment>
   <div className="loader-wrap" style={{ display: "none" }}>
     <div className="preloader">
       <div className="preloader-close">x</div>
@@ -17,6 +18,7 @@ const Preloader = () => (
       </div>
     </div>
   </div>
+  </React.Fragment>
 );
 
 export default Preloader;

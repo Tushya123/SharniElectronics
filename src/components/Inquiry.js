@@ -42,15 +42,16 @@ const countriesArray = [
   { label: "US", value: "UNITED STATES" },
 ];
 
-
 export default function Inquiry() {
   const validationSchema = Yup.object().shape({
     ContactPerson: Yup.string().required("Enter Your Name!"),
     Mobile: Yup.string()
       .matches(/^\d{10}$/, "Invalid phone number")
       .required("Enter Your Mobile Number!"),
-    Email: Yup.string().email("Invalid email").required("Enter Your Email Address!"),
-    Country: Yup.string().required("Enter Country!"),
+    Email: Yup.string()
+      .email("Invalid email")
+      .required("Enter Your Email Address!"),
+    Country: Yup.string().required("Pls Select Your Country!"),
     Message: Yup.string().required("Enter your Message!"),
   });
 
@@ -81,6 +82,7 @@ export default function Inquiry() {
   };
 
   return (
+    <React.Fragment>
     <section className="booking-section sec-pad">
       <div
         className="bg-layer"
@@ -113,107 +115,128 @@ export default function Inquiry() {
           </div>
           <div className="col-lg-6 col-md-12 col-sm-12 inner-column">
             <div className="inner-content">
-            <div className="form-inner">
-                    <Formik
-                      initialValues={initialValues}
-                      validationSchema={validationSchema}
-                      onSubmit={(values, actions) => {
-                        handleRegister(values, actions);
-                      }}
-                    >
-                      {({ errors, touched, isSubmitting }) => (
-                        <Form>
-                          <div className="row clearfix">
-                            <div className="col-lg-6 col-md-12 col-sm-12 form-group">
-                              <i className="fa-solid fa-circle-user"></i>
-                              <label>Name</label>
-                              <Field
-                                type="text"
-                                name="ContactPerson"
-                                placeholder="Enter your name"
-                                // className={touched.ContactPerson && errors.ContactPerson ? 'error' : ''}
-                                required=""
-                              />
-                              <ErrorMessage name="ContactPerson" component="div" className="error-message" />
-                            </div>
-                            <div className="col-lg-6 col-md-12 col-sm-12 form-group">
-                              <i className="fa-solid fa-phone"></i>
-                              <label>Number</label>
-                              <Field
-                                type="text"
-                                name="Mobile"
-                                placeholder="Enter your number"
-                                // className={touched.Mobile && errors.Mobile ? 'error' : ''}
-                                required=""
-                              />
-                              <ErrorMessage name="Mobile" component="div" className="error-message" />
-                            </div>
-                            <div className="col-lg-6 col-md-12 col-sm-12 form-group">
-                              <i className="fa-solid fa-envelope"></i>
-                              <label>Email</label>
-                              <Field
-                                type="email"
-                                name="Email"
-                                required=""
-                                placeholder="Enter your Email"
-                              />
-                              <ErrorMessage name="Email" component="div" className="error-message" />
-                            </div>
-                            <div className="col-lg-6 col-md-12 col-sm-12 form-group">
-                              <label>Select Country</label>
-                              <div className="select-box">
-                                <Field
-                                  as="select"
-                                  className={`nice-select selectmenu  ${
-                                    errors.Country &&
-                                    touched.Country &&
-                                    "is-Invalid"
-                                  }`}
-                                  name="Country"
+              <div className="form-inner">
+                <Formik
+                  initialValues={initialValues}
+                  validationSchema={validationSchema}
+                  onSubmit={(values, actions) => {
+                    handleRegister(values, actions);
+                  }}
+                >
+                  {({ errors, touched, isSubmitting }) => (
+                    <Form>
+                      <div className="row clearfix">
+                        <div className="col-lg-6 col-md-12 col-sm-12 form-group">
+                          <i className="fa-solid fa-circle-user"></i>
+                          <label>Name</label>
+                          <Field
+                            type="text"
+                            name="ContactPerson"
+                            placeholder="Enter your name"
+                            // className={touched.ContactPerson && errors.ContactPerson ? 'error' : ''}
+                            required=""
+                          />
+                          <ErrorMessage
+                            name="ContactPerson"
+                            component="div"
+                            className="error-message"
+                          />
+                        </div>
+                        <div className="col-lg-6 col-md-12 col-sm-12 form-group">
+                          <i className="fa-solid fa-phone"></i>
+                          <label>Number</label>
+                          <Field
+                            type="text"
+                            name="Mobile"
+                            placeholder="Enter your number"
+                            // className={touched.Mobile && errors.Mobile ? 'error' : ''}
+                            required=""
+                          />
+                          <ErrorMessage
+                            name="Mobile"
+                            component="div"
+                            className="error-message"
+                          />
+                        </div>
+                        <div className="col-lg-6 col-md-12 col-sm-12 form-group">
+                          <i className="fa-solid fa-envelope"></i>
+                          <label>Email</label>
+                          <Field
+                            type="email"
+                            name="Email"
+                            required=""
+                            placeholder="Enter your Email"
+                          />
+                          <ErrorMessage
+                            name="Email"
+                            component="div"
+                            className="error-message"
+                          />
+                        </div>
+                        <div className="col-lg-6 col-md-12 col-sm-12 form-group">
+                          <label>Select Country</label>
+                          <div className="select-box">
+                            <Field
+                              as="select"
+                              className={`nice-select selectmenu  ${
+                                errors.Country &&
+                                touched.Country &&
+                                "is-Invalid"
+                              }`}
+                              name="Country"
+                            >
+                              <option value="">Select Country</option>
+                              {countriesArray.map((country) => (
+                                <option
+                                  key={country.label}
+                                  value={country.value}
                                 >
-                                <option value="">Select Country</option>
-                                {countriesArray.map((country) => (
-                                  <option
-                                    key={country.label}
-                                    value={country.value}
-                                  >
-                                    {country.value}
-                                  </option>
-                                ))}
-                                </Field>
-                                <ErrorMessage name="Country" component="div" className="error-message" />
-                              </div>
-                            </div>
-                            <div className="col-lg-12 col-md-12 col-sm-12 form-group">
-                              <label>Message</label>
-                              <Field
-                                name="Message"
-                                placeholder="Enter your message"
-                                rows="3"
-                                required=""
-                                as="textarea"
-                                className='custom-textarea'
-                              ></Field>
-                              <ErrorMessage name="Message" component="div" className="error-message" />
-                            </div>
-                            <div className="col-lg-12 col-md-12 col-sm-12 form-group message-btn">
-                              <button
-                                type="submit"
-                                className="theme-btn"
-                                disabled={isSubmitting}
-                              >
-                                {isSubmitting ? "Submitting..." : "Submit Here"}
-                              </button>
-                            </div>
+                                  {country.value}
+                                </option>
+                              ))}
+                            </Field>
+                            <ErrorMessage
+                              name="Country"
+                              component="div"
+                              className="error-message"
+                            />
                           </div>
-                        </Form>
-                      )}
-                    </Formik>
-                  </div>
+                        </div>
+                        <div className="col-lg-12 col-md-12 col-sm-12 form-group">
+                          <label>Message</label>
+                          <Field
+                            name="Message"
+                            placeholder="Enter your message"
+                            rows="3"
+                            required=""
+                            as="textarea"
+                            className="custom-textarea"
+                          ></Field>
+                          <ErrorMessage
+                            name="Message"
+                            component="div"
+                            className="error-message"
+                          />
+                        </div>
+                        <div className="col-lg-12 col-md-12 col-sm-12 form-group message-btn">
+                          <button
+                            type="submit"
+                            className="theme-btn"
+                            disabled={isSubmitting}
+                          >
+                            {isSubmitting ? "Submitting..." : "Submit Here"}
+                          </button>
+                        </div>
+                      </div>
+                    </Form>
+                  )}
+                </Formik>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+    </React.Fragment>
   );
 }

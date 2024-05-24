@@ -4,11 +4,10 @@ import skype from "../../assets/images/new-home/skype.png";
 import news from "../../assets/images/news/news-35.jpg";
 import wp from "../../assets/images/new-home/whatsapp.png";
 import Header from "../../components/Header";
-import { useParams ,Link} from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 
 export default function BlogsDetails() {
-
   const [Blogs, setBlogs] = useState([]);
 
   useEffect(() => {
@@ -108,27 +107,26 @@ export default function BlogsDetails() {
                 </div>
               </div>
               <div className="col-lg-4 col-md-12 col-sm-12 sidebar-side">
-      <div className="blog-sidebar">
-        <div className="sidebar-widget category-widget">
-          <div className="widget-title">
-            <h3>Blogs</h3>
-          </div>
-          <div className="widget-content">
-            <ul className="category-list clearfix">
-              {Blogs.map((blog) => (
-                <li key={blog._id}>
-                  <Link to={`/blogdetails/${blog._id}`}>
-                    {blog.Category}
-                    <i className="flaticon-right-arrow"></i>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
+                <div className="blog-sidebar">
+                  <div className="sidebar-widget category-widget">
+                    <div className="widget-title">
+                      <h3>Blogs</h3>
+                    </div>
+                    <div className="widget-content">
+                      <ul className="category-list clearfix">
+                        {Blogs.map((blog) => (
+                          <li key={blog._id}>
+                            <Link to={`/blogdetails/${blog._id}`}>
+                              {blog.Category}
+                              <i className="flaticon-right-arrow"></i>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>

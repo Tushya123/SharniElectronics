@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import logo from "../assets/images/new-home/logo.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useSearch } from "../pages/Search/SearchProvider";
 import { useNavigate } from "react-router-dom";
+import { Container } from "react-bootstrap";
 
 export default function Header() {
   const [products, setProducts] = useState([]);
@@ -35,10 +35,6 @@ export default function Header() {
       setProd(JSON.parse(storedProductIds));
     }
   }, [localStorage.getItem("productIds")]);
-
-  // useEffect(() => {
-  //   console.log(prod.length);
-  // }, [prod]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -74,8 +70,30 @@ export default function Header() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  // useEffect(() => {
+  //   const script = document.createElement('script');
+  //   script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+  //   script.async = true;
+  //   document.body.appendChild(script);
+
+  //   return () => {
+  //     document.body.removeChild(script);
+  //   };
+  // }, []);
+
+  // window.googleTranslateElementInit = () => {
+  //   new window.google.translate.TranslateElement({
+  //     pageLanguage: 'en',
+  //     layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+  //     gaTrack: true,
+  //     gaId: 'UA-25310579-1'
+  //   }, 'google_translate_element');
+  // };
+
+
   return (
-    <>
+    <React.Fragment>
       {/* <!-- preloader --> */}
 
       <div className="loader-wrap" style={{ display: "none" }}>
@@ -85,61 +103,23 @@ export default function Header() {
             <div className="animation-preloader">
               <div className="spinner"></div>
               <div className="txt-loading">
-                <img src={logo} />
+                <a href="/">
+                  <img src={logo} alt="Logo" />
+                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
       {/* <!-- preloader end --> */}
-      {/* <!--Search Popup--> */}
-      <div id="search-popup" className="search-popup">
-        <div className="popup-inner">
-          <div className="upper-box clearfix">
-            <figure className="logo-box pull-left">
-              <a href="#">
-                <img src={logo} />
-              </a>
-            </figure>
-            <div className="close-search pull-right">
-              <i className="fa-solid fa-xmark"></i>
-            </div>
-          </div>
-          <div className="overlay-layer"></div>
-          <div className="auto-container">
-            <div className="search-form">
-              <form
-                method="post"
-                action="https://st.ourhtmldemo.com/new/Biogenix/#"
-              >
-                <div className="form-group">
-                  <fieldset>
-                    <input
-                      type="search"
-                      className="form-control"
-                      name="search-input"
-                      value=""
-                      placeholder="Type your keyword and hit"
-                      required=""
-                    />
-                    <button type="submit">
-                      <i className="flaticon-magnifying-glass"></i>
-                    </button>
-                  </fieldset>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
       {/* <!-- main header --> */}
       <header className={`main-header header-style-one`}>
-        <div className="container">
+        <Container className="container">
           <div className="translate-x">
             <div className="logo-box">
               <figure className="logo">
                 <div className="custome-logo-box">
-                  <a href="index.html">
+                  <a href="/">
                     <img src={logo} alt="" />
                   </a>
                 </div>
@@ -150,15 +130,15 @@ export default function Header() {
                 </div>
               </figure>
             </div>
-            <div
-              id="google_translate_element"
-              style={{ paddingBottom: "3px" }}
-            ></div>
-          </div>
-        </div>
+             {/* // google */}
+            {/* <div id="google_translate_element" style={{ paddingBottom: '3px' }}></div> */}
+
+    </div>
+
+        </Container>
 
         <div className="header-top">
-          <div
+          <Container
             className="auto-container"
             style={{ marginBottom: "4px", marginTop: "148px" }}
           >
@@ -168,7 +148,7 @@ export default function Header() {
                   <div className="icon-box">
                     <i className="flaticon-dial-pad"></i>
                   </div>
-                  <a href="tel:8866002331">+91 8866002331</a>
+                  <a href="tel:8866002331">+918866002331</a>
                 </li>
                 <li className="custom-border">
                   <div className="icon-box">
@@ -200,11 +180,11 @@ export default function Header() {
                 </li>
               </ul>
             </div>
-          </div>
+          </Container>
         </div>
 
-        <div className={`header-lower ${isSticky ? "sticky-header" : ""}`}>
-          <div className="auto-container">
+        <div className={`header-lower ${isSticky ? "sticky-header" : ""}`} style={{zIndex:9}}>
+          <Container className="auto-container">
             <div className="outer-box">
               <div className="menu-area clearfix">
                 <div className="mobile-nav-toggler">
@@ -274,7 +254,6 @@ export default function Header() {
                 </li>
 
                 {/* //search */}
-                {/* Search Box Trigger */}
                 <li
                   className="search-box-outer search-toggler"
                   onClick={handleShow}
@@ -287,7 +266,7 @@ export default function Header() {
                 <Modal
                   show={showModal}
                   onHide={handleClose}
-                  dialogClassName="modal-fullscreen"
+                  // dialogClassName="modal-fullscreen"
                 >
                   <Modal.Header closeButton>
                     <div className="upper-box clearfix">
@@ -300,7 +279,6 @@ export default function Header() {
                         className="close-search pull-right"
                         onClick={handleClose}
                       >
-                        {/* <i className="fa-solid fa-xmark"></i> */}
                       </div>
                     </div>
                   </Modal.Header>
@@ -332,10 +310,8 @@ export default function Header() {
                 </Modal>
               </ul>
             </div>
-          </div>
+          </Container>
         </div>
-
-        {/* // sticky header */}
       </header>
       {/* <!-- Mobile Menu  --> */}
       <div className={`mobile-menu ${isMobileMenuOpen ? "active" : ""}`}>
@@ -361,17 +337,6 @@ export default function Header() {
         </nav>
       </div>
 
-      {/* Add a button or icon to toggle the mobile menu */}
-      {/* <div
-        className="mobile-nav-toggler"
-        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-      >
-        <i className="icon-bar"></i>
-        <i className="icon-bar"></i>
-        <i className="icon-bar"></i>
-      </div> */}
-
-      {/* <!-- End Mobile Menu --> */}
-    </>
+    </React.Fragment>
   );
 }

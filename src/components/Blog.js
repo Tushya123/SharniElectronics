@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom"; // Assuming you're using react-router-dom for navigation
+import { Container } from "react-bootstrap";
 
 export default function Blog() {
   const [Blogs, setBlogs] = useState([]);
@@ -12,7 +13,8 @@ export default function Blog() {
           `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/listonly/Blog`
         );
         console.log("Data:", response);
-        setBlogs(response.data);
+        const activeCertificates = response.data.filter(Blog => Blog.IsActive);
+        setBlogs(activeCertificates);
       } catch (error) {
         console.error("Error fetching product data:", error);
       }
@@ -24,8 +26,9 @@ export default function Blog() {
 
 
   return (
+    <React.Fragment>
     <section className="blog-grid news-style-two sec-pad sec-pad1">
-      <div className="auto-container">
+      <Container className="auto-container">
         <div className="sec-title">
           <span className="sub-title">Blogs</span>
           <h2>Explore our latest blogs</h2>
@@ -57,7 +60,7 @@ export default function Blog() {
                   </div>
                   <div className="lower-content">
                     <div className="category">
-                      <a href={`/blogdetails/${blog._id}`}>{blog.Category}</a>
+                      <Link to={`/blogdetails/${blog._id}`}>{blog.Category}</Link>
                     </div>
                     <ul className="post-info clearfix">
                       <li>{blog.date}</li>
@@ -76,7 +79,8 @@ export default function Blog() {
             </div>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
+    </React.Fragment>
   );
 }
