@@ -6,23 +6,25 @@ import skype from "../../assets/images/new-home/skype.png";
 import wp from "../../assets/images/new-home/whatsapp.png";
 import news from "../../assets/images/news/news-35.jpg";
 import Header from "../../components/Header";
-import html2canvas from "html2canvas";
+import html2canvas from 'html2canvas';
 
 import axios from "axios";
-import banner from "../../assets/images/new-home/product-banner.jpg";
-import { Container, Row, Table, Button } from "react-bootstrap";
+import banner from "../../assets/images/new-home/product-banner.jpg"
+import { Container, Row, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { jsPDF } from "jspdf";
 const description = localStorage.getItem("description");
 
 export default function ProductsDetails() {
   const [productDetailsss, setProductDetails] = React.useState(null);
+  const [isHidden, setIsHidden] = useState(true);
   const [prod, setProd] = useState([]);
 
   React.useEffect(() => {
+    
     axios
       .get(
-        `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/get/productdetail/${description}`
+        ${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/get/productdetail/${description}
       )
       .then((response) => {
         console.log("huncncjuhenchjbecvbevchj", response); // log the response data
@@ -42,9 +44,7 @@ export default function ProductsDetails() {
   useEffect(() => {
     const description = localStorage.getItem("description");
     axios
-      .get(
-        `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/get/productdetail/${description}`
-      )
+      .get(${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/get/productdetail/${description})
       .then((response) => {
         console.log("Response data", response);
         setProductDetails(response.data);
@@ -61,13 +61,17 @@ export default function ProductsDetails() {
     }
   }, [localStorage.getItem("productIds")]);
 
-  const generatePdf = () => {
-    const input = document.getElementById("pdf-content");
-    console.log("input", input);
-    const images = input.getElementsByTagName("img");
-    console.log("images", images);
-    const promises = [];
 
+  const generatePdf = () => {
+    const input = document.getElementById('pdf-content');
+    const hiddenElements = document.querySelectorAll('.hidden');
+  
+    // Show hidden elements
+    hiddenElements.forEach(el => el.style.display = 'block');
+  
+    const images = input.getElementsByTagName('img');
+    const promises = [];
+  
     for (let i = 0; i < images.length; i++) {
       const img = images[i];
       if (!img.complete) {
@@ -78,38 +82,36 @@ export default function ProductsDetails() {
         );
       }
     }
-
+  
     Promise.all(promises)
       .then(() => {
-        html2canvas(input, {
-          useCORS: true,
-        })
-          .then((canvas) => {
-            console.log("canvas", canvas);
-            const imgData = canvas.toDataURL("image/jpeg");
-            const pdf = new jsPDF();
-            const imgWidth = 200; // A4 width in mm
-            const pageHeight = 287; // A4 height in mm
-            const imgHeight = (canvas.height * imgWidth) / canvas.width;
-            let heightLeft = imgHeight;
-            let position = 10;
-
-            while (heightLeft >= 0) {
-              pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
-              heightLeft -= pageHeight;
-              if (heightLeft >= 0) {
-                pdf.addPage();
-              }
-              position = heightLeft - imgHeight;
-            }
-            pdf.save("brochure.pdf");
-          })
-          .catch((error) => console.error("Error generating PDF: ", error));
+        return html2canvas(input, { useCORS: true });
       })
-      .catch((error) => {
-        console.error("Error adding images to PDF:", error);
-      });
+      .then((canvas) => {
+        // Re-hide the hidden elements
+        hiddenElements.forEach(el => el.style.display = 'none');
+  
+        const imgData = canvas.toDataURL('image/jpeg');
+        const pdf = new jsPDF();
+        const imgWidth = 200; // A4 width in mm
+        const pageHeight = 290; // A4 height in mm
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        let heightLeft = imgHeight;
+        let position = 10;
+  
+        while (heightLeft >= 0) {
+          pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+          heightLeft -= pageHeight;
+          if (heightLeft >= 0) {
+            pdf.addPage();
+          }
+          position = heightLeft - imgHeight;
+        }
+        pdf.save('brochure.pdf');
+      })
+      .catch((error) => console.error('Error generating PDF: ', error));
   };
+  
 
   console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>", productDetailsss);
 
@@ -123,7 +125,7 @@ export default function ProductsDetails() {
         <section className="page-title">
           <div
             className="bg-layer"
-            style={{ backgroundImage: `url(${Background})` }}
+            style={{ backgroundImage: url(${Background}) }}
           ></div>
           <div className="auto-container">
             <div className="content-box">
@@ -148,90 +150,96 @@ export default function ProductsDetails() {
         <section className="sidebar-page-container blog-details sec-pad pro-det ptb-60">
           <Container className="auto-container">
             <Row className="row clearfix">
-              <div
-                className="col-lg-12 col-md-12 col-sm-12 content-side"
-                id="pdf-content"
-              >
-                <div className="blog-details-content">
+              <div className="col-lg-12 col-md-12 col-sm-12 content-side" id="pdf-content">
+                <div className="blog-details-content" >
                   <div className="content-one row mb-0">
+                 
+
+                  <div className={col-lg-12 col-12 ${isHidden ? 'hidden' : ''}}>
+                      <div className="row justify-content-center">
+                        <div className="col-lg-12 col-12 product-image-banner">
+                        <figure className="image-box">
+                        {productDetailsss && (
+                          <img
+                          
+                            src={${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${productDetailsss.ImageUrl}}
+                            onLoad={() => console.log('Image loaded successfully')}
+        onError={() => console.error('Error loading image')}
+                          />
+                        )}
+                      </figure>
+                        </div>
+                        
+                        <div className="col-lg-5 col-12 text-right mt-4">
+       
+                        
+                        </div>
+                      </div>
+                    </div>
                     <div className="col-lg-12 col-12">
                       <div className="row justify-content-center">
                         <div className="col-lg-12 col-12 product-image-banner">
-                          <figure className="image-box">
-                            {productDetailsss && (
-                              <img
-                                src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${productDetailsss.ImageUrl}`}
-                                onLoad={() =>
-                                  console.log("Image loaded successfully")
-                                }
-                                onError={() =>
-                                  console.error("Error loading image")
-                                }
-                              />
-                            )}
-                          </figure>
+                        <figure className="image-box">
+                        {productDetailsss && (
+                          <img
+                          
+                            src={${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${productDetailsss.ImageUrl}}
+                            onLoad={() => console.log('Image loaded successfully')}
+        onError={() => console.error('Error loading image')}
+                          />
+                        )}
+                      </figure>
                         </div>
                         <div className="col-lg-7 mt-4 product-name align-items-center d-flex">
                           <h3>{description} : Chemical Name</h3>
                         </div>
-                        <div className="col-lg-5 col-12 text-right mt-4"></div>
+                        <div className="col-lg-5 col-12 text-right mt-4">
+       
+                        
+                        </div>
                       </div>
                     </div>
                     <div className="col-lg-12 col-12 mt-4">
-                      <div
-                        className="table-outer product-detail-table"
-                        style={{ border: "1px solid #16436f" }}
-                      >
+                      <div className="table-outer product-detail-table" style={{border:"1px solid #16436f"}}>
                         <Table className="cart-table">
                           <thead className="cart-header">
-                            <tr style={{ padding: "0px" }}>
+                            <tr style={{padding:"0px"}}>
                               <th>Name</th>
                               <th>Detail</th>
                             </tr>
                           </thead>
                           <tbody>
-                            {productDetailsss &&
-                              productDetailsss.ProductDetailDescription.map(
-                                (detail, index) => (
-                                  <tr key={index}>
-                                    <td>{detail.ProductKey}</td>
-                                    <td className="prod-column">
-                                      <h5>{detail.ProductValue}</h5>
-                                    </td>
-                                  </tr>
-                                )
-                              )}
-                          </tbody>
+                        {productDetailsss && productDetailsss.ProductDetailDescription.map((detail, index) => (
+                          <tr key={index}>
+                            <td>{detail.ProductKey}</td>
+                            <td className="prod-column">
+                              <h5>{detail.ProductValue}</h5>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
                         </Table>
                       </div>
                     </div>
+
+                   
                   </div>
                 </div>
               </div>
-              <div className="btn-box clearfix mt-5 text-center">
-                <button
-                  className="checkout-btn theme-btn mx-auto"
-                  onClick={generatePdf}
-                >
-                  Download Brochure
-                </button>
-              </div>
+              <div className="btn-box clearfix mt-5 justify-content-center">
+                          
+        
+                          <button className="checkout-btn theme-btn"
+                   onClick={generatePdf}>Download Brochure</button>
+                        </div>
             </Row>
           </Container>
         </section>
 
         {/* <!-- sidebar-page-container end -->
     <!-- about-section end --> */}
-        <div className="sticky-button">
-          <Link
-            to="assets/catalogue-shreeji-pharma.pdf"
-            target="__blank"
-            download=""
-          >
-            Download Brochure
-          </Link>
-        </div>
 
+ 
         <div className="sticky-whatsapp">
           <Link
             to="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
@@ -281,7 +289,8 @@ export default function ProductsDetails() {
           </div>
         </div>
 
-        <button className="scroll-top scroll-to-target open" data-target="html">
+        {/* <!-- scroll to top --> */}
+        <button className="scroll-top scroll-to-target" data-target="html">
           <i className="flaticon-up-arrow"></i>
         </button>
       </div>
