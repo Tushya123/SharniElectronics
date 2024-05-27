@@ -17,6 +17,7 @@ const description = localStorage.getItem("description");
 
 export default function ProductsDetails() {
   const [productDetailsss, setProductDetails] = React.useState(null);
+  const [isHidden, setIsHidden] = useState(true);
   const [prod, setProd] = useState([]);
 
   React.useEffect(() => {
@@ -63,9 +64,12 @@ export default function ProductsDetails() {
 
   const generatePdf = () => {
     const input = document.getElementById('pdf-content');
-    console.log("input",input)
+    const hiddenElements = document.querySelectorAll('.hidden');
+  
+    // Show hidden elements
+    hiddenElements.forEach(el => el.style.display = 'block');
+  
     const images = input.getElementsByTagName('img');
-    console.log("images",images)
     const promises = [];
   
     for (let i = 0; i < images.length; i++) {
@@ -81,39 +85,33 @@ export default function ProductsDetails() {
   
     Promise.all(promises)
       .then(() => {
-        html2canvas(input, { 
-   
-          
-          useCORS: true, 
-      
-        })
-          .then((canvas) => {
-            console.log("canvas",canvas)
-            const imgData = canvas.toDataURL('image/jpeg');
-            const pdf = new jsPDF();
-            const imgWidth = 200; // A4 width in mm
-            const pageHeight = 287; // A4 height in mm
-            const imgHeight = (canvas.height * imgWidth) / canvas.width;
-            let heightLeft = imgHeight;
-            let position = 10;
-  
-            while (heightLeft >= 0) {
-              pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
-              heightLeft -= pageHeight;
-              if (heightLeft >= 0) {
-                pdf.addPage();
-              }
-              position = heightLeft - imgHeight ; 
-            }
-            pdf.save('brochure.pdf');
-          })
-          .catch((error) => console.error('Error generating PDF: ', error));
+        return html2canvas(input, { useCORS: true });
       })
-      .catch((error) => {
-        console.error('Error adding images to PDF:', error);
-      });
+      .then((canvas) => {
+        // Re-hide the hidden elements
+        hiddenElements.forEach(el => el.style.display = 'none');
+  
+        const imgData = canvas.toDataURL('image/jpeg');
+        const pdf = new jsPDF();
+        const imgWidth = 200; // A4 width in mm
+        const pageHeight = 290; // A4 height in mm
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        let heightLeft = imgHeight;
+        let position = 10;
+  
+        while (heightLeft >= 0) {
+          pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+          heightLeft -= pageHeight;
+          if (heightLeft >= 0) {
+            pdf.addPage();
+          }
+          position = heightLeft - imgHeight;
+        }
+        pdf.save('brochure.pdf');
+      })
+      .catch((error) => console.error('Error generating PDF: ', error));
   };
-
+  
 
   console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>", productDetailsss);
 
@@ -157,6 +155,27 @@ export default function ProductsDetails() {
                   <div className="content-one row mb-0">
                  
 
+                  <div className={`col-lg-12 col-12 ${isHidden ? 'hidden' : ''}`}>
+                      <div className="row justify-content-center">
+                        <div className="col-lg-12 col-12 product-image-banner">
+                        <figure className="image-box">
+                        {productDetailsss && (
+                          <img
+                          
+                            src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${productDetailsss.ImageUrl}`}
+                            onLoad={() => console.log('Image loaded successfully')}
+        onError={() => console.error('Error loading image')}
+                          />
+                        )}
+                      </figure>
+                        </div>
+                        
+                        <div className="col-lg-5 col-12 text-right mt-4">
+       
+                        
+                        </div>
+                      </div>
+                    </div>
                     <div className="col-lg-12 col-12">
                       <div className="row justify-content-center">
                         <div className="col-lg-12 col-12 product-image-banner">
