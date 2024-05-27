@@ -4,18 +4,18 @@ import industry from "../assets/images/new-home/industry-serve-bg-img.jpg";
 import pharmaceutical from "../assets/images/new-home/pharmaceutical.svg";
 import cosmetics from "../assets/images/new-home/cosmetics.svg";
 import conveyor from "../assets/images/new-home/conveyor-belt.svg";
-import { Container } from "react-bootstrap";
-
+import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export default function Industries() {
   return (
     <React.Fragment>
-      <Container className="industries-section sec-pad">
+      <section className="industries-section sec-pad">
         <div
           className="pattern-layer"
           style={{ backgroundImage: `url(${shape3})` }}
         ></div>
-        <div className="auto-container">
+        <Container>
           <div className="inner-container">
             <div
               className="bg-layer"
@@ -26,11 +26,11 @@ export default function Industries() {
                 <div className="shape shape-1 hexagon_shape"></div>
                 <div className="shape shape-2 hexagon_shape"></div>
               </div>
-              <div className="row clearfix">
-                <div className="col-lg-3 col-md-6 col-sm-12 industries-block">
+              <Row>
+                <Col lg={3} md={6} sm={12} className="industries-block">
                   <div className="industries-block-one"></div>
-                </div>
-                <div className="col-lg-3 col-md-6 col-sm-12 industries-block">
+                </Col>
+                <Col lg={3} md={6} sm={12} className="industries-block">
                   <div className="industries-block-one">
                     <div className="inner-box">
                       <div className="icon-box icon-box1">
@@ -38,18 +38,18 @@ export default function Industries() {
                       </div>
                       <h6>Industry 01</h6>
                       <h3>
-                        <a href="#">Pharmaceuticals</a>
+                        <Link to="/">Pharmaceuticals</Link>
                       </h3>
                       <p>Advancing health, improving lives.</p>
                       <div className="link">
-                        <a href="#">
+                        <Link to="/">
                           <i className="flaticon-right-arrow"></i>
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="col-lg-3 col-md-6 col-sm-12 industries-block">
+                </Col>
+                <Col lg={3} md={6} sm={12} className="industries-block">
                   <div className="industries-block-one">
                     <div className="inner-box">
                       <div className="icon-box icon-box1">
@@ -57,37 +57,37 @@ export default function Industries() {
                       </div>
                       <h6>Industry 02</h6>
                       <h3>
-                        <a href="#">Cosmetic Industries</a>
+                        <Link to="/">Cosmetic Industries</Link>
                       </h3>
                       <p>Beauty and personal care products.</p>
                       <div className="link">
-                        <a href="#">
+                        <Link to="/">
                           <i className="flaticon-right-arrow"></i>
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="col-lg-3 col-md-6 col-sm-12 industries-block">
-                  <div className="industries-block-one ">
-                    <div className="inner-box ">
+                </Col>
+                <Col lg={3} md={6} sm={12} className="industries-block">
+                  <div className="industries-block-one">
+                    <div className="inner-box">
                       <div className="icon-box icon-box1">
                         <img src={conveyor} alt="" />
                       </div>
                       <h6>Industry 03</h6>
                       <h3>
-                        <a href="#">Food Industries</a>
+                        <Link to="/">Food Industries</Link>
                       </h3>
                       <p>Nutritious, quality food production.</p>
                       <div className="link">
-                        <a href="#">
+                        <Link to="/">
                           <i className="flaticon-right-arrow"></i>
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="col-lg-6 col-md-12 col-sm-12 title-column">
+                </Col>
+                <Col lg={6} md={12} sm={12} className="title-column">
                   <div className="sec-title mr-0 light">
                     <span className="sub-title">our industries</span>
                     <h2>
@@ -95,8 +95,8 @@ export default function Industries() {
                       that we served
                     </h2>
                   </div>
-                </div>
-                <div className="col-lg-3 col-md-6 col-sm-12 industries-block">
+                </Col>
+                <Col lg={3} md={6} sm={12} className="industries-block">
                   <div className="industries-block-one">
                     <div className="inner-box">
                       <div className="icon-box">
@@ -108,14 +108,14 @@ export default function Industries() {
                       </h3>
                       <p>Enhanced health supplement foods.</p>
                       <div className="link">
-                        <a href="#">
+                        <Link to="/">
                           <i className="flaticon-right-arrow"></i>
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="col-lg-3 col-md-6 col-sm-12 industries-block">
+                </Col>
+                <Col lg={3} md={6} sm={12} className="industries-block">
                   <div className="industries-block-one">
                     <div className="inner-box">
                       <div className="icon-box">
@@ -123,22 +123,22 @@ export default function Industries() {
                       </div>
                       <h6>Industry 05</h6>
                       <h3>
-                        <a href="#">Veterinary industries</a>
+                        <Link to="/">Veterinary industries</Link>
                       </h3>
                       <p>Animal health and wellness.</p>
                       <div className="link">
-                        <a href="#">
+                        <Link to="/">
                           <i className="flaticon-right-arrow"></i>
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                </Col>
+              </Row>
             </div>
           </div>
-        </div>
-      </Container>
+        </Container>
+      </section>
     </React.Fragment>
   );
 }

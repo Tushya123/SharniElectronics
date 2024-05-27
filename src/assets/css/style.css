@@ -439,7 +439,7 @@ img {
 }
 
 .sec-pad{
-  padding: 120px 0px;
+  padding: 47px 0px;
 }
 
 .mr-0{
@@ -1750,7 +1750,7 @@ div#mCSB_1_container{
 
 /** banner-section **/
 
-.banner-section{
+.banner-carousel{
   position: relative;
   overflow: hidden;
   height: 90vh;
@@ -1762,7 +1762,8 @@ div#mCSB_1_container{
   } */
 .banner-carousel .slide-item{
   position: relative;
-  padding: 257px 0px 10px 0px;
+  padding: 180px 0px 10px 0px;
+  height: 90vh;
 }
   
 .slide-item:before{
@@ -1935,13 +1936,17 @@ div#mCSB_1_container{
 }
 
 .banner-carousel .content-box .list li .icon-box:before{
+  background: #10b1b4;
+}
+
+.banner-carousel .content-box .list li .icon-box:before{
   position: absolute;
   content: '';
   width: 70px;
   height: 60px;
   left: 0px;
   top: 0px;
-  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%) !important;
   transform: rotate(90deg);
   z-index: -1;
 }
@@ -4131,7 +4136,7 @@ div#mCSB_1_container{
   font-size: 18px;
   padding: 0px 50px 0px 20px;
   color: #7c8083;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   border-radius: 0px;
   transition: all 500ms ease;
 }
@@ -13658,7 +13663,7 @@ div#mCSB_1_container{
   font-size: 18px;
   color: #7c8083;
   padding: 10px 20px;
-  text-transform: capitalize;
+  /* text-transform: lowercase; */
   border-radius: 0px;
   text-align: left;
   padding-right: 50px;
@@ -13899,21 +13904,21 @@ div#mCSB_1_container{
 }
 
 
-.banner-section .slick-dots{
+.banner-carousel .slick-dots{
   bottom: 0 !important;
   position: absolute !important;
   right: 0 !important;
   top: 50% !important;
 }
-.banner-section  .slick-dots li{
+.banner-carousel  .slick-dots li{
   display: block !important;
 }
 
-.banner-section  .magic-dots.slick-dots ul{
+.banner-carousel  .magic-dots.slick-dots ul{
   display: block !important;
 }
 
-.service-section .slick-slider {
+.service-carousel .slick-slider {
   text-align: center !important;
 }
 .slick-dots li button:before{
@@ -13958,13 +13963,6 @@ div#mCSB_1_container{
 .error-message {
   font-size: 14px;
 }
-.email-input {
-  text-transform: capitalize; /* Reset text transformation */
-}
-.capitalize-first-letter input[type="text"],
-.capitalize-first-letter textarea {
-  text-transform: capitalize;
-}
 .product-image-banner img{
   width: 70% !important;
   display: block;
@@ -13984,4 +13982,38 @@ div#mCSB_1_container{
   color: #16436f;
   border-right: 1 px solid #16436f;
 
+}
+input {
+  /* text-transform: capitalize; */
+}
+.product-detail-table .cart-table tbody tr td{
+  padding: 5px 10px
+}
+.product-detail-table .cart-table tbody tr td{
+  vertical-align: middle;
+  border-left: 1px solid #16436f;
+  border-bottom: 1px solid #16436f;
+  color: #16436f;
+  font-size: 17px;
+  text-align: left !important;
+}
+.product-detail-table .cart-table tbody tr td h5{
+  font-size: 15px !important;
+}
+
+.slick-prev, .slick-next{
+  top: -50px !important;
+}
+.slick-prev{
+  left: unset !important;
+  right: 70px;
+}
+.slick-next{
+  right: 30px !important;
+  left: unset !important;
+
+}
+
+.slick-initialized .slick-slide{
+  text-align: center;
 }

@@ -212,10 +212,16 @@
   }
   .position-slider .content-box {
     position: absolute;
-    top: 50%;
+    /* top: 50%; */
     z-index: 99;
 }
 
+}
+
+@media (min-width:425px) and (max-width:768px) {
+  .slick-initialized .slick-slide {
+    padding: 20px;
+}
 }
 
 
@@ -1194,4 +1200,11 @@
   }
 
 
+}
+@media (max-width: 767px) {
+  .text-lg-start {
+    text-align: left  !important;
+    margin-left: 10px;
+
+  }
 }

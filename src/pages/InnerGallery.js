@@ -1,9 +1,8 @@
-// src/pages/ImageView.js
-
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Background from "../assets/images/new-home/breadcrumb-img.jpg";
+import { Container, Row, Col, Button, Image } from "react-bootstrap";
 
 export default function ImageView() {
   const location = useLocation();
@@ -22,53 +21,56 @@ export default function ImageView() {
           className="bg-layer"
           style={{ backgroundImage: `url(${Background})` }}
         ></div>
-        <div className="auto-container">
+        <Container>
           <div className="content-box">
             <h1>Event Name</h1>
             <ul className="bread-crumb clearfix">
               <li>
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
               </li>
               <li>Gallery</li>
               <li>Event Name</li>
             </ul>
           </div>
-        </div>
+        </Container>
       </section>
       <section className="service-details sec-pad">
-        <div className="auto-container">
-          <div className="row clearfix">
-            <div className="col-lg-12 col-md-12 col-sm-12 content-side gal-type">
+        <Container>
+          <Row>
+            <Col>
               <div className="service-details-content">
                 <div className="content-five">
-                  <div className="row clearfix">
-
-                    <button onClick={handleClose}></button>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        overflowX: "auto",
-                      }}
-                    >
-                      {galleryData.map((item, index) => (
-                        
-                        <div key={index} style={{ margin: "0 5px" }}>
-                          <img
-                            src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${item.imageURL}`}
-                            alt={item.Category}
-                            style={{ width: "100%", height: "auto" }}
-                          />
-                        </div>
-                      ))}
-                    </div>
+                <button onClick={handleClose}></button>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      overflowX: "auto",
+                    }}
+                  >
+                    {galleryData.map((item, index) => (
+                      <div key={index} style={{ margin: "0 5px" }}>
+                        <Image
+                          src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${item.imageURL}`}
+                          alt={item.Category}
+                          className="img-fluid"
+                        />
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
+            </Col>
+          </Row>
+        </Container>
       </section>
+      <button
+            className="scroll-top scroll-to-target open"
+            data-target="html"
+          >
+            <i className="flaticon-up-arrow"></i>
+          </button>
+
     </div>
   );
 }

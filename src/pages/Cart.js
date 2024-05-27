@@ -13,7 +13,7 @@ import * as Yup from "yup";
 
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { Row } from "reactstrap";
+import { Row,Button } from "reactstrap";
 const countriesArray = [
   { label: "DZ", value: "ALGERIA" },
   { label: "AR", value: "ARGENTINA" },
@@ -532,8 +532,10 @@ export default function Cart() {
             </div>
           </div>
 
-          {/* <!-- scroll to top --> */}
-          <button className="scroll-top scroll-to-target" data-target="html">
+          <button
+            className="scroll-top scroll-to-target open"
+            data-target="html"
+          >
             <i className="flaticon-up-arrow"></i>
           </button>
         </div>

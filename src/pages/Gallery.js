@@ -1,14 +1,26 @@
 // src/pages/Gallery.js
 
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Header from "../components/Header";
 import Background from "../assets/images/new-home/breadcrumb-img.jpg";
+import { Container, Row, Col, Figure, Image,Button } from "react-bootstrap";
+import Preloader from "../components/PreLoader";
+import shape10 from "../assets/images/shape/shape-10.png";
+import footer from "../assets/images/new-home/footer-location-img.jpg";
+import skype from "../assets/images/new-home/skype.png";
+import wp from "../assets/images/new-home/whatsapp.png";
+import { Modal } from "react-bootstrap";
+
+
+
 
 export default function Gallery() {
   const [galleryData, setGalleryData] = useState([]);
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false); // State for controlling modal visibility
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,6 +47,12 @@ export default function Gallery() {
 
   return (
     <React.Fragment>
+            {!galleryData || galleryData ?.length < 1 ? (
+        <Preloader />
+      ) : (
+        <>
+
+      
       <div className="boxed_wrapper">
         <Header />
         <section className="page-title">
@@ -42,50 +60,53 @@ export default function Gallery() {
             className="bg-layer"
             style={{ backgroundImage: `url(${Background})` }}
           ></div>
-          <div className="auto-container">
+          <Container className="auto-container">
             <div className="content-box">
               <h1>Gallery</h1>
               <ul className="bread-crumb clearfix">
                 <li>
-                  <a href="/">Home</a>
+                  <Link to="/">Home</Link>
                 </li>
                 <li>Gallery</li>
               </ul>
             </div>
-          </div>
+          </Container>
         </section>
         <section className="service-details sec-pad">
-          <div className="auto-container">
-            <div className="row clearfix">
-              <div className="col-lg-12 col-md-12 col-sm-12 content-side gal-type">
+          <Container className="auto-container">
+            <Row className="row clearfix">
+            <Col lg={12} md={12} sm={12} className="content-side gal-type">
                 <div className="service-details-content">
                   <div className="content-five">
-                    <div className="row clearfix">
+                    <Row className="row clearfix">
                       {galleryData.map((item, index) => (
-                        <div
-                          key={index}
-                          className="col-lg-3 col-md-6 col-sm-12 project-block gallery"
-                          onClick={() => handleClick(index)}
+                        <Col
+                        key={index}
+                        lg={3}
+                        md={6}
+                        sm={12}
+                        className="project-block gallery mb-4"
+                        onClick={() => handleClick(index)}
                         >
                           <div className="project-block-one">
                             <div className="inner-box">
                               <div className="static-content">
-                                <figure className="image-box">
-                                  <img
+                                <Figure className="image-box">
+                                  <Image
                                     src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${item.imageURL}`}
                                     alt={item.Category}
                                   />
-                                </figure>
+                                </Figure>
                                 <h5 className="gal-txt">{item.GalleryTypeDetails[0].Category}</h5>
                               </div>
                               <div className="overlay-content">
                                 <div className="image-box">
-                                  <figure className="image">
-                                    <img
+                                  <Figure className="image">
+                                    <Image
                                       src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${item.imageURL}`}
                                       alt={item.Category}
                                     />
-                                  </figure>
+                                  </Figure>
                                   <h5 className="gal-txt">{item.GalleryTypeDetails[0].Category}</h5>
                                   <div className="view-btn">
                                     <i className="flaticon-zoom-in"></i>
@@ -94,16 +115,115 @@ export default function Gallery() {
                               </div>
                             </div>
                           </div>
-                        </div>
+                        </Col>
                       ))}
-                    </div>
+                    </Row>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
+              </Col>
+            </Row>
+          </Container>
         </section>
+                {/* locations-section */}
+        {/* locations-section */}
+        <section className="locations-section sec-pad text-center" style={{ backgroundImage: `url(${shape10})` }}>
+          <Container>
+            <div className="sec-title">
+              <span className="sub-title">Locations</span>
+              <h2>
+                Support across 50+ countries <br />
+                around the world
+              </h2>
+            </div>
+            <Row className="clearfix justify-content-center">
+              <Col lg={6} md={6} sm={12} className="location-block mt-5">
+                <div className="location-block-one">
+                  <div className="inner-box">
+                    <Figure className="image-box">
+                      <Image src={footer} alt="" fluid />
+                    </Figure>
+                    <h6>SHREEJI PHARMA INTERNATIONAL</h6>
+                    <h3>
+                      311, Atlantis Heights, Sarabhai Main Road, Vadiwadi, Vadodara - 390 007, Gujarat, INDIA.
+                    </h3>
+                    <div className="custom-info">
+                      <div className="link">
+                        <Link to="mailto:contact@shreejipharma.com">
+                          Email : contact@shreejipharma.com
+                          <i className="flaticon-right-arrow"></i>
+                        </Link>
+                      </div>
+                      <div className="link">
+                        <Link to="tel:8866002331">
+                          Contact : +91 8866002331
+                          <i className="flaticon-right-arrow"></i>
+                        </Link>
+                      </div>
+                      <div className="link">
+                        <Link to="skype:Nilesh.sheth70?Call">
+                          Skype ID: Nilesh.sheth70
+                          <i className="flaticon-right-arrow"></i>
+                        </Link>
+                      </div>
+                    </div>
+              <Link
+                // to="https://maps.app.goo.gl/Bsr5XK4HhGCfyD2b6"
+                onClick={() => setShowModal(true)} // Set showModal to true when clicked
+              >
+                Locate Us <i className="flaticon-right-arrow"></i>
+              </Link>
+                  </div>
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </section>
+        <div className="sticky-button">
+          <Link to="assets/catalogue-shreeji-pharma.pdf" target="__blank" download="">
+            Download Brochure
+          </Link>
+        </div>
+        <div className="sticky-whatsapp">
+          <Link
+            to="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
+            target="_blank"
+          >
+            <Image src={wp} className="img-responsive" alt="WhatsApp" />
+          </Link>
+        </div>
+        <div className="sticky-skype">
+          <Link to="skype:Nilesh.sheth70?Call" target="_blank">
+            <Image src={skype} className="img-responsive" alt="Skype" />
+          </Link>
+        </div>
+        <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Vadiwadi, Vadodara</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7381.956093641144!2d73.167648!3d22.31667!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fcf6c89cabb19%3A0xf803cbcf27adf1aa!2sShreeji%20Pharma%20International!5e0!3m2!1sen!2sus!4v1712310707767!5m2!1sen!2sus"
+            width="100%"
+            height="450"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </Modal.Body>
+      </Modal>
+
       </div>
+      <button
+            className="scroll-top scroll-to-target open"
+            data-target="html"
+          >
+            <i className="flaticon-up-arrow"></i>
+          </button>
+
+      </>
+      )}
+
     </React.Fragment>
   );
 }

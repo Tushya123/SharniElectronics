@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Container, Row, Col, Image, Button, Figure } from "react-bootstrap";
 import about from "../assets/images/new-home/about-img.jpg";
 import logo from "../assets/images/new-home/logo.png";
 import Background from "../assets/images/new-home/breadcrumb-img.jpg";
@@ -9,11 +10,16 @@ import Background1 from "../assets/images/background/funfact-bg.jpg";
 import Header from "../components/Header";
 import axios from "axios";
 import shape10 from "../assets/images/shape/shape-10.png";
+import { Link } from "react-router-dom";
+import Preloader from "../components/PreLoader";
+import { Modal } from "react-bootstrap";
 
 export default function About() {
   const [cmsDesc, setcmsDesc] = useState("");
   const [title, setTitle] = useState("");
   const [cmsImage, setcmsImage] = useState("");
+  const [showModal, setShowModal] = useState(false); // State for controlling modal visibility
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,36 +43,37 @@ export default function About() {
   }, []);
 
   return (
-    <React.Fragment
-      style={{ position: "relative", minHeight: "100%", top: "0px" }}
-    >
-      <div class="boxed_wrapper">
+    <React.Fragment style={{ position: "relative", minHeight: "100%", top: "0px" }}>
+            {!cmsDesc || cmsDesc?.length < 1 ? (
+        <Preloader />
+      ) : (
+        <>
+
+      <div className="boxed_wrapper">
         <Header />
-        {/* <!-- page-title --> */}
-        <section class="page-title">
-          <div
-            class="bg-layer"
-            style={{ backgroundImage: `url(${Background})` }}
-          ></div>
-          <div class="auto-container">
-            <div class="content-box">
-              <h1>About Us</h1>
-              <ul class="bread-crumb clearfix">
-                <li>
-                  <a href="/">Home</a>
-                </li>
-                <li>About Us</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-        {/* <!-- page-title end --> */}
-        {/* <!-- banner-section end --> */}
-        {/* <!-- about-section --> */}
+        {/* page-title */}
+        <section className="page-title">
+              <div
+                className="bg-layer"
+                style={{ backgroundImage: `url(${Background})` }}
+              ></div>
+              <Container className="auto-container">
+                <div className="content-box">
+                  <h1>AboutUs</h1>
+                  <ul className="bread-crumb clearfix">
+                    <li>
+                      <Link to="/">Home</Link>
+                    </li>
+                    <li>AboutUs</li>
+                  </ul>
+                </div>
+              </Container>
+            </section>
+        {/* about-section */}
         <section className="about-section sec-pad">
-          <div className="auto-container">
-            <div className="row clearfix">
-              <div className="col-lg-6 col-md-12 col-sm-12 image-column">
+          <Container>
+            <Row className="clearfix">
+              <Col lg={6} md={12} sm={12} className="image-column">
                 <div className="image-box">
                   <div className="shape-box">
                     <div className="shape shape-1 hexagon_shape"></div>
@@ -74,12 +81,9 @@ export default function About() {
                     <div className="shape shape-3 hexagon_shape"></div>
                   </div>
                   <div className="image-inner hexagon_shape">
-                    <figure className="image">
-                      <img
-                        src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${cmsImage}`}
-                        alt=""
-                      />
-                    </figure>
+                    <Figure className="image">
+                      <Image src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${cmsImage}`} alt="" fluid />
+                    </Figure>
                   </div>
                   <div className="text">
                     <div className="inner">
@@ -93,13 +97,11 @@ export default function About() {
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="col-lg-6 col-md-12 col-sm-12 content-column">
+              </Col>
+              <Col lg={6} md={12} sm={12} className="content-column">
                 <div className="content-box">
                   <div className="sec-title">
-                    <span className="sub-title">
-                      Welcome to Shreeji Pharma International
-                    </span>
+                    <span className="sub-title">Welcome to Shreeji Pharma International</span>
                     <h2>About US</h2>
                   </div>
                   <div className="text">
@@ -110,75 +112,57 @@ export default function About() {
                     })}
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
+              </Col>
+            </Row>
+          </Container>
         </section>
-
-        {/* <!-- about-section end --> */}
-        {/* <!-- funfact-section --> */}
-        <section class="funfact-section centred">
-          <div
-            class="bg-layer"
-            style={{ backgroundImage: `url(${Background1})` }}
-          ></div>
-          <div class="auto-container">
-            <div class="sec-title light">
-              <span class="sub-title">Interesting Numbers</span>
+        {/* funfact-section */}
+        <section className="funfact-section text-center" style={{ backgroundImage: `url(${Background1})` }}>
+          <Container>
+            <div className="sec-title light">
+              <span className="sub-title">Interesting Numbers</span>
               <h2>Facts that will blow your mind</h2>
             </div>
-            <div class="inner-content">
-              <div class="row clearfix">
-                <div class="col-lg-4 col-md-6 col-sm-12 funfact-block">
-                  <div class="funfact-block-one">
-                    <div class="inner-box">
-                      <div class="icon-box">
-                        <i class="flaticon-rating"></i>
+            <div className="inner-content">
+              <Row className="clearfix">
+                <Col lg={4} md={6} sm={12} className="funfact-block">
+                  <div className="funfact-block-one">
+                    <div className="inner-box">
+                      <div className="icon-box">
+                        <i className="flaticon-rating"></i>
                       </div>
-                      <div class="count-outer count-box counted">
-                        <span
-                          class="count-text"
-                          data-speed="1500"
-                          data-stop="1000"
-                        >
+                      <div className="count-outer count-box counted">
+                        <span className="count-text" data-speed="1500" data-stop="1000">
                           1000
                         </span>
                       </div>
                       <h3>Our Happy Clients</h3>
                     </div>
                   </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 funfact-block">
-                  <div class="funfact-block-one">
-                    <div class="inner-box">
-                      <div class="icon-box">
-                        <i class="flaticon-atom"></i>
+                </Col>
+                <Col lg={4} md={6} sm={12} className="funfact-block">
+                  <div className="funfact-block-one">
+                    <div className="inner-box">
+                      <div className="icon-box">
+                        <i className="flaticon-atom"></i>
                       </div>
-                      <div class="count-outer count-box counted">
-                        <span
-                          class="count-text"
-                          data-speed="1500"
-                          data-stop="100"
-                        >
+                      <div className="count-outer count-box counted">
+                        <span className="count-text" data-speed="1500" data-stop="100">
                           100
                         </span>
                       </div>
-                      <h3>Our Qulity Products</h3>
+                      <h3>Our Quality Products</h3>
                     </div>
                   </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 funfact-block">
-                  <div class="funfact-block-one">
-                    <div class="inner-box">
-                      <div class="icon-box">
-                        <i class="flaticon-lab"></i>
+                </Col>
+                <Col lg={4} md={6} sm={12} className="funfact-block">
+                  <div className="funfact-block-one">
+                    <div className="inner-box">
+                      <div className="icon-box">
+                        <i className="flaticon-lab"></i>
                       </div>
-                      <div class="count-outer count-box counted">
-                        <span
-                          class="count-text"
-                          data-speed="1500"
-                          data-stop="100"
-                        >
+                      <div className="count-outer count-box counted">
+                        <span className="count-text" data-speed="1500" data-stop="100">
                           100
                         </span>
                         <span>%</span>
@@ -186,102 +170,109 @@ export default function About() {
                       <h3>Accurate and Precise in Test Results</h3>
                     </div>
                   </div>
-                </div>
-              </div>
+                </Col>
+              </Row>
             </div>
-          </div>
+          </Container>
         </section>
-        {/* <!-- funfact-section end --> */}
-
-        {/* <!-- locations-section --> */}
-        <section class="locations-section sec-pad centred">
-          <div
-            class="pattern-layer"
-            style={{ backgroundImage: `url(${shape10})` }}
-          ></div>
-          <div class="auto-container">
-            <div class="sec-title">
-              <span class="sub-title">Locations</span>
+        {/* locations-section */}
+        <section className="locations-section sec-pad text-center" style={{ backgroundImage: `url(${shape10})` }}>
+          <Container>
+            <div className="sec-title">
+              <span className="sub-title">Locations</span>
               <h2>
                 Support across 50+ countries <br />
                 around the world
               </h2>
             </div>
-            <div class="row clearfix justify-content-center">
-              <div class="col-lg-6 col-md-6 col-sm-12 location-block mt-5">
-                <div class="location-block-one">
-                  <div class="inner-box">
-                    <figure class="image-box">
-                      <img src={footer} alt="" />
-                    </figure>
+            <Row className="clearfix justify-content-center">
+              <Col lg={6} md={6} sm={12} className="location-block mt-5">
+                <div className="location-block-one">
+                  <div className="inner-box">
+                    <Figure className="image-box">
+                      <Image src={footer} alt="" fluid />
+                    </Figure>
                     <h6>SHREEJI PHARMA INTERNATIONAL</h6>
                     <h3>
-                      311, Atlantis Heights, Sarabhai Main Road, Vadiwadi,
-                      Vadodara - 390 007, Gujarat, INDIA.
+                      311, Atlantis Heights, Sarabhai Main Road, Vadiwadi, Vadodara - 390 007, Gujarat, INDIA.
                     </h3>
-                    <div class="custom-info">
-                      <div class="link">
-                        <a href="mailto:contact@shreejipharma.com">
+                    <div className="custom-info">
+                      <div className="link">
+                        <Link to="mailto:contact@shreejipharma.com">
                           Email : contact@shreejipharma.com
-                          <i class="flaticon-right-arrow"></i>
-                        </a>
+                          <i className="flaticon-right-arrow"></i>
+                        </Link>
                       </div>
-                      <div class="link">
-                        <a href="tel:8866002331">
-                          Contact : +91 8866002331{" "}
-                          <i class="flaticon-right-arrow"></i>
-                        </a>
+                      <div className="link">
+                        <Link to="tel:8866002331">
+                          Contact : +91 8866002331
+                          <i className="flaticon-right-arrow"></i>
+                        </Link>
                       </div>
-                      <div class="link">
-                        <a href="skype:Nilesh.sheth70?Call">
-                          Skype ID: Nilesh.sheth70{" "}
-                          <i class="flaticon-right-arrow"></i>
-                        </a>
+                      <div className="link">
+                        <Link to="skype:Nilesh.sheth70?Call">
+                          Skype ID: Nilesh.sheth70
+                          <i className="flaticon-right-arrow"></i>
+                        </Link>
                       </div>
                     </div>
-                    <div class="link">
-                      <a
-                        href="#"
-                        target="_blank"
-                        data-bs-toggle="modal"
-                        data-bs-target="#exampleModa"
-                      >
-                        Locate Us <i class="flaticon-right-arrow"></i>
-                      </a>
-                    </div>
+              <Link
+                // to="https://maps.app.goo.gl/Bsr5XK4HhGCfyD2b6"
+                onClick={() => setShowModal(true)} // Set showModal to true when clicked
+              >
+                Locate Us <i className="flaticon-right-arrow"></i>
+              </Link>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
+              </Col>
+            </Row>
+          </Container>
         </section>
-        {/* <!-- locations-section end --> */}
-        <div class="sticky-button">
-          <a
-            href="assets/catalogue-shreeji-pharma.pdf"
-            target="__blank"
-            download=""
-          >
+        <div className="sticky-button">
+          <Link to="assets/catalogue-shreeji-pharma.pdf" target="__blank" download="">
             Download Brochure
-          </a>
+          </Link>
         </div>
-        <div class="sticky-whatsapp">
-          <a
-            href="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
+        <div className="sticky-whatsapp">
+          <Link
+            to="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
             target="_blank"
           >
-            <img src={wp} class="img-responsive" />
-          </a>
+            <Image src={wp} className="img-responsive" alt="WhatsApp" />
+          </Link>
         </div>
-        <div class="sticky-skype">
-          <a href="skype:Nilesh.sheth70?Call" target="_blank">
-            <img src={skype} class="img-responsive" />
-          </a>
+        <div className="sticky-skype">
+          <Link to="skype:Nilesh.sheth70?Call" target="_blank">
+            <Image src={skype} className="img-responsive" alt="Skype" />
+          </Link>
         </div>
+        <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Vadiwadi, Vadodara</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7381.956093641144!2d73.167648!3d22.31667!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fcf6c89cabb19%3A0xf803cbcf27adf1aa!2sShreeji%20Pharma%20International!5e0!3m2!1sen!2sus!4v1712310707767!5m2!1sen!2sus"
+            width="100%"
+            height="450"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </Modal.Body>
+      </Modal>
+
       </div>
-      <button class="scroll-top scroll-to-target" data-target="html">
-        <i class="flaticon-up-arrow"></i>
-      </button>
+      <button
+            className="scroll-top scroll-to-target open"
+            data-target="html"
+          >
+            <i className="flaticon-up-arrow"></i>
+          </button>
+      </>
+      )}
+
     </React.Fragment>
   );
 }

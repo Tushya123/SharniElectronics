@@ -5,7 +5,8 @@ import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import { useSearch } from "../pages/Search/SearchProvider";
 import { useNavigate } from "react-router-dom";
-import { Container } from "react-bootstrap";
+import { Container, Figure, Nav } from "react-bootstrap";
+import GoogleTranslate from "./GoogleTranslate";
 
 export default function Header() {
   const [products, setProducts] = useState([]);
@@ -91,33 +92,14 @@ export default function Header() {
   //   }, 'google_translate_element');
   // };
 
-
   return (
     <React.Fragment>
-      {/* <!-- preloader --> */}
-
-      <div className="loader-wrap" style={{ display: "none" }}>
-        <div className="preloader">
-          <div className="preloader-close">x</div>
-          <div id="handle-preloader" className="handle-preloader">
-            <div className="animation-preloader">
-              <div className="spinner"></div>
-              <div className="txt-loading">
-                <a href="/">
-                  <img src={logo} alt="Logo" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* <!-- preloader end --> */}
       {/* <!-- main header --> */}
       <header className={`main-header header-style-one`}>
         <Container className="container">
           <div className="translate-x">
             <div className="logo-box">
-              <figure className="logo">
+              <Figure className="logo">
                 <div className="custome-logo-box">
                   <a href="/">
                     <img src={logo} alt="" />
@@ -128,13 +110,12 @@ export default function Header() {
                     <h3>Shreeji Pharma International</h3>
                   </ul>
                 </div>
-              </figure>
+              </Figure>
             </div>
-             {/* // google */}
+            {/* // google */}
             {/* <div id="google_translate_element" style={{ paddingBottom: '3px' }}></div> */}
-
-    </div>
-
+            {/* <GoogleTranslate/> */}
+          </div>
         </Container>
 
         <div className="header-top">
@@ -183,16 +164,22 @@ export default function Header() {
           </Container>
         </div>
 
-        <div className={`header-lower ${isSticky ? "sticky-header" : ""}`} style={{zIndex:9}}>
+        <div
+          className={`header-lower ${isSticky ? "sticky-header" : ""}`}
+          style={{ zIndex: 9 }}
+        >
           <Container className="auto-container">
             <div className="outer-box">
               <div className="menu-area clearfix">
-                <div className="mobile-nav-toggler">
+                <div
+                  className="mobile-nav-toggler"
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                >
                   <i className="icon-bar"></i>
                   <i className="icon-bar"></i>
                   <i className="icon-bar"></i>
                 </div>
-                <nav className="main-menu navbar-expand-md navbar-light">
+                <Nav className="main-menu navbar-expand-md navbar-light">
                   <div
                     className="collapse navbar-collapse show clearfix"
                     id="navbarSupportedContent"
@@ -242,12 +229,14 @@ export default function Header() {
                       </li>
                     </ul>
                   </div>
-                </nav>
+                </Nav>
               </div>
               <ul className="menu-right-content">
                 <li className="support-box">
                   <div className="icon-box">
-                    <i className="fas fa-shopping-cart"></i>
+                    <Link to="/cart">
+                      <i className="fas fa-shopping-cart"></i>
+                    </Link>
                     <span className="cart-badge">{prod.length}</span>
                   </div>
                   <Link to="/cart">My Cart</Link>
@@ -278,8 +267,7 @@ export default function Header() {
                       <div
                         className="close-search pull-right"
                         onClick={handleClose}
-                      >
-                      </div>
+                      ></div>
                     </div>
                   </Modal.Header>
                   <Modal.Body>
@@ -326,17 +314,57 @@ export default function Header() {
           <div className="nav-logo">
             <a href="#">
               <img src={logo} alt="" title="" />
-            </a>
+            </a>  
           </div>
           <div className="menu-outer">
             <ul className="navigation clearfix">
-              {/* Render your navigation links here */}
-            </ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/about">About Us</Link>
+              </li>
+              <li>
+                <Link to="/commitment">Commitment</Link>
+              </li>
+              <li className="dropdown">
+                <Link>Products</Link>
+                <ul>
+                  {products
+                    .sort((a, b) =>
+                      a.ProductGroup.localeCompare(b.ProductGroup)
+                    )
+                    .map((product, index) => (
+                      <li key={index}>
+                        <Link
+                          onClick={() => {
+                            window.location.href = "/products";
+                            localStorage.setItem(
+                              "selectedProductId",
+                              product.ProductGroup
+                            );
+                          }}
+                        >
+                          {product.ProductGroup}
+                        </Link>
+                      </li>
+                    ))}
+                </ul>
+              </li>
+              <li>
+                <Link to="/gallery">Gallery</Link>
+              </li>
+              <li>
+                <Link to="/certificate">Certificate</Link>
+              </li>
+              <li>
+                <Link to="/contect">Contact</Link>
+              </li>
+            </ul>{" "}
           </div>
           {/* Render your contact info and social links here */}
         </nav>
       </div>
-
     </React.Fragment>
   );
 }

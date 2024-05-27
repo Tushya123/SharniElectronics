@@ -1,24 +1,23 @@
 import React from "react";
 import funfact from "../assets/images/background/funfact-bg.jpg";
-import { Container } from "react-bootstrap";
-
+import { Col, Container, Row } from "react-bootstrap";
 
 export default function Facts() {
   return (
     <React.Fragment>
-      <section className="funfact-section centred">
+      <section className="funfact-section text-center">
         <div
           className="bg-layer"
           style={{ backgroundImage: `url(${funfact})` }}
         ></div>
-        <Container className="auto-container">
-          <div className="sec-title light">
+        <Container>
+          <div className="sec-title text-light">
             <span className="sub-title">Interesting Numbers</span>
-            <h2>Facts that will blow your mind</h2>
+            <h2 style={{color:'white'}}>Facts that will blow your mind</h2>
           </div>
           <div className="inner-content">
-            <div className="row clearfix">
-              <div className="col-lg-4 col-md-6 col-sm-12 funfact-block">
+            <Row className="clearfix">
+              <Col lg={4} md={6} sm={12} className="funfact-block mb-4">
                 <div className="funfact-block-one">
                   <div className="inner-box">
                     <div className="icon-box">
@@ -36,8 +35,8 @@ export default function Facts() {
                     <h3>Our Happy Clients</h3>
                   </div>
                 </div>
-              </div>
-              <div className="col-lg-4 col-md-6 col-sm-12 funfact-block">
+              </Col>
+              <Col lg={4} md={6} sm={12} className="funfact-block mb-4">
                 <div className="funfact-block-one">
                   <div className="inner-box">
                     <div className="icon-box">
@@ -55,8 +54,8 @@ export default function Facts() {
                     <h3>Our Quality Products</h3>
                   </div>
                 </div>
-              </div>
-              <div className="col-lg-4 col-md-6 col-sm-12 funfact-block">
+              </Col>
+              <Col lg={4} md={6} sm={12} className="funfact-block mb-4">
                 <div className="funfact-block-one">
                   <div className="inner-box">
                     <div className="icon-box">
@@ -75,8 +74,8 @@ export default function Facts() {
                     <h3>Accurate and Precise in Test Results</h3>
                   </div>
                 </div>
-              </div>
-            </div>
+              </Col>
+            </Row>
           </div>
         </Container>
       </section>

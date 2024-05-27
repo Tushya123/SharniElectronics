@@ -1,11 +1,10 @@
 // src/components/Preloader.js
-
 import React from 'react';
-import logo from "../assets/images/new-home/logo.png"
+import logo from "../assets/images/new-home/new-logo.png"
 
 const Preloader = () => (
   <React.Fragment>
-  <div className="loader-wrap" style={{ display: "none" }}>
+  <div className="loader-wrap" style={{ }}>
     <div className="preloader">
       <div className="preloader-close">x</div>
       <div id="handle-preloader" className="handle-preloader">

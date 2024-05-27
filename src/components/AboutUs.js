@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import about from "../assets/images/new-home/about-img.jpg";
 import axios from "axios";
-import { Container } from "react-bootstrap";
+import { Col, Container, Figure, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export default function AboutUs() {
@@ -32,26 +32,27 @@ export default function AboutUs() {
 
   return (
     <React.Fragment>
-      <section className="about-section sec-pad">
-        <Container className="auto-container">
-          <div className="row clearfix">
-            <div className="col-lg-6 col-md-12 col-sm-12 image-column">
-              <div className="image-box">
-                <div className="shape-box">
+      <section className="about-section py-5">
+        <Container>
+          <Row className="clearfix">
+            <Col lg={6} md={12} sm={12} className="image-column mb-4 mb-lg-0">
+              <div className="image-box position-relative">
+                <div className="shape-box position-absolute">
                   <div className="shape shape-1 hexagon_shape"></div>
                   <div className="shape shape-2 hexagon_shape"></div>
-                  <div className="shape shape-3 hexagon_shape"></div>
+                  {/* <div className="shape shape-3 hexagon_shape"></div> */}
                 </div>
                 <div className="image-inner hexagon_shape">
-                  <figure className="image">
+                  <Figure className="image">
                     <img
                       src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${cmsImage}`}
                       alt=""
+                      className="img-fluid"
                     />
-                  </figure>
+                  </Figure>
                 </div>
-                <div className="text">
-                  <div className="inner">
+                <div className="text position-absolute">
+                  <div className="inner text-center">
                     <h2>
                       20<span>+</span>
                     </h2>
@@ -62,8 +63,8 @@ export default function AboutUs() {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="col-lg-6 col-md-12 col-sm-12 content-column">
+            </Col>
+            <Col lg={6} md={12} sm={12} className="content-column">
               <div className="content-box">
                 <div className="sec-title">
                   <span className="sub-title">
@@ -72,20 +73,20 @@ export default function AboutUs() {
                   <h2>About Us</h2>
                 </div>
                 <div className="text">
-                  {React.createElement("div", {
-                    dangerouslySetInnerHTML: {
-                      __html: `${cmsDesc}<style>p{font-size:19px;font-weight:400}`,
-                    },
-                  })}
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: `${cmsDesc}<style>p{font-size:19px;font-weight:400}</style>`,
+                    }}
+                  />
                 </div>
-                <div className="btn-box">
+                <div className="btn-box mt-4">
                   <Link to="/about" className="theme-btn">
                     Read More
                   </Link>
                 </div>
               </div>
-            </div>
-          </div>
+            </Col>
+          </Row>
         </Container>
       </section>
     </React.Fragment>

@@ -22,8 +22,14 @@ import NewsEvent from "./NewsEvent";
 import Industries from "./Industries";
 import Strenghts from "./Strenghts";
 import Facts from "./Facts";
+import { Container, Row, Col, Modal, Button, Figure,Image } from "react-bootstrap";
+import Preloader from "./PreLoader";
+import { Link, Outlet } from "react-router-dom";
+import { f } from "html2pdf.js";
 
 export default function Home() {
+  const [showModal, setShowModal] = useState(false);
+
   const settings = {
     dots: true,
     arrows: true,
@@ -73,220 +79,191 @@ export default function Home() {
     <React.Fragment
       style={{ position: "relative", minHeight: "100%", top: "0px" }}
     >
-      <div className="boxed_wrapper">
-        <Header />
-        {/* <!-- banner-section --> */}
-        <section className="banner-section banner-style-one">
-          <Slider {...settings}>
-            {banner.map((bannerItem, index) => (
-              <div className="slide-item position-slider" key={index}>
-                <div className="image-layer">
-                  <img
-                    src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${bannerItem.bannerImage}`}
-                    className="w-100"
-                    alt=""
-                  />
-                </div>
-                <div className="auto-container">
-                  <div className="content-box">
-                    <div className="content-inner">
-                      <span className="count-text"></span>
-                      <ul className="custom-slider-icon">
-                        <li>
-                          <img src={star} alt="" />
-                        </li>
-                        <li>
-                          <img src={aeo} alt="" />
-                        </li>
-                        <li>
-                          <img src={iso} alt="" />
-                        </li>
-                      </ul>
-                      <h2 style={{ color: "white" }}>
-                        {bannerItem.Description}
-                      </h2>
-                      <ul className="list clearfix">
-                        <li>
-                          <div className="icon-box">
-                            <div
-                              class="icon-box"
-                              style={{
-                                position: "absolute",
-                                left: "0px",
-                                top: "10px",
-                                width: "70px",
-                                height: "60px",
-                                lineHeight: "70px",
-                                fontSize: "32px",
-                                color: "#fff",
-                                textAlign: "center",
-                              }}
-                            >
-                              <i class="flaticon-laboratory-1"></i>
-                            </div>{" "}
-                          </div>
-                          <h3
-                            style={{
-                              color: "white",
-                              fontSize: "36px",
-                              lineHeight: "44px",
-                              fontWeight: 500,
-                            }}
-                          >
-                            100+
-                          </h3>
-                          <h4
-                            style={{
-                              color: "white",
-                              fontSize: "36px",
-                              lineHeight: "44px",
-                              fontWeight: 500,
-                            }}
-                          >
-                            Quality Product
-                          </h4>
-                        </li>
-                      </ul>
+      {!banner || banner?.length < 1 ? (
+        <Preloader />
+      ) : (
+        <>
+          <div className="boxed_wrapper">
+            <Header />
+            <section className="banner-carousel banner-style-one">
+              <Slider {...settings}>
+                {banner.map((bannerItem, index) => (
+                  <div className="slide-item position-slider" key={index}>
+                    <div className="image-layer">
+                      <img
+                        src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${bannerItem.bannerImage}`}
+                        className="w-100"
+                        alt=""
+                      />
                     </div>
+                    <Container>
+                      <div className="content-box">
+                        <div className="content-inner">
+                          <span className="count-text"></span>
+                          <ul className="custom-slider-icon">
+                            <li>
+                              <img src={star} alt="" />
+                            </li>
+                            <li>
+                              <img src={aeo} alt="" />
+                            </li>
+                            <li>
+                              <img src={iso} alt="" />
+                            </li>
+                          </ul>
+                          <h2 style={{ color: "white" }}>
+                            {bannerItem.Description}
+                          </h2>
+                          <ul className="list clearfix">
+                            <li>
+                              <div className="icon-box">
+                                <i className="flaticon-laboratory-1"></i>
+                              </div>
+                              <h3
+                                style={{
+                                  color: "white",
+                                  fontSize: "36px",
+                                  lineHeight: "44px",
+                                  fontWeight: 500,
+                                }}
+                              >
+                                100+
+                              </h3>
+                              <h4
+                                style={{
+                                  color: "white",
+                                  fontSize: "36px",
+                                  lineHeight: "44px",
+                                  fontWeight: 500,
+                                }}
+                              >
+                                Quality Product
+                              </h4>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </Container>
                   </div>
-                </div>
-              </div>
-            ))}
-          </Slider>
-        </section>
-        <AboutUs />
-        <Products />
-        <Industries />
-        <Strenghts />
-        <Facts />
-        <Blog />
-        <NewsEvent />
-        <Inquiry />
+                ))}
+              </Slider>
+            </section>
+            <AboutUs />
+            <Products />
+            <Industries />
+            <Strenghts />
+            <Facts />
+            <Blog />
+            <NewsEvent />
+            <Inquiry />
 
-        {/* <!-- locations-section --> */}
-        <section className="locations-section sec-pad centred">
-          <div
-            className="pattern-layer"
-            style={{ backgroundImage: `url(${shape10})` }}
-          ></div>
-          <div className="auto-container">
-            <div className="sec-title">
-              <span className="sub-title">Locations</span>
-              <h2>
-                Support across 50+ countries <br />
-                around the world
-              </h2>
-            </div>
-            <div className="row clearfix justify-content-center">
-              <div className="col-lg-6 col-md-6 col-sm-12 location-block mt-5">
-                <div className="location-block-one">
-                  <div className="inner-box">
-                    <figure className="image-box">
-                      <img src={footer} alt="" />
-                    </figure>
-                    <h6>SHREEJI PHARMA INTERNATIONAL</h6>
-                    <h3>
-                      311, Atlantis Heights, Sarabhai Main Road, Vadiwadi,
-                      Vadodara - 390 007, Gujarat, INDIA.
-                    </h3>
-                    <div className="custom-info">
-                      <div className="link">
-                        <a href="mailto:contact@shreejipharma.com">
-                          Email : contact@shreejipharma.com
-                          <i className="flaticon-right-arrow"></i>
-                        </a>
-                      </div>
-                      <div className="link">
-                        <a href="tel:8866002331">
-                          Contact : +91 8866002331{" "}
-                          <i className="flaticon-right-arrow"></i>
-                        </a>
-                      </div>
-                      <div className="link">
-                        <a href="skype:Nilesh.sheth70?Call">
-                          Skype ID: Nilesh.sheth70{" "}
-                          <i className="flaticon-right-arrow"></i>
-                        </a>
-                      </div>
-                    </div>
-                    <div className="link">
-                      <a
-                        href="#"
-                        target="_blank"
-                        data-bs-toggle="modal"
-                        data-bs-target="#exampleModa"
-                      >
-                        Locate Us <i className="flaticon-right-arrow"></i>
-                      </a>
-                    </div>
-                  </div>
+            {/* locations-section */}
+            <section
+              className="locations-section sec-pad text-center"
+              style={{ backgroundImage: `url(${shape10})` }}
+            >
+              <Container>
+                <div className="sec-title">
+                  <span className="sub-title">Locations</span>
+                  <h2>
+                    Support across 50+ countries <br />
+                    around the world
+                  </h2>
                 </div>
-              </div>
+                <Row className="clearfix justify-content-center">
+                  <Col lg={6} md={6} sm={12} className="location-block mt-5">
+                    <div className="location-block-one">
+                      <div className="inner-box">
+                        <Figure className="image-box">
+                          <Image src={footer} alt="" fluid />
+                        </Figure>
+                        <h6>SHREEJI PHARMA INTERNATIONAL</h6>
+                        <h3>
+                          311, Atlantis Heights, Sarabhai Main Road, Vadiwadi,
+                          Vadodara - 390 007, Gujarat, INDIA.
+                        </h3>
+                        <div className="custom-info">
+                          <div className="link">
+                            <Link to="mailto:contact@shreejipharma.com">
+                              Email : contact@shreejipharma.com
+                              <i className="flaticon-right-arrow"></i>
+                            </Link>
+                          </div>
+                          <div className="link">
+                            <Link to="tel:8866002331">
+                              Contact : +91 8866002331
+                              <i className="flaticon-right-arrow"></i>
+                            </Link>
+                          </div>
+                          <div className="link">
+                            <Link to="skype:Nilesh.sheth70?Call">
+                              Skype ID: Nilesh.sheth70
+                              <i className="flaticon-right-arrow"></i>
+                            </Link>
+                          </div>
+                        </div>
+                        <Link
+                          // to="https://maps.app.goo.gl/Bsr5XK4HhGCfyD2b6"
+                          onClick={() => setShowModal(true)} // Set showModal to true when clicked
+                        >
+                          Locate Us <i className="flaticon-right-arrow"></i>
+                        </Link>
+                      </div>
+                    </div>
+                  </Col>
+                </Row>
+              </Container>
+            </section>
+
+            <div className="sticky-button">
+              <Link
+                to="assets/catalogue-shreeji-pharma.pdf"
+                target="__blank"
+                download=""
+              >
+                Download Brochure
+              </Link>
             </div>
-          </div>
-        </section>
-        {/* <!-- locations-section end --> */}
-        <div className="sticky-button">
-          <a
-            href="assets/catalogue-shreeji-pharma.pdf"
-            target="__blank"
-            download=""
-          >
-            Download Brochure
-          </a>
-        </div>
-        <div className="sticky-whatsapp">
-          <a
-            href="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
-            target="_blank"
-          >
-            <img src={wp} className="img-responsive" />
-          </a>
-        </div>
-        <div className="sticky-skype">
-          <a href="skype:Nilesh.sheth70?Call" target="_blank">
-            <img src={skype} className="img-responsive" />
-          </a>
-        </div>
-        <div
-          className="modal fade"
-          id="exampleModa"
-          tabindex="-1"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
-          <div className="modal-dialog">
-            <div className="modal-content custom-model-content">
-              <div className="modal-header">
-                <h1 className="modal-title fs-5" id="exampleModalLabel">
-                  Vadiwadi, Vadodara
-                </h1>
-                <button
-                  type="button"
-                  className="btn-close custom-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div className="modal-body">
+
+            <div className="sticky-whatsapp">
+              <Link
+                to="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
+                target="_blank"
+              >
+                <Image src={wp} className="img-responsive" alt="WhatsApp" />
+              </Link>
+            </div>
+            <div className="sticky-skype">
+              <Link to="skype:Nilesh.sheth70?Call" target="_blank">
+                <Image src={skype} className="img-responsive" alt="Skype" />
+              </Link>
+            </div>
+
+            <Modal show={showModal} onHide={() => setShowModal(false)}>
+              <Modal.Header closeButton>
+                <Modal.Title>Vadiwadi, Vadodara</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7381.956093641144!2d73.167648!3d22.31667!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fcf6c89cabb19%3A0xf803cbcf27adf1aa!2sShreeji%20Pharma%20International!5e0!3m2!1sen!2sus!4v1712310707767!5m2!1sen!2sus"
-                  width="600"
+                  width="100%"
                   height="450"
                   style={{ border: 0 }}
-                  allowfullscreen=""
+                  allowFullScreen=""
                   loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
+                  referrerPolicy="no-referrer-when-downgrade"
                 ></iframe>
-              </div>
-            </div>
+              </Modal.Body>
+            </Modal>
           </div>
-        </div>
-      </div>
-      <button className="scroll-top scroll-to-target open" data-target="html">
-        <i className="flaticon-up-arrow"></i>
-      </button>
-      ;
+          <button
+            className="scroll-top scroll-to-target open"
+            data-target="html"
+          >
+            <i className="flaticon-up-arrow"></i>
+          </button>
+        </>
+      )}
     </React.Fragment>
   );
 }

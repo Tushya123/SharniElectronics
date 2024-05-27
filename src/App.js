@@ -51,34 +51,36 @@ function App() {
     <SearchProvider>
       <BrowserRouter>
         <Header />
-        {loading && <Preloader />}
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/productss" element={<Productss />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/commitment" element={<Commitment />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/productDetails" element={<ProductsDetails />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/certificate" element={<Certificate />} />
-          <Route path="/contect" element={<Contect />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/aboutus" element={<AboutUs />} />
-          <Route path="/inquiry" element={<Inquiry />} />
-          <Route path="/blogdetails/:id" element={<BlogsDetails />} />
-          <Route path="/innergallery/:index" element={<InnderGallery />} />
-          <Route path="/newsevent" element={<NewsEvent />} />
-          <Route path="/detailNews/:id" element={<NewsDetails />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/industries" element={<Industries/>} />
-          <Route path="/strenghts" element={<Strenghts/>} />
-          <Route path="/Facts" element={<Facts/>} />
-
-
-        </Routes>
-        <Footer />
+        {/* {loading ? (
+          <Preloader />
+        ) : ( */}
+        <>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/productss" element={<Productss />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/commitment" element={<Commitment />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/productDetails" element={<ProductsDetails />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/certificate" element={<Certificate />} />
+            <Route path="/contect" element={<Contect />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/aboutus" element={<AboutUs />} />
+            <Route path="/inquiry" element={<Inquiry />} />
+            <Route path="/blogdetails/:id" element={<BlogsDetails />} />
+            <Route path="/innergallery/:index" element={<InnderGallery />} />
+            <Route path="/newsevent" element={<NewsEvent />} />
+            <Route path="/detailNews/:id" element={<NewsDetails />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/industries" element={<Industries />} />
+            <Route path="/strenghts" element={<Strenghts />} />
+            <Route path="/Facts" element={<Facts />} />
+          </Routes>
+          <Footer />
+        </>
+        {/* )} */}
       </BrowserRouter>
     </SearchProvider>
   );

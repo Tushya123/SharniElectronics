@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
+import { Container, Figure } from "react-bootstrap";
 
 export default function Products() {
   const settings = {
@@ -10,14 +11,14 @@ export default function Products() {
     infinite: true,
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true, // Enable autoplay
-    autoplaySpeed: 2000, // Set autoplay speed in milliseconds (e.g., 3000 ms = 3 seconds)
+    slidesToScroll: 3,
+    // autoplxay: true,
+    autoplaySpeed: 2000,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2,
           slidesToScroll: 1,
           infinite: true,
           dots: true,
@@ -41,8 +42,6 @@ export default function Products() {
     ],
   };
 
-
-
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -63,9 +62,8 @@ export default function Products() {
 
   return (
     <React.Fragment>
-      {" "}
       <section className="service-section bg-color-1 sec-pad">
-        <div className="auto-container">
+        <Container>
           <div className="sec-title">
             <span className="sub-title">Our Products</span>
             <h2>We Provide Quality Product</h2>
@@ -75,11 +73,12 @@ export default function Products() {
               <div className="service-block-one" key={index}>
                 <div className="inner-box">
                   <div className="image-box">
-                    <figure className="image">
+                    <Figure className="image">
                       <img
                         src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${product.ImageUrl}`}
+                        alt={product.ProductGroup}
                       />
-                    </figure>
+                    </Figure>
                     <div className="icon-box">
                       <i className="flaticon-biochemistry"></i>
                     </div>
@@ -91,7 +90,7 @@ export default function Products() {
               </div>
             ))}
           </Slider>
-        </div>
+        </Container>
       </section>
     </React.Fragment>
   );

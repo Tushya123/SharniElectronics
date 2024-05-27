@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Button, Figure, Row } from "react-bootstrap";
+import { Button, Figure, Row, Col, Container } from "react-bootstrap";
+import GoogleTranslate from "./GoogleTranslate";
 
 export default function Footer() {
   const [cmsDesc, setcmsDesc] = useState("");
@@ -44,12 +45,13 @@ export default function Footer() {
 
   return (
     <React.Fragment>
-      {/* <!-- main-footer --> */}
-      <footer className="main-footer footer-style-two">
-        <div className="auto-container">
+      <footer className="main-footer footer-style-two py-5">
+        <Container>
           <div className="widget-section">
-            <div className="row clearfix">
-              <div className="col-lg-5 col-md-6 col-sm-12 footer-column">
+            <Row className="clearfix">
+              <Col lg={5} md={6} sm={12} className="mb-4">
+              <GoogleTranslate/>
+
                 <div className="footer-widget about-widget">
                   <div className="widget-title">
                     <h3>About Us</h3>
@@ -61,21 +63,22 @@ export default function Footer() {
                       },
                     })}
                   </div>
-                  <div className="lower-box">
-                    <div className="icon-box">
+                  <div className="lower-box d-flex align-items-center mt-3">
+                    <div className="icon-box me-2">
                       <i className="flaticon-atom-1"></i>
                     </div>
-                    <h5>ISO 9001-2015 Certified</h5>
+                    <h5 className="mb-0">ISO 9001-2015 Certified</h5>
                   </div>
                 </div>
-              </div>
-              <div className="col-lg-2 col-md-6 col-sm-12 footer-column">
+              </Col>
+              <Col lg={2} md={6} sm={12} className="mb-4">
                 <div className="footer-widget links-widget">
                   <div className="widget-title">
                     <h3>Quick Links</h3>
+
                   </div>
                   <div className="widget-content">
-                    <ul className="links-list clearfix">
+                    <ul className="links-list list-unstyled">
                       <li>
                         <Link to="/">Home</Link>
                       </li>
@@ -92,25 +95,26 @@ export default function Footer() {
                         <Link to="/certificate">Certificate</Link>
                       </li>
                       <li>
-                        <Link to="/contect">Contact Us</Link>
+                        <Link to="/contact">Contact Us</Link>
                       </li>
                     </ul>
                   </div>
                 </div>
-              </div>
-              <div className="col-lg-5 col-md-6 col-sm-12 footer-column">
+              </Col>
+              <Col lg={5} md={6} sm={12} className="mb-4">
                 <div className="footer-widget gallery-widget">
                   <div className="widget-title">
                     <h3>Gallery</h3>
                   </div>
                   <div className="widget-content">
-                    <ul className="image-list clearfix">
+                    <ul className="image-list list-unstyled d-flex flex-wrap">
                       {galleryData.map((item, index) => (
-                        <li key={index}>
-                          <Figure className="image">
+                        <li key={index} className="me-2 mb-2">
+                          <Figure className="image mb-0">
                             <img
                               src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${item.imageURL}`}
                               alt=""
+                              className="img-fluid"
                             />
                             <Link
                               to={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${item.imageURL}`}
@@ -125,40 +129,38 @@ export default function Footer() {
                     </ul>
                   </div>
                 </div>
-              </div>
-            </div>
+              </Col>
+            </Row>
           </div>
-          <div className="footer-bottom">
-            <Row className="row">
-              <div className="col-lg-6 col-md-12">
+          <div className="footer-bottom py-3">
+            <Row>
+              <Col lg={6} md={12} className="text-lg-start text-center mb-3 mb-lg-0">
                 <div className="copyright">
-                  <p>
-                    Copyright © 2024 <a href="#">Shreeji Pharma </a> All Rights
-                    Reserved
+                  <p className="mb-0">
+                    Copyright © 2024 <a href="#">Shreeji Pharma </a> All Rights Reserved
                   </p>
+
                 </div>
-              </div>
-              <div className="col-lg-6 col-md-12 text-right">
+              </Col>
+              <Col lg={6} md={12} className="text-lg-end text-center">
                 <div className="copyright">
-                  <p>
+                  <p className="mb-0">
                     Design & Develop By{" "}
-                    <a href="https://www.barodaweb.com/" target="_blank">
+                    <a href="https://www.barodaweb.com/" target="_blank" rel="noopener noreferrer">
                       Barodaweb | The E-Catalouge Designer
                     </a>
                   </p>
                 </div>
-              </div>
+              </Col>
             </Row>
           </div>
-        </div>
+        </Container>
       </footer>
-      {/* <!-- main-footer end --> */}
-      {/* <!--====== Modal Start 3 ======--> */}
 
       <div
         className="modal fade"
         id="exampleModa"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
@@ -178,19 +180,18 @@ export default function Footer() {
             <div className="modal-body">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7381.956093641144!2d73.167648!3d22.31667!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fcf6c89cabb19%3A0xf803cbcf27adf1aa!2sShreeji%20Pharma%20International!5e0!3m2!1sen!2sus!4v1712310707767!5m2!1sen!2sus"
-                width="600"
+                width="100%"
                 height="450"
-                // style="border:0;"
-                allowfullscreen=""
+                style={{ border: 0 }}
+                allowFullScreen=""
                 loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
+                referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
           </div>
         </div>
       </div>
 
-      {/* <!-- scroll to top --> */}
       <Button className="scroll-top scroll-to-target" data-target="html">
         <i className="flaticon-up-arrow"></i>
       </Button>

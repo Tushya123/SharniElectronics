@@ -6,6 +6,7 @@ import wp from "../../assets/images/new-home/whatsapp.png";
 import Header from "../../components/Header";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
+import { Button, Col, Container, Row } from "react-bootstrap";
 
 export default function BlogsDetails() {
   const [Blogs, setBlogs] = useState([]);
@@ -59,7 +60,7 @@ export default function BlogsDetails() {
             className="bg-layer"
             style={{ backgroundImage: `url(${Background})` }}
           ></div>
-          <div className="auto-container">
+          <Container className="auto-container">
             <div className="content-box">
               <h1>{blog.Name}</h1>
               <ul className="bread-crumb clearfix">
@@ -70,14 +71,14 @@ export default function BlogsDetails() {
                 <li>{blog.Category}</li>
               </ul>
             </div>
-          </div>
+          </Container>
         </section>
         {/* <!-- page-title end -->
       <!-- service-details --> */}
         <section class="sidebar-page-container blog-details sec-pad">
-          <div class="auto-container">
-            <div class="row clearfix">
-              <div class="col-lg-8 col-md-12 col-sm-12 content-side">
+          <Container class="auto-container">
+            <Row class="row clearfix">
+            <Col lg={8} md={12} sm={12} className="content-side">
                 <div class="blog-details-content">
                   <div class="content-one">
                     <figure class="image-box">
@@ -105,8 +106,8 @@ export default function BlogsDetails() {
                     </ul> */}
                   </div>
                 </div>
-              </div>
-              <div className="col-lg-4 col-md-12 col-sm-12 sidebar-side">
+              </Col>
+              <Col lg={4} md={12} sm={12} className="sidebar-side">
                 <div className="blog-sidebar">
                   <div className="sidebar-widget category-widget">
                     <div className="widget-title">
@@ -126,35 +127,35 @@ export default function BlogsDetails() {
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
+              </Col>
+            </Row>
+          </Container>
         </section>
         {/* <!-- service-details end -->
     <!-- locations-section --> */}
 
         {/* <!-- locations-section end --> */}
         <div className="sticky-button">
-          <a
-            href="assets/catalogue-shreeji-pharma.pdf"
+          <Link
+            to="assets/catalogue-shreeji-pharma.pdf"
             target="__blank"
             download=""
           >
             Download Brochure
-          </a>
+          </Link>
         </div>
         <div className="sticky-whatsapp">
-          <a
-            href="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
+          <Link
+            to="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
             target="_blank"
           >
             <img src={wp} className="img-responsive" />
-          </a>
+          </Link>
         </div>
         <div className="sticky-skype">
-          <a href="skype:Nilesh.sheth70?Call" target="_blank">
+          <Link to="skype:Nilesh.sheth70?Call" target="_blank">
             <img src={skype} className="img-responsive" />
-          </a>
+          </Link>
         </div>
 
         <div
@@ -170,12 +171,12 @@ export default function BlogsDetails() {
                 <h1 className="modal-title fs-5" id="exampleModalLabel">
                   Vadiwadi, Vadodara
                 </h1>
-                <button
+                <Button
                   type="button"
                   className="btn-close custom-close"
                   data-bs-dismiss="modal"
                   aria-label="Close"
-                ></button>
+                ></Button>
               </div>
               <div className="modal-body">
                 <iframe
@@ -192,10 +193,12 @@ export default function BlogsDetails() {
           </div>
         </div>
 
-        {/* <!-- scroll to top --> */}
-        <button className="scroll-top scroll-to-target" data-target="html">
-          <i className="flaticon-up-arrow"></i>
-        </button>
+        <button
+            className="scroll-top scroll-to-target open"
+            data-target="html"
+          >
+            <i className="flaticon-up-arrow"></i>
+          </button>
       </div>
     </React.Fragment>
   );
