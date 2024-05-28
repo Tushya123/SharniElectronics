@@ -6,7 +6,8 @@ import shape9 from "../assets/images/shape/shape-9.png";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const countriesArray = [
   { label: "DZ", value: "ALGERIA" },
@@ -52,7 +53,7 @@ export default function Inquiry() {
     Email: Yup.string()
       .email("Invalid email")
       .required("Enter Your Email Address!"),
-    Country: Yup.string().required("Pls Select Your Country!"),
+    Country: Yup.string().required("Enter Country!"),
     Message: Yup.string().required("Enter your Message!"),
   });
 
@@ -71,198 +72,182 @@ export default function Inquiry() {
         values
       );
       if (response) {
-        alert("Your application has been submitted successfully!");
+        toast.success("Your application has been submitted successfully!");
         resetForm();
       } else {
-        alert("Application submission failed. Please try again.");
+        toast.error("Application submission failed. Please try again.");
       }
     } catch (error) {
       console.error("Application submission error:", error);
-      alert("Application submission failed. Please try again.");
+      toast.error("Application submission failed. Please try again.");
     }
   };
 
   return (
-    <React.Fragment>
-      <section className="booking-section sec-pad">
+    <section className="booking-section sec-pad">
+      <ToastContainer />
+
+      <div
+        className="bg-layer"
+        style={{ backgroundImage: `url(${booking})` }}
+      ></div>
+      <div className="pattern-layer">
         <div
-          className="bg-layer"
-          style={{ backgroundImage: `url(${booking})` }}
+          className="pattern-1"
+          style={{ backgroundImage: `url(${shape7})` }}
         ></div>
-        <div className="pattern-layer">
-          <div
-            className="pattern-1"
-            style={{ backgroundImage: `url(${shape7})` }}
-          ></div>
-          <div
-            className="pattern-2"
-            style={{ backgroundImage: `url(${shape8})` }}
-          ></div>
-        </div>
-        <Container>
-          <Row className="custom-form">
-            <Col lg={5} md={12} sm={12} className="content-column">
-              <div className="content-box">
-                <span className="rotate-text">contact us</span>
-                <div
-                  className="shape"
-                  style={{ backgroundImage: `url(${shape9})` }}
-                ></div>
-                <div className="sec-title light">
-                  <span className="sub-title">Inquiry Now</span>
-                  <h2>Get your solution by contact us we'll reach you soon . </h2>
-                </div>
+        <div
+          className="pattern-2"
+          style={{ backgroundImage: `url(${shape8})` }}
+        ></div>
+      </div>
+      <div className="auto-container">
+        <div className="row clearfix custom-form">
+          <div className="col-lg-5-new col-md-12 col-sm-12 content-column">
+            <div className="content-box">
+              <span className="rotate-text">contact us</span>
+              <div
+                className="shape"
+                style={{ backgroundImage: `url(${shape9})` }}
+              ></div>
+              <div className="sec-title light">
+                <span className="sub-title">Inquiry Now</span>
+                <h2>Get your solution by contact us we'll reach you soon</h2>
               </div>
-            </Col>
-            <Col lg={6} md={12} sm={12} className="inner-column">
-              <div className="inner-content">
-                <div className="form-inner">
-                  <Formik
-                    initialValues={initialValues}
-                    validationSchema={validationSchema}
-                    onSubmit={(values, actions) => {
-                      handleRegister(values, actions);
-                    }}
-                  >
-                    {({ errors, touched, isSubmitting }) => (
-                      <Form>
-                        <Row>
-                          <Col lg={6} md={12} sm={12} className="form-group">
-                            <i className="fa-solid fa-circle-user"></i>
-                            <label>Name</label>
+            </div>
+          </div>
+          <div className="col-lg-6 col-md-12 col-sm-12 inner-column">
+            <div className="inner-content">
+              <div className="form-inner">
+                <Formik
+                  initialValues={initialValues}
+                  validationSchema={validationSchema}
+                  onSubmit={(values, actions) => {
+                    handleRegister(values, actions);
+                  }}
+                >
+                  {({ errors, touched, isSubmitting }) => (
+                    <Form>
+                      <div className="row clearfix">
+                        <div className="col-lg-6 col-md-12 col-sm-12 form-group">
+                          <i className="fa-solid fa-circle-user"></i>
+                          <label>Name</label>
+                          <Field
+                            type="text"
+                            name="ContactPerson"
+                            placeholder="Enter your name"
+                            className={
+                              touched.ContactPerson && errors.ContactPerson
+                                ? "error"
+                                : ""
+                            }
+                            required=""
+                          />
+                          <ErrorMessage
+                            name="ContactPerson"
+                            component="div"
+                            className="error-message"
+                          />
+                        </div>
+                        <div className="col-lg-6 col-md-12 col-sm-12 form-group">
+                          <i className="fa-solid fa-phone"></i>
+                          <label>Number</label>
+                          <Field
+                            type="text"
+                            name="Mobile"
+                            placeholder="Enter your number"
+                            className={
+                              touched.Mobile && errors.Mobile ? "error" : ""
+                            }
+                            required=""
+                          />
+                          <ErrorMessage
+                            name="Mobile"
+                            component="div"
+                            className="error-message"
+                          />
+                        </div>
+                        <div className="col-lg-6 col-md-12 col-sm-12 form-group">
+                          <i className="fa-solid fa-envelope"></i>
+                          <label>Email</label>
+                          <Field
+                            type="email"
+                            name="Email"
+                            className={
+                              touched.Email && errors.Email ? "error" : ""
+                            }
+                            required=""
+                            placeholder="Enter your Email"
+                          />
+                          <ErrorMessage
+                            name="Email"
+                            component="div"
+                            className="error-message"
+                          />
+                        </div>
+                        <div className="col-lg-6 col-md-12 col-sm-12 form-group">
+                          <label>Select Country</label>
+                          <div className="select-box">
                             <Field
-                              type="text"
-                              name="Name"
-                              placeholder="Enter your name"
-                              autoCapitalize="none" 
-                              autoCorrect="off"
-                              spellCheck="false"
-                              className={`form-control ${
-                                touched.ContactPerson && errors.ContactPerson
-                                  ? "is-invalid"
-                                  : ""
+                              as="select"
+                              className={`nice-select selectmenu ${
+                                touched.Country && errors.Country ? "error" : ""
                               }`}
-                              required
-                            />
-                            <ErrorMessage
-                              name="ContactPerson"
-                              component="div"
-                              className="invalid-feedback"
-                            />
-                          </Col>
-                          <Col lg={6} md={12} sm={12} className="form-group">
-                            <i className="fa-solid fa-phone"></i>
-                            <label>Number</label>
-                            <Field
-                              type="text"
-                              name="Mobile"
-                              placeholder="Enter your number"
-                              className={`form-control ${
-                                touched.Mobile && errors.Mobile
-                                  ? "is-invalid"
-                                  : ""
-                              }`}
-                              required
-                            />
-                            <ErrorMessage
-                              name="Mobile"
-                              component="div"
-                              className="invalid-feedback"
-                            />
-                          </Col>
-                          <Col lg={6} md={12} sm={12} className="form-group">
-                            <i className="fa-solid fa-envelope"></i>
-                            <label>Email</label>
-                            <Field
-                              type="email"
-                              name="Email"
-                              placeholder="Enter your Email"
-                              className={`form-control ${
-                                touched.Email && errors.Email
-                                  ? "is-invalid"
-                                  : ""
-                              }`}
-                              required
-                            />
-                            <ErrorMessage
-                              name="Email"
-                              component="div"
-                              className="invalid-feedback"
-                            />
-                          </Col>
-                          <Col lg={6} md={12} sm={12} className="form-group">
-                            <label>Select Country</label>
-                            <div className="select-box">
-                              <Field
-                                as="select"
-                                name="Country"
-                                className={`form-control ${
-                                  touched.Country && errors.Country
-                                    ? "is-invalid"
-                                    : ""
-                                }`}
-                              >
-                                <option value="">Select Country</option>
-                                {countriesArray.map((country) => (
-                                  <option
-                                    key={country.label}
-                                    value={country.value}
-                                  >
-                                    {country.value}
-                                  </option>
-                                ))}
-                              </Field>
-                              <ErrorMessage
-                                name="Country"
-                                component="div"
-                                className="invalid-feedback"
-                              />
-                            </div>
-                          </Col>
-                          <Col lg={12} md={12} sm={12} className="form-group">
-                            <label>Message</label>
-                            <Field
-                              name="Message"
-                              as="textarea"
-                              rows="3"
-                              placeholder="Enter your message"
-                              className={`form-control ${
-                                touched.Message && errors.Message
-                                  ? "is-invalid"
-                                  : ""
-                              }`}
-                              required
-                            />
-                            <ErrorMessage
-                              name="Message"
-                              component="div"
-                              className="invalid-feedback"
-                            />
-                          </Col>
-                          <Col
-                            lg={12}
-                            md={12}
-                            sm={12}
-                            className="form-group message-btn"
-                          >
-                            <Button
-                              type="submit"
-                              className="theme-btn"
-                              disabled={isSubmitting}
+                              name="Country"
                             >
-                              {isSubmitting ? "Submitting..." : "Submit Here"}
-                            </Button>
-                          </Col>
-                        </Row>
-                      </Form>
-                    )}
-                  </Formik>
-                </div>
+                              <option value="">Select Country</option>
+                              {countriesArray.map((country) => (
+                                <option
+                                  key={country.label}
+                                  value={country.value}
+                                >
+                                  {country.value}
+                                </option>
+                              ))}
+                            </Field>
+                            <ErrorMessage
+                              name="Country"
+                              component="div"
+                              className="error-message"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-lg-12 col-md-12 col-sm-12 form-group">
+                          <label>Message</label>
+                          <Field
+                            name="Message"
+                            placeholder="Enter your message"
+                            rows="3"
+                            required=""
+                            as="textarea"
+                            className={`custom-textarea ${
+                              touched.Message && errors.Message ? "error" : ""
+                            }`}
+                          ></Field>
+                          <ErrorMessage
+                            name="Message"
+                            component="div"
+                            className="error-message"
+                          />
+                        </div>
+                        <div className="col-lg-12 col-md-12 col-sm-12 form-group message-btn">
+                          <button
+                            type="submit"
+                            className="theme-btn"
+                            disabled={isSubmitting}
+                          >
+                            {isSubmitting ? "Submitting..." : "Submit Here"}
+                          </button>
+                        </div>
+                      </div>
+                    </Form>
+                  )}
+                </Formik>
               </div>
-            </Col>
-          </Row>
-        </Container>
-      </section>
-    </React.Fragment>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

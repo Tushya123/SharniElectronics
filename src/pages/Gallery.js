@@ -13,13 +13,16 @@ import skype from "../assets/images/new-home/skype.png";
 import wp from "../assets/images/new-home/whatsapp.png";
 import { Modal } from "react-bootstrap";
 
-
-
-
 export default function Gallery() {
   const [galleryData, setGalleryData] = useState([]);
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false); // State for controlling modal visibility
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
 
 
   useEffect(() => {
@@ -216,8 +219,7 @@ export default function Gallery() {
       </div>
       <button
             className="scroll-top scroll-to-target open"
-            data-target="html"
-          >
+            onClick={scrollToTop}          >
             <i className="flaticon-up-arrow"></i>
           </button>
 

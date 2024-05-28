@@ -61,6 +61,13 @@ export default function Cart() {
     Country: Yup.string().required("Country is required"),
     Comments: Yup.string().required("Comments is required"),
   });
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
 
   const [products, setProducts] = useState([]);
   const productIds = JSON.parse(localStorage.getItem("productIds")) || [];
@@ -534,8 +541,8 @@ export default function Cart() {
 
           <button
             className="scroll-top scroll-to-target open"
-            data-target="html"
-          >
+            onClick={scrollToTop}          >
+          
             <i className="flaticon-up-arrow"></i>
           </button>
         </div>

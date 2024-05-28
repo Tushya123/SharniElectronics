@@ -40,29 +40,6 @@ const GoogleTranslate = () => {
     }
   }, []);
 
-  useEffect(() => {
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        const dropdownElement = document.querySelector('.goog-te-gadget');
-        if (dropdownElement && dropdownElement.parentElement) {
-          dropdownElement.parentElement.style.position = 'relative';
-          dropdownElement.style.position = 'absolute';
-          dropdownElement.style.top = '100%'; // Adjust top position as needed
-          dropdownElement.style.left = '0';
-        }
-      });
-    });
-
-    const targetNode = document.getElementById('google_translate_element');
-    if (targetNode) {
-      observer.observe(targetNode, { childList: true, subtree: true });
-    }
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
   return (
     <div>
       {error ? (

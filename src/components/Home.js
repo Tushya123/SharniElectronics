@@ -22,13 +22,26 @@ import NewsEvent from "./NewsEvent";
 import Industries from "./Industries";
 import Strenghts from "./Strenghts";
 import Facts from "./Facts";
-import { Container, Row, Col, Modal, Button, Figure,Image } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Modal,
+  Button,
+  Figure,
+  Image,
+} from "react-bootstrap";
 import Preloader from "./PreLoader";
 import { Link, Outlet } from "react-router-dom";
-import { f } from "html2pdf.js";
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
 
   const settings = {
     dots: true,
@@ -111,10 +124,13 @@ export default function Home() {
                               <img src={iso} alt="" />
                             </li>
                           </ul>
-                          <h2 style={{ color: "white" }}>
+                          <h2 style={{ color: "white", textAlign: "justify" }}>
                             {bannerItem.Description}
                           </h2>
-                          <ul className="list clearfix">
+                          <ul
+                            className="list clearfix"
+                            style={{ textAlign: "justify" }}
+                          >
                             <li>
                               <div className="icon-box">
                                 <i className="flaticon-laboratory-1"></i>
@@ -122,7 +138,7 @@ export default function Home() {
                               <h3
                                 style={{
                                   color: "white",
-                                  fontSize: "36px",
+                                  fontSize: "32px",
                                   lineHeight: "44px",
                                   fontWeight: 500,
                                 }}
@@ -132,7 +148,7 @@ export default function Home() {
                               <h4
                                 style={{
                                   color: "white",
-                                  fontSize: "36px",
+                                  fontSize: "32px",
                                   lineHeight: "44px",
                                   fontWeight: 500,
                                 }}
@@ -204,7 +220,7 @@ export default function Home() {
                         </div>
                         <Link
                           // to="https://maps.app.goo.gl/Bsr5XK4HhGCfyD2b6"
-                          onClick={() => setShowModal(true)} // Set showModal to true when clicked
+                          onClick={() => setShowModal(true)}  style={{color:"#16436f"}}// Set showModal to true when clicked
                         >
                           Locate Us <i className="flaticon-right-arrow"></i>
                         </Link>
@@ -258,7 +274,7 @@ export default function Home() {
           </div>
           <button
             className="scroll-top scroll-to-target open"
-            data-target="html"
+            onClick={scrollToTop}
           >
             <i className="flaticon-up-arrow"></i>
           </button>

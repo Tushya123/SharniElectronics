@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
-import logo from "../../assets/images/new-home/logo.png";
+import logo from "../../assets/images/new-home/logo1.png";
 import Background from "../../assets/images/new-home/breadcrumb-img.jpg";
 import footer from "../../assets/images/new-home/footer-location-img.jpg";
 import skype from "../../assets/images/new-home/skype.png";
 import wp from "../../assets/images/new-home/whatsapp.png";
 import news from "../../assets/images/news/news-35.jpg";
 import Header from "../../components/Header";
-import html2canvas from 'html2canvas';
+import html2canvas from "html2canvas";
 
 import axios from "axios";
-import banner from "../../assets/images/new-home/product-banner.jpg"
-import { Container, Row, Table } from "react-bootstrap";
+import banner from "../../assets/images/new-home/product-banner.jpg";
+import { Container, Row, Table, Figure, Button } from "react-bootstrap";
+
 import { Link } from "react-router-dom";
 import { jsPDF } from "jspdf";
 const description = localStorage.getItem("description");
@@ -21,10 +22,10 @@ export default function ProductsDetails() {
   const [prod, setProd] = useState([]);
 
   React.useEffect(() => {
-    
     axios
       .get(
         `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/get/productdetail/${description}`
+
       )
       .then((response) => {
         console.log("huncncjuhenchjbecvbevchj", response); // log the response data
@@ -61,17 +62,16 @@ export default function ProductsDetails() {
     }
   }, [localStorage.getItem("productIds")]);
 
-
   const generatePdf = () => {
-    const input = document.getElementById('pdf-content');
-    const hiddenElements = document.querySelectorAll('.hidden');
-  
+    const input = document.getElementById("pdf-content");
+    const hiddenElements = document.querySelectorAll(".hidden");
+
     // Show hidden elements
-    hiddenElements.forEach(el => el.style.display = 'block');
-  
-    const images = input.getElementsByTagName('img');
+    hiddenElements.forEach((el) => (el.style.display = "block"));
+
+    const images = input.getElementsByTagName("img");
     const promises = [];
-  
+
     for (let i = 0; i < images.length; i++) {
       const img = images[i];
       if (!img.complete) {
@@ -82,36 +82,35 @@ export default function ProductsDetails() {
         );
       }
     }
-  
+
     Promise.all(promises)
       .then(() => {
         return html2canvas(input, { useCORS: true });
       })
       .then((canvas) => {
         // Re-hide the hidden elements
-        hiddenElements.forEach(el => el.style.display = 'none');
-  
-        const imgData = canvas.toDataURL('image/jpeg');
+        hiddenElements.forEach((el) => (el.style.display = "none"));
+
+        const imgData = canvas.toDataURL("image/jpeg");
         const pdf = new jsPDF();
         const imgWidth = 200; // A4 width in mm
         const pageHeight = 290; // A4 height in mm
         const imgHeight = (canvas.height * imgWidth) / canvas.width;
         let heightLeft = imgHeight;
         let position = 10;
-  
+
         while (heightLeft >= 0) {
-          pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+          pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
           heightLeft -= pageHeight;
           if (heightLeft >= 0) {
             pdf.addPage();
           }
           position = heightLeft - imgHeight;
         }
-        pdf.save('brochure.pdf');
+        pdf.save("brochure.pdf");
       })
-      .catch((error) => console.error('Error generating PDF: ', error));
+      .catch((error) => console.error("Error generating PDF: ", error));
   };
-  
 
   console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>", productDetailsss);
 
@@ -150,8 +149,11 @@ export default function ProductsDetails() {
         <section className="sidebar-page-container blog-details sec-pad pro-det ptb-60">
           <Container className="auto-container">
             <Row className="row clearfix">
-              <div className="col-lg-12 col-md-12 col-sm-12 content-side" id="pdf-content">
-                <div className="blog-details-content" >
+              <div
+                className="col-lg-12 col-md-12 col-sm-12 content-side"
+                id="pdf-content"
+              >
+                <div className="blog-details-content">
                   <div className="content-one row mb-0">
                  
 
@@ -174,6 +176,33 @@ export default function ProductsDetails() {
                         <div className="col-lg-5 col-12 text-right mt-4">
        
                         
+                    <div
+                      className={`col-lg-12 col-12 ${isHidden ? "hidden" : ""}`}
+                    >
+                      <div className="sec-title">
+                        <a href="/">
+                          <img style={{ height: "30vh" }} src={logo} alt="" />
+                        </a>
+                        <div className="btn-box">
+                          <h1 style={{ color: "16436f"}}>
+                            Shreeji Pharma International
+                          </h1>
+                          <li className="custom-border">
+                            {/* <div className="icon-box">
+                              {/* <i className="fa fa-envelope"></i> */}
+                            {/* </div>  */}
+                            <h2 style={{ color: "16436f" }}>
+                              contact@shreejipharma.com
+                            </h2>
+                          </li>
+                          <br />
+
+                          <li className="support-box custom-border1">
+                            {/* <div className="icon-box"> */}
+                            {/* <i className="flaticon-dial-pad"></i> */}
+                            {/* </div> */}
+                            <h2 style={{ color: "16436f" }}>+918866002331</h2>
+                          </li>
                         </div>
                       </div>
                     </div>
@@ -194,45 +223,48 @@ export default function ProductsDetails() {
                         <div className="col-lg-7 mt-4 product-name align-items-center d-flex">
                           <h3>{description} : Chemical Name</h3>
                         </div>
-                        <div className="col-lg-5 col-12 text-right mt-4">
-       
-                        
-                        </div>
+                        <div className="col-lg-5 col-12 text-right mt-4"></div>
                       </div>
                     </div>
                     <div className="col-lg-12 col-12 mt-4">
-                      <div className="table-outer product-detail-table" style={{border:"1px solid #16436f"}}>
+                      <div
+                        className="table-outer product-detail-table"
+                        style={{ border: "1px solid #16436f" }}
+                      >
                         <Table className="cart-table">
                           <thead className="cart-header">
-                            <tr style={{padding:"0px"}}>
+                            <tr style={{ padding: "0px" }}>
                               <th>Name</th>
                               <th>Detail</th>
                             </tr>
                           </thead>
                           <tbody>
-                        {productDetailsss && productDetailsss.ProductDetailDescription.map((detail, index) => (
-                          <tr key={index}>
-                            <td>{detail.ProductKey}</td>
-                            <td className="prod-column">
-                              <h5>{detail.ProductValue}</h5>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
+                            {productDetailsss &&
+                              productDetailsss.ProductDetailDescription.map(
+                                (detail, index) => (
+                                  <tr key={index}>
+                                    <td>{detail.ProductKey}</td>
+                                    <td className="prod-column">
+                                      <h5>{detail.ProductValue}</h5>
+                                    </td>
+                                  </tr>
+                                )
+                              )}
+                          </tbody>
                         </Table>
                       </div>
                     </div>
-
-                   
                   </div>
                 </div>
               </div>
-              <div className="btn-box clearfix mt-5 justify-content-center">
-                          
-        
-                          <button className="checkout-btn theme-btn"
-                   onClick={generatePdf}>Download Brochure</button>
-                        </div>
+              <div className="btn-box clearfix mt-5 text-center">
+                <button
+                  className="checkout-btn theme-btn mx-auto"
+                  onClick={generatePdf}
+                >
+                  Download Brochure
+                </button>
+              </div>
             </Row>
           </Container>
         </section>
@@ -240,7 +272,6 @@ export default function ProductsDetails() {
         {/* <!-- sidebar-page-container end -->
     <!-- about-section end --> */}
 
- 
         <div className="sticky-whatsapp">
           <Link
             to="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
