@@ -24,8 +24,7 @@ export default function ProductsDetails() {
   React.useEffect(() => {
     axios
       .get(
-        `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/get/productdetail/${description}`
-
+        `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/get/productdetail/${localStorage.getItem("description")}`
       )
       .then((response) => {
         console.log("huncncjuhenchjbecvbevchj", response); // log the response data
@@ -42,26 +41,9 @@ export default function ProductsDetails() {
       setProd(JSON.parse(storedProductIds));
     }
   }, [localStorage.getItem("productIds")]);
-  useEffect(() => {
-    const description = localStorage.getItem("description");
-    axios
-      .get(`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/get/productdetail/${description}`)
-      .then((response) => {
-        console.log("Response data", response);
-        setProductDetails(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
 
-  useEffect(() => {
-    const storedProductIds = localStorage.getItem("productIds");
-    if (storedProductIds) {
-      setProd(JSON.parse(storedProductIds));
-    }
-  }, [localStorage.getItem("productIds")]);
 
+ 
   const generatePdf = () => {
     const input = document.getElementById("pdf-content");
     const hiddenElements = document.querySelectorAll(".hidden");
@@ -155,29 +137,8 @@ export default function ProductsDetails() {
               >
                 <div className="blog-details-content">
                   <div className="content-one row mb-0">
-                 
-
-                  <div className={`col-lg-12 col-12 ${isHidden ? 'hidden' : ''}`}>
-
-                      <div className="row justify-content-center">
-                        <div className="col-lg-12 col-12 product-image-banner">
-                        <figure className="image-box">
-                        {productDetailsss && (
-                          <img
-                          
-                            src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${productDetailsss.ImageUrl}`}
-                            onLoad={() => console.log('Image loaded successfully')}
-        onError={() => console.error('Error loading image')}
-                          />
-                        )}
-                      </figure>
-                        </div>
-                        
-                        <div className="col-lg-5 col-12 text-right mt-4">
-       
-                        
                     <div
-                      className={`col-lg-12 col-12 ${isHidden ? "hidden" : ""}`}
+                      className={`col-lg-12 col-12 ${isHidden ? "hidden" : ""}` }
                     >
                       <div className="sec-title">
                         <a href="/">
@@ -209,19 +170,22 @@ export default function ProductsDetails() {
                     <div className="col-lg-12 col-12">
                       <div className="row justify-content-center">
                         <div className="col-lg-12 col-12 product-image-banner">
-                        <figure className="image-box">
-                        {productDetailsss && (
-                          <img
-                          
-                            src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${productDetailsss.ImageUrl}`}
-                            onLoad={() => console.log('Image loaded successfully')}
-        onError={() => console.error('Error loading image')}
-                          />
-                        )}
-                      </figure>
+                          <figure className="image-box">
+                            {productDetailsss && (
+                              <img
+                                src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${productDetailsss.ImageUrl}`}
+                                onLoad={() =>
+                                  console.log("Image loaded successfully")
+                                }
+                                onError={() =>
+                                  console.error("Error loading image")
+                                }
+                              />
+                            )}
+                          </figure>
                         </div>
                         <div className="col-lg-7 mt-4 product-name align-items-center d-flex">
-                          <h3>{description} : Chemical Name</h3>
+                          <h3>{localStorage.getItem("description")} : Chemical Name</h3>
                         </div>
                         <div className="col-lg-5 col-12 text-right mt-4"></div>
                       </div>

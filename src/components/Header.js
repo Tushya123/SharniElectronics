@@ -32,7 +32,11 @@ export default function Header() {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    handleClose();
     navigate(`/search?query=${encodeURIComponent(searchQuery)}`);
+
+     
   };
 
   useEffect(() => {
