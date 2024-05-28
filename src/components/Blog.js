@@ -61,13 +61,13 @@ export default function Blog() {
                     </div>
                     <div className="lower-content p-3">
                       <div className="category mb-2">
-                        <Link to={`/blogdetails/${blog._id}`}>{blog.Category}</Link>
+                        <Link >{blog.Category}</Link>
                       </div>
                       <ul className="post-info list-unstyled d-flex mb-2">
                         <li className="me-3">{blog.date}</li>
                       </ul>
                       <h3 className="mb-3">
-                        <Link to={`/blogdetails/${blog._id}`}>{blog.Title}</Link>
+                        <Link>{blog.Title}</Link>
                       </h3>
                       <div className="lower-box">
                         <div className="link">

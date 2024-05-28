@@ -34,8 +34,8 @@ export default function AboutUs() {
     <React.Fragment>
       <section className="about-section py-5">
         <Container>
-          <Row className="clearfix">
-            <Col lg={6} md={12} sm={12} className="image-column mb-4 mb-lg-0">
+          <Row className="clearfix" style={{justifyContent:'center'}}>
+            <Col lg={6} md={8} sm={12} className="image-column mb-4 mb-lg-0">
               <div className="image-box position-relative">
                 <div className="shape-box position-absolute">
                   <div className="shape shape-1 hexagon_shape"></div>

@@ -14,6 +14,13 @@ import Preloader from "../../components/PreLoader";
 import { Image, Container,Col, Figure,Row } from "react-bootstrap";
 
 export default function Products() {
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
   const [productData, setProductData] = useState({
     // Assuming you have some product data to send
     ProductDetail2: "",
@@ -512,8 +519,8 @@ export default function Products() {
           </div>
           <button
             className="scroll-top scroll-to-target open"
-            data-target="html"
-          >
+            onClick={scrollToTop}          >
+          
             <i className="flaticon-up-arrow"></i>
           </button>
         </>

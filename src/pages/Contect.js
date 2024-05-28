@@ -6,7 +6,9 @@ import skype from "../assets/images/new-home/skype.png";
 import wp from "../assets/images/new-home/whatsapp.png";
 import Header from "../components/Header";
 import axios from "axios";
-import { Button } from "react-bootstrap";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const countriesArray = [
   { label: "DZ", value: "ALGERIA" },
   { label: "AR", value: "ARGENTINA" },
@@ -80,7 +82,7 @@ export default function Contact() {
         formData
       );
       if (response) {
-        alert("Your application has been submitted successfully!");
+        toast.success("Your application has been submitted successfully!");
         setFormData({
           ContactPerson: "",
           Mobile: "",
@@ -90,16 +92,26 @@ export default function Contact() {
         });
         e.target.classList.remove('was-validated');
       } else {
-        alert("Application submission failed. Please try again.");
+        toast.error("Application submission failed. Please try again.");
       }
     } catch (error) {
       console.error("Application submission error:", error);
-      alert("Application submission failed. Please try again.");
+      toast.error("Application submission failed. Please try again.");
     }
   };
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
+
 
   return (
     <React.Fragment style={{ position: "relative", minHeight: "100%", top: "0px" }}>
+            <ToastContainer />
+
       <div className="boxed_wrapper">
         <Header />
         <section className="page-title">
@@ -310,8 +322,7 @@ export default function Contact() {
         </div>
         <button
             className="scroll-top scroll-to-target open"
-            data-target="html"
-          >
+            onClick={scrollToTop}          >
             <i className="flaticon-up-arrow"></i>
           </button>
       </div>

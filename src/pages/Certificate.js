@@ -23,6 +23,12 @@ export default function Certificate() {
   const [certificate, setCertificate] = useState([]);
   const [selectedCertificate, setSelectedCertificate] = useState(null);
   const [showModal, setShowModal] = useState(false); // State for controlling modal visibility
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -246,8 +252,8 @@ export default function Certificate() {
           </div>
           <button
             className="scroll-top scroll-to-target open"
-            data-target="html"
-          >
+            onClick={scrollToTop}          >
+        
             <i className="flaticon-up-arrow"></i>
           </button>
 

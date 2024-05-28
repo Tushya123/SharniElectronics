@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from "react";
 import logo from "../assets/images/new-home/logo.png";
+import logo1 from "../assets/images/new-home/new-logo.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Modal from "react-bootstrap/Modal";
+import Offcanvas from "react-bootstrap/Offcanvas";
 import { useSearch } from "../pages/Search/SearchProvider";
 import { useNavigate } from "react-router-dom";
 import { Container, Figure, Nav } from "react-bootstrap";
 import GoogleTranslate from "./GoogleTranslate";
+import { RiArrowUpSLine, RiArrowDownSLine } from "react-icons/ri";
 
 export default function Header() {
   const [products, setProducts] = useState([]);
   const [prod, setProd] = useState([]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showProducts, setShowProducts] = useState(false);
+
   const {
     searchQuery,
     setQuery,
@@ -72,26 +77,6 @@ export default function Header() {
     };
   }, []);
 
-  // useEffect(() => {
-  //   const script = document.createElement('script');
-  //   script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-  //   script.async = true;
-  //   document.body.appendChild(script);
-
-  //   return () => {
-  //     document.body.removeChild(script);
-  //   };
-  // }, []);
-
-  // window.googleTranslateElementInit = () => {
-  //   new window.google.translate.TranslateElement({
-  //     pageLanguage: 'en',
-  //     layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
-  //     gaTrack: true,
-  //     gaId: 'UA-25310579-1'
-  //   }, 'google_translate_element');
-  // };
-
   return (
     <React.Fragment>
       {/* <!-- main header --> */}
@@ -113,7 +98,6 @@ export default function Header() {
               </Figure>
             </div>
             {/* // google */}
-            {/* <div id="google_translate_element" style={{ paddingBottom: '3px' }}></div> */}
             {/* <GoogleTranslate/> */}
           </div>
         </Container>
@@ -173,7 +157,7 @@ export default function Header() {
               <div className="menu-area clearfix">
                 <div
                   className="mobile-nav-toggler"
-                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  onClick={() => setIsMobileMenuOpen(true)}
                 >
                   <i className="icon-bar"></i>
                   <i className="icon-bar"></i>
@@ -301,70 +285,158 @@ export default function Header() {
           </Container>
         </div>
       </header>
+
       {/* <!-- Mobile Menu  --> */}
-      <div className={`mobile-menu ${isMobileMenuOpen ? "active" : ""}`}>
-        <div
-          className="menu-backdrop"
-          onClick={() => setIsMobileMenuOpen(false)}
-        ></div>
-        <div className="close-btn" onClick={() => setIsMobileMenuOpen(false)}>
-          <i className="fas fa-times"></i>
-        </div>
-        <nav className="menu-box">
-          <div className="nav-logo">
-            <a href="#">
-              <img src={logo} alt="" title="" />
-            </a>  
-          </div>
-          <div className="menu-outer">
-            <ul className="navigation clearfix">
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/about">About Us</Link>
-              </li>
-              <li>
-                <Link to="/commitment">Commitment</Link>
-              </li>
-              <li className="dropdown">
-                <Link>Products</Link>
-                <ul>
-                  {products
-                    .sort((a, b) =>
-                      a.ProductGroup.localeCompare(b.ProductGroup)
-                    )
-                    .map((product, index) => (
-                      <li key={index}>
-                        <Link
-                          onClick={() => {
-                            window.location.href = "/products";
-                            localStorage.setItem(
-                              "selectedProductId",
-                              product.ProductGroup
-                            );
-                          }}
-                        >
-                          {product.ProductGroup}
-                        </Link>
-                      </li>
-                    ))}
-                </ul>
-              </li>
-              <li>
-                <Link to="/gallery">Gallery</Link>
-              </li>
-              <li>
-                <Link to="/certificate">Certificate</Link>
-              </li>
-              <li>
-                <Link to="/contect">Contact</Link>
-              </li>
-            </ul>{" "}
-          </div>
-          {/* Render your contact info and social links here */}
-        </nav>
-      </div>
+      <Offcanvas
+        className="offcanvas"
+        show={isMobileMenuOpen}
+        onHide={() => setIsMobileMenuOpen(false)}
+        placement="end"
+      >
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>
+            <div className="nav-logo">
+              <a href="/">
+                <img src={logo1} alt="" title="" />
+              </a>
+            </div>
+          </Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          <nav className="menu-box">
+            <div className="menu-outer">
+              <ul className="navigation clearfix">
+                <li>
+                  <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/commitment"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Commitment
+                  </Link>
+                </li>
+                <li className="dropdown">
+                  <div onClick={() => setShowProducts(!showProducts)}>
+                    <Link to="#" className="dropdown-toggle">
+                      Products
+                      <span>
+                        {showProducts ? (
+                          <RiArrowUpSLine />
+                        ) : (
+                          <RiArrowDownSLine />
+                        )}
+                      </span>
+                    </Link>
+                  </div>
+                  {showProducts && (
+                    <ul className="dropdown-menu">
+                      {products
+                        .sort((a, b) =>
+                          a.ProductGroup.localeCompare(b.ProductGroup)
+                        )
+                        .map((product, index) => (
+                          <li key={index}>
+                            <Link
+                              to="#"
+                              onClick={() => {
+                                window.location.href = "/products";
+                                localStorage.setItem(
+                                  "selectedProductId",
+                                  product.ProductGroup
+                                );
+                              }}
+                            >
+                              {product.ProductGroup}
+                            </Link>
+                          </li>
+                        ))}
+                    </ul>
+                  )}
+                </li>
+
+                <li>
+                  <Link
+                    to="/gallery"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Gallery
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/certificate"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Certificate
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/contact"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div className="contact-info">
+              <h4>Contact Info</h4>
+              <ul>
+                <li>Chicago 12, Melborne City, USA</li>
+                <li>
+                  <a href="tel:+8801682648101" style={{ color: "white" }}>
+                    +88 01682648101
+                  </a>
+                </li>
+                <li>
+                  <a href="mailto:info@example.com" style={{ color: "white" }}>
+                    info@example.com
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div className="social-links">
+              <ul className="clearfix">
+                <li>
+                  <a href="#">
+                    <span className="fab fa-twitter"></span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span className="fab fa-facebook-square"></span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span className="fab fa-pinterest-p"></span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span className="fab fa-instagram"></span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span className="fab fa-youtube"></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </Offcanvas.Body>
+      </Offcanvas>
     </React.Fragment>
   );
 }

@@ -16,6 +16,12 @@ export default function Commitment() {
   const [commitments, setCommitments] = useState([]);
   const [showModal, setShowModal] = useState(false); // State for controlling modal visibility
 
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -189,8 +195,8 @@ export default function Commitment() {
           </div>
           <button
             className="scroll-top scroll-to-target open"
-            data-target="html"
-          >
+            onClick={scrollToTop}          >
+        
             <i className="flaticon-up-arrow"></i>
           </button>
         </>
