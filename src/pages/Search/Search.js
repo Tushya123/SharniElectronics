@@ -7,7 +7,7 @@ import wp from "../../assets/images/new-home/whatsapp.png";
 import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
 import { useSearch } from "./SearchProvider";
 
 export default function Search() {
@@ -18,7 +18,7 @@ export default function Search() {
     Group: "",
     Quantity: "",
   });
-
+  const navigate = useNavigate();
   const { searchQuery, productsData } = useSearch();
   const [dataInfo, setDataInfo] = useState([]);
   const [show, setShow] = useState(false);
@@ -30,6 +30,8 @@ export default function Search() {
   const handleQuantityChange = (event) => {
     setQuantity(event.target.value);
   };
+
+  console.log("productsData",productsData)
   useEffect(() => {
     setProductData({
       Quantity: quantity,
@@ -117,6 +119,14 @@ export default function Search() {
       setDataInfo(productsData[0].data);
     }
   }, [productsData]);
+
+  function setDesc(item,item2){
+    localStorage.setItem("description", item);
+    localStorage.setItem("selectedProductId", item2);
+    console.log("item",item)
+    navigate('/productDetails')
+  }
+  console.log("dataInfo",dataInfo)
 
   return (
     <React.Fragment
@@ -223,7 +233,7 @@ export default function Search() {
                       color: "#16436f",
                     }}
                   >
-                    Product Category : ACTIVE PHARMACEUTICAL INGREDIENTS
+            
                   </h6>
                 </div>
               </div>
@@ -239,7 +249,7 @@ export default function Search() {
                           className="inner-box"
                           style={{ boxShadow: "none" }}
                         >
-                          <Link className="text" to="/productDetails">
+                          <Link className="text" onClick ={()=>setDesc(product.Description,product.ProductDetailTypes[0].ProductGroup)} to='/productDetails'>
                             <h2>{product.Description}</h2>
                           </Link>
                           <div className="lower-box">
