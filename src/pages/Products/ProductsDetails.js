@@ -24,7 +24,7 @@ export default function ProductsDetails() {
     
     axios
       .get(
-        ${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/get/productdetail/${description}
+        `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/get/productdetail/${description}`
       )
       .then((response) => {
         console.log("huncncjuhenchjbecvbevchj", response); // log the response data
@@ -44,7 +44,7 @@ export default function ProductsDetails() {
   useEffect(() => {
     const description = localStorage.getItem("description");
     axios
-      .get(${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/get/productdetail/${description})
+      .get(`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/get/productdetail/${description}`)
       .then((response) => {
         console.log("Response data", response);
         setProductDetails(response.data);
@@ -125,7 +125,7 @@ export default function ProductsDetails() {
         <section className="page-title">
           <div
             className="bg-layer"
-            style={{ backgroundImage: url(${Background}) }}
+            style={{ backgroundImage: `url(${Background})` }}
           ></div>
           <div className="auto-container">
             <div className="content-box">
@@ -155,14 +155,15 @@ export default function ProductsDetails() {
                   <div className="content-one row mb-0">
                  
 
-                  <div className={col-lg-12 col-12 ${isHidden ? 'hidden' : ''}}>
+                  <div className={`col-lg-12 col-12 ${isHidden ? 'hidden' : ''}`}>
+
                       <div className="row justify-content-center">
                         <div className="col-lg-12 col-12 product-image-banner">
                         <figure className="image-box">
                         {productDetailsss && (
                           <img
                           
-                            src={${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${productDetailsss.ImageUrl}}
+                            src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${productDetailsss.ImageUrl}`}
                             onLoad={() => console.log('Image loaded successfully')}
         onError={() => console.error('Error loading image')}
                           />
@@ -183,7 +184,7 @@ export default function ProductsDetails() {
                         {productDetailsss && (
                           <img
                           
-                            src={${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${productDetailsss.ImageUrl}}
+                            src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${productDetailsss.ImageUrl}`}
                             onLoad={() => console.log('Image loaded successfully')}
         onError={() => console.error('Error loading image')}
                           />

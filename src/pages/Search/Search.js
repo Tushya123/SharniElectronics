@@ -39,18 +39,53 @@ export default function Search() {
     });
   }, [quantity, desc, name, id]);
 
+  // const handleAddToCart = async () => {
+  //   try {
+  //     const response = await axios.post(
+  //       `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/create/InquiryProduct`,
+  //       productData
+  //     );
+  //     console.log("Response:", response.data.data._id);
+  //     const productId = response.data.data._id;
+  //     console.log("Product ID from response:", productId);
+
+  //     // Retrieve existing product IDs from localStorage
+  //     let productIds = JSON.parse(localStorage.getItem("productIds"));
+  //     console.log("Current product IDs in localStorage:", productIds);
+
+  //     // Add the new product ID to the array
+  //     productIds.push(productId);
+  //     console.log("Updated product IDs:", productIds);
+
+  //     // Save the updated array back to localStorage
+  //     localStorage.setItem("productIds", JSON.stringify(productIds));
+  //     console.log("Updated product IDs saved to localStorage");
+
+  //     // Reset the quantity
+  //     setQuantity(0);
+  //     if (response) {
+  //       setShow(false);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error adding product to cart:", error);
+  //   }
+  // };
   const handleAddToCart = async () => {
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/create/InquiryProduct`,
         productData
       );
-      console.log("Response:", response.data.data._id);
+
+      if (!response.data || !response.data.data || !response.data.data._id) {
+        throw new Error("Invalid response from the server");
+      }
+
       const productId = response.data.data._id;
       console.log("Product ID from response:", productId);
 
       // Retrieve existing product IDs from localStorage
-      let productIds = JSON.parse(localStorage.getItem("productIds"));
+      let productIds = JSON.parse(localStorage.getItem("productIds")) || [];
       console.log("Current product IDs in localStorage:", productIds);
 
       // Add the new product ID to the array
@@ -61,9 +96,15 @@ export default function Search() {
       localStorage.setItem("productIds", JSON.stringify(productIds));
       console.log("Updated product IDs saved to localStorage");
 
+      // Verify if the localStorage update was successful
+      const storedProductIds = JSON.parse(localStorage.getItem("productIds"));
+      console.log("Verified product IDs in localStorage:", storedProductIds);
+
       // Reset the quantity
       setQuantity(0);
-      if (response) {
+
+      // Only close the popup if the product ID is in localStorage
+      if (storedProductIds.includes(productId)) {
         setShow(false);
       }
     } catch (error) {
@@ -144,22 +185,14 @@ export default function Search() {
                         />
                       </div>
                       <div className="col-lg-12 col-md-12 col-sm-12 form-group message-btn text-center">
-                        <button
-                          type="submit"
-                          className="theme-btn"
-                          name="submit-form"
-                        >
-                          <Link
-                            style={{ color: "white" }}
-                            onClick={() => {
-                              setShow(false);
-                              handleAddToCart();
-                            }}
-                          >
-                            Add To Cart
-                          </Link>
-                        </button>
-                      </div>
+                            <button
+                              type="button"
+                              className="theme-btn"
+                              onClick={handleAddToCart}
+                            >
+                              Add To Cart
+                            </button>
+                          </div>
                     </div>
                   </form>
                 </div>
@@ -242,7 +275,7 @@ export default function Search() {
                 )}
               </div>
 
-              <div className="title">
+              {/* <div className="title">
                 <div
                   className="title-cat"
                   style={{ padding: "20px", textAlign: "center" }}
@@ -258,9 +291,9 @@ export default function Search() {
                     Product Category : VETERINARY APIS
                   </h6>
                 </div>
-              </div>
+              </div> */}
 
-              <div className="row">
+              {/* <div className="row">
                 {dataInfo.length > 0 ? (
                   dataInfo.map((product, index) => (
                     <div
@@ -306,7 +339,7 @@ export default function Search() {
                 ) : (
                   <p>No products found.</p>
                 )}
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
