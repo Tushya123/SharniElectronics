@@ -65,14 +65,14 @@ export default function NewsEvent() {
                           />
                         </figure>
                         <div className="link-btn">
-                          <Link to={`/newsdetails/${item._id}`}>
+                          <Link to={`/detailNews/${item._id}`}>
                             <i className="flaticon-zoom-in"></i>
                           </Link>
                         </div>
                       </div>
                       <div className="lower-content">
                         <div className="category">
-                          <a href="#">Shreeji Pharma</a>
+                          <a>Shreeji Pharma</a>
                         </div>
                         <ul className="post-info clearfix">
                           <li>{formatDate(item.createdAt)}</li>

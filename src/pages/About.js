@@ -20,12 +20,31 @@ export default function About() {
   const [cmsImage, setcmsImage] = useState("");
   const [showModal, setShowModal] = useState(false); // State for controlling modal visibility
 
-  function scrollToTop() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
-  }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", toggleVisibility);
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+    };
+  }, []);
+
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,8 +97,8 @@ export default function About() {
         {/* about-section */}
         <section className="about-section sec-pad">
           <Container>
-            <Row className="clearfix">
-              <Col lg={6} md={12} sm={12} className="image-column">
+            <Row className="clearfix justify-content-center">
+              <Col lg={6} md={8} sm={12} className="image-column">
                 <div className="image-box">
                   <div className="shape-box">
                     <div className="shape shape-1 hexagon_shape"></div>
@@ -271,8 +290,9 @@ export default function About() {
 
       </div>
       <button
-            className="scroll-top scroll-to-target open"
-            onClick={scrollToTop}          >
+            className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
+            onClick={scrollToTop}
+            style={{ display: isVisible ? "block" : "none" }}>
 
             <i className="flaticon-up-arrow"></i>
           </button>

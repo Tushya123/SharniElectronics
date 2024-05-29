@@ -36,12 +36,30 @@ import { Link, Outlet } from "react-router-dom";
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
-  function scrollToTop() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
-  }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", toggleVisibility);
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+    };
+  }, []);
+
 
   const settings = {
     dots: true,
@@ -220,7 +238,8 @@ export default function Home() {
                         </div>
                         <Link
                           // to="https://maps.app.goo.gl/Bsr5XK4HhGCfyD2b6"
-                          onClick={() => setShowModal(true)}  style={{color:"#16436f"}}// Set showModal to true when clicked
+                          onClick={() => setShowModal(true)}
+                          style={{ color: "#16436f" }} // Set showModal to true when clicked
                         >
                           Locate Us <i className="flaticon-right-arrow"></i>
                         </Link>
@@ -273,8 +292,9 @@ export default function Home() {
             </Modal>
           </div>
           <button
-            className="scroll-top scroll-to-target open"
+            className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
             onClick={scrollToTop}
+            style={{ display: isVisible ? "block" : "none" }}
           >
             <i className="flaticon-up-arrow"></i>
           </button>

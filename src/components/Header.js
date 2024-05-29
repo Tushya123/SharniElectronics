@@ -385,7 +385,7 @@ export default function Header() {
                 </li>
                 <li>
                   <Link
-                    to="/contact"
+                    to="/contect"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Contact

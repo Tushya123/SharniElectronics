@@ -61,12 +61,30 @@ export default function Cart() {
     Country: Yup.string().required("Country is required"),
     Comments: Yup.string().required("Comments is required"),
   });
-  function scrollToTop() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
-  }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", toggleVisibility);
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+    };
+  }, []);
+
 
 
   const [products, setProducts] = useState([]);
@@ -540,8 +558,9 @@ export default function Cart() {
           </div>
 
           <button
-            className="scroll-top scroll-to-target open"
-            onClick={scrollToTop}          >
+            className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
+            onClick={scrollToTop}
+            style={{ display: isVisible ? "block" : "none" }}>
           
             <i className="flaticon-up-arrow"></i>
           </button>

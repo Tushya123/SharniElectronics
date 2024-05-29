@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{useState,useEffect}from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Background from "../assets/images/new-home/breadcrumb-img.jpg";
@@ -12,6 +12,31 @@ export default function ImageView() {
   const handleClose = () => {
     navigate(-1);
   };
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", toggleVisibility);
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+    };
+  }, []);
+
+
 
   return (
     <div className="boxed_wrapper">
@@ -65,9 +90,10 @@ export default function ImageView() {
         </Container>
       </section>
       <button
-            className="scroll-top scroll-to-target open"
-            data-target="html"
-          >
+            className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
+            onClick={scrollToTop}
+            style={{ display: isVisible ? "block" : "none" }}>
+          
             <i className="flaticon-up-arrow"></i>
           </button>
 

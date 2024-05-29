@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import logo from "../assets/images/new-home/logo.png";
 import Background from "../assets/images/new-home/breadcrumb-img.jpg";
 import footer from "../assets/images/new-home/footer-location-img.jpg";
@@ -99,12 +99,30 @@ export default function Contact() {
       toast.error("Application submission failed. Please try again.");
     }
   };
-  function scrollToTop() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
-  }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", toggleVisibility);
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+    };
+  }, []);
+
 
 
 
@@ -321,8 +339,9 @@ export default function Contact() {
           </div>
         </div>
         <button
-            className="scroll-top scroll-to-target open"
-            onClick={scrollToTop}          >
+            className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
+            onClick={scrollToTop}
+            style={{ display: isVisible ? "block" : "none" }}>
             <i className="flaticon-up-arrow"></i>
           </button>
       </div>

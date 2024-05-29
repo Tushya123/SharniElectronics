@@ -53,7 +53,7 @@ export default function Inquiry() {
     Email: Yup.string()
       .email("Invalid email")
       .required("Enter Your Email Address!"),
-    Country: Yup.string().required("Enter Country!"),
+    Country: Yup.string().required("Pls Select Your Country!"),
     Message: Yup.string().required("Enter your Message!"),
   });
 
@@ -195,7 +195,7 @@ export default function Inquiry() {
                               }`}
                               name="Country"
                             >
-                              <option value="">Select Country</option>
+                              <option value="" autoCapitalize="none">Select Country</option>
                               {countriesArray.map((country) => (
                                 <option
                                   key={country.label}
