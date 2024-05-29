@@ -249,7 +249,7 @@ export default function Header() {
                     <div className="upper-box clearfix">
                       <figure className="logo-box pull-left">
                         <a href="#">
-                          <img src={logo} alt="Logo" />
+                          <img src={logo1} alt="Logo" />
                         </a>
                       </figure>
                       <div
