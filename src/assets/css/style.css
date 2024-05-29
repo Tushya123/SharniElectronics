@@ -76,6 +76,18 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.search_setting{
+  top: -36px;
+  z-index: 9;
+  position: relative;
+  padding-left: 35px !important;
+}
+
+.button_setting{
+  z-index: 99;
+  position: relative;
+}
+
 @media (min-width: 1200px) {
   .container {
     max-width: 1200px;
