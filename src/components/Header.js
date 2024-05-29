@@ -23,19 +23,25 @@ export default function Header() {
     setSearchQuery,
     showModal,
     handleShow,
-    handleClose,
+    handleClose: originalHandleClose,
     productsData,
   } = useSearch();
 
   console.log(productsData, "productsData");
+
+  const handleClose = () => {
+    navigate(`/search?query=""`);
+    originalHandleClose(); // Call the original handleClose to handle any existing close modal logic
+  };
 
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     
     handleClose();
-    navigate(`/search?query=${encodeURIComponent(searchQuery)}`);
 
+    navigate(`/search?query=${encodeURIComponent(searchQuery)}`);
+//  setSearchQuery('');
      
   };
 
@@ -265,18 +271,22 @@ export default function Header() {
                         <form method="post" action="#" onSubmit={handleSubmit}>
                           <div className="form-group">
                             <fieldset>
-                              <input
+                             <div>
+                              <span style={{displat:'flex'}}> <button type="submit" className="button_setting">
+                                <i className="flaticon-magnifying-glass " style={{padding:'10px'}}></i>
+                              </button> <input
                                 type="search"
-                                className="form-control"
+                                className="search_setting form-control"
                                 name="search-input"
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 placeholder="Type your keyword and hit"
                                 required=""
-                              />
-                              <button type="submit">
-                                <i className="flaticon-magnifying-glass"></i>
-                              </button>
+                              /></span>
+                             
+                             </div>
+                             
+                              
                             </fieldset>
                           </div>
                         </form>
