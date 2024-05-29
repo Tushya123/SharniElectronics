@@ -115,6 +115,7 @@ export default function Search() {
   };
 
   useEffect(() => {
+    console.log(productsData)
     if (productsData && productsData.length > 0 && productsData[0].data) {
       setDataInfo(productsData[0].data);
     }
@@ -238,51 +239,55 @@ export default function Search() {
                 </div>
               </div>
               <div className="row">
-                {dataInfo.length > 0 ? (
-                  dataInfo.map((product, index) => (
-                    <div
-                      className="col-lg-3 col-md-12 col-sm-12 content-side"
-                      key={index}
-                    >
-                      <div className="news-block-one">
-                        <div
-                          className="inner-box"
-                          style={{ boxShadow: "none" }}
-                        >
-                          <Link className="text" onClick ={()=>setDesc(product.Description,product.ProductDetailTypes[0].ProductGroup)} to='/productDetails'>
-                            <h2>{product.Description}</h2>
-                          </Link>
-                          <div className="lower-box">
-                            <div className="link">
-                              <button
-                                style={{
-                                  fontSize: "16px",
-                                  color: "#16436f",
-                                  fontWeight: "600",
-                                }}
-                                type="button"
-                                data-bs-toggle="modal"
-                                data-bs-target="#inquiryModal"
-                                onClick={() => {
-                                  setShow(true);
-                                  setname(product.Description);
-                                  setid(product._id);
-                                  setDescription(
-                                    product.ProductDetail.ProductGroup
-                                  );
-                                }}
-                              >
-                                Inquiry
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))
-                ) : (
-                  <p>No products found.</p>
-                )}
+              {
+  productsData.length>0 ? (
+    productsData[0].data.length > 0 ? (
+      productsData[0].data.map((product, index) => (
+        <div className="col-lg-3 col-md-12 col-sm-12 content-side" key={index}>
+          <div className="news-block-one">
+            <div className="inner-box" style={{ boxShadow: "none" }}>
+              <Link
+                className="text"
+                onClick={() =>
+                  setDesc(product.Description, product.ProductDetailTypes[0].ProductGroup)
+                }
+                to="/productDetails"
+              >
+                <h2>{product.Description}</h2>
+              </Link>
+              <div className="lower-box">
+                <div className="link">
+                  <button
+                    style={{
+                      fontSize: "16px",
+                      color: "#16436f",
+                      fontWeight: "600",
+                    }}
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#inquiryModal"
+                    onClick={() => {
+                      setShow(true);
+                      setname(product.Description);
+                      setid(product._id);
+                      setDescription(product.ProductDetail.ProductGroup);
+                    }}
+                  >
+                    Inquiry
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))
+    ) : (
+      <p>No products found.</p>
+    )
+  ) :(  <p>No products found.</p>)
+}
+
+                
               </div>
 
               {/* <div className="title">

@@ -16,7 +16,10 @@ export const SearchProvider = ({ children }) => {
   const skip = 0;
   const [loading, setLoading] = useState(false);
   const [totalRows, setTotalRows] = useState(0);
-  const [perPage, setPerPage] = useState(10);
+  const INFINITE = Number.MAX_SAFE_INTEGER; // This represents a very large number
+
+  const [perPage, setPerPage] = useState(INFINITE); // Default to infinite
+
   const [pageNo, setPageNo] = useState(0);
   const [column, setcolumn] = useState();
   const [sortDirection, setsortDirection] = useState("asc");
@@ -38,6 +41,7 @@ export const SearchProvider = ({ children }) => {
         );
         console.log(response.data,'Abacavir sulfate');
         setProducts(response.data);
+        
       } catch (error) {
         console.error("Error fetching product data:", error);
       }
