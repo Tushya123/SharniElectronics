@@ -20,6 +20,31 @@ export default function ProductsDetails() {
   const [productDetailsss, setProductDetails] = React.useState(null);
   const [isHidden, setIsHidden] = useState(true);
   const [prod, setProd] = useState([]);
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", toggleVisibility);
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+    };
+  }, []);
+
+
 
   React.useEffect(() => {
     axios
@@ -212,7 +237,6 @@ export default function ProductsDetails() {
                     <div className="col-lg-12 col-12 mt-4">
                       <div
                         className="table-outer product-detail-table"
-                        style={{ border: "1px solid #16436f" }}
                       >
                         <Table className="cart-table">
                           <thead className="cart-header">
@@ -305,9 +329,13 @@ export default function ProductsDetails() {
         </div>
 
         {/* <!-- scroll to top --> */}
-        <button className="scroll-top scroll-to-target" data-target="html">
-          <i className="flaticon-up-arrow"></i>
-        </button>
+        <button
+            className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
+            onClick={scrollToTop}
+            style={{ display: isVisible ? "block" : "none" }}>
+          
+            <i className="flaticon-up-arrow"></i>
+          </button>
       </div>
     </React.Fragment>
   );

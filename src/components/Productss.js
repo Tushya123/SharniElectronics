@@ -12,8 +12,8 @@ export default function Products() {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
-    // autoplxay: true,
-    autoplaySpeed: 2000,
+    autoplxay: true,
+    autoplaySpeed: 1000,
     responsive: [
       {
         breakpoint: 1024,
@@ -51,7 +51,11 @@ export default function Products() {
           `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/list/areatype`
         );
         console.log("Data:", response);
-        setProducts(response.data);
+        const activeCertificates = response.data.filter(
+          (product) => product.IsActive
+        );
+
+        setProducts(activeCertificates);
       } catch (error) {
         console.error("Error fetching product data:", error);
       }

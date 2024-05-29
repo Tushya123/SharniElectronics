@@ -10799,7 +10799,7 @@ div#mCSB_1_container {
 .cart-table .cart-header {
   position: relative;
   width: 100%;
-  border: 1px solid #e6ebed;
+  border: 1px solid #16436f;
 }
 
 .cart-table thead tr th {
@@ -10809,7 +10809,7 @@ div#mCSB_1_container {
   font-size: 20px;
   font-family: "Saira", sans-serif;
   color: #16436f;
-  border-right: 1px solid #e6ebed;
+  border-right: 1px solid #16436f;
   text-align: center;
 }
 
@@ -10903,7 +10903,7 @@ div#mCSB_1_container {
 }
 
 .cart-table tbody tr td:last-child {
-  border-right: 1px solid #ebebeb;
+  border-right: 1px solid #16436f;
 }
 
 .cart-section .cart-outer .totle-table {
@@ -13995,7 +13995,7 @@ div#mCSB_1_container {
 }
 .position-slider .content-box {
   position: absolute;
-  top: 35%;
+  top: 237px !important;
   z-index: 99;
 }
 .product-slider .slick-slide {
@@ -14086,7 +14086,7 @@ div#mCSB_1_container {
   font-weight: 500;
   font-size: 20px;
   color: #16436f;
-  border-right: 1 px solid #16436f;
+  border-right: 1px solid #16436f;
 }
 input {
   /* text-transform: capitalize; */

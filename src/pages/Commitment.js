@@ -2,26 +2,42 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Header from "../components/Header";
 import Background from "../assets/images/new-home/breadcrumb-img.jpg";
-import { Container, Figure, Image, Row, Button, Col } from "react-bootstrap";
+import { Container, Figure, Image, Row, Button, Col, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Preloader from "../components/PreLoader";
 import shape10 from "../assets/images/shape/shape-10.png";
 import footer from "../assets/images/new-home/footer-location-img.jpg";
 import skype from "../assets/images/new-home/skype.png";
 import wp from "../assets/images/new-home/whatsapp.png";
-import { Modal } from "react-bootstrap";
-
 
 export default function Commitment() {
   const [commitments, setCommitments] = useState([]);
-  const [showModal, setShowModal] = useState(false); // State for controlling modal visibility
+  const [showModal, setShowModal] = useState(false);
 
-  function scrollToTop() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
-  }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", toggleVisibility);
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+    };
+  }, []);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,7 +45,6 @@ export default function Commitment() {
         const res = await axios.get(
           `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/listonly/Commitment`
         );
-        // Filter out inactive commitments
         const activeCommitments = res.data.filter(
           (commitment) => commitment.IsActive
         );
@@ -43,7 +58,7 @@ export default function Commitment() {
 
   return (
     <React.Fragment>
-      {!commitments || commitments?.length < 1 ? (
+      {!commitments || commitments.length < 1 ? (
         <Preloader />
       ) : (
         <>
@@ -71,27 +86,27 @@ export default function Commitment() {
                 <div className="product-discription mb-0">
                   <div className="customer-comment mb-0">
                     <Row className="row clearfix justify-content-center">
-                      {commitments.map((commitment, index) => (
-                        <div
-                          key={index}
-                          className="col-lg-6 col-md-8 col-sm-12 comment-column"
-                        >
-                          <div className="single-comment-box">
-                            <div className="inner-box">
-                              <Figure className="comment-thumb">
-                                <Image
-                                  src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${commitment.CommitmentImage}`}
-                                  alt={`Commitment ${index}`}
-                                />
-                              </Figure>
-                              <div className="inner">
-                                <h3>{commitment.Title}</h3>
-                                <p>{commitment.Description}</p>
+                      {commitments.map((commitment, index) => {
+                        const colClass = (index % 4 === 0 || index % 4 === 3) ? "col-lg-7 col-md-8 col-sm-12 comment-column" : "col-lg-5 col-md-8 col-sm-12 comment-column";
+                        return (
+                          <div key={index} className={colClass}>
+                            <div className="single-comment-box">
+                              <div className="inner-box">
+                                <Figure className="comment-thumb">
+                                  <Image
+                                    src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${commitment.CommitmentImage}`}
+                                    alt={`Commitment ${index}`}
+                                  />
+                                </Figure>
+                                <div className="inner">
+                                  <h3>{commitment.Title}</h3>
+                                  <p>{commitment.Description}</p>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </Row>
                   </div>
                 </div>
@@ -142,8 +157,7 @@ export default function Commitment() {
                           </div>
                         </div>
                         <Link
-                          // to="https://maps.app.goo.gl/Bsr5XK4HhGCfyD2b6"
-                          onClick={() => setShowModal(true)} // Set showModal to true when clicked
+                          onClick={() => setShowModal(true)} 
                         >
                           Locate Us <i className="flaticon-right-arrow"></i>
                         </Link>
@@ -174,29 +188,29 @@ export default function Commitment() {
               <Link to="skype:Nilesh.sheth70?Call" target="_blank">
                 <Image src={skype} className="img-responsive" alt="Skype" />
               </Link>
-            </div>{" "}
+            </div>
             <Modal show={showModal} onHide={() => setShowModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Vadiwadi, Vadodara</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7381.956093641144!2d73.167648!3d22.31667!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fcf6c89cabb19%3A0xf803cbcf27adf1aa!2sShreeji%20Pharma%20International!5e0!3m2!1sen!2sus!4v1712310707767!5m2!1sen!2sus"
-            width="100%"
-            height="450"
-            style={{ border: 0 }}
-            allowFullScreen=""
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </Modal.Body>
-      </Modal>
-
+              <Modal.Header closeButton>
+                <Modal.Title>Vadiwadi, Vadodara</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7381.956093641144!2d73.167648!3d22.31667!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fcf6c89cabb19%3A0xf803cbcf27adf1aa!2sShreeji%20Pharma%20International!5e0!3m2!1sen!2sus!4v1712310707767!5m2!1sen!2sus"
+                  width="100%"
+                  height="450"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </Modal.Body>
+            </Modal>
           </div>
           <button
-            className="scroll-top scroll-to-target open"
-            onClick={scrollToTop}          >
-        
+            className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
+            onClick={scrollToTop}
+            style={{ display: isVisible ? "block" : "none" }}>
+          
             <i className="flaticon-up-arrow"></i>
           </button>
         </>

@@ -23,12 +23,30 @@ export default function Certificate() {
   const [certificate, setCertificate] = useState([]);
   const [selectedCertificate, setSelectedCertificate] = useState(null);
   const [showModal, setShowModal] = useState(false); // State for controlling modal visibility
-  function scrollToTop() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
-  }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", toggleVisibility);
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+    };
+  }, []);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -68,11 +86,12 @@ export default function Certificate() {
           <div className="boxed_wrapper">
             <Header />
             {/* page-title */}
-            <section
-              className="page-title"
-              style={{ backgroundImage: `url(${Background})` }}
-            >
-              <Container>
+            <section className="page-title">
+              <div
+                className="bg-layer"
+                style={{ backgroundImage: `url(${Background})` }}
+              ></div>
+              <Container className="auto-container">
                 <div className="content-box">
                   <h1>Certificate</h1>
                   <ul className="bread-crumb clearfix">
@@ -251,8 +270,9 @@ export default function Certificate() {
             </Modal>
           </div>
           <button
-            className="scroll-top scroll-to-target open"
-            onClick={scrollToTop}          >
+            className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
+            onClick={scrollToTop}
+            style={{ display: isVisible ? "block" : "none" }}>
         
             <i className="flaticon-up-arrow"></i>
           </button>
