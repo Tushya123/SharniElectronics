@@ -86,7 +86,9 @@ export default function Header() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
+  const handleIconClick = () => {
+    setSearchQuery('');
+  };
   return (
     <React.Fragment>
       {/* <!-- main header --> */}
@@ -242,7 +244,7 @@ export default function Header() {
                   onClick={handleShow}
                   onChange={(e) => setQuery(e.target.value)}
                 >
-                  <i className="flaticon-magnifying-glass"></i>
+                  <i className="flaticon-magnifying-glass" onClick={handleIconClick}></i>
                 </li>
 
                 {/* Search Modal */}
