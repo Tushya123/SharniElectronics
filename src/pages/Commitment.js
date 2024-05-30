@@ -85,7 +85,7 @@ export default function Commitment() {
               <Container className="auto-container">
                 <div className="product-discription mb-0">
                   <div className="customer-comment mb-0">
-                    <Row className="row clearfix justify-content-center">
+                    <Row className="clearfix justify-content-center">
                       {commitments.map((commitment, index) => {
                         const colClass = (index % 4 === 0 || index % 4 === 3) ? "col-lg-7 col-md-8 col-sm-12 comment-column" : "col-lg-5 col-md-8 col-sm-12 comment-column";
                         return (
@@ -158,6 +158,8 @@ export default function Commitment() {
                         </div>
                         <Link
                           onClick={() => setShowModal(true)} 
+                          style={{ color: "#16436f" }} 
+
                         >
                           Locate Us <i className="flaticon-right-arrow"></i>
                         </Link>

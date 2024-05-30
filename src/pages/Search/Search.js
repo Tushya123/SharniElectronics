@@ -9,6 +9,7 @@ import Modal from "react-bootstrap/Modal";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSearch } from "./SearchProvider";
+import { Container, Form, Col } from "react-bootstrap";
 
 export default function Search() {
   const [productData, setProductData] = useState({
@@ -31,7 +32,7 @@ export default function Search() {
     setQuantity(event.target.value);
   };
 
-  console.log("productsData",productsData)
+  console.log("productsData", productsData);
   useEffect(() => {
     setProductData({
       Quantity: quantity,
@@ -115,19 +116,19 @@ export default function Search() {
   };
 
   useEffect(() => {
-    console.log(productsData)
+    console.log(productsData);
     if (productsData && productsData.length > 0 && productsData[0].data) {
       setDataInfo(productsData[0].data);
     }
   }, [productsData]);
 
-  function setDesc(item,item2){
+  function setDesc(item, item2) {
     localStorage.setItem("description", item);
     localStorage.setItem("selectedProductId", item2);
-    console.log("item",item)
-    navigate('/productDetails')
+    console.log("item", item);
+    navigate("/productDetails");
   }
-  console.log("dataInfo",dataInfo)
+  console.log("dataInfo", dataInfo);
 
   return (
     <React.Fragment
@@ -140,7 +141,7 @@ export default function Search() {
             className="bg-layer"
             style={{ backgroundImage: `url(${Background})` }}
           ></div>
-          <div className="auto-container">
+          <Container className="auto-container">
             <div className="content-box">
               <h1>Search Result</h1>
               <ul className="bread-crumb clearfix">
@@ -150,7 +151,7 @@ export default function Search() {
                 <li>Search</li>
               </ul>
             </div>
-          </div>
+          </Container>
         </section>
 
         {/* Modal */}
@@ -167,9 +168,9 @@ export default function Search() {
             <div className="modal-body">
               <div className="contact-section new">
                 <div className="form-inner">
-                  <form id="contact-form" noValidate>
+                  <Form id="contact-form" noValidate>
                     <div className="row clearfix">
-                      <div className="col-lg-12 col-md-6 col-sm-12 form-group">
+                      <Col lg={12} md={6} sm={12} className="form-group">
                         <label>Product Name</label>
                         <input
                           type="text"
@@ -182,8 +183,8 @@ export default function Search() {
 
                           aria-required="true"
                         />
-                      </div>
-                      <div className="col-lg-12 col-md-6 col-sm-12 form-group">
+                      </Col>
+                      <Col lg={12} md={6} sm={12} className="form-group">
                         <label>Quantity</label>
                         <input
                           type="number"
@@ -194,18 +195,23 @@ export default function Search() {
                           value={quantity} // Bind the input value to the state
                           onChange={handleQuantityChange}
                         />
-                      </div>
-                      <div className="col-lg-12 col-md-12 col-sm-12 form-group message-btn text-center">
-                            <button
-                              type="button"
-                              className="theme-btn"
-                              onClick={handleAddToCart}
-                            >
-                              Add To Cart
-                            </button>
-                          </div>
+                      </Col>
+                      <Col
+                        lg={12}
+                        md={12}
+                        sm={12}
+                        className="form-group message-btn text-center"
+                      >
+                        <button
+                          type="button"
+                          className="theme-btn"
+                          onClick={handleAddToCart}
+                        >
+                          Add To Cart
+                        </button>
+                      </Col>
                     </div>
-                  </form>
+                  </Form>
                 </div>
               </div>
             </div>
@@ -216,7 +222,7 @@ export default function Search() {
           className="new-prod sidebar-page-container blog-large-image news-style-two product-sec"
           style={{ padding: "40px 0px" }}
         >
-          <div className="auto-container">
+          <Container className="auto-container">
             <div className="pro-list">
               <div className="sec-title">
                 <h3 className="title">Search results for: "{searchQuery}"</h3>
@@ -233,61 +239,71 @@ export default function Search() {
                       padding: "10px",
                       color: "#16436f",
                     }}
-                  >
-            
-                  </h6>
+                  ></h6>
                 </div>
               </div>
               <div className="row">
-              {
-  productsData.length>0 ? (
-    productsData[0].data.length > 0 ? (
-      productsData[0].data.map((product, index) => (
-        <div className="col-lg-3 col-md-12 col-sm-12 content-side" key={index}>
-          <div className="news-block-one">
-            <div className="inner-box" style={{ boxShadow: "none" }}>
-              <Link
-                className="text"
-                onClick={() =>
-                  setDesc(product.Description, product.ProductDetailTypes[0].ProductGroup)
-                }
-                to="/productDetails"
-              >
-                <h2>{product.Description}</h2>
-              </Link>
-              <div className="lower-box">
-                <div className="link">
-                  <button
-                    style={{
-                      fontSize: "16px",
-                      color: "#16436f",
-                      fontWeight: "600",
-                    }}
-                    type="button"
-                    data-bs-toggle="modal"
-                    data-bs-target="#inquiryModal"
-                    onClick={() => {
-                      setShow(true);
-                      setname(product.Description);
-                      setid(product._id);
-                      setDescription(product.ProductDetail.ProductGroup);
-                    }}
-                  >
-                    Inquiry
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      ))
-    ) : (
-      <p>No products found.</p>
-    )
-  ) :(  <p>No products found.</p>)
-}
-
-                
+                {productsData.length > 0 ? (
+                  productsData[0].data.length > 0 ? (
+                    productsData[0].data.map((product, index) => (
+                      <Col
+                        lg={3}
+                        md={12}
+                        sm={12}
+                        className="content-side"
+                        key={index}
+                      >
+                        <div className="news-block-one">
+                          <div
+                            className="inner-box"
+                            style={{ boxShadow: "none" }}
+                          >
+                            <Link
+                              className="text"
+                              onClick={() =>
+                                setDesc(
+                                  product.Description,
+                                  product.ProductDetailTypes[0].ProductGroup
+                                )
+                              }
+                              to="/productDetails"
+                            >
+                              <h2>{product.Description}</h2>
+                            </Link>
+                            <div className="lower-box">
+                              <div className="link">
+                                <button
+                                  style={{
+                                    fontSize: "16px",
+                                    color: "#16436f",
+                                    fontWeight: "600",
+                                  }}
+                                  type="button"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#inquiryModal"
+                                  onClick={() => {
+                                    setShow(true);
+                                    setname(product.Description);
+                                    setid(product._id);
+                                    setDescription(
+                                      product.ProductDetail.ProductGroup
+                                    );
+                                  }}
+                                >
+                                  Inquiry
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </Col>
+                    ))
+                  ) : (
+                    <p>No products found.</p>
+                  )
+                ) : (
+                  <p>No products found.</p>
+                )}
               </div>
 
               {/* <div className="title">
@@ -356,7 +372,7 @@ export default function Search() {
                 )}
               </div> */}
             </div>
-          </div>
+          </Container>
         </section>
 
         {/* <!-- locations-section --> */}

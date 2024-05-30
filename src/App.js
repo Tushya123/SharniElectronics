@@ -38,6 +38,7 @@ import Preloader from "./components/PreLoader";
 import Industries from "./components/Industries";
 import Strenghts from "./components/Strenghts";
 import Facts from "./components/Facts";
+import GoogleTranslate from "./components/GoogleTranslate";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -48,13 +49,17 @@ function App() {
   }, []);
 
   return (
+    <>
+     <GoogleTranslate/>
     <SearchProvider>
       <BrowserRouter>
+      
         <Header />
         {/* {loading ? (
           <Preloader />
         ) : ( */}
         <>
+       
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/productss" element={<Productss />} />
@@ -78,11 +83,13 @@ function App() {
             <Route path="/strenghts" element={<Strenghts />} />
             <Route path="/Facts" element={<Facts />} />
           </Routes>
+          
           <Footer />
         </>
         {/* )} */}
       </BrowserRouter>
     </SearchProvider>
+    </>
   );
 }
 

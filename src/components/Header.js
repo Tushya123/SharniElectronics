@@ -8,7 +8,6 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { useSearch } from "../pages/Search/SearchProvider";
 import { useNavigate } from "react-router-dom";
 import { Container, Figure, Nav } from "react-bootstrap";
-import GoogleTranslate from "./GoogleTranslate";
 import { RiArrowUpSLine, RiArrowDownSLine } from "react-icons/ri";
 
 export default function Header() {
@@ -27,8 +26,6 @@ export default function Header() {
     productsData,
   } = useSearch();
 
-  console.log(productsData, "productsData");
-
   const handleClose = () => {
     navigate(`/search?query=""`);
     originalHandleClose(); // Call the original handleClose to handle any existing close modal logic
@@ -37,12 +34,14 @@ export default function Header() {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     handleClose();
 
     navigate(`/search?query=${encodeURIComponent(searchQuery)}`);
-//  setSearchQuery('');
-     
+  };
+
+  const toggleShowProducts = () => {
+    setShowProducts((prevShowProducts) => !prevShowProducts);
   };
 
   useEffect(() => {
@@ -50,7 +49,7 @@ export default function Header() {
     if (storedProductIds) {
       setProd(JSON.parse(storedProductIds));
     }
-  }, [localStorage.getItem("productIds")]);
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,7 +57,6 @@ export default function Header() {
         const response = await axios.get(
           `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/list/areatype`
         );
-        console.log("Data:", response);
         setProducts(response.data);
       } catch (error) {
         console.error("Error fetching product data:", error);
@@ -86,12 +84,14 @@ export default function Header() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   const handleIconClick = () => {
-    setSearchQuery('');
+    setSearchQuery("");
   };
+
   return (
     <React.Fragment>
-      {/* <!-- main header --> */}
+      
       <header className={`main-header header-style-one`}>
         <Container className="container">
           <div className="translate-x">
@@ -109,8 +109,6 @@ export default function Header() {
                 </div>
               </Figure>
             </div>
-            {/* // google */}
-            {/* <GoogleTranslate/> */}
           </div>
         </Container>
 
@@ -176,6 +174,7 @@ export default function Header() {
                   <i className="icon-bar"></i>
                 </div>
                 <Nav className="main-menu navbar-expand-md navbar-light">
+                  
                   <div
                     className="collapse navbar-collapse show clearfix"
                     id="navbarSupportedContent"
@@ -228,31 +227,38 @@ export default function Header() {
                 </Nav>
               </div>
               <ul className="menu-right-content">
-                <li className="support-box">
-                  <div className="icon-box">
-                    <Link to="/cart">
-                      <i className="fas fa-shopping-cart"></i>
-                    </Link>
-                    <span className="cart-badge">{prod.length}</span>
-                  </div>
-                  <Link to="/cart">My Cart</Link>
-                </li>
+                {isSticky ? (
+                  <li className="support-box">
+                    <div className="icon-box">
+                      <i className="flaticon-dial-pad"></i>
+                    </div>
+                    <a href="tel:8866002331">+918866002331</a>
+                  </li>
+                ) : (
+                  <li className="support-box">
+                    <div className="icon-box">
+                      <Link to="/cart">
+                        <i className="fas fa-shopping-cart"></i>
+                      </Link>
+                      <span className="cart-badge">{prod.length}</span>
+                    </div>
+                    <Link to="/cart">My Cart</Link>
+                  </li>
+                )}
 
-                {/* //search */}
+                {/* Search */}
                 <li
                   className="search-box-outer search-toggler"
                   onClick={handleShow}
-                  onChange={(e) => setQuery(e.target.value)}
                 >
-                  <i className="flaticon-magnifying-glass" onClick={handleIconClick}></i>
+                  <i
+                    className="flaticon-magnifying-glass"
+                    onClick={handleIconClick}
+                  ></i>
                 </li>
 
                 {/* Search Modal */}
-                <Modal
-                  show={showModal}
-                  onHide={handleClose}
-                  // dialogClassName="modal-fullscreen"
-                >
+                <Modal show={showModal} onHide={handleClose}>
                   <Modal.Header closeButton>
                     <div className="upper-box clearfix">
                       <figure className="logo-box pull-left">
@@ -273,22 +279,30 @@ export default function Header() {
                         <form method="post" action="#" onSubmit={handleSubmit}>
                           <div className="form-group">
                             <fieldset>
-                             <div>
-                              <span style={{displat:'flex'}}> <button type="submit" className="button_setting">
-                                <i className="flaticon-magnifying-glass " style={{padding:'10px'}}></i>
-                              </button> <input
-                                type="search"
-                                className="search_setting form-control"
-                                name="search-input"
-                                value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
-                                placeholder="Type your keyword and hit"
-                                required=""
-                              /></span>
-                             
-                             </div>
-                             
-                              
+                              <div>
+                                <span style={{ display: "flex" }}>
+                                  <button
+                                    type="submit"
+                                    className="button_setting"
+                                  >
+                                    <i
+                                      className="flaticon-magnifying-glass "
+                                      style={{ padding: "10px" }}
+                                    ></i>
+                                  </button>
+                                  <input
+                                    type="search"
+                                    className="search_setting"
+                                    name="search-field"
+                                    value={searchQuery}
+                                    onChange={(e) =>
+                                      setSearchQuery(e.target.value)
+                                    }
+                                    placeholder="Type your keyword and hit"
+                                    required=""
+                                  />
+                                </span>
+                              </div>
                             </fieldset>
                           </div>
                         </form>
@@ -302,7 +316,7 @@ export default function Header() {
         </div>
       </header>
 
-      {/* <!-- Mobile Menu  --> */}
+      {/* Mobile Menu */}
       <Offcanvas
         className="offcanvas"
         show={isMobileMenuOpen}
@@ -312,16 +326,16 @@ export default function Header() {
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>
             <div className="nav-logo">
-              <a href="/">
+              <Link to="/">
                 <img src={logo1} alt="" title="" />
-              </a>
+              </Link>
             </div>
           </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <nav className="menu-box">
             <div className="menu-outer">
-              <ul className="navigation clearfix">
+              <ul className="navigation clearfix upper">
                 <li>
                   <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
                     Home
@@ -340,9 +354,10 @@ export default function Header() {
                     Commitment
                   </Link>
                 </li>
+
                 <li className="dropdown">
-                  <div onClick={() => setShowProducts(!showProducts)}>
-                    <Link to="#" className="dropdown-toggle">
+                  <div onClick={toggleShowProducts}>
+                    <Link className="dropdown-toggle">
                       Products
                       <span>
                         {showProducts ? (
@@ -354,14 +369,15 @@ export default function Header() {
                     </Link>
                   </div>
                   {showProducts && (
-                    <ul className="dropdown-menu">
+                    <ul className="">
                       {products
                         .sort((a, b) =>
                           a.ProductGroup.localeCompare(b.ProductGroup)
                         )
                         .map((product, index) => (
-                          <li key={index}>
+                          <li key={index} className="ps-4">
                             <Link
+                              style={{ padding: "10px" }}
                               to="#"
                               onClick={() => {
                                 window.location.href = "/products";
@@ -424,29 +440,29 @@ export default function Header() {
             <div className="social-links">
               <ul className="clearfix">
                 <li>
-                  <a href="#">
+                  <Link to="/">
                     <span className="fab fa-twitter"></span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#">
+                  <Link to="/">
                     <span className="fab fa-facebook-square"></span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#">
+                  <Link to="/">
                     <span className="fab fa-pinterest-p"></span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#">
+                  <Link to="/">
                     <span className="fab fa-instagram"></span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#">
+                  <Link to="/">
                     <span className="fab fa-youtube"></span>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

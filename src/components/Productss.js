@@ -63,6 +63,30 @@ export default function Products() {
 
     fetchData();
   }, []);
+  // Define NextArrow component
+const NextArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "#16436f",borderRadius:"10px" }} // Example styling
+      onClick={onClick}
+    />
+  );
+};
+
+// Define PrevArrow component
+const PrevArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "#16436f" ,borderRadius:"10px"}} // Example styling
+      onClick={onClick}
+    />
+  );
+};
+
 
   return (
     <React.Fragment>
@@ -72,7 +96,7 @@ export default function Products() {
             <span className="sub-title">Our Products</span>
             <h2>We Provide Quality Product</h2>
           </div>
-          <Slider {...settings}>
+          <Slider {...settings} nextArrow={<NextArrow />} prevArrow={<PrevArrow />}>
             {products.map((product, index) => (
               <div className="service-block-one" key={index}>
                 <div className="inner-box">

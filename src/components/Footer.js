@@ -50,7 +50,7 @@ export default function Footer() {
           <div className="widget-section">
             <Row className="clearfix">
               <Col lg={5} md={6} sm={12} className="mb-4">
-              <GoogleTranslate/>
+              {/* <GoogleTranslate/> */}
 
                 <div className="footer-widget about-widget">
                   <div className="widget-title">
@@ -156,41 +156,6 @@ export default function Footer() {
           </div>
         </Container>
       </footer>
-
-      <div
-        className="modal fade"
-        id="exampleModa"
-        tabIndex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog">
-          <div className="modal-content custom-model-content">
-            <div className="modal-header">
-              <h1 className="modal-title fs-5" id="exampleModalLabel">
-                Vadiwadi, Vadodara
-              </h1>
-              <button
-                type="button"
-                className="btn-close custom-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7381.956093641144!2d73.167648!3d22.31667!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fcf6c89cabb19%3A0xf803cbcf27adf1aa!2sShreeji%20Pharma%20International!5e0!3m2!1sen!2sus!4v1712310707767!5m2!1sen!2sus"
-                width="100%"
-                height="450"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
 
       <Button className="scroll-top scroll-to-target" data-target="html">
         <i className="flaticon-up-arrow"></i>

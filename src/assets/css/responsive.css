@@ -1245,7 +1245,7 @@
     top: 300px;
   }
   .service-block-one .inner-box .image-box .image img {
-    height: 386px;
+    height: 243px;
   }
 }
 @media only screen and (max-width: 768px) {
@@ -1277,6 +1277,9 @@
 }
 .logo-name h3 {
   font-size: 20px;
+}
+.product-image-banner{
+  padding: 25px;
 }
 }
 @media only screen and (max-width: 376px) {

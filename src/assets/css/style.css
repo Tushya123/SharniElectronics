@@ -534,6 +534,7 @@ img {
   text-transform: uppercase;
   letter-spacing: 0.6px;
   padding-left: 27px;
+  margin: 30px;
 }
 
 .sec-title .sub-title:before {
@@ -761,9 +762,18 @@ img {
   position: absolute;
   left: 0px;
   top: 0px;
+  z-index: 9;
   width: 100%;
 }
-
+.google-trans {
+  position: absolute;
+  top: 0;
+  z-index: 999;
+  pointer-events: all;
+  right: 150px;
+  border-radius: 5px;
+  background: #fff;
+}
 /** header-top **/
 
 .header-top {
@@ -1747,7 +1757,7 @@ div#mCSB_1_container {
   border: none;
   font-size: 15px;
   font-weight: 400;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   padding: 0px;
   color: #d4c0cd;
   padding-right: 21px;
@@ -6120,7 +6130,7 @@ div#mCSB_1_container {
   padding: 32px 30px 21px 30px;
   margin-bottom: 30px;
   transition: all 500ms ease;
-  min-height: 244px;
+  min-height: 285px;
 }
 
 .chooseus-block-one .inner-box:hover {
@@ -10903,8 +10913,8 @@ div#mCSB_1_container {
 
 .cart-table tbody tr td {
   vertical-align: middle;
-  border-left: 1px solid #e3e3e3;
-  border-bottom: 1px solid #e3e3e3;
+  border-left: 1px solid #16436f;
+  border-bottom: 1px solid #16436f;
   text-align: center;
 }
 
@@ -14153,6 +14163,11 @@ input {
   padding: 0px;
   margin: 0px;
 }
+
+.upper li{
+ text-transform: uppercase;
+} 
+
 .offcanvass{
   background-color: #1c2a4d;
 }
@@ -14177,7 +14192,8 @@ input {
 }
 
 .menu-box .navigation li {
-  border-bottom: 1px solid #ccc;
+  /* border-bottom: 1px solid #ccc; */
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
 }
 
 .menu-box .navigation li a {
@@ -14232,4 +14248,17 @@ input {
 .menu-box .social-links ul li a:hover {
   color: #0056b3;
 }
+/* Custom styles for slick arrows */
+.slick-prev:before,
+.slick-next:before {
+  color: red; /* Set your desired color here */
+}
 
+.error-message {
+  font-size: 14px;
+  position: absolute;
+  top: 80px;
+}
+.text-area.error-message{
+  top: 115px;
+}

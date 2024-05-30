@@ -8,6 +8,7 @@ import Header from "../components/Header";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Container, Row,Col } from "react-bootstrap";
 
 const countriesArray = [
   { label: "DZ", value: "ALGERIA" },
@@ -134,7 +135,7 @@ export default function Contact() {
         <Header />
         <section className="page-title">
           <div className="bg-layer" style={{ backgroundImage: `url(${Background})` }}></div>
-          <div className="auto-container">
+          <Container className="auto-container">
             <div className="content-box">
               <h1>Contact</h1>
               <ul className="bread-crumb clearfix">
@@ -142,13 +143,13 @@ export default function Contact() {
                 <li>Contact</li>
               </ul>
             </div>
-          </div>
+          </Container>
         </section>
         <section className="contact-info-section">
-          <div className="auto-container">
+          <Container className="auto-container">
             <div className="lower-box">
-              <div className="row clearfix">
-                <div className="col-lg-4 col-md-6 col-sm-12 single-column">
+              <Row className="clearfix">
+              <Col lg={4} md={6} sm={12} className="single-column">
                   <div className="single-item">
                     <div className="icon-box">
                       <i className="flaticon-pin"></i>
@@ -159,8 +160,8 @@ export default function Contact() {
                       Vadodara - 390 007
                     </p>
                   </div>
-                </div>
-                <div className="col-lg-4 col-md-6 col-sm-12 single-column">
+                </Col>
+                <Col lg={4} md={6} sm={12} className="single-column">
                   <div className="single-item">
                     <div className="icon-box">
                       <i className="flaticon-phone-call-1"></i>
@@ -170,8 +171,8 @@ export default function Contact() {
                       Mon to Sat: 10.00am to 6.00pm <br /> Sunday: Closed
                     </p>
                   </div>
-                </div>
-                <div className="col-lg-4 col-md-6 col-sm-12 single-column">
+                </Col>
+                <Col lg={4} md={6} sm={12} className="single-column">
                   <div className="single-item">
                     <div className="icon-box">
                       <i className="flaticon-message"></i>
@@ -191,15 +192,15 @@ export default function Contact() {
                       </a>
                     </h3>
                   </div>
-                </div>
-              </div>
+                </Col>
+              </Row>
             </div>
-          </div>
+          </Container>
         </section>
         <section className="contact-section sec-pad centred">
-          <div className="auto-container">
-            <div className="row clearfix justify-content-center">
-              <div className="col-xl-6 col-lg-12 col-md-12 inner-column">
+          <Container className="auto-container">
+            <Row className="clearfix justify-content-center">
+            <Col xl={6} lg={12} md={12} className="inner-column">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10372.815643465836!2d73.16075495016815!3d22.317465242314196!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fcf6c89cabb19%3A0xf803cbcf27adf1aa!2sShreeji%20Pharma%20International!5e0!3m2!1sen!2sin!4v1713952635837!5m2!1sen!2sin"
                   style={{ border: 0, width: "100%", height: 700 }}
@@ -207,8 +208,8 @@ export default function Contact() {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 ></iframe>
-              </div>
-              <div className="col-xl-6 col-lg-12 col-md-12 inner-column">
+              </Col>
+              <Col xl={6} lg={12} md={12} className="inner-column">
                 <div className="inner-box">
                   <div className="sec-title">
                     <span className="sub-title">Send a Message</span>
@@ -218,8 +219,8 @@ export default function Contact() {
                   </div>
                   <div className="form-inner">
                     <form onSubmit={handleSubmit} noValidate className="needs-validation">
-                      <div className="row clearfix">
-                        <div className="col-lg-6 col-md-12 col-sm-12 form-group">
+                      <Row className="clearfix">
+                      <Col lg={6} md={12} sm={12} className="form-group">
                           <i className="fa-solid fa-user"></i>
                           <label>Name</label>
                           <input
@@ -231,8 +232,8 @@ export default function Contact() {
                             required
                           />
                           <div className="invalid-feedback">Enter your name!</div>
-                        </div>
-                        <div className="col-lg-6 col-md-12 col-sm-12 form-group">
+                        </Col>
+                        <Col lg={6} md={12} sm={12} className="form-group">
                           <i className="fa-solid fa-phone"></i>
                           <label>Number</label>
                           <input
@@ -245,8 +246,8 @@ export default function Contact() {
                             required
                           />
                           <div className="invalid-feedback">Invalid phone number</div>
-                        </div>
-                        <div className="col-lg-6 col-md-12 col-sm-12 form-group">
+                        </Col>
+                        <Col lg={6} md={12} sm={12} className="form-group">
                           <i className="fa-solid fa-envelope"></i>
                           <label>Email</label>
                           <input
@@ -258,8 +259,8 @@ export default function Contact() {
                             required
                           />
                           <div className="invalid-feedback">Invalid email</div>
-                        </div>
-                        <div className="col-lg-6 col-md-12 col-sm-12 form-group">
+                        </Col>
+                        <Col lg={6} md={12} sm={12} className="form-group">
                           <label>Select Country</label>
                           <div className="select-box">
                             <select
@@ -278,8 +279,8 @@ export default function Contact() {
                             </select>
                             <div className="invalid-feedback">Please select your country!</div>
                           </div>
-                        </div>
-                        <div className="col-lg-12 col-md-12 col-sm-12 form-group">
+                        </Col>
+                        <Col lg={12} md={12} sm={12} className="form-group">
                           <label>Message</label>
                           <textarea
                             name="Remark"
@@ -290,19 +291,19 @@ export default function Contact() {
                             required
                           ></textarea>
                           <div className="invalid-feedback">Enter your message!</div>
-                        </div>
-                        <div className="col-lg-12 col-md-12 col-sm-12 form-group message-btn">
+                        </Col>
+                        <Col lg={12} md={12} sm={12} className="form-group message-btn">
                           <button type="submit" className="theme-btn">
                             Submit Here
                           </button>
-                        </div>
-                      </div>
+                        </Col>
+                      </Row>
                     </form>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
+              </Col>
+            </Row>
+          </Container>
         </section>
         <div className="sticky-button">
           <a href="assets/catalogue-shreeji-pharma.pdf" target="__blank" download="">

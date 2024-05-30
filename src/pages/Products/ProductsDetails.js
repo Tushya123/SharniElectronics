@@ -10,7 +10,7 @@ import html2canvas from "html2canvas";
 
 import axios from "axios";
 import banner from "../../assets/images/new-home/product-banner.jpg";
-import { Container, Row, Table, Figure, Button } from "react-bootstrap";
+import { Container, Row, Table, Figure, Button ,Col} from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 import { jsPDF } from "jspdf";
@@ -44,12 +44,12 @@ export default function ProductsDetails() {
     };
   }, []);
 
-
-
   React.useEffect(() => {
     axios
       .get(
-        `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/get/productdetail/${localStorage.getItem("description")}`
+        `${
+          process.env.REACT_APP_API_URL_SHREEJI_PHARMACY
+        }/api/auth/get/productdetail/${localStorage.getItem("description")}`
       )
       .then((response) => {
         console.log("huncncjuhenchjbecvbevchj", response); // log the response data
@@ -67,8 +67,6 @@ export default function ProductsDetails() {
     }
   }, [localStorage.getItem("productIds")]);
 
-
- 
   const generatePdf = () => {
     const input = document.getElementById("pdf-content");
     const hiddenElements = document.querySelectorAll(".hidden");
@@ -133,14 +131,17 @@ export default function ProductsDetails() {
             className="bg-layer"
             style={{ backgroundImage: `url(${Background})` }}
           ></div>
-          <div className="auto-container">
+          <Container className="auto-container">
             <div className="content-box">
-              <h1>Product Details</h1>
+              <h1>                  {productDetailsss
+                    ? productDetailsss.Description
+                    : "Loading..."}
+</h1>
               <ul className="bread-crumb clearfix">
                 <li>
-                  <a href="index.html">Home</a>
+                  <Link to="/">Home</Link>
                 </li>
-                <li>{localStorage.getItem("selectedProductId")}</li>
+                <li>Products</li>
                 <li>
                   {productDetailsss
                     ? productDetailsss.Description
@@ -149,28 +150,27 @@ export default function ProductsDetails() {
                 {/* Updated line */}
               </ul>
             </div>
-          </div>
+          </Container>
         </section>
         {/* <!-- page-title end -->
     <!-- sidebar-page-container --> */}
         <section className="sidebar-page-container blog-details sec-pad pro-det ptb-60">
           <Container className="auto-container">
-            <Row className="row clearfix">
-              <div
-                className="col-lg-12 col-md-12 col-sm-12 content-side"
+            <Row className="clearfix">
+            <Col lg={12} md={12} sm={12} className="content-side"
                 id="pdf-content"
               >
                 <div className="blog-details-content">
                   <div className="content-one row mb-0">
                     <div
-                      className={`col-lg-12 col-12 ${isHidden ? "hidden" : ""}` }
+                      className={`col-lg-12 col-12 ${isHidden ? "hidden" : ""}`}
                     >
                       <div className="sec-title">
-                        <a href="/">
+                        <Link to="/">
                           <img style={{ height: "30vh" }} src={logo} alt="" />
-                        </a>
+                        </Link>
                         <div className="btn-box">
-                          <h1 style={{ color: "16436f"}}>
+                          <h1 style={{ color: "16436f" }}>
                             Shreeji Pharma International
                           </h1>
                           <li className="custom-border">
@@ -192,9 +192,9 @@ export default function ProductsDetails() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-lg-12 col-12">
-                      <div className="row justify-content-center">
-                        <div className="col-lg-12 col-12 product-image-banner">
+                    <Col lg={12}>
+                      <Row className="justify-content-center">
+                        <Col lg={12} className="product-image-banner">
                           <figure className="image-box">
                             {productDetailsss && (
                               <img
@@ -208,17 +208,18 @@ export default function ProductsDetails() {
                               />
                             )}
                           </figure>
-                        </div>
+                        </Col>
                         <div className="col-lg-7 mt-4 product-name align-items-center d-flex">
-                          <h3>{localStorage.getItem("description")} : Chemical Name</h3>
+                          <h3>
+                            {localStorage.getItem("description")} : Chemical
+                            Name
+                          </h3>
                         </div>
                         <div className="col-lg-5 col-12 text-right mt-4"></div>
-                      </div>
-                    </div>
-                    <div className="col-lg-12 col-12 mt-4">
-                      <div
-                        className="table-outer product-detail-table"
-                      >
+                      </Row>
+                    </Col>
+                    <Col className="col-lg-12 col-12 mt-4">
+                      <div className="table-outer product-detail-table">
                         <Table className="cart-table">
                           <thead className="cart-header">
                             <tr style={{ padding: "0px" }}>
@@ -241,10 +242,10 @@ export default function ProductsDetails() {
                           </tbody>
                         </Table>
                       </div>
-                    </div>
+                    </Col>
                   </div>
                 </div>
-              </div>
+              </Col>
               <div className="btn-box clearfix mt-5 text-center">
                 <button
                   className="checkout-btn theme-btn mx-auto"
@@ -311,12 +312,12 @@ export default function ProductsDetails() {
 
         {/* <!-- scroll to top --> */}
         <button
-            className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
-            onClick={scrollToTop}
-            style={{ display: isVisible ? "block" : "none" }}>
-          
-            <i className="flaticon-up-arrow"></i>
-          </button>
+          className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
+          onClick={scrollToTop}
+          style={{ display: isVisible ? "block" : "none" }}
+        >
+          <i className="flaticon-up-arrow"></i>
+        </button>
       </div>
     </React.Fragment>
   );

@@ -95,11 +95,11 @@ export default function Gallery() {
         </section>
         <section className="service-details sec-pad">
           <Container className="auto-container">
-            <Row className="row clearfix">
+            <Row className="clearfix">
             <Col lg={12} md={12} sm={12} className="content-side gal-type">
                 <div className="service-details-content">
                   <div className="content-five">
-                    <Row className="row clearfix">
+                    <Row className="clearfix">
                       {galleryData.map((item, index) => (
                         <Col
                         key={index}
@@ -189,7 +189,8 @@ export default function Gallery() {
                     </div>
               <Link
                 // to="https://maps.app.goo.gl/Bsr5XK4HhGCfyD2b6"
-                onClick={() => setShowModal(true)} // Set showModal to true when clicked
+                onClick={() => setShowModal(true)} 
+                style={{ color: "#16436f" }} 
               >
                 Locate Us <i className="flaticon-right-arrow"></i>
               </Link>

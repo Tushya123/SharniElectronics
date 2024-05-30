@@ -203,8 +203,9 @@ export default function Certificate() {
                         </div>
                         <Link
                           // to="https://maps.app.goo.gl/Bsr5XK4HhGCfyD2b6"
-                          onClick={() => setShowModal(true)} // Set showModal to true when clicked
-                        >
+                          onClick={() => setShowModal(true)}
+                          style={{ color: "#16436f" }} 
+                          >
                           Locate Us <i className="flaticon-right-arrow"></i>
                         </Link>
                       </div>

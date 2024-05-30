@@ -77,7 +77,7 @@ export default function BlogsDetails() {
       <!-- service-details --> */}
         <section class="sidebar-page-container blog-details sec-pad">
           <Container class="auto-container">
-            <Row class="row clearfix">
+            <Row class="clearfix">
             <Col lg={8} md={12} sm={12} className="content-side">
                 <div class="blog-details-content">
                   <div class="content-one">
