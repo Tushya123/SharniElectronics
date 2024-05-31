@@ -1315,7 +1315,7 @@ width: 200px;
   }
   .cart-section .btn-box button:last-child {
     margin-top: 2px;
-    margin-left: 15px;
+    margin-left: 15px !important;
   }
   .sec-title {  
     padding-top: 30px;
