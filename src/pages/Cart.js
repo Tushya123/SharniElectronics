@@ -435,7 +435,7 @@ export default function Cart() {
                 <div class="row clearfix">
                   <div class="col-lg-8 col-md-12 col-sm-12 column clearfix">
                     <div class="table-outer">
-                      <table class="cart-table">
+                      <table responsive  class="cart-table">
                         <thead class="cart-header">
                           <tr>
                             <th>Sr. No</th>

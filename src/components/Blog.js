@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Col, Container, Figure, Row } from "react-bootstrap";
+import { Col, Container, Figure, Row, Button } from "react-bootstrap";
 
 export default function Blog() {
   const [Blogs, setBlogs] = useState([]);
@@ -13,7 +13,9 @@ export default function Blog() {
           `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/listonly/Blog`
         );
         console.log("Data:", response);
-        const activeCertificates = response.data.filter((Blog) => Blog.IsActive);
+        const activeCertificates = response.data.filter(
+          (Blog) => Blog.IsActive
+        );
         setBlogs(activeCertificates);
       } catch (error) {
         console.error("Error fetching blog data:", error);
@@ -22,23 +24,23 @@ export default function Blog() {
 
     fetchData();
   }, []);
-  
+
   const firstBlogId = Blogs.length > 0 ? Blogs[0]._id : null;
 
   return (
     <React.Fragment>
       <section className="blog-grid news-style-two py-5">
         <Container>
-          <div className="sec-title text-center mb-4">
-            <span className="sub-title">Blogs</span>
-            <h2>Explore our latest blogs</h2>
-            {firstBlogId && (
-              <div className="btn-box mt-3">
-                <Link to={`/blogdetails/${firstBlogId}`} className="theme-btn">
+          <div className="sec-title">
+            <span className="sub-title">Blog</span>
+            <h2>Explore our latest Blog</h2>
+            <div className="btn-box">
+              <button href="#" className="theme-btn">
+                <Link  style={{color:"white"}}to={`/blogdetails/${firstBlogId}`} >
                   View Blog Details
                 </Link>
-              </div>
-            )}
+              </button>
+            </div>
           </div>
           <Row className="clearfix">
             {Blogs.map((blog, index) => (
@@ -61,7 +63,7 @@ export default function Blog() {
                     </div>
                     <div className="lower-content p-3">
                       <div className="category mb-2">
-                        <Link >{blog.Category}</Link>
+                        <Link>{blog.Category}</Link>
                       </div>
                       <ul className="post-info list-unstyled d-flex mb-2">
                         <li className="me-3">{blog.date}</li>

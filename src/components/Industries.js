@@ -30,7 +30,7 @@ export default function Industries() {
                 <Col lg={3} md={6} sm={12} className="industries-block">
                   <div className="industries-block-one"></div>
                 </Col>
-                <Col lg={3} md={6} sm={12} className="industries-block">
+                <Col lg={3} md={6} sm={12} className="industries-block order-1 order-lg-0">
                   <div className="industries-block-one">
                     <div className="inner-box">
                       <div className="icon-box icon-box1">
@@ -49,7 +49,7 @@ export default function Industries() {
                     </div>
                   </div>
                 </Col>
-                <Col lg={3} md={6} sm={12} className="industries-block">
+                <Col lg={3} md={6} sm={12} className="industries-block order-2 order-lg-1">
                   <div className="industries-block-one">
                     <div className="inner-box">
                       <div className="icon-box icon-box1">
@@ -68,7 +68,7 @@ export default function Industries() {
                     </div>
                   </div>
                 </Col>
-                <Col lg={3} md={6} sm={12} className="industries-block">
+                <Col lg={3} md={6} sm={12} className="industries-block order-3 order-lg-2">
                   <div className="industries-block-one">
                     <div className="inner-box">
                       <div className="icon-box icon-box1">
@@ -87,7 +87,7 @@ export default function Industries() {
                     </div>
                   </div>
                 </Col>
-                <Col lg={6} md={12} sm={12} className="title-column">
+                <Col lg={6} md={12} sm={12} className="title-column order-0 order-lg-3">
                   <div className="sec-title mr-0 light">
                     <span className="sub-title">our industries</span>
                     <h2>
@@ -96,7 +96,7 @@ export default function Industries() {
                     </h2>
                   </div>
                 </Col>
-                <Col lg={3} md={6} sm={12} className="industries-block">
+                <Col lg={3} md={6} sm={12} className="industries-block order-4 order-lg-4">
                   <div className="industries-block-one">
                     <div className="inner-box">
                       <div className="icon-box">
@@ -115,7 +115,7 @@ export default function Industries() {
                     </div>
                   </div>
                 </Col>
-                <Col lg={3} md={6} sm={12} className="industries-block">
+                <Col lg={3} md={6} sm={12} className="industries-block order-5 order-lg-4">
                   <div className="industries-block-one">
                     <div className="inner-box">
                       <div className="icon-box">

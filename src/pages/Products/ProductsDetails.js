@@ -141,7 +141,7 @@ export default function ProductsDetails() {
                 <li>
                   <Link to="/">Home</Link>
                 </li>
-                <li>Products</li>
+                <li><Link to="/products">Products</Link></li>
                 <li>
                   {productDetailsss
                     ? productDetailsss.Description
@@ -210,7 +210,7 @@ export default function ProductsDetails() {
                           </figure>
                         </Col>
                         <div className="col-lg-7 mt-4 product-name align-items-center d-flex">
-                          <h3>
+                          <h3 className="producttext">
                             {localStorage.getItem("description")} : Chemical
                             Name
                           </h3>
@@ -220,7 +220,7 @@ export default function ProductsDetails() {
                     </Col>
                     <Col className="col-lg-12 col-12 mt-4">
                       <div className="table-outer product-detail-table">
-                        <Table className="cart-table">
+                        <Table responsive className="cart-table">
                           <thead className="cart-header">
                             <tr style={{ padding: "0px" }}>
                               <th>Name</th>
@@ -260,7 +260,15 @@ export default function ProductsDetails() {
 
         {/* <!-- sidebar-page-container end -->
     <!-- about-section end --> */}
-
+            <div className="sticky-button">
+              <Link
+                to="assets/catalogue-shreeji-pharma.pdf"
+                target="__blank"
+                download=""
+              >
+                Download Brochure
+              </Link>
+            </div>
         <div className="sticky-whatsapp">
           <Link
             to="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"

@@ -238,10 +238,11 @@
                           <div className="error-message text-area">{errors.Message}</div>
                         )}
                       </Col>
-                      <Col lg={12} md={12} sm={12} className="">
+                      <Col lg={12} md={12} sm={12} className="full">
                         <button
                           type="submit"
                           className="theme-btn"
+                          style={{width:"100%"}}
                         >
                           Submit Here
                         </button>

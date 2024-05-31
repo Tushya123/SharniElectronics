@@ -15,7 +15,7 @@ export default function Header() {
   const [prod, setProd] = useState([]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showProducts, setShowProducts] = useState(false);
-
+  
   const {
     searchQuery,
     setQuery,
@@ -91,7 +91,6 @@ export default function Header() {
 
   return (
     <React.Fragment>
-      
       <header className={`main-header header-style-one`}>
         <Container className="container">
           <div className="translate-x">
@@ -111,7 +110,6 @@ export default function Header() {
             </div>
           </div>
         </Container>
-
         <div className="header-top">
           <Container
             className="auto-container"
@@ -157,7 +155,6 @@ export default function Header() {
             </div>
           </Container>
         </div>
-
         <div
           className={`header-lower ${isSticky ? "sticky-header" : ""}`}
           style={{ zIndex: 9 }}
@@ -245,7 +242,6 @@ export default function Header() {
                     <Link to="/cart">My Cart</Link>
                   </li>
                 )}
-
                 {/* Search */}
                 <li
                   className="search-box-outer search-toggler"
@@ -327,7 +323,7 @@ export default function Header() {
           <Offcanvas.Title>
             <div className="nav-logo">
               <Link to="/">
-                <img src={logo1} alt="" title="" />
+                <img src={logo1} alt="" title="" style={{backgroundColor:"white"}} />
               </Link>
             </div>
           </Offcanvas.Title>
