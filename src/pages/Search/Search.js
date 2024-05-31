@@ -135,7 +135,6 @@ export default function Search() {
       style={{ position: "relative", minHeight: "100%", top: "0px" }}
     >
       <div className="boxed_wrapper">
-        <Header />
         <section className="page-title">
           <div
             className="bg-layer"

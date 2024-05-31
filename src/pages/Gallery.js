@@ -75,7 +75,6 @@ export default function Gallery() {
 
       
       <div className="boxed_wrapper">
-        <Header />
         <section className="page-title">
           <div
             className="bg-layer"

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import about from "../assets/images/new-home/about-img.jpg";
 import axios from "axios";
 import { Col, Container, Figure, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -34,13 +33,12 @@ export default function AboutUs() {
     <React.Fragment>
       <section className="about-section py-5">
         <Container>
-          <Row className="clearfix" style={{justifyContent:'center'}}>
+          <Row className="clearfix" style={{ justifyContent: "center" }}>
             <Col lg={6} md={8} sm={12} className="image-column mb-4 mb-lg-0">
               <div className="image-box position-relative">
                 <div className="shape-box position-absolute">
                   <div className="shape shape-1 hexagon_shape"></div>
                   <div className="shape shape-2 hexagon_shape"></div>
-                  {/* <div className="shape shape-3 hexagon_shape"></div> */}
                 </div>
                 <div className="image-inner hexagon_shape">
                   <Figure className="image">

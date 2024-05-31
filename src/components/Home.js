@@ -32,7 +32,7 @@ import {
   Image,
 } from "react-bootstrap";
 import Preloader from "./PreLoader";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
@@ -115,7 +115,6 @@ export default function Home() {
       ) : (
         <>
           <div className="boxed_wrapper">
-            <Header />
             <section className="banner-carousel banner-style-one">
               <Slider {...settings}>
                 {banner.map((bannerItem, index) => (
@@ -191,7 +190,6 @@ export default function Home() {
             <NewsEvent />
             <Inquiry />
 
-            {/* locations-section */}
             <section
               className="locations-section sec-pad text-center"
               style={{ backgroundImage: `url(${shape10})` }}
@@ -237,9 +235,8 @@ export default function Home() {
                           </div>
                         </div>
                         <Link
-                          // to="https://maps.app.goo.gl/Bsr5XK4HhGCfyD2b6"
                           onClick={() => setShowModal(true)}
-                          style={{ color: "#16436f" }} // Set showModal to true when clicked
+                          style={{ color: "#16436f" }}
                         >
                           Locate Us <i className="flaticon-right-arrow"></i>
                         </Link>

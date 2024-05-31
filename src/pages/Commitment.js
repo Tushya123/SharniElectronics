@@ -63,7 +63,6 @@ export default function Commitment() {
       ) : (
         <>
           <div className="boxed_wrapper">
-            <Header />
             <section className="page-title">
               <div
                 className="bg-layer"

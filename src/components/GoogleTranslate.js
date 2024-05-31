@@ -52,7 +52,6 @@ const GoogleTranslate = () => {
         <p>Error loading Google Translate widget.</p>
       ) : (
         <div id="google_translate_element" style={{ paddingBottom: '3px' }}>
-          {/* The Google Translate widget will be rendered here */}
         </div>
       )}
     </div>

@@ -1258,8 +1258,14 @@
   .logo-name h3 {
     font-size: 32px;
   }
+  .industries-block-one .inner-box {
+margin-top: -29px;
+  }
 
-
+.resp-width{
+  width: 100%;
+  margin-left: 0;
+}
   .service-block-one .inner-box .image-box .image img {
     height: 260px;
   }
@@ -1274,8 +1280,17 @@
   .nav-logo{
 width: 200px;
   }
+  .theme-btn {
+    margin-left: 91px;
+  }
+  .theme-btn.resp-width{
+    margin: 0;
+  }
   .service-block-one .inner-box .image-box .image img {
     height: 315px;
+  }
+  .about-section .image-box .image-inner{
+    margin-right: -38px;
   }
   .header-top .top-inner{
     display: block;
@@ -1345,6 +1360,10 @@ width: 200px;
   .logo-name h3{
     font-size: 17px;
   }
+  .about-section .image-box .image-inner{
+    margin-right: -6px;
+  }
+
   .booking-section .inner-content{
     margin-bottom: 38px;
       padding: 39px 0px 40px 0px;

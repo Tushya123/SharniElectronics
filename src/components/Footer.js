@@ -50,8 +50,6 @@ export default function Footer() {
           <div className="widget-section">
             <Row className="clearfix">
               <Col lg={5} md={6} sm={12} className="mb-4">
-              {/* <GoogleTranslate/> */}
-
                 <div className="footer-widget about-widget">
                   <div className="widget-title">
                     <h3>About Us</h3>
@@ -75,7 +73,6 @@ export default function Footer() {
                 <div className="footer-widget links-widget">
                   <div className="widget-title">
                     <h3>Quick Links</h3>
-
                   </div>
                   <div className="widget-content">
                     <ul className="links-list list-unstyled">
@@ -134,19 +131,27 @@ export default function Footer() {
           </div>
           <div className="footer-bottom py-3">
             <Row>
-              <Col lg={6} md={12} className="text-lg-start text-center mb-3 mb-lg-0">
+              <Col
+                lg={6}
+                md={12}
+                className="text-lg-start text-center mb-3 mb-lg-0"
+              >
                 <div className="copyright">
                   <p className="mb-0">
-                    Copyright © 2024 <a href="#">Shreeji Pharma </a> All Rights Reserved
+                    Copyright © 2024 <a href="#">Shreeji Pharma </a> All Rights
+                    Reserved
                   </p>
-
                 </div>
               </Col>
               <Col lg={6} md={12} className="text-lg-end text-center">
                 <div className="copyright">
                   <p className="mb-0">
                     Design & Develop By{" "}
-                    <a href="https://www.barodaweb.com/" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://www.barodaweb.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       Barodaweb | The E-Catalouge Designer
                     </a>
                   </p>

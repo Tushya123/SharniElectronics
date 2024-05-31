@@ -132,7 +132,6 @@ export default function Contact() {
             <ToastContainer />
 
       <div className="boxed_wrapper">
-        <Header />
         <section className="page-title">
           <div className="bg-layer" style={{ backgroundImage: `url(${Background})` }}></div>
           <Container className="auto-container">

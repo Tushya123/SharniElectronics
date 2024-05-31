@@ -241,8 +241,8 @@
                       <Col lg={12} md={12} sm={12} className="full">
                         <button
                           type="submit"
-                          className="theme-btn"
-                          style={{width:"100%"}}
+                          className="theme-btn resp-width"
+                          // style={{width:"100%"}}
                         >
                           Submit Here
                         </button>

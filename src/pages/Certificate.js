@@ -84,7 +84,6 @@ export default function Certificate() {
       ) : (
         <>
           <div className="boxed_wrapper">
-            <Header />
             {/* page-title */}
             <section className="page-title">
               <div

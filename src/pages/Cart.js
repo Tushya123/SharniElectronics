@@ -242,7 +242,6 @@ export default function Cart() {
         style={{ position: "relative", minHeight: "100%", top: "0px" }}
       >
         <div className="boxed_wrapper">
-          <Header />
           {/* <!-- page-title -->  */}
           <section className="page-title">
             <div

@@ -1,4 +1,3 @@
-// src/components/Preloader.js
 import React from 'react';
 import logo from "../assets/images/new-home/new-logo.png"
 

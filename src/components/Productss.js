@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
 import { Container, Figure } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export default function Products() {
   const settings = {
@@ -12,8 +13,8 @@ export default function Products() {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
-    autoplxay: true,
-    autoplaySpeed: 1000,
+    autoplay: true,
+    autoplaySpeed: 2000,
     responsive: [
       {
         breakpoint: 1024,
@@ -63,25 +64,23 @@ export default function Products() {
 
     fetchData();
   }, []);
-  // Define NextArrow component
 const NextArrow = (props) => {
   const { className, style, onClick } = props;
   return (
     <div
       className={className}
-      style={{ ...style, display: "block", background: "#16436f",borderRadius:"10px" }} // Example styling
+      style={{ ...style, display: "block", background: "#16436f",borderRadius:"10px" }}
       onClick={onClick}
     />
   );
 };
 
-// Define PrevArrow component
 const PrevArrow = (props) => {
   const { className, style, onClick } = props;
   return (
     <div
       className={className}
-      style={{ ...style, display: "block", background: "#16436f" ,borderRadius:"10px"}} // Example styling
+      style={{ ...style, display: "block", background: "#16436f" ,borderRadius:"10px"}} 
       onClick={onClick}
     />
   );
@@ -112,7 +111,18 @@ const PrevArrow = (props) => {
                     </div>
                   </div>
                   <div className="lower-content">
+                  <Link
+                                  onClick={() => {
+                                    window.location.href = "/products";
+                                    localStorage.setItem(
+                                      "selectedProductId",
+                                      product.ProductGroup
+                                    );
+                                  }}
+                                >
                     <h3>{product.ProductGroup}</h3>
+                                </Link>
+
                   </div>
                 </div>
               </div>

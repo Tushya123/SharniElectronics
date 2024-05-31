@@ -10,7 +10,7 @@ import html2canvas from "html2canvas";
 
 import axios from "axios";
 import banner from "../../assets/images/new-home/product-banner.jpg";
-import { Container, Row, Table, Figure, Button ,Col} from "react-bootstrap";
+import { Container, Row, Table, Figure, Button, Col } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 import { jsPDF } from "jspdf";
@@ -124,7 +124,6 @@ export default function ProductsDetails() {
       style={{ position: "relative", minHeight: "100%", top: "0px" }}
     >
       <div className="boxed_wrapper">
-        <Header />
         {/* <!-- page-title --> */}
         <section className="page-title">
           <div
@@ -133,20 +132,18 @@ export default function ProductsDetails() {
           ></div>
           <Container className="auto-container">
             <div className="content-box">
-              <h1>                  {productDetailsss
-                    ? productDetailsss.Description
-                    : "Loading..."}
-</h1>
+              <h1>
+                {" "}
+                {productDetailsss ? productDetailsss.Description : "Loading..."}
+              </h1>
               <ul className="bread-crumb clearfix">
                 <li>
                   <Link to="/">Home</Link>
                 </li>
-                <li><Link to="/products">Products</Link></li>
                 <li>
-                  {productDetailsss
-                    ? productDetailsss.Description
-                    : "Loading..."}
-                </li>{" "}
+                  <Link to="/products">Products</Link>
+                </li>
+                    <li>{localStorage.getItem("selectedProductId")}</li>
                 {/* Updated line */}
               </ul>
             </div>
@@ -157,7 +154,11 @@ export default function ProductsDetails() {
         <section className="sidebar-page-container blog-details sec-pad pro-det ptb-60">
           <Container className="auto-container">
             <Row className="clearfix">
-            <Col lg={12} md={12} sm={12} className="content-side"
+              <Col
+                lg={12}
+                md={12}
+                sm={12}
+                className="content-side"
                 id="pdf-content"
               >
                 <div className="blog-details-content">
@@ -260,15 +261,15 @@ export default function ProductsDetails() {
 
         {/* <!-- sidebar-page-container end -->
     <!-- about-section end --> */}
-            <div className="sticky-button">
-              <Link
-                to="assets/catalogue-shreeji-pharma.pdf"
-                target="__blank"
-                download=""
-              >
-                Download Brochure
-              </Link>
-            </div>
+        <div className="sticky-button">
+          <Link
+            to="assets/catalogue-shreeji-pharma.pdf"
+            target="__blank"
+            download=""
+          >
+            Download Brochure
+          </Link>
+        </div>
         <div className="sticky-whatsapp">
           <Link
             to="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"

@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Image, Modal, Button, Figure } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Image,
+  Modal,
+  Button,
+  Figure,
+} from "react-bootstrap";
 import Background from "../../assets/images/new-home/breadcrumb-img.jpg";
 import skype from "../../assets/images/new-home/skype.png";
 import wp from "../../assets/images/new-home/whatsapp.png";
@@ -10,6 +18,29 @@ import axios from "axios";
 export default function NewsDetails() {
   const [Blogs, setBlogs] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", toggleVisibility);
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+    };
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,7 +78,7 @@ export default function NewsDetails() {
 
   return (
     <div className="boxed_wrapper">
-      <Header />
+    
       <section className="page-title">
         <div
           className="bg-layer"
@@ -82,7 +113,9 @@ export default function NewsDetails() {
                 </div>
                 <div className="content-four pb-5">
                   <h2>{Blogs.Title}</h2>
-                  <div dangerouslySetInnerHTML={{ __html: Blogs.Description }} />
+                  <div
+                    dangerouslySetInnerHTML={{ __html: Blogs.Description }}
+                  />
                 </div>
               </div>
             </Col>
@@ -130,11 +163,12 @@ export default function NewsDetails() {
       </Modal>
 
       <button
-            className="scroll-top scroll-to-target open"
-            data-target="html"
-          >
-            <i className="flaticon-up-arrow"></i>
-          </button>
+        className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
+        onClick={scrollToTop}
+        style={{ display: isVisible ? "block" : "none" }}
+      >
+        <i className="flaticon-up-arrow"></i>
+      </button>
     </div>
   );
 }

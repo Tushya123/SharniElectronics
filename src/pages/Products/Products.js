@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import logo from "../../assets/images/new-home/logo.png";
 import Background from "../../assets/images/new-home/breadcrumb-img.jpg";
 import footer from "../../assets/images/new-home/footer-location-img.jpg";
 import skype from "../../assets/images/new-home/skype.png";
@@ -7,7 +6,6 @@ import wp from "../../assets/images/new-home/whatsapp.png";
 import shape10 from "../../assets/images/shape/shape-10.png";
 import Header from "../../components/Header";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Preloader from "../../components/PreLoader";
@@ -39,13 +37,12 @@ export default function Products() {
   }, []);
 
   const [productData, setProductData] = useState({
-    // Assuming you have some product data to send
     ProductDetail2: "",
     ProductDetailLabel: "",
     Group: "",
     Quantity: "",
   });
-  const [showModal, setShowModal] = useState(false); // State for controlling modal visibility
+  const [showModal, setShowModal] = useState(false); 
   const [show, setShow] = useState(false);
   const [data, setData] = useState([]);
   const [quantity, setQuantity] = useState(0);
@@ -65,12 +62,11 @@ export default function Products() {
     )
       .then((response) => response.json())
       .then((data) => {
-        // Filter out inactive products
         data = data.filter(
           (item) =>
             item.ProductDetail &&
             item.ProductDetail.ProductGroup === xyz &&
-            item.IsActive // Assuming "active" is the field indicating product status
+            item.IsActive 
         );
         data.sort((a, b) => a.Description.localeCompare(b.Description));
         setData(data);
@@ -87,35 +83,6 @@ export default function Products() {
     });
   }, [quantity, desc, name, id]);
 
-  console.log("THis is:", productData);
-  // const handleAddToCart = async () => {
-  //   try {
-  //      const response = await axios.post(`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/create/InquiryProduct`, productData);
-  //     console.log('Response:', response.data.data._id);
-  //     const productId = response.data.data._id;
-  //     console.log('Product ID from response:', productId);
-
-  //     // Retrieve existing product IDs from localStorage
-  //     let productIds = JSON.parse(localStorage.getItem('productIds'));
-  //     console.log('Current product IDs in localStorage:', productIds);
-
-  //     // Add the new product ID to the array
-  //     productIds.push(productId);
-  //     console.log('Updated product IDs:', productIds);
-
-  //     // Save the updated array back to localStorage
-  //     localStorage.setItem('productIds', JSON.stringify(productIds));
-  //     console.log('Updated product IDs saved to localStorage');
-
-  //     // Reset the quantity
-  //     setQuantity(0);
-  //     if(response){
-  //       setShow(false);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error adding product to cart:", error);
-  //   }
-  // };
   const handleAddToCart = async () => {
     try {
       const response = await axios.post(
@@ -128,28 +95,17 @@ export default function Products() {
       }
 
       const productId = response.data.data._id;
-      console.log("Product ID from response:", productId);
 
-      // Retrieve existing product IDs from localStorage
       let productIds = JSON.parse(localStorage.getItem("productIds")) || [];
-      console.log("Current product IDs in localStorage:", productIds);
 
-      // Add the new product ID to the array
       productIds.push(productId);
-      console.log("Updated product IDs:", productIds);
 
-      // Save the updated array back to localStorage
       localStorage.setItem("productIds", JSON.stringify(productIds));
-      console.log("Updated product IDs saved to localStorage");
 
-      // Verify if the localStorage update was successful
       const storedProductIds = JSON.parse(localStorage.getItem("productIds"));
-      console.log("Verified product IDs in localStorage:", storedProductIds);
 
-      // Reset the quantity
       setQuantity(0);
 
-      // Only close the popup if the product ID is in localStorage
       if (storedProductIds.includes(productId)) {
         setShow(false);
       }
@@ -180,8 +136,6 @@ export default function Products() {
       ) : (
         <>
           <div className="boxed_wrapper">
-            <Header />
-            {/* <!-- page-title --> */}
             <section className="page-title">
               <div
                 className="bg-layer"
@@ -195,13 +149,11 @@ export default function Products() {
                       <a href="index.html">Home</a>
                     </li>
                     <li>Products</li>
-                    <li>{localStorage.getItem("selectedProductId")}</li>
+                    {/* <li>{localStorage.getItem("selectedProductId")}</li> */}
                   </ul>
                 </div>
               </Container>
             </section>
-
-            {/* Modal */}
             <Modal
               show={show}
               onHide={handleClose}
@@ -226,8 +178,6 @@ export default function Products() {
                               required
                               isDisabled={true}
                               value={name}
-                              // placeholder={name}
-
                               aria-required="true"
                             />
                           </Col>
@@ -239,7 +189,7 @@ export default function Products() {
                               required
                               placeholder="Enter Quantity"
                               aria-required="true"
-                              value={quantity} // Bind the input value to the state
+                              value={quantity}
                               onChange={handleQuantityChange}
                             />
                           </Col>
@@ -264,8 +214,6 @@ export default function Products() {
                 </div>
               </Modal.Body>
             </Modal>
-
-            {/* <!-- sidebar-page-container --> */}
             {Object.entries(productsByStartingLetter).map(
               ([letter, products]) => {
                 let paddingValue = Math.max(5, products.length * 2);
@@ -335,9 +283,6 @@ export default function Products() {
               }
             )}
 
-            {/* <!-- sidebar-page-container end --> */}
-
-            {/* <!-- Modal --> */}
             <div
               className="modal fade"
               id="inquiryModal"
@@ -498,9 +443,8 @@ export default function Products() {
                           </div>
                         </div>
                         <Link
-                          // to="https://maps.app.goo.gl/Bsr5XK4HhGCfyD2b6"
                           onClick={() => setShowModal(true)}
-                          style={{ color: "#16436f" }} 
+                          style={{ color: "#16436f" }}
                         >
                           Locate Us <i className="flaticon-right-arrow"></i>
                         </Link>
@@ -548,8 +492,6 @@ export default function Products() {
                 ></iframe>
               </Modal.Body>
             </Modal>
-
-            {/* <!-- scroll to top --> */}
           </div>
           <button
             className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}

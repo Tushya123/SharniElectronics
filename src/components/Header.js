@@ -15,7 +15,7 @@ export default function Header() {
   const [prod, setProd] = useState([]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showProducts, setShowProducts] = useState(false);
-  
+
   const {
     searchQuery,
     setQuery,
@@ -28,7 +28,7 @@ export default function Header() {
 
   const handleClose = () => {
     navigate(`/search?query=""`);
-    originalHandleClose(); // Call the original handleClose to handle any existing close modal logic
+    originalHandleClose();
   };
 
   const navigate = useNavigate();
@@ -57,7 +57,11 @@ export default function Header() {
         const response = await axios.get(
           `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/list/areatype`
         );
-        setProducts(response.data);
+        const activeproducts = response.data.filter(
+          (product) => product.IsActive
+        );
+
+        setProducts(activeproducts);
       } catch (error) {
         console.error("Error fetching product data:", error);
       }
@@ -171,7 +175,6 @@ export default function Header() {
                   <i className="icon-bar"></i>
                 </div>
                 <Nav className="main-menu navbar-expand-md navbar-light">
-                  
                   <div
                     className="collapse navbar-collapse show clearfix"
                     id="navbarSupportedContent"
@@ -242,7 +245,6 @@ export default function Header() {
                     <Link to="/cart">My Cart</Link>
                   </li>
                 )}
-                {/* Search */}
                 <li
                   className="search-box-outer search-toggler"
                   onClick={handleShow}
@@ -253,7 +255,6 @@ export default function Header() {
                   ></i>
                 </li>
 
-                {/* Search Modal */}
                 <Modal show={showModal} onHide={handleClose}>
                   <Modal.Header closeButton>
                     <div className="upper-box clearfix">
@@ -312,7 +313,6 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile Menu */}
       <Offcanvas
         className="offcanvas"
         show={isMobileMenuOpen}
@@ -323,7 +323,12 @@ export default function Header() {
           <Offcanvas.Title>
             <div className="nav-logo">
               <Link to="/">
-                <img src={logo1} alt="" title="" style={{backgroundColor:"white"}} />
+                <img
+                  src={logo1}
+                  alt=""
+                  title=""
+                  style={{ backgroundColor: "white" }}
+                />
               </Link>
             </div>
           </Offcanvas.Title>
