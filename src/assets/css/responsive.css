@@ -1348,6 +1348,7 @@ width: 200px;
 .banner-carousel .content-box h2, .sec-title h2{
   font-size: 20px;
   text-align: center;
+  padding: 21px;
 }
 .booking-section .inner-content{
   margin-bottom: 20px;
