@@ -1263,7 +1263,7 @@ top: -23px;
     top: 240px;
   }
   .logo-name h3 {
-    font-size: 32px;
+    font-size: 21px;
   }
   .industries-block-one .inner-box {
 margin-top: -29px;
@@ -1348,7 +1348,7 @@ width: 200px;
 .banner-carousel .content-box h2, .sec-title h2{
   font-size: 20px;
   text-align: center;
-  padding: 21px;
+  padding: 12px;
 }
 .booking-section .inner-content{
   margin-bottom: 20px;
@@ -1369,7 +1369,7 @@ width: 200px;
 }
 @media only screen and (max-width: 376px) {
   .logo-name h3{
-    font-size: 17px;
+    font-size: 14px;
   }
   .about-section .image-box .image-inner{
     margin-right: -6px;
@@ -1408,4 +1408,9 @@ width: 200px;
   .service-block-one .inner-box {
     max-width: 292px;
 }
+}
+@media (min-width:390px) and (max-width: 412px) {
+  .logo-name h3{
+    font-size: 17px;
+  }
 }
