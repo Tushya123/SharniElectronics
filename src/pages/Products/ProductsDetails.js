@@ -96,7 +96,7 @@ export default function ProductsDetails() {
         const pageHeight = 290;
         const imgHeight = (canvas.height * imgWidth) / canvas.width;
         let heightLeft = imgHeight;
-        let position = 20;
+        let position = 15;
 
         while (heightLeft >= 0) {
           pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
@@ -155,23 +155,22 @@ export default function ProductsDetails() {
                     <div
                       className={`col-lg-12 col-12 ${isHidden ? "hidden" : ""}`}
                     >
+                      
                       <div className="sec-title">
                         <Link to="/">
-                          <img style={{ height: "30vh" }} src={logo} alt="" />
+                          <img style={{ height: "10vh" }} src={logo} alt="" />
                         </Link>
                         <div className="btn-box">
-                          <h1 style={{ color: "16436f" }}>
+                          <h6 style={{ color: "16436f" }}>
                             Shreeji Pharma International
-                          </h1>
+                          </h6>
                           <li className="custom-border">
-                            <h2 style={{ color: "16436f" }}>
+                            <h6 style={{ color: "16436f" }}>
                               contact@shreejipharma.com
-                            </h2>
+                            </h6>
                           </li>
-                          <br />
-
                           <li className="support-box custom-border1">
-                            <h2 style={{ color: "16436f" }}>+918866002331</h2>
+                            <h6>+918866002331</h6>
                           </li>
                         </div>
                       </div>
