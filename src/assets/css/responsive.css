@@ -1291,10 +1291,12 @@ margin-top: -29px;
 width: 200px;
   }
   .theme-btn {
-    margin-left: 91px;
+    margin-left: 91px !important;
   }
   .theme-btn.resp-width{
     margin: 0;
+    margin-left: 2px !important;
+
   }
   .service-block-one .inner-box .image-box .image img {
     height: 315px;
@@ -1332,9 +1334,11 @@ width: 200px;
 }
 .sec-title .sub-title:after{
   left: 110px;
+  display: none;
 }
 .sec-title .sub-title:before{
   left: 120px;
+  display: none;
 }
 .banner-carousel .content-box h2, .sec-title h2 {
   line-height: 39px;
@@ -1384,6 +1388,9 @@ width: 200px;
     padding-right: 0px;
     margin-top: 40px;
   }
+  .theme-btn{
+    margin-left: 63px !important;
+  }
 
   
 }
@@ -1412,5 +1419,14 @@ width: 200px;
 @media (min-width:390px) and (max-width: 412px) {
   .logo-name h3{
     font-size: 17px;
+  }
+  .theme-btn{
+    margin-left: 89px !important;
+  }
+}
+
+@media only screen and (max-width: 1440px) {
+  .theme-btn {
+    margin-left: 7px;
   }
 }
