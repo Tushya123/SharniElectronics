@@ -96,7 +96,7 @@ export default function ProductsDetails() {
         const pageHeight = 290;
         const imgHeight = (canvas.height * imgWidth) / canvas.width;
         let heightLeft = imgHeight;
-        let position = 10;
+        let position = 20;
 
         while (heightLeft >= 0) {
           pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
@@ -232,7 +232,7 @@ export default function ProductsDetails() {
               </Col>
               <div className="btn-box clearfix mt-5 text-center">
                 <button
-                  className="checkout-btn theme-btn mx-auto"
+                  className="checkout-btn theme-btn responsive"
                   onClick={generatePdf}
                 >
                   Download Brochure
