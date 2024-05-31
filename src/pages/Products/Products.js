@@ -50,8 +50,19 @@ export default function Products() {
   const [name, setname] = useState("");
   const [id, setid] = useState("");
   const [desc, setDescription] = useState("");
-  const handleQuantityChange = (event) => {
-    setQuantity(event.target.value);
+  const handleQuantityChange = (e) => {
+    const value = e.target.value;
+  
+    // Convert the input value to a number
+    const numValue = Number(value);
+  
+    // Check if the value is a positive number
+    if (numValue >= 0) {
+      setQuantity(numValue);
+    } else {
+      // Optionally, provide feedback to the user about the invalid input
+      alert("Quantity must be a positive number.");
+    }
   };
   console.log("id", id);
   useEffect(() => {
@@ -186,7 +197,7 @@ export default function Products() {
                               name="quantity"
                               required
                               placeholder="Enter Quantity"
-                              aria-required="true"
+                              
                               value={quantity}
                               onChange={handleQuantityChange}
                             />
