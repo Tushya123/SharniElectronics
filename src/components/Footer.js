@@ -92,7 +92,7 @@ export default function Footer() {
                         <Link to="/certificate">Certificate</Link>
                       </li>
                       <li>
-                        <Link to="/contact">Contact Us</Link>
+                        <Link to="/contect">Contact Us</Link>
                       </li>
                     </ul>
                   </div>
