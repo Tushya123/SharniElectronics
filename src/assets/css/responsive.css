@@ -214,6 +214,9 @@
   .service-section .slick-initialized .slick-slide {
     padding: 20px;
   }
+  .service-block-one .inner-box .image-box .image img {
+    height: 270px;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -227,9 +230,7 @@
   .position-slider .content-box {
     top: 242px;
   }
-  .service-block-one .inner-box .image-box .image img {
-    height: 270px;
-  }
+ 
 }
 @media only screen and (min-width: 1440px) {
   .service-block-one .inner-box .image-box .image img {
@@ -1391,4 +1392,10 @@ width: 200px;
     margin-top: -153px;
 
   }
+}
+
+@media (min-width:768px) and (max-width:1200px) {
+  .service-block-one .inner-box {
+    max-width: 292px;
+}
 }

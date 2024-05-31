@@ -14265,3 +14265,6 @@ input {
 .text-area.error-message{
   top: 115px;
 }
+.theme-btn.resp-width{
+  width: 100%;
+}
