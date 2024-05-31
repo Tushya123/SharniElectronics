@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../assets/images/new-home/logo1.png";
 import Background from "../../assets/images/new-home/breadcrumb-img.jpg";
-import footer from "../../assets/images/new-home/footer-location-img.jpg";
 import skype from "../../assets/images/new-home/skype.png";
 import wp from "../../assets/images/new-home/whatsapp.png";
-import news from "../../assets/images/news/news-35.jpg";
-import Header from "../../components/Header";
 import html2canvas from "html2canvas";
 
 import axios from "axios";
-import banner from "../../assets/images/new-home/product-banner.jpg";
 import { Container, Row, Table, Figure, Button, Col } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
@@ -52,11 +48,11 @@ export default function ProductsDetails() {
         }/api/auth/get/productdetail/${localStorage.getItem("description")}`
       )
       .then((response) => {
-        console.log("huncncjuhenchjbecvbevchj", response); // log the response data
+        console.log("huncncjuhenchjbecvbevchj", response); 
         setProductDetails(response.data);
       })
       .catch((error) => {
-        console.error(error); // log the error
+        console.error(error); 
       });
   }, []);
 
@@ -71,7 +67,6 @@ export default function ProductsDetails() {
     const input = document.getElementById("pdf-content");
     const hiddenElements = document.querySelectorAll(".hidden");
 
-    // Show hidden elements
     hiddenElements.forEach((el) => (el.style.display = "block"));
 
     const images = input.getElementsByTagName("img");
@@ -93,13 +88,12 @@ export default function ProductsDetails() {
         return html2canvas(input, { useCORS: true });
       })
       .then((canvas) => {
-        // Re-hide the hidden elements
         hiddenElements.forEach((el) => (el.style.display = "none"));
 
         const imgData = canvas.toDataURL("image/jpeg");
         const pdf = new jsPDF();
-        const imgWidth = 200; // A4 width in mm
-        const pageHeight = 290; // A4 height in mm
+        const imgWidth = 200;
+        const pageHeight = 290;
         const imgHeight = (canvas.height * imgWidth) / canvas.width;
         let heightLeft = imgHeight;
         let position = 10;
@@ -117,14 +111,12 @@ export default function ProductsDetails() {
       .catch((error) => console.error("Error generating PDF: ", error));
   };
 
-  console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>", productDetailsss);
 
   return (
     <React.Fragment
       style={{ position: "relative", minHeight: "100%", top: "0px" }}
     >
       <div className="boxed_wrapper">
-        {/* <!-- page-title --> */}
         <section className="page-title">
           <div
             className="bg-layer"
@@ -144,13 +136,10 @@ export default function ProductsDetails() {
                   <Link to="/products">Products</Link>
                 </li>
                     <li>{localStorage.getItem("selectedProductId")}</li>
-                {/* Updated line */}
               </ul>
             </div>
           </Container>
         </section>
-        {/* <!-- page-title end -->
-    <!-- sidebar-page-container --> */}
         <section className="sidebar-page-container blog-details sec-pad pro-det ptb-60">
           <Container className="auto-container">
             <Row className="clearfix">
@@ -175,9 +164,6 @@ export default function ProductsDetails() {
                             Shreeji Pharma International
                           </h1>
                           <li className="custom-border">
-                            {/* <div className="icon-box">
-                              {/* <i className="fa fa-envelope"></i> */}
-                            {/* </div>  */}
                             <h2 style={{ color: "16436f" }}>
                               contact@shreejipharma.com
                             </h2>
@@ -185,9 +171,6 @@ export default function ProductsDetails() {
                           <br />
 
                           <li className="support-box custom-border1">
-                            {/* <div className="icon-box"> */}
-                            {/* <i className="flaticon-dial-pad"></i> */}
-                            {/* </div> */}
                             <h2 style={{ color: "16436f" }}>+918866002331</h2>
                           </li>
                         </div>
@@ -259,8 +242,6 @@ export default function ProductsDetails() {
           </Container>
         </section>
 
-        {/* <!-- sidebar-page-container end -->
-    <!-- about-section end --> */}
         <div className="sticky-button">
           <Link
             to="assets/catalogue-shreeji-pharma.pdf"
@@ -319,7 +300,6 @@ export default function ProductsDetails() {
           </div>
         </div>
 
-        {/* <!-- scroll to top --> */}
         <button
           className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
           onClick={scrollToTop}

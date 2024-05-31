@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Header from "../../components/Header";
 import Background from "../../assets/images/new-home/breadcrumb-img.jpg";
 import footer from "../../assets/images/new-home/footer-location-img.jpg";
 import skype from "../../assets/images/new-home/skype.png";
@@ -13,7 +12,6 @@ import { Container, Form, Col } from "react-bootstrap";
 
 export default function Search() {
   const [productData, setProductData] = useState({
-    // Assuming you have some product data to send
     ProductDetail2: "",
     ProductDetailLabel: "",
     Group: "",
@@ -42,37 +40,6 @@ export default function Search() {
     });
   }, [quantity, desc, name, id]);
 
-  // const handleAddToCart = async () => {
-  //   try {
-  //     const response = await axios.post(
-  //       `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/create/InquiryProduct`,
-  //       productData
-  //     );
-  //     console.log("Response:", response.data.data._id);
-  //     const productId = response.data.data._id;
-  //     console.log("Product ID from response:", productId);
-
-  //     // Retrieve existing product IDs from localStorage
-  //     let productIds = JSON.parse(localStorage.getItem("productIds"));
-  //     console.log("Current product IDs in localStorage:", productIds);
-
-  //     // Add the new product ID to the array
-  //     productIds.push(productId);
-  //     console.log("Updated product IDs:", productIds);
-
-  //     // Save the updated array back to localStorage
-  //     localStorage.setItem("productIds", JSON.stringify(productIds));
-  //     console.log("Updated product IDs saved to localStorage");
-
-  //     // Reset the quantity
-  //     setQuantity(0);
-  //     if (response) {
-  //       setShow(false);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error adding product to cart:", error);
-  //   }
-  // };
   const handleAddToCart = async () => {
     try {
       const response = await axios.post(
@@ -87,26 +54,20 @@ export default function Search() {
       const productId = response.data.data._id;
       console.log("Product ID from response:", productId);
 
-      // Retrieve existing product IDs from localStorage
       let productIds = JSON.parse(localStorage.getItem("productIds")) || [];
       console.log("Current product IDs in localStorage:", productIds);
 
-      // Add the new product ID to the array
       productIds.push(productId);
       console.log("Updated product IDs:", productIds);
 
-      // Save the updated array back to localStorage
       localStorage.setItem("productIds", JSON.stringify(productIds));
       console.log("Updated product IDs saved to localStorage");
 
-      // Verify if the localStorage update was successful
       const storedProductIds = JSON.parse(localStorage.getItem("productIds"));
       console.log("Verified product IDs in localStorage:", storedProductIds);
 
-      // Reset the quantity
       setQuantity(0);
 
-      // Only close the popup if the product ID is in localStorage
       if (storedProductIds.includes(productId)) {
         setShow(false);
       }
@@ -153,7 +114,6 @@ export default function Search() {
           </Container>
         </section>
 
-        {/* Modal */}
         <Modal
           show={show}
           onHide={handleClose}
@@ -178,7 +138,6 @@ export default function Search() {
                           required
                           isDisabled={true}
                           value={name}
-                          // placeholder={name}
 
                           aria-required="true"
                         />
@@ -191,7 +150,7 @@ export default function Search() {
                           required
                           placeholder="Enter Quantity"
                           aria-required="true"
-                          value={quantity} // Bind the input value to the state
+                          value={quantity} 
                           onChange={handleQuantityChange}
                         />
                       </Col>
@@ -305,76 +264,10 @@ export default function Search() {
                 )}
               </div>
 
-              {/* <div className="title">
-                <div
-                  className="title-cat"
-                  style={{ padding: "20px", textAlign: "center" }}
-                >
-                  <h6
-                    style={{
-                      fontSize: "20px",
-                      fontWeight: "600",
-                      padding: "10px",
-                      color: "#16436f",
-                    }}
-                  >
-                    Product Category : VETERINARY APIS
-                  </h6>
-                </div>
-              </div> */}
-
-              {/* <div className="row">
-                {dataInfo.length > 0 ? (
-                  dataInfo.map((product, index) => (
-                    <div
-                      className="col-lg-3 col-md-12 col-sm-12 content-side"
-                      key={index}
-                    >
-                      <div className="news-block-one">
-                        <div
-                          className="inner-box"
-                          style={{ boxShadow: "none" }}
-                        >
-                          <Link className="text" to="/productDetails">
-                            <h2>{product.Description}</h2>
-                          </Link>
-                          <div className="lower-box">
-                            <div className="link">
-                              <button
-                                style={{
-                                  fontSize: "16px",
-                                  color: "#16436f",
-                                  fontWeight: "600",
-                                }}
-                                type="button"
-                                data-bs-toggle="modal"
-                                data-bs-target="#inquiryModal"
-                                onClick={() => {
-                                  setShow(true);
-                                  setname(product.Description);
-                                  setid(product._id);
-                                  setDescription(
-                                    product.ProductDetail.ProductGroup
-                                  );
-                                }}
-                              >
-                                Inquiry
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))
-                ) : (
-                  <p>No products found.</p>
-                )}
-              </div> */}
             </div>
           </Container>
         </section>
 
-        {/* <!-- locations-section --> */}
         <section className="locations-section sec-pad centred">
           <div className="pattern-layer"></div>
           <div className="auto-container">
@@ -433,7 +326,6 @@ export default function Search() {
             </div>
           </div>
         </section>
-        {/* <!-- locations-section end --> */}
         <div className="sticky-button">
           <a
             href="assets/catalogue-shreeji-pharma.pdf"

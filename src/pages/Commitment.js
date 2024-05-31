@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Header from "../components/Header";
 import Background from "../assets/images/new-home/breadcrumb-img.jpg";
-import { Container, Figure, Image, Row, Button, Col, Modal } from "react-bootstrap";
+import { Container, Figure, Image, Row, Col, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Preloader from "../components/PreLoader";
 import shape10 from "../assets/images/shape/shape-10.png";

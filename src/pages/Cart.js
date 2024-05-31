@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from "react";
-import logo from "../assets/images/new-home/logo.png";
 import Background from "../assets/images/new-home/breadcrumb-img.jpg";
-import footer from "../assets/images/new-home/footer-location-img.jpg";
 import skype from "../assets/images/new-home/skype.png";
 import wp from "../assets/images/new-home/whatsapp.png";
-import pillicon from "../assets/images/new-home/pill-icon.png";
-import Header from "../components/Header";
 import Modal from "react-bootstrap/Modal";
-// import Form from "react-bootstrap/Form";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-import { Link } from "react-router-dom";
 import axios from "axios";
-import { Row,Button } from "reactstrap";
+import { Row } from "reactstrap";
 const countriesArray = [
   { label: "DZ", value: "ALGERIA" },
   { label: "AR", value: "ARGENTINA" },
@@ -90,7 +84,6 @@ export default function Cart() {
   const [products, setProducts] = useState([]);
   const productIds = JSON.parse(localStorage.getItem("productIds")) || [];
   const [productData, setProductData] = useState({
-    // Assuming you have some product data to send
     ProductDetail: [],
     ContactPerson: "",
     CompanyName: "",
@@ -101,7 +94,7 @@ export default function Cart() {
     IsActive: true,
   });
   const remove_inquiry = async (new_id, event) => {
-    event.preventDefault(); // Prevent default action
+    event.preventDefault(); 
 
     try {
       const response = await axios.delete(
@@ -114,7 +107,6 @@ export default function Cart() {
         setProductData({
           ProductDetail: JSON.parse(localStorage.getItem("productIds")),
         });
-        // Update the state
         setProducts((prevProducts) =>
           prevProducts.filter((product) => product.id !== new_id)
         );
@@ -124,44 +116,11 @@ export default function Cart() {
     }
   };
 
-  // useEffect(() => {
-  //   // Retrieve the array of product IDs from local storage
-  //   const productIds = JSON.parse(localStorage.getItem('productIds')) || [];
-
-  //   // Use a Set to store unique product IDs
-  //   const uniqueProductIds = Array.from(new Set(productIds));
-
-  //   // Fetch product details for each unique product ID
-  //   const fetchProductDetails = async () => {
-  //     try {
-  //       const productDetails = await Promise.all(
-  //         uniqueProductIds.map(async (productId) => {
-  //           const response = await axios.get(`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/getbyid/InquiryProduct/${productId}`);
-  //           return {
-  //             id: response.data._id,
-  //             productDetail: response.data.ProductDetail,
-  //             productDetailLabel: response.data.ProductDetailLabel,
-  //             quantity: response.data.Quantity
-  //           };
-  //         })
-  //       );
-  //       // Update the state once with all fetched product details
-  //       setProducts(productDetails);
-  //     } catch (error) {
-  //       console.error('Error fetching product details:', error);
-  //     }
-  //   };
-
-  //   fetchProductDetails();
-  // }, []);
   useEffect(() => {
-    // Retrieve the array of product IDs from local storage
     const productIds = JSON.parse(localStorage.getItem("productIds")) || [];
 
-    // Use a Set to store unique product IDs
     const uniqueProductIds = Array.from(new Set(productIds));
 
-    // Fetch product details for each unique product ID
     const fetchProductDetails = async () => {
       try {
         const productDetails = await Promise.all(
@@ -177,7 +136,6 @@ export default function Cart() {
             };
           })
         );
-        // Update the state once with all fetched product details
         setProducts(productDetails);
       } catch (error) {
         console.error("Error fetching product details:", error);
@@ -186,7 +144,6 @@ export default function Cart() {
 
     fetchProductDetails();
 
-    // Set the product details in productData state from localStorage
     setProductData((prevData) => ({
       ...prevData,
       ProductDetail: productIds,
@@ -201,9 +158,6 @@ export default function Cart() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   console.log(localStorage.getItem("productIds"));
-  // setProductData({
-  //   ProductDetail:localStorage.getItem("productIds"),
-  // })
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setProductData({ ...productData, [name]: value });
@@ -216,9 +170,8 @@ export default function Cart() {
         values
       );
       console.log("Data submitted successfully:", response.data);
-      handleClose(); // Close the modal after successful submission
+      handleClose(); 
 
-      // Clear form values after submission
       setSubmitting(false);
       setProductData({
         ProductDetail: JSON.parse(localStorage.getItem("productIds")),
@@ -232,7 +185,6 @@ export default function Cart() {
       });
     } catch (error) {
       console.error("Error submitting data:", error);
-      // Handle error accordingly, e.g., show an error message to the user
     }
   };
 
@@ -242,7 +194,6 @@ export default function Cart() {
         style={{ position: "relative", minHeight: "100%", top: "0px" }}
       >
         <div className="boxed_wrapper">
-          {/* <!-- page-title -->  */}
           <section className="page-title">
             <div
               className="bg-layer"
@@ -260,10 +211,8 @@ export default function Cart() {
               </div>
             </div>
           </section>
-          {/* <!-- page-title end -->
 
 
-        {/* Modal */}
           <Modal
             show={show}
             onHide={handleClose}
@@ -421,8 +370,6 @@ export default function Cart() {
             </Modal.Body>
           </Modal>
 
-          {/* <!-- banner-section end -->
-    <!--cart section--> */}
           <section class="cart-section">
             <div class="auto-container">
               <div class="cart-outer">
@@ -440,8 +387,6 @@ export default function Cart() {
                             <th>Sr. No</th>
                             <th>Your Product</th>
                             <th>Quantity</th>
-                            {/* <!-- <th class="price">Price</th>
-                                    <th>Total</th> --> */}
                             <th>Remove</th>
                           </tr>
                         </thead>
@@ -456,15 +401,13 @@ export default function Cart() {
                                 <td class="prod-column">
                                   <h5>{item.quantity}</h5>
                                 </td>
-                                {/* <!-- <td class="sub-total">1545 Rs.</td>
-                                    <td class="total-price">1545 Rs</td> --> */}
                                 <td>
                                   <a
                                     href="#"
                                     className="remove-btn"
                                     onClick={(event) =>
                                       remove_inquiry(item.id, event)
-                                    } // Pass event here
+                                    } 
                                   >
                                     <i className="fa-solid fa-xmark"></i>
                                   </a>
@@ -485,7 +428,7 @@ export default function Cart() {
                           data-bs-toggle="modal"
                           data-bs-target="#inquiryModal"
                           onClick={handleShow}
-                          disabled={products.length === 0} // Disable button when products array is empty
+                          disabled={products.length === 0} 
                         >
                           Make Inquiry
                         </button>
@@ -496,7 +439,6 @@ export default function Cart() {
               </div>
             </div>
           </section>
-          {/* <!--cart section end--> */}
 
           <div className="sticky-button">
             <a

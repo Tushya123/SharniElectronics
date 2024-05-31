@@ -64,10 +64,10 @@ export default function Home() {
   const settings = {
     dots: true,
     arrows: true,
-    infinite: false,
+    infinite: true,
     speed: 500,
     autoplay: true,
-    autoplaySpeed: 1000,
+    autoplaySpeed: 2000,
     slidesToShow: 1,
     slidesToScroll: 1,
     appendDots: (dots) => {

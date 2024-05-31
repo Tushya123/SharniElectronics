@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Col, Container, Figure, Row } from "react-bootstrap";
+import { Col, Container, Figure, Row,Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export default function AboutUs() {
@@ -35,32 +35,29 @@ export default function AboutUs() {
         <Container>
           <Row className="clearfix" style={{ justifyContent: "center" }}>
             <Col lg={6} md={8} sm={12} className="image-column mb-4 mb-lg-0">
-              <div className="image-box position-relative">
-                <div className="shape-box position-absolute">
-                  <div className="shape shape-1 hexagon_shape"></div>
-                  <div className="shape shape-2 hexagon_shape"></div>
-                </div>
-                <div className="image-inner hexagon_shape">
-                  <Figure className="image">
-                    <img
-                      src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${cmsImage}`}
-                      alt=""
-                      className="img-fluid"
-                    />
-                  </Figure>
-                </div>
-                <div className="text position-absolute">
-                  <div className="inner text-center">
-                    <h2>
-                      20<span>+</span>
-                    </h2>
-                    <h6>
-                      Years of <br />
-                      Experience
-                    </h6>
+            <div className="image-box">
+                  <div className="shape-box">
+                    <div className="shape shape-1 hexagon_shape"></div>
+                    <div className="shape shape-2 hexagon_shape"></div>
+                    <div className="shape shape-3 hexagon_shape"></div>
+                  </div>
+                  <div className="image-inner hexagon_shape">
+                    <Figure className="image">
+                      <Image src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${cmsImage}`} alt="" fluid />
+                    </Figure>
+                  </div>
+                  <div className="text">
+                    <div className="inner">
+                      <h2>
+                        20<span>+</span>
+                      </h2>
+                      <h6>
+                        Years of <br />
+                        Experience
+                      </h6>
+                    </div>
                   </div>
                 </div>
-              </div>
             </Col>
             <Col lg={6} md={12} sm={12} className="content-column">
               <div className="content-box">

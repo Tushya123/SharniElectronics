@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import Background from "../../assets/images/new-home/breadcrumb-img.jpg";
 import skype from "../../assets/images/new-home/skype.png";
 import wp from "../../assets/images/new-home/whatsapp.png";
-import Header from "../../components/Header";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import {Col, Container, Row } from "react-bootstrap";
 
 export default function BlogsDetails() {
   const [Blogs, setBlogs] = useState([]);

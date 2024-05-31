@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Image, Button, Figure } from "react-bootstrap";
-import about from "../assets/images/new-home/about-img.jpg";
-import logo from "../assets/images/new-home/logo.png";
 import Background from "../assets/images/new-home/breadcrumb-img.jpg";
 import footer from "../assets/images/new-home/footer-location-img.jpg";
 import skype from "../assets/images/new-home/skype.png";
 import wp from "../assets/images/new-home/whatsapp.png";
 import Background1 from "../assets/images/background/funfact-bg.jpg";
-import Header from "../components/Header";
 import axios from "axios";
 import shape10 from "../assets/images/shape/shape-10.png";
 import { Link } from "react-router-dom";
@@ -18,7 +15,7 @@ export default function About() {
   const [cmsDesc, setcmsDesc] = useState("");
   const [title, setTitle] = useState("");
   const [cmsImage, setcmsImage] = useState("");
-  const [showModal, setShowModal] = useState(false); // State for controlling modal visibility
+  const [showModal, setShowModal] = useState(false); 
 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -75,7 +72,6 @@ export default function About() {
         <>
 
       <div className="boxed_wrapper">
-        {/* page-title */}
         <section className="page-title">
               <div
                 className="bg-layer"
@@ -93,7 +89,6 @@ export default function About() {
                 </div>
               </Container>
             </section>
-        {/* about-section */}
         <section className="about-section sec-pad">
           <Container>
             <Row className="clearfix justify-content-center">
@@ -140,7 +135,6 @@ export default function About() {
             </Row>
           </Container>
         </section>
-        {/* funfact-section */}
         <section className="funfact-section text-center" style={{ backgroundImage: `url(${Background1})` }}>
           <Container>
             <div className="sec-title light">
@@ -199,7 +193,6 @@ export default function About() {
             </div>
           </Container>
         </section>
-        {/* locations-section */}
         <section className="locations-section sec-pad text-center" style={{ backgroundImage: `url(${shape10})` }}>
           <Container>
             <div className="sec-title">
@@ -241,7 +234,6 @@ export default function About() {
                       </div>
                     </div>
               <Link
-                // to="https://maps.app.goo.gl/Bsr5XK4HhGCfyD2b6"
                 onClick={() => setShowModal(true)} 
                 style={{ color: "#16436f" }} 
               >

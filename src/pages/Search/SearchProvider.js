@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { createContext, useState, useContext, useEffect } from "react";
-import SearchResults from "./Search";
 
 const SearchContext = createContext();
 
@@ -16,9 +15,9 @@ export const SearchProvider = ({ children }) => {
   const skip = 0;
   const [loading, setLoading] = useState(false);
   const [totalRows, setTotalRows] = useState(0);
-  const INFINITE = Number.MAX_SAFE_INTEGER; // This represents a very large number
+  const INFINITE = Number.MAX_SAFE_INTEGER; 
 
-  const [perPage, setPerPage] = useState(INFINITE); // Default to infinite
+  const [perPage, setPerPage] = useState(INFINITE); 
 
   const [pageNo, setPageNo] = useState(0);
   const [column, setcolumn] = useState();

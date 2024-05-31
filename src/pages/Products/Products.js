@@ -4,7 +4,6 @@ import footer from "../../assets/images/new-home/footer-location-img.jpg";
 import skype from "../../assets/images/new-home/skype.png";
 import wp from "../../assets/images/new-home/whatsapp.png";
 import shape10 from "../../assets/images/shape/shape-10.png";
-import Header from "../../components/Header";
 import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -149,7 +148,6 @@ export default function Products() {
                       <a href="index.html">Home</a>
                     </li>
                     <li>Products</li>
-                    {/* <li>{localStorage.getItem("selectedProductId")}</li> */}
                   </ul>
                 </div>
               </Container>

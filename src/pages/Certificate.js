@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import logo from "../assets/images/new-home/logo.png";
 import Background from "../assets/images/new-home/breadcrumb-img.jpg";
 import footer from "../assets/images/new-home/footer-location-img.jpg";
 import skype from "../assets/images/new-home/skype.png";
 import wp from "../assets/images/new-home/whatsapp.png";
 import shape10 from "../assets/images/shape/shape-10.png";
-import Header from "../components/Header";
 import axios from "axios";
 import {
   Modal,
@@ -22,7 +20,7 @@ import Preloader from "../components/PreLoader";
 export default function Certificate() {
   const [certificate, setCertificate] = useState([]);
   const [selectedCertificate, setSelectedCertificate] = useState(null);
-  const [showModal, setShowModal] = useState(false); // State for controlling modal visibility
+  const [showModal, setShowModal] = useState(false); 
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {
@@ -84,7 +82,6 @@ export default function Certificate() {
       ) : (
         <>
           <div className="boxed_wrapper">
-            {/* page-title */}
             <section className="page-title">
               <div
                 className="bg-layer"
@@ -102,7 +99,6 @@ export default function Certificate() {
                 </div>
               </Container>
             </section>
-            {/* service-details */}
             <section className="service-details sec-pad">
               <Container>
                 <Row className="clearfix">
@@ -155,7 +151,6 @@ export default function Certificate() {
                 </Row>
               </Container>
             </section>
-            {/* locations-section */}
             <section
               className="locations-section sec-pad text-center"
               style={{ backgroundImage: `url(${shape10})` }}
@@ -201,7 +196,6 @@ export default function Certificate() {
                           </div>
                         </div>
                         <Link
-                          // to="https://maps.app.goo.gl/Bsr5XK4HhGCfyD2b6"
                           onClick={() => setShowModal(true)}
                           style={{ color: "#16436f" }} 
                           >
@@ -251,7 +245,6 @@ export default function Certificate() {
                 ></iframe>
               </Modal.Body>
             </Modal>
-            {/* scroll to top */}
             <Button className="scroll-top scroll-to-target" data-target="html">
               <i className="flaticon-up-arrow"></i>
             </Button>

@@ -1,9 +1,7 @@
-// src/pages/Gallery.js
 
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import Header from "../components/Header";
 import Background from "../assets/images/new-home/breadcrumb-img.jpg";
 import { Container, Row, Col, Figure, Image,Button } from "react-bootstrap";
 import Preloader from "../components/PreLoader";
@@ -16,7 +14,7 @@ import { Modal } from "react-bootstrap";
 export default function Gallery() {
   const [galleryData, setGalleryData] = useState([]);
   const navigate = useNavigate();
-  const [showModal, setShowModal] = useState(false); // State for controlling modal visibility
+  const [showModal, setShowModal] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {
@@ -144,8 +142,6 @@ export default function Gallery() {
             </Row>
           </Container>
         </section>
-                {/* locations-section */}
-        {/* locations-section */}
         <section className="locations-section sec-pad text-center" style={{ backgroundImage: `url(${shape10})` }}>
           <Container>
             <div className="sec-title">
@@ -187,7 +183,6 @@ export default function Gallery() {
                       </div>
                     </div>
               <Link
-                // to="https://maps.app.goo.gl/Bsr5XK4HhGCfyD2b6"
                 onClick={() => setShowModal(true)} 
                 style={{ color: "#16436f" }} 
               >

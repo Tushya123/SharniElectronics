@@ -1245,6 +1245,12 @@
   .position-slider .content-box {
     top: 300px;
   }
+  .sec-title .sub-title {
+    line-height: 29px;
+  }
+  .about-section .image-box .shape-box .shape-1 {
+top: -23px;
+  }
   .service-block-one .inner-box .image-box .image img {
     height: 260px;
   }
@@ -1262,6 +1268,9 @@
   .industries-block-one .inner-box {
 margin-top: -29px;
   }
+  .about-section .image-box .shape-box .shape-1 {
+    top: -22px;
+  }
 
 .resp-width{
   width: 100%;
@@ -1271,7 +1280,7 @@ margin-top: -29px;
     height: 260px;
   }
   .sec-title{
-    margin-top: -67px;
+    margin-top: -37px;
   }
 }
 @media only screen and (max-width: 426px) {
