@@ -49,7 +49,9 @@ export default function Header() {
     if (storedProductIds) {
       setProd(JSON.parse(storedProductIds));
     }
-  }, []);
+  }, [localStorage.getItem("productIds")]);
+
+  console.log("prod",prod.length)
 
   useEffect(() => {
     const fetchData = async () => {
