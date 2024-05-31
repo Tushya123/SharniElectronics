@@ -44,21 +44,23 @@ export default function Products() {
   const [showModal, setShowModal] = useState(false); 
   const [show, setShow] = useState(false);
   const [data, setData] = useState([]);
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [name, setname] = useState("");
   const [id, setid] = useState("");
   const [desc, setDescription] = useState("");
+  const [error, setError] = useState("");
   const handleQuantityChange = (e) => {
     const value = e.target.value;
   
     // Convert the input value to a number
     const numValue = Number(value);
-  
+  console.log("numValue",numValue)
     // Check if the value is a positive number
-    if (numValue >= 0) {
+    if (numValue > 0) {
       setQuantity(numValue);
+      setError(""); 
     } else {
       // Optionally, provide feedback to the user about the invalid input
       alert("Quantity must be a positive number.");
