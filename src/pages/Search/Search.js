@@ -25,6 +25,33 @@ export default function Search() {
   const [id, setid] = useState("");
   const [desc, setDescription] = useState("");
   const [quantity, setQuantity] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", toggleVisibility);
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+    };
+  }, []);
+
+
+
+
   const handleClose = () => setShow(false);
   const handleQuantityChange = (event) => {
     setQuantity(event.target.value);
@@ -349,7 +376,10 @@ export default function Search() {
           </a>
         </div>
       </div>
-      <button className="scroll-top scroll-to-target" data-target="html">
+      <button 
+          className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
+          onClick={scrollToTop}
+          style={{ display: isVisible ? "block" : "none" }}>
         <i className="flaticon-up-arrow"></i>
       </button>
     </React.Fragment>
