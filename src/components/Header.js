@@ -222,7 +222,7 @@ export default function Header() {
                         <Link to="/certificate">Certificate</Link>
                       </li>
                       <li>
-                        <Link to="/contect">Contact</Link>
+                        <Link to="/contact">Contact</Link>
                       </li>
                     </ul>
                   </div>
@@ -262,7 +262,7 @@ export default function Header() {
                     <div className="upper-box clearfix">
                       <figure className="logo-box pull-left">
                         <a href="#">
-                          <img src={logo1} alt="Logo" />
+                          <img className="searchlogo" src={logo1} alt="Logo" />
                         </a>
                       </figure>
                       <div
@@ -416,7 +416,7 @@ export default function Header() {
                 </li>
                 <li>
                   <Link
-                    to="/contect"
+                    to="/contact"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Contact

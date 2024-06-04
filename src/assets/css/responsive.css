@@ -1290,8 +1290,14 @@ margin-top: -29px;
   .nav-logo{
 width: 200px;
   }
+  .searchlogo{
+    width: 236px !important;
+  }
   .theme-btn {
     margin-left: 91px !important;
+  }
+   .contact{
+    margin-left: -17px !important;
   }
   .theme-btn.resp-width{
     margin: 0;
@@ -1323,6 +1329,7 @@ width: 200px;
   .cart-section .btn-box button:last-child {
     margin-top: 2px;
     margin-left: 15px !important;
+    font-size: 13px;
   }
   .sec-title {  
     padding-top: 30px;

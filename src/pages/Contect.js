@@ -292,7 +292,7 @@ export default function Contact() {
                           <div className="invalid-feedback">Enter your message!</div>
                         </Col>
                         <Col lg={12} md={12} sm={12} className="form-group message-btn">
-                          <button type="submit" className="theme-btn">
+                          <button type="submit" className="theme-btn contact">
                             Submit Here
                           </button>
                         </Col>

@@ -3277,6 +3277,7 @@ div#mCSB_1_container {
 
 .gallery {
   margin-bottom: 30px;
+  margin-top: 30px;
 }
 .gallery .project-block-one .inner-box:hover .overlay-content {
   top: 0px;
@@ -4136,7 +4137,7 @@ div#mCSB_1_container {
   top: 132px;
   right: 0px;
   font-size: 18px;
-  line-height: 24px;
+  line-height: 227px;
   font-weight: 500;
   font-family: "Saira", sans-serif;
   color: #fff;
@@ -4396,7 +4397,7 @@ div#mCSB_1_container {
 
 .main-footer .widget-section {
   position: relative;
-  padding: 114px 0px 88px 0px;
+  padding: 40px 0px 88px 0px;
   border-bottom: 1px dashed #3e7288;
 }
 
@@ -10831,7 +10832,7 @@ div#mCSB_1_container {
   line-height: 28px;
   padding: 21px 28px 19px 40px;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 16px;
   font-family: "Saira", sans-serif;
   color: #16436f;
   border-right: 1px solid #16436f;
