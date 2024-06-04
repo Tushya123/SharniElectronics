@@ -4027,7 +4027,7 @@ div#mCSB_1_container {
 }
 
 .booking-section .sec-title {
-  margin-bottom: 32px;
+  margin-top: -143px;
 }
 
 .booking-section .sec-title .sub-title {
@@ -4125,7 +4125,7 @@ div#mCSB_1_container {
 
 .booking-section .content-box .shape {
   position: absolute;
-  top: 63%;
+  top: 60%;
   transform: translateY(-50%);
   right: 0px;
   width: 200px;
