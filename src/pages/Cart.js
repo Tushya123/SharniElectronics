@@ -379,7 +379,7 @@ export default function Cart() {
                   </div>
                 </div>
                 <div class="row clearfix">
-                  <div class="col-lg-8 col-md-12 col-sm-12 column clearfix">
+                  <div class="col-lg-12 col-md-12 col-sm-12 column clearfix">
                     <div class="table-outer">
                       <table responsive  class="cart-table">
                         <thead class="cart-header">
@@ -419,9 +419,9 @@ export default function Cart() {
                       </table>
                     </div>
                   </div>
-                  <Row>
-                    <div class="col-lg-4 col-md-12 col-sm-12 column clearfix center-btn align-content-center">
-                      <div class="btn-box clearfix">
+                  <Row className="d-flex justify-content-center" >
+                    <div className="col-lg-4 col-md-12 col-sm-12 column clearfix center-btn align-content-center">
+                      <div className="btn-box clearfix">
                         <button
                           type="button"
                           class="checkout-btn theme-btn"
