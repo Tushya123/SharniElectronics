@@ -36,9 +36,9 @@ export default function NewsEvent() {
             <span className="sub-title">News &amp; Events</span>
             <h2>Explore our latest post</h2>
             <div className="btn-box">
-              <Button href="#" className="theme-btn">
+              <button href="#" className="theme-btn">
                 View All News
-              </Button>
+              </button>
             </div>
           </div>
           <Row>

@@ -5,7 +5,7 @@ const Preloader = () => (
   <React.Fragment>
   <div className="loader-wrap" style={{ }}>
     <div className="preloader">
-      <div className="preloader-close">x</div>
+      {/* <div className="preloader-close">x</div> */}
       <div id="handle-preloader" className="handle-preloader">
         <div className="animation-preloader">
           <div className="spinner"></div>

@@ -53,7 +53,7 @@ export default function ImageView() {
               <li>
                 <Link to="/">Home</Link>
               </li>
-              <li>Gallery</li>
+              <li><Link to="/gallery">Gallery</Link></li>
             </ul>
           </div>
         </Container>
