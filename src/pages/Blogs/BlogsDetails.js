@@ -85,9 +85,9 @@ export default function BlogsDetails() {
               <h1>{blog.Name}</h1>
               <ul className="bread-crumb clearfix">
                 <li>
-                  <a href="/">Home</a>
+                  <Link to="/">Home</Link>
                 </li>
-                <li>Blog</li>
+                <li><Link to="/">Blog</Link></li>
                 <li>{blog.Category}</li>
               </ul>
             </div>
