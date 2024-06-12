@@ -8,7 +8,15 @@ import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Preloader from "../../components/PreLoader";
-import { Image, Container, Col, Figure, Row, Form,Spinner } from "react-bootstrap";
+import {
+  Image,
+  Container,
+  Col,
+  Figure,
+  Row,
+  Form,
+  Spinner,
+} from "react-bootstrap";
 
 export default function Products() {
   const [isVisible, setIsVisible] = useState(false);
@@ -20,7 +28,6 @@ export default function Products() {
       setIsLoading(false);
     });
   };
-
 
   const toggleVisibility = () => {
     if (window.pageYOffset > 300) {
@@ -50,7 +57,7 @@ export default function Products() {
     Group: "",
     Quantity: "",
   });
-  const [showModal, setShowModal] = useState(false); 
+  const [showModal, setShowModal] = useState(false);
   const [show, setShow] = useState(false);
   const [data, setData] = useState([]);
   const [quantity, setQuantity] = useState(1);
@@ -62,14 +69,14 @@ export default function Products() {
   const [error, setError] = useState("");
   const handleQuantityChange = (e) => {
     const value = e.target.value;
-  
+
     // Convert the input value to a number
     const numValue = Number(value);
-  console.log("numValue",numValue)
+    console.log("numValue", numValue);
     // Check if the value is a positive number
     if (numValue > 0) {
       setQuantity(numValue);
-      setError(""); 
+      setError("");
     } else {
       // Optionally, provide feedback to the user about the invalid input
       alert("Quantity must be a positive number.");
@@ -87,7 +94,7 @@ export default function Products() {
           (item) =>
             item.ProductDetail &&
             item.ProductDetail.ProductGroup === xyz &&
-            item.IsActive 
+            item.IsActive
         );
         data.sort((a, b) => a.Description.localeCompare(b.Description));
         setData(data);
@@ -208,7 +215,6 @@ export default function Products() {
                               name="quantity"
                               required
                               placeholder="Enter Quantity"
-                              
                               value={quantity}
                               onChange={handleQuantityChange}
                             />
@@ -219,25 +225,24 @@ export default function Products() {
                             sm={12}
                             className="form-group message-btn text-center"
                           >
-                    <button
-                      type="button"
-                      className="theme-btn"
-                      onClick={handleAddToCartClick}
-                      disabled={isLoading}
-                    >
-                      {isLoading ? (
-                        <Spinner
-                          as="span"
-                          animation="border"
-                          size="sm"
-                          role="status"
-                          aria-hidden="true"
-                        />
-                      ) : (
-                        'Add To Cart'
-                      )}
-                    </button>
-
+                            <button
+                              type="button"
+                              className="theme-btn"
+                              onClick={handleAddToCartClick}
+                              disabled={isLoading}
+                            >
+                              {isLoading ? (
+                                <Spinner
+                                  as="span"
+                                  animation="border"
+                                  size="sm"
+                                  role="status"
+                                  aria-hidden="true"
+                                />
+                              ) : (
+                                "Add To Cart"
+                              )}
+                            </button>
                           </Col>
                         </div>
                       </Form>
@@ -282,7 +287,9 @@ export default function Products() {
                                       )
                                     }
                                   >
-                                    <h2>{item.Description}</h2>
+                                    <h2 style={{ overflowWrap: "break-word" }}>
+                                      {item.Description}
+                                    </h2>
                                   </a>
                                   <div className="lower-box ">
                                     <div className="link">
@@ -479,12 +486,10 @@ export default function Products() {
                               style={{ color: "#16436f" }}
                             >
                               Locate Us
-                               <i className="flaticon-right-arrow"></i>
+                              <i className="flaticon-right-arrow"></i>
                             </Link>
                           </div>
-
                         </div>
-
                       </div>
                     </div>
                   </Col>

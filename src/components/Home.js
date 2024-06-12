@@ -155,7 +155,7 @@ export default function Home() {
                               <h3
                                 style={{
                                   color: "white",
-                                  fontSize: "28px",
+                                  fontSize: "32px",
                                   lineHeight: "44px",
                                   fontWeight: 500,
                                 }}
@@ -165,7 +165,7 @@ export default function Home() {
                               <h4
                                 style={{
                                   color: "white",
-                                  fontSize: "28px",
+                                  fontSize: "32px",
                                   lineHeight: "44px",
                                   fontWeight: 500,
                                 }}
