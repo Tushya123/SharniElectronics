@@ -4074,6 +4074,7 @@ div#mCSB_1_container {
 .booking-section .content-box {
   position: relative;
   display: block;
+  padding-top: 100px;
   padding-right: 130px;
   margin-bottom: 180px;
 }
@@ -12418,7 +12419,7 @@ div#mCSB_1_container {
   border: 0;
 }
 .product-sec .news-block-one .inner-box .lower-box .link a {
-  font-size: 14px;
+  font-size: 13px;
   padding-left: 20px;
   border-right: 2px dashed #c5cace;
   padding-right: 10px;
@@ -12428,7 +12429,7 @@ div#mCSB_1_container {
 }
 
 .product-sec .news-block-one .inner-box h2 {
-  font-size: 13px;
+  font-size: 12px;
   line-height: normal;
   font-weight: 600;
   margin-bottom: 0px;

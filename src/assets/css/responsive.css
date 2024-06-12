@@ -1382,7 +1382,7 @@ width: 200px;
   font-size: 20px;
 }
 .product-image-banner{
-  padding: 25px;
+  margin-top: 17px;
 }
 .industries-section .content-box .shape-box{
   display: none;
@@ -1425,10 +1425,10 @@ width: 200px;
 }
 @media only screen and (max-width: 1440px) {
   .pro-det .blog-details-content .content-one .image-box{
-    margin-bottom: 150px;
+    /* margin-bottom: 25px; */
   }
   .producttext{
-    margin-top: -153px;
+    /* margin-top: -153px; */
 
   }
 }

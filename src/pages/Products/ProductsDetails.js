@@ -64,32 +64,52 @@ export default function ProductsDetails() {
   }, [localStorage.getItem("productIds")]);
 
   const generatePdf = () => {
-    axios
-      .post(
-        `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/download-pdf`,
-        { ...productDetailsss },
-        {
-          responseType: 'blob',
-          crossOrigin: true
-        }
-      )
-      .then((response) => {
-        console.log("response",response)
-        const url = window.URL.createObjectURL(
-          new Blob([response.data], { type: 'application/pdf' })
+    const input = document.getElementById("pdf-content");
+    const hiddenElements = document.querySelectorAll(".hidden");
+
+    hiddenElements.forEach((el) => (el.style.display = "block"));
+
+    const images = input.getElementsByTagName("img");
+    const promises = [];
+
+    for (let i = 0; i < images.length; i++) {
+      const img = images[i];
+      if (!img.complete) {
+        promises.push(
+          new Promise((resolve) => {
+            img.onload = img.onerror = resolve;
+          })
         );
-        const link = document.createElement("a");
-        link.href = url;
-        link.setAttribute("download", "brochure.pdf");
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link); // Cleanup after download
+      }
+    }
+
+    Promise.all(promises)
+      .then(() => {
+        return html2canvas(input, { useCORS: true });
       })
-      .catch((error) => {
-        console.error("Error generating PDF: ", error);
-      });
+      .then((canvas) => {
+        hiddenElements.forEach((el) => (el.style.display = "none"));
+
+        const imgData = canvas.toDataURL("image/jpeg");
+        const pdf = new jsPDF();
+        const imgWidth = 200;
+        const pageHeight = 290;
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        let heightLeft = imgHeight;
+        let position = 15;
+
+        while (heightLeft >= 0) {
+          pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
+          heightLeft -= pageHeight;
+          if (heightLeft >= 0) {
+            pdf.addPage();
+          }
+          position = heightLeft - imgHeight;
+        }
+        pdf.save("brochure.pdf");
+      })
+      .catch((error) => console.error("Error generating PDF: ", error));
   };
-  
 
   return (
     <React.Fragment
@@ -158,7 +178,8 @@ export default function ProductsDetails() {
                         <Col lg={12} className="product-image-banner">
                           <figure className="image-box">
                             {productDetailsss && (
-                              <img style={{height:'170px'}}
+                              <img
+                                style={{ height: "170px" }}
                                 src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${productDetailsss.ImageUrl}`}
                                 onLoad={() =>
                                   console.log("Image loaded successfully")
@@ -170,16 +191,18 @@ export default function ProductsDetails() {
                             )}
                           </figure>
                         </Col>
-                        <div className="col-lg-7 mt-4 product-name align-items-center d-flex">
+                        <Row>
+                        <Col lg={7} className=" mt-4 product-name align-items-center d-flex">
                           <h3 className="producttext">
-                            {localStorage.getItem("description")} 
+                            {localStorage.getItem("description")}
                           </h3>
-                        </div>
-                        <div className="col-lg-5 col-12 text-right mt-4"></div>
+                        </Col>
+                        </Row>
+                        {/* <div className="col-lg-5 col-12 text-right mt-4"></div> */}
                       </Row>
                     </Col>
-                    <Col className="col-lg-12 col-12 mt-4">
-                      <div className="table-outer product-detail-table">
+                    <Col lg={12} className="mt-4">
+                    <div className="table-outer product-detail-table">
                         <Table responsive className="cart-table">
                           <thead className="cart-header">
                             <tr style={{ padding: "0px" }}>
