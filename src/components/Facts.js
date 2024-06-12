@@ -29,7 +29,7 @@ export default function Facts() {
                         data-speed="1500"
                         data-stop="1000"
                       >
-                        1000
+                        1000+
                       </span>
                     </div>
                     <h3>Our Happy Clients</h3>
@@ -48,7 +48,7 @@ export default function Facts() {
                         data-speed="1500"
                         data-stop="100"
                       >
-                        100
+                        100+
                       </span>
                     </div>
                     <h3>Our Quality Products</h3>

@@ -5,9 +5,12 @@ import wp from "../assets/images/new-home/whatsapp.png";
 import Modal from "react-bootstrap/Modal";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 import axios from "axios";
-import { Row } from "reactstrap";
+import { Row ,Col} from "reactstrap";
 const countriesArray = [
   { label: "DZ", value: "ALGERIA" },
   { label: "AR", value: "ARGENTINA" },
@@ -79,8 +82,6 @@ export default function Cart() {
     };
   }, []);
 
-
-
   const [products, setProducts] = useState([]);
   const productIds = JSON.parse(localStorage.getItem("productIds")) || [];
   const [productData, setProductData] = useState({
@@ -94,7 +95,7 @@ export default function Cart() {
     IsActive: true,
   });
   const remove_inquiry = async (new_id, event) => {
-    event.preventDefault(); 
+    event.preventDefault();
 
     try {
       const response = await axios.delete(
@@ -170,7 +171,9 @@ export default function Cart() {
         values
       );
       console.log("Data submitted successfully:", response.data);
-      handleClose(); 
+      handleClose();
+      toast.success("Data submitted successfully");
+
 
       setSubmitting(false);
       setProductData({
@@ -185,6 +188,8 @@ export default function Cart() {
       });
     } catch (error) {
       console.error("Error submitting data:", error);
+      toast.error("Error submitting data");
+
     }
   };
 
@@ -192,7 +197,10 @@ export default function Cart() {
     <>
       <React.Fragment
         style={{ position: "relative", minHeight: "100%", top: "0px" }}
+
       >
+        <ToastContainer/>
+        
         <div className="boxed_wrapper">
           <section className="page-title">
             <div
@@ -211,7 +219,6 @@ export default function Cart() {
               </div>
             </div>
           </section>
-
 
           <Modal
             show={show}
@@ -234,8 +241,8 @@ export default function Cart() {
                     >
                       {({ errors, touched }) => (
                         <Form id="contact-form">
-                          <div className="row clearfix">
-                            <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                          <Row className="clearfix">
+                            <Col lg={4} md={6} sm={12} className="form-group">
                               <label>Contact Person</label>
                               <Field
                                 type="text"
@@ -252,8 +259,8 @@ export default function Cart() {
                                 component="div"
                                 className="invalid-feedback"
                               />
-                            </div>
-                            <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                            </Col>
+                            <Col lg={4} md={6} sm={12} className="form-group">
                               <label>Company Name</label>
                               <Field
                                 type="text"
@@ -270,8 +277,8 @@ export default function Cart() {
                                 component="div"
                                 className="invalid-feedback"
                               />
-                            </div>
-                            <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                            </Col>
+                            <Col lg={4} md={6} sm={12} className="form-group">
                               <label>Phone</label>
                               <Field
                                 type="text"
@@ -288,8 +295,8 @@ export default function Cart() {
                                 component="div"
                                 className="invalid-feedback"
                               />
-                            </div>
-                            <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                            </Col>
+                            <Col lg={4} md={6} sm={12} className="form-group">
                               <label>Email</label>
                               <Field
                                 type="email"
@@ -304,8 +311,8 @@ export default function Cart() {
                                 component="div"
                                 className="invalid-feedback"
                               />
-                            </div>
-                            <div className="col-lg-4 col-md-6 col-sm-12 form-group">
+                            </Col>
+                            <Col lg={4} md={6} sm={12} className="form-group">
                               <label>Country</label>
                               <Field
                                 as="select"
@@ -331,8 +338,8 @@ export default function Cart() {
                                 component="div"
                                 className="invalid-feedback"
                               />
-                            </div>
-                            <div className="col-lg-8 col-md-6 col-sm-12 form-group">
+                            </Col>
+                            <Col lg={8} md={6} sm={12} className="form-group">
                               <label>Comments</label>
                               <Field
                                 as="textarea"
@@ -350,8 +357,8 @@ export default function Cart() {
                                 component="div"
                                 className="invalid-feedback"
                               />
-                            </div>
-                            <div className="col-lg-4 col-md-12 col-sm-12 form-group message-btn text-center align-content-center">
+                            </Col>
+                             <Col lg={4} md={12} sm={12}  className="form-group message-btn text-center align-content-center">
                               <button
                                 type="submit"
                                 className="theme-btn"
@@ -359,8 +366,8 @@ export default function Cart() {
                               >
                                 Submit
                               </button>
-                            </div>
-                          </div>
+                            </Col>
+                          </Row>
                         </Form>
                       )}
                     </Formik>
@@ -381,7 +388,7 @@ export default function Cart() {
                 <div class="row clearfix">
                   <div class="col-lg-12 col-md-12 col-sm-12 column clearfix">
                     <div class="table-outer">
-                      <table responsive  class="cart-table">
+                      <table responsive class="cart-table">
                         <thead class="cart-header">
                           <tr>
                             <th>Sr. No</th>
@@ -407,7 +414,7 @@ export default function Cart() {
                                     className="remove-btn"
                                     onClick={(event) =>
                                       remove_inquiry(item.id, event)
-                                    } 
+                                    }
                                   >
                                     <i className="fa-solid fa-xmark"></i>
                                   </a>
@@ -419,7 +426,7 @@ export default function Cart() {
                       </table>
                     </div>
                   </div>
-                  <Row className="d-flex justify-content-center" >
+                  <Row className="d-flex justify-content-center">
                     <div className="col-lg-4 col-md-12 col-sm-12 column clearfix center-btn align-content-center">
                       <div className="btn-box clearfix">
                         <button
@@ -428,8 +435,8 @@ export default function Cart() {
                           data-bs-toggle="modal"
                           data-bs-target="#inquiryModal"
                           onClick={handleShow}
-                          disabled={products.length === 0} 
-                        >
+                          disabled={products.length === 0} // Disable button if no products in the cart
+                          >
                           Make Inquiry
                         </button>
                       </div>
@@ -501,8 +508,8 @@ export default function Cart() {
           <button
             className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
             onClick={scrollToTop}
-            style={{ display: isVisible ? "block" : "none" }}>
-          
+            style={{ display: isVisible ? "block" : "none" }}
+          >
             <i className="flaticon-up-arrow"></i>
           </button>
         </div>

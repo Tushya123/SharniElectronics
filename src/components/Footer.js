@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Button, Figure, Row, Col, Container } from "react-bootstrap";
-import GoogleTranslate from "./GoogleTranslate";
+import Lightbox from 'react-image-lightbox';
+import 'react-image-lightbox/style.css';
 
 export default function Footer() {
   const [cmsDesc, setcmsDesc] = useState("");
   const [galleryData, setGalleryData] = useState([]);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -14,7 +17,6 @@ export default function Footer() {
         const response = await axios.get(
           `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/list/GalleryPhoto`
         );
-        console.log("Gallery Data:", response);
         setGalleryData(response.data);
       } catch (error) {
         console.error("Error fetching gallery data:", error);
@@ -30,11 +32,9 @@ export default function Footer() {
         const res = await axios.get(
           `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/listonly/cms`
         );
-        console.log(res);
         const data = res.data.find(
           (entry) => entry._id === "663f0071ef85cf304603e046"
         );
-        console.log(data);
         setcmsDesc(data.cmsDesc);
       } catch (error) {
         console.error("Error fetching about us data:", error);
@@ -92,7 +92,7 @@ export default function Footer() {
                         <Link to="/certificate">Certificate</Link>
                       </li>
                       <li>
-                        <Link to="/contect">Contact Us</Link>
+                        <Link to="/contact">Contact Us</Link>
                       </li>
                     </ul>
                   </div>
@@ -114,9 +114,10 @@ export default function Footer() {
                               className="img-fluid"
                             />
                             <Link
-                              to={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${item.imageURL}`}
-                              className="lightbox-image"
-                              data-fancybox="gallery"
+                              onClick={() => {
+                                setLightboxOpen(true);
+                                setLightboxIndex(index);
+                              }}
                             >
                               <i className="flaticon-zoom-in"></i>
                             </Link>
@@ -129,7 +130,7 @@ export default function Footer() {
               </Col>
             </Row>
           </div>
-          <div className="footer-bottom py-3">
+          <div className="footer-bottom py-0">
             <Row>
               <Col
                 lg={6}
@@ -146,7 +147,7 @@ export default function Footer() {
               <Col lg={6} md={12} className="text-lg-end text-center">
                 <div className="copyright">
                   <p className="mb-0">
-                    Design & Develop By{" "}
+                    Powered By{" "}
                     <a
                       href="https://www.barodaweb.com/"
                       target="_blank"
@@ -161,6 +162,21 @@ export default function Footer() {
           </div>
         </Container>
       </footer>
+
+      {lightboxOpen && (
+        <Lightbox
+          mainSrc={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${galleryData[lightboxIndex].imageURL}`}
+          nextSrc={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${galleryData[(lightboxIndex + 1) % galleryData.length].imageURL}`}
+          prevSrc={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${galleryData[(lightboxIndex + galleryData.length - 1) % galleryData.length].imageURL}`}
+          onCloseRequest={() => setLightboxOpen(false)}
+          onMovePrevRequest={() =>
+            setLightboxIndex((lightboxIndex + galleryData.length - 1) % galleryData.length)
+          }
+          onMoveNextRequest={() =>
+            setLightboxIndex((lightboxIndex + 1) % galleryData.length)
+          }
+        />
+      )}
 
       <Button className="scroll-top scroll-to-target" data-target="html">
         <i className="flaticon-up-arrow"></i>

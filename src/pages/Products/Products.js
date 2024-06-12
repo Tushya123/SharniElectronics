@@ -8,10 +8,19 @@ import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Preloader from "../../components/PreLoader";
-import { Image, Container, Col, Figure, Row, Form } from "react-bootstrap";
+import { Image, Container, Col, Figure, Row, Form,Spinner } from "react-bootstrap";
 
 export default function Products() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleAddToCartClick = () => {
+    setIsLoading(true);
+    handleAddToCart().finally(() => {
+      setIsLoading(false);
+    });
+  };
+
 
   const toggleVisibility = () => {
     if (window.pageYOffset > 300) {
@@ -210,13 +219,25 @@ export default function Products() {
                             sm={12}
                             className="form-group message-btn text-center"
                           >
-                            <button
-                              type="button"
-                              className="theme-btn"
-                              onClick={handleAddToCart}
-                            >
-                              Add To Cart
-                            </button>
+                    <button
+                      type="button"
+                      className="theme-btn"
+                      onClick={handleAddToCartClick}
+                      disabled={isLoading}
+                    >
+                      {isLoading ? (
+                        <Spinner
+                          as="span"
+                          animation="border"
+                          size="sm"
+                          role="status"
+                          aria-hidden="true"
+                        />
+                      ) : (
+                        'Add To Cart'
+                      )}
+                    </button>
+
                           </Col>
                         </div>
                       </Form>
@@ -294,7 +315,7 @@ export default function Products() {
               }
             )}
 
-            <div
+            {/* <div
               className="modal fade"
               id="inquiryModal"
               tabindex="-1"
@@ -408,7 +429,7 @@ export default function Products() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
             <section
               className="locations-section sec-pad text-center"
               style={{ backgroundImage: `url(${shape10})` }}
@@ -452,13 +473,18 @@ export default function Products() {
                               <i className="flaticon-right-arrow"></i>
                             </Link>
                           </div>
+                          <div className="link">
+                            <Link
+                              onClick={() => setShowModal(true)}
+                              style={{ color: "#16436f" }}
+                            >
+                              Locate Us
+                               <i className="flaticon-right-arrow"></i>
+                            </Link>
+                          </div>
+
                         </div>
-                        <Link
-                          onClick={() => setShowModal(true)}
-                          style={{ color: "#16436f" }}
-                        >
-                          Locate Us <i className="flaticon-right-arrow"></i>
-                        </Link>
+
                       </div>
                     </div>
                   </Col>

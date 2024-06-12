@@ -153,14 +153,18 @@ export default function Commitment() {
                               <i className="flaticon-right-arrow"></i>
                             </Link>
                           </div>
-                        </div>
-                        <Link
-                          onClick={() => setShowModal(true)} 
-                          style={{ color: "#16436f" }} 
+                          <div className="link">
+                            <Link
+                              onClick={() => setShowModal(true)}
+                              style={{ color: "#16436f" }}
+                            >
+                              Locate Us
+                               <i className="flaticon-right-arrow"></i>
+                            </Link>
+                          </div>
 
-                        >
-                          Locate Us <i className="flaticon-right-arrow"></i>
-                        </Link>
+                        </div>
+
                       </div>
                     </div>
                   </Col>

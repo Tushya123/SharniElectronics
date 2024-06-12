@@ -233,13 +233,17 @@ export default function Home() {
                               <i className="flaticon-right-arrow"></i>
                             </Link>
                           </div>
+                          <div className="link">
+                            <Link
+                              onClick={() => setShowModal(true)}
+                              style={{ color: "#16436f" }}
+                            >
+                              Locate Us
+                               <i className="flaticon-right-arrow"></i>
+                            </Link>
+                          </div>
+
                         </div>
-                        <Link
-                          onClick={() => setShowModal(true)}
-                          style={{ color: "#16436f" }}
-                        >
-                          Locate Us <i className="flaticon-right-arrow"></i>
-                        </Link>
                       </div>
                     </div>
                   </Col>
@@ -259,7 +263,7 @@ export default function Home() {
 
             <div className="sticky-whatsapp">
               <Link
-                to="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
+                to="https://api.whatsapp.com/send?phone=919909247312&amp;text= Hello Shreeji Pharma Team, I am interested in -"
                 target="_blank"
               >
                 <Image src={wp} className="img-responsive" alt="WhatsApp" />

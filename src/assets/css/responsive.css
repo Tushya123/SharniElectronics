@@ -1248,6 +1248,9 @@
   .sec-title .sub-title {
     line-height: 29px;
   }
+  .google-trans{
+    right: 10px;
+  }
   .about-section .image-box .shape-box .shape-1 {
 top: -23px;
   }

@@ -1,116 +1,117 @@
-  import React, { useState } from "react";
-  import booking from "../assets/images/background/booking-bg.jpg";
-  import shape7 from "../assets/images/shape/shape-7.png";
-  import shape8 from "../assets/images/shape/shape-8.png";
-  import shape9 from "../assets/images/shape/shape-9.png";
-  import axios from "axios";
-  import { ToastContainer, toast } from "react-toastify";
-  import "react-toastify/dist/ReactToastify.css";
-  import { Container, Row, Col } from "react-bootstrap";
+import React, { useState } from "react";
+import booking from "../assets/images/background/booking-bg.jpg";
+import shape7 from "../assets/images/shape/shape-7.png";
+import shape8 from "../assets/images/shape/shape-8.png";
+import shape9 from "../assets/images/shape/shape-9.png";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Container, Row, Col, Form } from "react-bootstrap";
 
-  const countriesArray = [
-    { label: "DZ", value: "ALGERIA" },
-    { label: "AR", value: "ARGENTINA" },
-    { label: "AU", value: "AUSTRALIA" },
-    { label: "BD", value: "BANGLADESH" },
-    { label: "BE", value: "BELGIUM" },
-    { label: "BR", value: "BRAZIL" },
-    { label: "CA", value: "CANADA" },
-    { label: "CN", value: "CHINA" },
-    { label: "EG", value: "EGYPT" },
-    { label: "FR", value: "FRANCE" },
-    { label: "DE", value: "GERMANY" },
-    { label: "IN", value: "INDIA" },
-    { label: "IL", value: "ISRAEL" },
-    { label: "IT", value: "ITALY" },
-    { label: "JP", value: "JAPAN" },
-    { label: "MY", value: "MALAYSIA" },
-    { label: "MX", value: "MEXICO" },
-    { label: "NP", value: "NEPAL" },
-    { label: "NL", value: "NETHERLANDS" },
-    { label: "NZ", value: "NEW ZEALAND" },
-    { label: "PH", value: "PHILIPPINES" },
-    { label: "PT", value: "PORTUGAL" },
-    { label: "QA", value: "QATAR" },
-    { label: "ZA", value: "SOUTH AFRICA" },
-    { label: "ES", value: "SPAIN" },
-    { label: "SE", value: "SWEDEN" },
-    { label: "CH", value: "SWITZERLAND" },
-    { label: "TR", value: "TURKEY" },
-    { label: "UA", value: "UKRAINE" },
-    { label: "AE", value: "UNITED ARAB EMIRATES" },
-    { label: "GB", value: "UNITED KINGDOM" },
-    { label: "US", value: "UNITED STATES" },
-  ];
+const countriesArray = [
+  { label: "DZ", value: "ALGERIA" },
+  { label: "AR", value: "ARGENTINA" },
+  { label: "AU", value: "AUSTRALIA" },
+  { label: "BD", value: "BANGLADESH" },
+  { label: "BE", value: "BELGIUM" },
+  { label: "BR", value: "BRAZIL" },
+  { label: "CA", value: "CANADA" },
+  { label: "CN", value: "CHINA" },
+  { label: "EG", value: "EGYPT" },
+  { label: "FR", value: "FRANCE" },
+  { label: "DE", value: "GERMANY" },
+  { label: "IN", value: "INDIA" },
+  { label: "IL", value: "ISRAEL" },
+  { label: "IT", value: "ITALY" },
+  { label: "JP", value: "JAPAN" },
+  { label: "MY", value: "MALAYSIA" },
+  { label: "MX", value: "MEXICO" },
+  { label: "NP", value: "NEPAL" },
+  { label: "NL", value: "NETHERLANDS" },
+  { label: "NZ", value: "NEW ZEALAND" },
+  { label: "PH", value: "PHILIPPINES" },
+  { label: "PT", value: "PORTUGAL" },
+  { label: "QA", value: "QATAR" },
+  { label: "ZA", value: "SOUTH AFRICA" },
+  { label: "ES", value: "SPAIN" },
+  { label: "SE", value: "SWEDEN" },
+  { label: "CH", value: "SWITZERLAND" },
+  { label: "TR", value: "TURKEY" },
+  { label: "UA", value: "UKRAINE" },
+  { label: "AE", value: "UNITED ARAB EMIRATES" },
+  { label: "GB", value: "UNITED KINGDOM" },
+  { label: "US", value: "UNITED STATES" },
+];
 
-  export default function Inquiry() {
-    const [formData, setFormData] = useState({
-      ContactPerson: "",
-      Mobile: "",
-      Email: "",
-      Country: "",
-      Message: "",
+export default function Inquiry() {
+  const [formData, setFormData] = useState({
+    ContactPerson: "",
+    Mobile: "",
+    Email: "",
+    Country: "",
+    Message: "",
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
     });
+  };
 
-    const [errors, setErrors] = useState({});
+  const validateForm = () => {
+    let formErrors = {};
+    if (!formData.ContactPerson) formErrors.ContactPerson = "Enter Your Name!";
+    if (!formData.Mobile) {
+      formErrors.Mobile = "Enter Your Mobile Number!";
+    } else if (!/^\d{10}$/.test(formData.Mobile)) {
+      formErrors.Mobile = "Invalid phone number";
+    }
+    if (!formData.Email) {
+      formErrors.Email = "Enter Your Email Address!";
+    } else if (!/\S+@\S+\.\S+/.test(formData.Email)) {
+      formErrors.Email = "Invalid email";
+    }
+    if (!formData.Country) formErrors.Country = "Pls Select Your Country!";
+    if (!formData.Message) formErrors.Message = "Enter your Message!";
+    return formErrors;
+  };
 
-    const handleChange = (e) => {
-      setFormData({
-        ...formData,
-        [e.target.name]: e.target.value,
-      });
-    };
-
-    const validateForm = () => {
-      let formErrors = {};
-      if (!formData.ContactPerson) formErrors.ContactPerson = "Enter Your Name!";
-      if (!formData.Mobile) {
-        formErrors.Mobile = "Enter Your Mobile Number!";
-      } else if (!/^\d{10}$/.test(formData.Mobile)) {
-        formErrors.Mobile = "Invalid phone number";
-      }
-      if (!formData.Email) {
-        formErrors.Email = "Enter Your Email Address!";
-      } else if (!/\S+@\S+\.\S+/.test(formData.Email)) {
-        formErrors.Email = "Invalid email";
-      }
-      if (!formData.Country) formErrors.Country = "Pls Select Your Country!";
-      if (!formData.Message) formErrors.Message = "Enter your Message!";
-      return formErrors;
-    };
-
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      const formErrors = validateForm();
-      if (Object.keys(formErrors).length > 0) {
-        setErrors(formErrors);
-        return;
-      }
-      setErrors({});
-      try {
-        const response = await axios.post(
-          `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/create/contactinquiry`,
-          formData
-        );
-        if (response) {
-          toast.success("Your application has been submitted successfully!");
-          setFormData({
-            ContactPerson: "",
-            Mobile: "",
-            Email: "",
-            Country: "",
-            Message: "",
-          });
-        } else {
-          toast.error("Application submission failed. Please try again.");
-        }
-      } catch (error) {
-        console.error("Application submission error:", error);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formErrors = validateForm();
+    if (Object.keys(formErrors).length > 0) {
+      setErrors(formErrors);
+      return;
+    }
+    setErrors({});
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/create/contactinquiry`,
+        formData
+      );
+      if (response) {
+        toast.success("Your application has been submitted successfully!");
+        setFormData({
+          ContactPerson: "",
+          Mobile: "",
+          Email: "",
+          Country: "",
+          Message: "",
+        });
+      } else {
         toast.error("Application submission failed. Please try again.");
       }
-    };
+    } catch (error) {
+      console.error("Application submission error:", error);
+      toast.error("Application submission failed. Please try again.");
+    }
+  };
 
-    return (
+  return (
+    <>
       <section className="booking-section sec-pad">
         <ToastContainer />
 
@@ -146,7 +147,7 @@
             <Col lg={6} md={12} sm={12} className="inner-column">
               <div className="inner-content">
                 <div className="form-inner">
-                  <form onSubmit={handleSubmit}>
+                  <Form onSubmit={handleSubmit}>
                     <Row className="clearfix">
                       <Col lg={6} md={12} sm={12} className="form-group">
                         <i className="fa-solid fa-circle-user"></i>
@@ -164,7 +165,7 @@
                           <div className="error-message">
                             {errors.ContactPerson}
                           </div>
-                        )}
+                        )}{" "}
                       </Col>
                       <Col lg={6} md={12} sm={12} className="form-group">
                         <i className="fa-solid fa-phone"></i>
@@ -198,6 +199,7 @@
                           <div className="error-message">{errors.Email}</div>
                         )}
                       </Col>
+
                       <Col lg={6} md={12} sm={12} className="form-group">
                         <label>Select Country</label>
                         <div className="select-box">
@@ -217,10 +219,13 @@
                             ))}
                           </select>
                           {errors.Country && (
-                            <div className="error-message">{errors.Country}</div>
+                            <div className="error-message">
+                              {errors.Country}
+                            </div>
                           )}
                         </div>
                       </Col>
+
                       <Col lg={12} md={12} sm={12} className="form-group">
                         <label>Message</label>
                         <textarea
@@ -235,7 +240,9 @@
                           required=""
                         ></textarea>
                         {errors.Message && (
-                          <div className="error-message text-area">{errors.Message}</div>
+                          <div className="error-message text-area">
+                            {errors.Message}
+                          </div>
                         )}
                       </Col>
                       <Col lg={12} md={12} sm={12} className="full">
@@ -248,12 +255,13 @@
                         </button>
                       </Col>
                     </Row>
-                  </form>
+                  </Form>
                 </div>
               </div>
             </Col>
           </Row>
         </Container>
       </section>
-    );
-  }
+    </>
+  );
+}

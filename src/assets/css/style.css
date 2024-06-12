@@ -536,7 +536,7 @@ img {
   text-transform: uppercase;
   letter-spacing: 0.6px;
   padding-left: 27px;
-  margin: 30px;
+  margin: -18px;
 }
 
 .sec-title .sub-title:before {
@@ -565,7 +565,7 @@ img {
   font-size: 40px;
   line-height: 62px;
   font-weight: 500;
-  margin: 0px;
+  margin: 8px;
 }
 
 .sec-title.light h2 {
@@ -772,7 +772,7 @@ img {
   top: 0;
   z-index: 999;
   pointer-events: all;
-  right: 10px;
+  right: 170px;
   border-radius: 5px;
   background: #fff;
 }
@@ -1794,7 +1794,7 @@ div#mCSB_1_container {
 .banner-carousel {
   position: relative;
   overflow: hidden;
-  height: 90vh;
+  height: 100vh;
 }
 /* @media screen  and (max-width:768px) {
     .banner-section{
@@ -1804,7 +1804,7 @@ div#mCSB_1_container {
 .banner-carousel .slide-item {
   position: relative;
   padding: 180px 0px 10px 0px;
-  height: 90vh;
+  height: 100vh;
 }
 
 .slide-item:before {
@@ -1950,7 +1950,7 @@ div#mCSB_1_container {
   line-height: 48px;
   font-weight: 500;
   color: #fff;
-  margin-bottom: 21px;
+  margin-bottom: 50px;
 }
 
 .banner-carousel .content-box .list {
@@ -4432,7 +4432,7 @@ div#mCSB_1_container {
   display: flex;
   align-items: center;
   padding-left: 85px;
-  min-height: 78px;
+  /* min-height: 78px; */
 }
 
 .main-footer .about-widget .lower-box .icon-box {
@@ -4476,6 +4476,7 @@ div#mCSB_1_container {
   font-size: 18px;
   line-height: 26px;
   color: #fff;
+  bottom: -28px;
   font-weight: 500;
 }
 
@@ -12409,6 +12410,7 @@ div#mCSB_1_container {
   padding: 20px;
   display: flex;
   justify-content: space-between;
+  padding: 20px 10px 0px;
 }
 .product-sec .news-block-one .inner-box .text {
   margin-bottom: 0;
@@ -12418,14 +12420,15 @@ div#mCSB_1_container {
 .product-sec .news-block-one .inner-box .lower-box .link a {
   font-size: 14px;
   padding-left: 20px;
-  border-left: 2px dashed #c5cace;
+  border-right: 2px dashed #c5cace;
+  padding-right: 10px;
 }
 .product-sec.sidebar-page-container .content-side:before {
   border: 0px;
 }
 
 .product-sec .news-block-one .inner-box h2 {
-  font-size: 16px;
+  font-size: 13px;
   line-height: normal;
   font-weight: 600;
   margin-bottom: 0px;
@@ -14090,7 +14093,7 @@ div#mCSB_1_container {
 
 .slick-slide .image-layer img {
   display: block;
-  height: 90vh;
+  height: 100vh;
   width: 100%;
   object-fit: cover;
 }
@@ -14270,4 +14273,8 @@ input {
 }
 .theme-btn.resp-width{
   width: 100%;
+}
+.producttext{
+  font-size: 20px;
+  font-weight: 600;
 }

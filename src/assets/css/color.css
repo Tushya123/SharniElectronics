@@ -266,11 +266,11 @@
 }
 
 .news-block-one .inner-box .lower-content .category a:hover{
-	background: #10b1b4;
+	/* background: #10b1b4; */
 }
 
 .news-block-one .inner-box .lower-content .category a:hover:before{
-  background: #10b1b4;
+  /* background: #10b1b4; */
 }
 
 .news-block-one .inner-box .lower-content .post-info li{

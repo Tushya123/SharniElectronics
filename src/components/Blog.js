@@ -27,6 +27,11 @@ export default function Blog() {
 
   const firstBlogId = Blogs.length > 0 ? Blogs[0]._id : null;
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
+  };
+
   return (
     <React.Fragment>
       <section className="blog-grid news-style-two py-5">
@@ -36,7 +41,7 @@ export default function Blog() {
             <h2>Explore our latest Blog</h2>
             <div className="btn-box">
               <button href="#" className="theme-btn">
-                <Link  style={{color:"white"}}to={`/blogdetails/${firstBlogId}`} >
+                <Link style={{color:"white"}} to={`/blogdetails/${firstBlogId}`}>
                   View Blog Details
                 </Link>
               </button>
@@ -66,7 +71,7 @@ export default function Blog() {
                         <Link>{blog.Category}</Link>
                       </div>
                       <ul className="post-info list-unstyled d-flex mb-2">
-                        <li className="me-3">{blog.date}</li>
+                        <li className="me-3">{formatDate(blog.createdAt)}</li>
                       </ul>
                       <h3 className="mb-3">
                         <Link>{blog.Title}</Link>

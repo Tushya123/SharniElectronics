@@ -178,7 +178,7 @@ export default function ProductsDetails() {
                         <Col lg={12} className="product-image-banner">
                           <figure className="image-box">
                             {productDetailsss && (
-                              <img
+                              <img style={{height:'170px'}}
                                 src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${productDetailsss.ImageUrl}`}
                                 onLoad={() =>
                                   console.log("Image loaded successfully")
@@ -192,8 +192,7 @@ export default function ProductsDetails() {
                         </Col>
                         <div className="col-lg-7 mt-4 product-name align-items-center d-flex">
                           <h3 className="producttext">
-                            {localStorage.getItem("description")} : Chemical
-                            Name
+                            {localStorage.getItem("description")} 
                           </h3>
                         </div>
                         <div className="col-lg-5 col-12 text-right mt-4"></div>
