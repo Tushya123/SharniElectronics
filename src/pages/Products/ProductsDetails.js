@@ -64,52 +64,32 @@ export default function ProductsDetails() {
   }, [localStorage.getItem("productIds")]);
 
   const generatePdf = () => {
-    const input = document.getElementById("pdf-content");
-    const hiddenElements = document.querySelectorAll(".hidden");
-
-    hiddenElements.forEach((el) => (el.style.display = "block"));
-
-    const images = input.getElementsByTagName("img");
-    const promises = [];
-
-    for (let i = 0; i < images.length; i++) {
-      const img = images[i];
-      if (!img.complete) {
-        promises.push(
-          new Promise((resolve) => {
-            img.onload = img.onerror = resolve;
-          })
-        );
-      }
-    }
-
-    Promise.all(promises)
-      .then(() => {
-        return html2canvas(input, { useCORS: true });
-      })
-      .then((canvas) => {
-        hiddenElements.forEach((el) => (el.style.display = "none"));
-
-        const imgData = canvas.toDataURL("image/jpeg");
-        const pdf = new jsPDF();
-        const imgWidth = 200;
-        const pageHeight = 290;
-        const imgHeight = (canvas.height * imgWidth) / canvas.width;
-        let heightLeft = imgHeight;
-        let position = 15;
-
-        while (heightLeft >= 0) {
-          pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
-          heightLeft -= pageHeight;
-          if (heightLeft >= 0) {
-            pdf.addPage();
-          }
-          position = heightLeft - imgHeight;
+    axios
+      .post(
+        `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/download-pdf`,
+        { ...productDetailsss },
+        {
+          responseType: 'blob',
+          crossOrigin: true
         }
-        pdf.save("brochure.pdf");
+      )
+      .then((response) => {
+        console.log("response",response)
+        const url = window.URL.createObjectURL(
+          new Blob([response.data], { type: 'application/pdf' })
+        );
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", "brochure.pdf");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link); // Cleanup after download
       })
-      .catch((error) => console.error("Error generating PDF: ", error));
+      .catch((error) => {
+        console.error("Error generating PDF: ", error);
+      });
   };
+  
 
   return (
     <React.Fragment
