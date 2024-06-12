@@ -269,7 +269,7 @@ export default function Products() {
                             <div
                               key={index}
                               className={`col-lg-${
-                                products.length === 1 ? "3" : "3"
+                                products.length === 1 ? "4" : "4"
                               } col-md-12 col-sm-12 content-side`}
                             >
                               <div className="news-block-one">

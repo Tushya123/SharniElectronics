@@ -525,10 +525,7 @@
   .header-top .top-inner .info-list li:last-child {
     margin-bottom: 0px;
   }
-  .banner-carousel .content-box h2 {
-font-size: 25px;
-margin-bottom: 10px;
-  }
+
   .banner-carousel .owl-dots {
     display: none;
   }
@@ -909,11 +906,11 @@ margin-bottom: 10px;
     text-align: left;
   }
   .banner-carousel .content-box .list li h3 {
-    font-size: 22px !important;
+    font-size: 28px !important;
   }
 
   .banner-carousel .content-box .list li h4 {
-    font-size: 22px !important;
+    font-size: 28px !important;
   }
 }
 
@@ -1064,7 +1061,7 @@ margin-bottom: 10px;
   }
 
   .banner-style-one .banner-carousel .content-box h2 {
-    font-size: 25px;
+    font-size: 30px;
     line-height: 40px;
   }
 
@@ -1373,7 +1370,6 @@ width: 200px;
   font-size: 20px;
   text-align: center;
   padding: 12px;
-  margin-bottom: 33px;
 }
 .booking-section .inner-content{
   margin-bottom: 20px;
