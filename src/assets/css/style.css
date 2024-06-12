@@ -1946,11 +1946,11 @@ div#mCSB_1_container {
 }
 
 .banner-carousel .content-box h2 {
-  font-size: 34px;
+  font-size: 26px;
   line-height: 48px;
   font-weight: 500;
   color: #fff;
-  margin-bottom: 50px;
+  margin-bottom: 26px;
 }
 
 .banner-carousel .content-box .list {
@@ -12429,7 +12429,7 @@ div#mCSB_1_container {
 }
 
 .product-sec .news-block-one .inner-box h2 {
-  font-size: 12px;
+  font-size: 14px;
   line-height: normal;
   font-weight: 600;
   margin-bottom: 0px;
@@ -13953,7 +13953,7 @@ div#mCSB_1_container {
   display: flex;
 }
 .custom-slider-icon li img {
-  width: 65%;
+  width: 55%;
 }
 .col-lg-5-new {
   width: 49%;
