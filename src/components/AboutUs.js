@@ -34,7 +34,7 @@ export default function AboutUs() {
       <section className="about-section py-5">
         <Container>
           <Row className="clearfix" style={{ justifyContent: "center" }}>
-            <Col lg={6} md={12} sm={12} className="image-column mb-4 mb-lg-0">
+            <Col lg={6} md={8} sm={12} className="image-column mb-4 mb-lg-0">
             <div className="image-box">
                   <div className="shape-box">
                     <div className="shape shape-1 hexagon_shape"></div>

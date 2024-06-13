@@ -1794,7 +1794,7 @@ div#mCSB_1_container {
 .banner-carousel {
   position: relative;
   overflow: hidden;
-  height: 100vh;
+  height: 95vh;
 }
 /* @media screen  and (max-width:768px) {
     .banner-section{
@@ -14278,9 +14278,4 @@ input {
 .producttext{
   font-size: 20px;
   font-weight: 600;
-}
-.bannerimage{
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover;
 }
