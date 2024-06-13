@@ -66,7 +66,7 @@ export default function Home() {
     arrows: true,
     infinite: true,
     speed: 500,
-    autoplay: true,
+    // autoplay: true,
     autoplaySpeed: 2000,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -76,7 +76,7 @@ export default function Home() {
           dots={dots}
           numDotsToShow={4}
           dotWidth={30}
-          autoplay={true}
+          // autoplay={true}
           speed={500}
           slidesToScroll={1}
           slidesToShow={1}
@@ -122,7 +122,7 @@ export default function Home() {
                     <div className="image-layer">
                       <img
                         src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${bannerItem.bannerImage}`}
-                        className="w-100"
+                        className="bannerimage w-100"
                         alt=""
                       />
                     </div>

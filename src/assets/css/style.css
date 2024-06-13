@@ -14279,3 +14279,8 @@ input {
   font-size: 20px;
   font-weight: 600;
 }
+.bannerimage{
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}

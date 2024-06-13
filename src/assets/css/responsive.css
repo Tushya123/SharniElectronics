@@ -1241,7 +1241,7 @@
   }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1028px) {
   .position-slider .content-box {
     top: 300px;
   }
@@ -1251,11 +1251,14 @@
   .google-trans{
     right: 10px;
   }
+  .banner-carousel {
+    /* height: 600px; */
+  }
   .about-section .image-box .shape-box .shape-1 {
 top: -23px;
   }
   .service-block-one .inner-box .image-box .image img {
-    height: 260px;
+    height: 260px !important;
   }
   .theme-btn{
     margin: -11px;
