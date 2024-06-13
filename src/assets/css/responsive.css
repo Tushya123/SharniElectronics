@@ -1549,6 +1549,16 @@
   .banner-carousel {
     height: 75vh;
 }
+.banner-carousel .content-box .list li h3 {
+  font-size: 25px!important;
+}
+.banner-carousel .content-box .list li h4{
+  font-size: 25px!important;
+
+}
+.banner-carousel .content-box h2 {
+  margin-bottom: 74px !important;
+}
 }
 @media (min-width: 412px) and (min-height: 915px) {
   .banner-carousel .content-box h2 {
