@@ -565,7 +565,7 @@ img {
   font-size: 40px;
   line-height: 62px;
   font-weight: 500;
-  margin: 8px;
+  margin: 0px;
 }
 
 .sec-title.light h2 {
@@ -14291,8 +14291,4 @@ input {
 }
 .banner-carousel .content-box h2, .sec-title h2{
   font-size: 34px;
-}
-.news-block-one.inactive {
-  color: red;
-  border: 1px solid red; /* Optional: add a border to emphasize */
 }

@@ -49,7 +49,7 @@ export default function Blog() {
           </div>
           <Row className="clearfix">
             {Blogs.map((blog, index) => (
-              <Col lg={6} md={6} sm={12} className="mb-4" key={index} style={{paddingLeft:'0px'}}>
+              <Col lg={6} md={6} sm={12} className="mb-4" key={index} style={{paddingRight:'0px'}}>
                 <div className="news-block-one wow fadeInUp animated">
                   <div className="inner-box">
                     <div className="image-box position-relative">
@@ -68,7 +68,7 @@ export default function Blog() {
                     </div>
                     <div className="lower-content p-3">
                       <div className="category mb-2">
-                        <Link>{blog.Category}</Link>
+                        <a>{blog.Category}</a>
                       </div>
                       <ul className="post-info list-unstyled d-flex mb-2">
                         <li className="me-3">{formatDate(blog.createdAt)}</li>

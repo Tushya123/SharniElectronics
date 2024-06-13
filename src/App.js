@@ -39,6 +39,7 @@ import Industries from "./components/Industries";
 import Strenghts from "./components/Strenghts";
 import Facts from "./components/Facts";
 import GoogleTranslate from "./components/GoogleTranslate";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -54,6 +55,7 @@ function App() {
       <SearchProvider>
         <BrowserRouter>
           <Header />
+          <ScrollToTop/>
           <>
             <Routes>
               <Route path="/" element={<Home />} />

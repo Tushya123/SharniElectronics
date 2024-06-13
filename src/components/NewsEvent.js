@@ -72,7 +72,7 @@ export default function NewsEvent() {
                       </div>
                       <div className="lower-content">
                         <div className="category">
-                          <Link>Shreeji Pharma</Link>
+                          <a>Shreeji Pharma</a>
                         </div>
                         <ul className="post-info clearfix">
                           <li>{formatDate(item.createdAt)}</li>
