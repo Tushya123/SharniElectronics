@@ -64,28 +64,37 @@ export default function Products() {
 
     fetchData();
   }, []);
-const NextArrow = (props) => {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", background: "#16436f",borderRadius:"10px" }}
-      onClick={onClick}
-    />
-  );
-};
+  const NextArrow = (props) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          display: "block",
+          background: "#16436f",
+          borderRadius: "10px",
+        }}
+        onClick={onClick}
+      />
+    );
+  };
 
-const PrevArrow = (props) => {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", background: "#16436f" ,borderRadius:"10px"}} 
-      onClick={onClick}
-    />
-  );
-};
-
+  const PrevArrow = (props) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          display: "block",
+          background: "#16436f",
+          borderRadius: "10px",
+        }}
+        onClick={onClick}
+      />
+    );
+  };
 
   return (
     <React.Fragment>
@@ -95,9 +104,13 @@ const PrevArrow = (props) => {
             <span className="sub-title">Our Products</span>
             <h2>We Provide Quality Product</h2>
           </div>
-          <Slider {...settings} nextArrow={<NextArrow />} prevArrow={<PrevArrow />}>
+          <Slider
+            {...settings}
+            nextArrow={<NextArrow />}
+            prevArrow={<PrevArrow />}
+          >
             {products.map((product, index) => (
-              <div className="service-block-one" key={index}>
+              <div className="service-block-one"  key={index}>
                 <div className="inner-box">
                   <div className="image-box">
                     <Figure className="image">
@@ -111,18 +124,17 @@ const PrevArrow = (props) => {
                     </div>
                   </div>
                   <div className="lower-content">
-                  <Link
-                                  onClick={() => {
-                                    window.location.href = "/products";
-                                    localStorage.setItem(
-                                      "selectedProductId",
-                                      product.ProductGroup
-                                    );
-                                  }}
-                                >
-                    <h3>{product.ProductGroup}</h3>
-                                </Link>
-
+                    <Link
+                      onClick={() => {
+                        window.location.href = "/products";
+                        localStorage.setItem(
+                          "selectedProductId",
+                          product.ProductGroup
+                        );
+                      }}
+                    >
+                      <h3>{product.ProductGroup}</h3>
+                    </Link>
                   </div>
                 </div>
               </div>

@@ -131,7 +131,7 @@ export default function Inquiry() {
         </div>
         <Container className="auto-container">
           <Row className="clearfix custom-form">
-            <Col lg={5} md={12} sm={12} className="content-column">
+            <Col lg={5} md={12} sm={12} className="content-column" style={{paddingLeft:'0px'}}>
               <div className="content-box">
                 <span className="rotate-text">contact us</span>
                 <div

@@ -49,12 +49,12 @@ export default function Footer() {
         <Container>
           <div className="widget-section">
             <Row className="clearfix">
-              <Col lg={5} md={6} sm={12} className="mb-4">
+              <Col lg={5} md={6} sm={12} className="mb-4" style={{paddingLeft:'0px'}}>
                 <div className="footer-widget about-widget">
                   <div className="widget-title">
                     <h3>About Us</h3>
                   </div>
-                  <div className="text">
+                  <div className="text" style={{marginBottom:"-12px"}}>
                     {React.createElement("div", {
                       dangerouslySetInnerHTML: {
                         __html: `${cmsDesc}<style>p{font-size:19px;font-weight:400}`,

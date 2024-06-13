@@ -536,7 +536,7 @@ img {
   text-transform: uppercase;
   letter-spacing: 0.6px;
   padding-left: 27px;
-  margin: -18px;
+  margin: 0px;
 }
 
 .sec-title .sub-title:before {
@@ -545,7 +545,7 @@ img {
   width: 10px;
   height: 10px;
   left: 8px;
-  top: 7px;
+  top: 23px;
   border-radius: 50%;
 }
 
@@ -555,7 +555,7 @@ img {
   width: 6px;
   height: 6px;
   left: 0px;
-  top: 2px;
+  top: 17px;
   border-radius: 50%;
 }
 
@@ -4127,7 +4127,7 @@ div#mCSB_1_container {
 
 .booking-section .content-box .shape {
   position: absolute;
-  top: 63%;
+  top: 65%;
   transform: translateY(-50%);
   right: 0px;
   width: 200px;
@@ -4136,7 +4136,7 @@ div#mCSB_1_container {
 
 .booking-section .content-box .rotate-text {
   position: absolute;
-  top: 132px;
+  top: 158px;
   right: 0px;
   font-size: 18px;
   line-height: 227px;
@@ -14278,4 +14278,17 @@ input {
 .producttext{
   font-size: 20px;
   font-weight: 600;
+  margin-left: -15px;
+}
+.disabled-btn {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.disabled-btn:hover {
+  background-color: inherit; /* Remove hover effect */
+  cursor: not-allowed;
+}
+.banner-carousel .content-box h2, .sec-title h2{
+  font-size: 34px;
 }

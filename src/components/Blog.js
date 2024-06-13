@@ -49,7 +49,7 @@ export default function Blog() {
           </div>
           <Row className="clearfix">
             {Blogs.map((blog, index) => (
-              <Col lg={6} md={6} sm={12} className="mb-4" key={index}>
+              <Col lg={6} md={6} sm={12} className="mb-4" key={index} style={{paddingLeft:'0px'}}>
                 <div className="news-block-one wow fadeInUp animated">
                   <div className="inner-box">
                     <div className="image-box position-relative">

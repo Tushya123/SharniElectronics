@@ -1527,7 +1527,10 @@
 }
 @media (min-width: 390px) and (min-height: 844px) {
   .position-slider .content-box {
-    top: 374px !important;
+    top: 407px !important;
+  }
+  .banner-carousel{
+    height: 83vh;
   }
 }
 @media (min-width: 414px) and (min-height: 896px) {
@@ -1543,6 +1546,9 @@
   .position-slider .content-box {
     top: 340px !important;
   }
+  .banner-carousel {
+    height: 75vh;
+}
 }
 @media (min-width: 412px) and (min-height: 915px) {
   .banner-carousel .content-box h2 {
@@ -1627,10 +1633,29 @@
 .banner-carousel .slick-dots {
   top: 32% !important;
 }
+.banner-carousel {
+  height: 53vh;
+}
 }
 @media (min-width: 1440px) and (min-height: 975px) {
 
 .banner-carousel .slick-dots {
   top: 39% !important;
+}
+.banner-carousel .content-box h2, .sec-title h2 {
+  font-size: 34px;
+  line-height: 51px;
+}
+}
+@media (min-width: 1024px) and (min-height: 845px) {
+
+.banner-carousel .content-box h2, .sec-title h2 {
+  font-size: 34px;
+  line-height: 51px;
+}
+}
+@media screen and (min-width:1440px) {
+  .banner-carousel .content-box h2, .sec-title h2 {
+    font-size: 33px;
 }
 }

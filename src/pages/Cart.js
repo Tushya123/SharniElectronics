@@ -8,9 +8,8 @@ import * as Yup from "yup";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 import axios from "axios";
-import { Row ,Col} from "reactstrap";
+import { Row, Col } from "reactstrap";
 const countriesArray = [
   { label: "DZ", value: "ALGERIA" },
   { label: "AR", value: "ARGENTINA" },
@@ -174,7 +173,6 @@ export default function Cart() {
       handleClose();
       toast.success("Data submitted successfully");
 
-
       setSubmitting(false);
       setProductData({
         ProductDetail: JSON.parse(localStorage.getItem("productIds")),
@@ -189,18 +187,17 @@ export default function Cart() {
     } catch (error) {
       console.error("Error submitting data:", error);
       toast.error("Error submitting data");
-
     }
   };
+  const isDisabled = products.length === 0;
 
   return (
     <>
       <React.Fragment
         style={{ position: "relative", minHeight: "100%", top: "0px" }}
-
       >
-        <ToastContainer/>
-        
+        <ToastContainer />
+
         <div className="boxed_wrapper">
           <section className="page-title">
             <div
@@ -358,7 +355,12 @@ export default function Cart() {
                                 className="invalid-feedback"
                               />
                             </Col>
-                             <Col lg={4} md={12} sm={12}  className="form-group message-btn text-center align-content-center">
+                            <Col
+                              lg={4}
+                              md={12}
+                              sm={12}
+                              className="form-group message-btn text-center align-content-center"
+                            >
                               <button
                                 type="submit"
                                 className="theme-btn"
@@ -401,12 +403,18 @@ export default function Cart() {
                           {products.map((item, index) => {
                             return (
                               <tr>
-                                <td>{index + 1}</td>
-                                <td class="prod-column">
-                                  <h5>{item.productDetailLabel}</h5>
+                                <td style={{ fontSize: "16px" }}>
+                                  {index + 1}
                                 </td>
                                 <td class="prod-column">
-                                  <h5>{item.quantity}</h5>
+                                  <h5 style={{ fontSize: "16px" }}>
+                                    {item.productDetailLabel}
+                                  </h5>
+                                </td>
+                                <td class="prod-column">
+                                  <h5 style={{ fontSize: "16px" }}>
+                                    {item.quantity}
+                                  </h5>
                                 </td>
                                 <td>
                                   <a
@@ -431,12 +439,14 @@ export default function Cart() {
                       <div className="btn-box clearfix">
                         <button
                           type="button"
-                          class="checkout-btn theme-btn"
+                          className={`checkout-btn theme-btn ${
+                            isDisabled ? "disabled-btn" : ""
+                          }`}
                           data-bs-toggle="modal"
                           data-bs-target="#inquiryModal"
                           onClick={handleShow}
-                          disabled={products.length === 0} // Disable button if no products in the cart
-                          >
+                          disabled={isDisabled}
+                        >
                           Make Inquiry
                         </button>
                       </div>
