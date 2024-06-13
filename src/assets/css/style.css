@@ -14292,3 +14292,7 @@ input {
 .banner-carousel .content-box h2, .sec-title h2{
   font-size: 34px;
 }
+.news-block-one.inactive {
+  color: red;
+  border: 1px solid red; /* Optional: add a border to emphasize */
+}

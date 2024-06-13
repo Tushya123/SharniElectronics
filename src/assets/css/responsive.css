@@ -1469,9 +1469,9 @@
   }
 }
 @media (min-width: 1200px) and (max-width: 1440px) {
-  .banner-carousel {
+  /* .banner-carousel {
     height: 62vh;
-  }
+  } */
   .banner-carousel .slick-dots {
     top: 30% !important;
   }

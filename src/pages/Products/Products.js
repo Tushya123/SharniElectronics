@@ -272,12 +272,13 @@ export default function Products() {
                                 products.length === 1 ? "4" : "4"
                               } col-md-12 col-sm-12 content-side`}
                             >
-                              <div className="news-block-one">
+                              <div className="news-block-one" >
                                 <div
                                   className="inner-box"
                                   style={{ boxShadow: "none" }}
                                 >
                                   <a
+                                  style={{color:'red'}}
                                     className="text"
                                     href="/productDetails"
                                     onClick={() =>
@@ -287,13 +288,14 @@ export default function Products() {
                                       )
                                     }
                                   >
-                                    <h2 style={{ overflowWrap: "break-word" }}>
+                                    <h2   style={{ overflowWrap: "break-word",color:item.IsActive ? "#16436f" : "red"}}>
                                       {item.Description}
                                     </h2>
                                   </a>
                                   <div className="lower-box ">
                                     <div className="link">
                                       <a
+                                      
                                         type="button"
                                         data-bs-toggle="modal"
                                         data-bs-target="#inquiryModal"
