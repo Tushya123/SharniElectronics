@@ -1794,7 +1794,7 @@ div#mCSB_1_container {
 .banner-carousel {
   position: relative;
   overflow: hidden;
-  height: 95vh;
+  height: 100vh;
 }
 /* @media screen  and (max-width:768px) {
     .banner-section{

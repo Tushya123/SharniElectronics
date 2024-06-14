@@ -1044,8 +1044,11 @@
   /* .banner-carousel {
     height: 100%;
   } */
-  .banner-carousel .slide-item {
+  /* .banner-carousel .slide-item {
     height: 95vh;
+  } */
+  .banner-carousel {
+    height: 100vh;
   }
   .main-header .menu-right-content li.support-box {
     /* display: none; */
@@ -1473,7 +1476,7 @@
     height: 62vh;
   } */
   .banner-carousel .slick-dots {
-    top: 30% !important;
+    top: 48% !important;
   }
 }
 
@@ -1504,8 +1507,23 @@
   .banner-carousel .content-box h2 {
     margin-bottom: 16px;
   }
+  .banner-carousel .content-box .list li h3 {
+    font-size: 34px !important;
 }
-@media (min-width: 400px) and (max-width: 767px) {
+.banner-carousel .content-box .list li h4 {
+  font-size: 34px !important;
+}
+
+}
+
+@media (min-width: 400px) and (min-height: 826px) {
+  .banner-carousel {
+    height: 75vh;
+  }
+  .banner-carousel .content-box h2,
+  .sec-title h2 {
+    font-size: 25px;
+  }
   .banner-carousel .content-box .list li h4 {
     font-size: 21px !important;
   }
@@ -1514,15 +1532,6 @@
   }
   .banner-carousel {
     height: 97vh;
-  }
-}
-@media (min-width: 400px) and (min-height: 826px) {
-  .banner-carousel {
-    height: 75vh;
-  }
-  .banner-carousel .content-box h2,
-  .sec-title h2 {
-    font-size: 25px;
   }
 }
 @media (min-width: 390px) and (min-height: 844px) {
