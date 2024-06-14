@@ -1270,6 +1270,12 @@
   .position-slider .content-box {
     top: 240px;
   }
+  .goog-te-gadget-simple {
+
+    font-size: 8pt;
+
+  }
+  
   .logo-name h3 {
     font-size: 21px;
   }
@@ -1304,7 +1310,9 @@
   .position-slider .content-box {
     top: 285px !important ;
   }
-
+  .sticky-skype img {
+    width: 37px;
+  }
   .nav-logo {
     width: 200px;
   }
@@ -1397,7 +1405,7 @@
   }
   .sticky-whatsapp img {
     width: 37px;
-}
+  }
 
   .logo-box img {
     width: 47px;
@@ -1443,7 +1451,7 @@
   }
 
   .logo-name h3 {
-    font-size: 15px;
+    font-size: 14px;
   }
   .product-image-banner {
     margin-top: 17px;
@@ -1504,6 +1512,7 @@
   .producttext {
     /* margin-top: -153px; */
   }
+  
 }
 
 @media (min-width: 768px) and (max-width: 1200px) {
@@ -1618,13 +1627,28 @@
 }
 @media (min-width: 390px) and (min-height: 844px) {
   .position-slider .content-box {
-    top: 407px !important;
+    top: 340px !important;
   }
   .banner-carousel {
-    height: 83vh;
+    height: 79vh !important;
+  }
+  .banner-carousel .slick-dots {
+    top: 49% !important;
+  }
+  .sticky-button {
+    bottom: 268px !important;
+  }
+  .sticky-whatsapp {
+    bottom: 23% !important;
+  }
+  .sticky-skype {
+    bottom: 29% !important;
+  }
+  .goog-te-gadget-simple {
+    font-size: 7pt !important;
   }
 }
-@media (min-width: 414px) and (min-height: 896px) {
+@media (min-width: 359px) and (min-height: 896px) {
   .banner-carousel .content-box h2 {
     margin-bottom: 55px;
     /* line-height: 44px; */
@@ -1632,13 +1656,72 @@
   .banner-carousel .slick-dots {
     top: 51% !important;
   }
+  .banner-carousel {
+    height: 77vh !important;
+  }
+  .goog-te-gadget-simple {
+    font-size: 7pt;
+  }
+  .logo-name h3 {
+    font-size: 14px !important;
+  }
+  .sticky-skype {
+    bottom: 33% !important;
+  }
+  .banner-carousel .content-box .list li h3 {
+    font-size: 25px !important;
+  }
+  .banner-carousel .content-box .list li h4 {
+    font-size: 25px !important;
+  }
+  .goog-te-gadget-simple {
+    font-size: 7pt;
+  }
+  .sticky-whatsapp {
+    bottom: 27% !important;
+  }
+
+  .sticky-button {
+    bottom: 316px !important;
+  }
 }
 @media (min-width: 430px) and (min-height: 932px) {
   .position-slider .content-box {
-    top: 340px !important;
+    top: 285px !important;
   }
+  .logo-name h3 {
+    font-size: 15px !important;
+  }
+  .banner-carousel .slick-dots {
+    top: 45% !important;
+  }
+  .sticky-button {
+    bottom: 361px !important;
+  }
+  .sticky-skype img {
+    width: 45px !important;
+  }
+  .sticky-whatsapp img {
+    width: 45px !important;
+  }
+  .sticky-skype {
+    bottom: 38% !important;
+
+    right: 8px !important;
+  }
+  .sticky-whatsapp {
+    bottom: 31% !important;
+    right: 8px !important;
+  }
+
   .banner-carousel {
-    height: 75vh;
+    height: 70vh !important;
+  }
+  .google-trans {
+    right: 0px !important;
+  }
+  .logo-box img {
+    width: 47px !important;
   }
   .banner-carousel .content-box .list li h3 {
     font-size: 25px !important;
@@ -1655,22 +1738,99 @@
     margin-bottom: 54px;
   }
   .banner-carousel .slick-dots {
-    top: 51% !important;
+    top: 51%;
+  }
+  .banner-carousel .content-box .list li h3 {
+    font-size: 25px !important;
+}
+.banner-carousel .content-box .list li h4 {
+  font-size: 21px !important;
+}
+.logo-name h3 {
+  font-size: 14px !important;
+}
+  .sticky-button {
+    bottom: 340px !important;
+  }
+  .sticky-skype {
+    bottom: 35% !important;
+  }
+  .sticky-whatsapp {
+    bottom: 30% !important;
   }
 }
 @media (min-width: 360px) and (min-height: 740px) {
   .position-slider .content-box {
-    top: 349px !important;
+    top: 349px;
+  }
+  .logo-name h3 {
+    font-size: 11px;
+}
+.sticky-button {
+
+  bottom: 236px;
+
+}
+.sticky-skype {
+  bottom: 28% ;
+}
+  .goog-te-gadget-simple {
+    font-size: 6pt !important;
+  }
+  .banner-carousel {
+    height: 79vh !important;
+  }
+  .banner-carousel .slick-dots {
+    top: 52% !important;
+  }
+  .sticky-whatsapp {
+
+    bottom: 21% ;
+
+
   }
 }
 @media (min-width: 768px) and (min-height: 1024px) {
   .custom-slider-icon li img {
     width: 75%;
   }
+  .banner-carousel .slick-dots {
+    top: 42% !important;
+}
   .banner-carousel .content-box h2,
   .sec-title h2 {
     font-size: 39px;
   }
+  .logo-box img {
+    width: 62px !important;
+}
+.goog-te-gadget-simple {
+  font-size: 8pt !important;
+}
+.logo-name h3 {
+  font-size: 24px !important;
+}
+.banner-carousel .content-box h2 {
+  margin-bottom: 20px !important;
+}
+.banner-carousel {
+  height: 72vh !important;
+}
+.banner-carousel .slick-dots {
+  top: 41% !important;
+}
+.sticky-button {
+  bottom: 452px !important;
+}
+.sticky-skype {
+  bottom: 42% !important;
+}
+.sticky-whatsapp {
+  bottom: 36% !important;
+}
+.position-slider .content-box {
+  top: 289px !important;
+}
   .banner-carousel .content-box h2,
   .sec-title h2 {
     font-size: 33px !important;
@@ -1687,11 +1847,20 @@
 }
 @media (min-width: 820px) and (min-height: 1180px) {
   .banner-carousel {
-    height: 64vh;
+    height: 62vh !important;
   }
   .banner-carousel .slick-dots {
     top: 38% !important;
   }
+  .sticky-button {
+    bottom: 608px !important;
+}
+.sticky-skype {
+  bottom: 50% !important;
+}
+.sticky-whatsapp {
+  bottom: 45% !important;
+}
 }
 @media (min-width: 540px) and (min-height: 720px) {
   .position-slider .content-box {
@@ -1714,13 +1883,13 @@
 }
 @media (min-width: 344px) and (min-height: 882px) {
   .position-slider .content-box {
-    top: 335px !important;
+    top: 335px;
   }
   .banner-carousel .content-box .list li h3 {
-    font-size: 30px !important;
+    font-size: 30px;
   }
   .banner-carousel .content-box .list li h4 {
-    font-size: 33px !important;
+    font-size: 33px;
   }
 }
 @media (min-width: 1024px) and (min-height: 874px) {
@@ -1733,8 +1902,20 @@
     top: 32% !important;
   }
   .banner-carousel {
-    height: 53vh;
+    height: 54vh !important;
   }
+  .goog-te-gadget-simple {
+    font-size: 9pt !important;
+}
+.sticky-button {
+  bottom: 794px !important;
+}
+.sticky-skype {
+  bottom: 57% !important;
+}
+.sticky-whatsapp {
+  bottom: 52% !important;
+}
 }
 @media (min-width: 1440px) and (min-height: 975px) {
   .banner-carousel .slick-dots {
@@ -1758,4 +1939,43 @@
   .sec-title h2 {
     font-size: 33px;
   }
+  .logo-name h3 {
+    font-size: 35px !important;
+}
+.goog-te-gadget-simple {
+  font-size: 12pt !important;
+}
+  .banner-carousel {
+    height: 100vh !important;
+  }
+  .logo-box img {
+    width: 75px !important;
+}
+
+}
+@media (min-width: 375px) and (min-height: 667px) {
+  .banner-carousel {
+    height: 87vh;
+  }
+  .sticky-button {
+    bottom: 92px;
+  }
+  .sticky-skype {
+    bottom: 8%;
+  }
+  .sticky-whatsapp {
+    bottom: 2%;
+  }
+  .logo-name h3 {
+    font-size: 11px;
+  }
+  .goog-te-gadget-simple {
+
+    font-size: 6pt;
+
+  }
+  .banner-carousel .slick-dots {
+
+    top: 55% ;
+}
 }
