@@ -1302,7 +1302,7 @@
 }
 @media only screen and (max-width: 426px) {
   .position-slider .content-box {
-    top: 308px !important ;
+    top: 285px !important ;
   }
 
   .nav-logo {
@@ -1395,6 +1395,46 @@
   .banner-carousel .content-box h2 {
     margin-bottom: 38px;
   }
+  .sticky-whatsapp img {
+    width: 37px;
+}
+
+  .logo-box img {
+    width: 47px;
+  }
+  .goog-te-gadget-simple {
+    font-size: 7pt;
+  }
+  .google-trans {
+    right: 0px;
+  }
+  .logo-name h3 {
+    font-size: 15px;
+  }
+  .sticky-skype {
+    position: fixed;
+    bottom: 8%;
+    z-index: 99;
+    right: 7px;
+  }
+  .sticky-whatsapp {
+    position: fixed;
+    bottom: 1%;
+    z-index: 99;
+    right: 7px;
+  }
+  .sticky-button {
+    position: fixed;
+    bottom: 79px;
+    left: -84px;
+    background-color: #fff;
+    padding: 6px 14px;
+    border-radius: 5px;
+    z-index: 999999;
+    border: #42bd9e solid;
+    transform: rotate(-90deg);
+  }
+
   .booking-section .inner-content {
     margin-bottom: 20px;
   }
@@ -1403,7 +1443,7 @@
   }
 
   .logo-name h3 {
-    font-size: 20px;
+    font-size: 15px;
   }
   .product-image-banner {
     margin-top: 17px;
@@ -1414,7 +1454,22 @@
 }
 @media only screen and (max-width: 376px) {
   .logo-name h3 {
-    font-size: 14px;
+    font-size: 11px;
+  }
+  .logo-box img {
+    width: 37px;
+  }
+  .position-slider .content-box {
+    top: 275px !important;
+  }
+  .sticky-skype img {
+    width: 37px;
+  }
+  .sticky-whatsapp {
+    width: 37px;
+  }
+  .sticky-skype {
+    bottom: 8%;
   }
   .about-section .image-box .image-inner {
     margin-right: -6px;
@@ -1502,18 +1557,45 @@
     height: 79vh;
   } */
   .banner-carousel .slick-dots {
-    top: 43% !important;
+    top: 57% !important;
   }
   .banner-carousel .content-box h2 {
     margin-bottom: 16px;
   }
-  .banner-carousel .content-box .list li h3 {
-    font-size: 34px !important;
-}
-.banner-carousel .content-box .list li h4 {
-  font-size: 34px !important;
-}
+  .banner-carousel .content-box h2,
+  .sec-title h2 {
+    font-size: 28px;
+  }
 
+  .sticky-skype {
+    right: 9px;
+    bottom: 14%;
+  }
+  .sticky-whatsapp {
+    bottom: 3%;
+    right: 11px;
+  }
+  .sticky-button {
+    position: fixed;
+    bottom: 83px;
+    left: -84px;
+    background-color: #fff;
+    padding: 8px 19px;
+    border-radius: 5px;
+    padding-top: 6px;
+    z-index: 999999;
+    border: #42bd9e solid;
+    transform: rotate(-90deg);
+  }
+  .position-slider .content-box {
+    top: 228px !important;
+  }
+  .banner-carousel .content-box .list li h3 {
+    font-size: 28px !important;
+  }
+  .banner-carousel .content-box .list li h4 {
+    font-size: 28px !important;
+  }
 }
 
 @media (min-width: 400px) and (min-height: 826px) {
@@ -1538,7 +1620,7 @@
   .position-slider .content-box {
     top: 407px !important;
   }
-  .banner-carousel{
+  .banner-carousel {
     height: 83vh;
   }
 }
@@ -1557,26 +1639,24 @@
   }
   .banner-carousel {
     height: 75vh;
-}
-.banner-carousel .content-box .list li h3 {
-  font-size: 25px!important;
-}
-.banner-carousel .content-box .list li h4{
-  font-size: 25px!important;
-
-}
-.banner-carousel .content-box h2 {
-  margin-bottom: 74px !important;
-}
+  }
+  .banner-carousel .content-box .list li h3 {
+    font-size: 25px !important;
+  }
+  .banner-carousel .content-box .list li h4 {
+    font-size: 25px !important;
+  }
+  .banner-carousel .content-box h2 {
+    margin-bottom: 74px !important;
+  }
 }
 @media (min-width: 412px) and (min-height: 915px) {
   .banner-carousel .content-box h2 {
     margin-bottom: 54px;
   }
   .banner-carousel .slick-dots {
-
     top: 51% !important;
-}
+  }
 }
 @media (min-width: 360px) and (min-height: 740px) {
   .position-slider .content-box {
@@ -1591,9 +1671,10 @@
   .sec-title h2 {
     font-size: 39px;
   }
-  .banner-carousel .content-box h2, .sec-title h2 {
+  .banner-carousel .content-box h2,
+  .sec-title h2 {
     font-size: 33px !important;
-}
+  }
   .position-slider .content-box {
     top: 326px !important;
   }
@@ -1610,7 +1691,7 @@
   }
   .banner-carousel .slick-dots {
     top: 38% !important;
-}
+  }
 }
 @media (min-width: 540px) and (min-height: 720px) {
   .position-slider .content-box {
@@ -1648,33 +1729,33 @@
   }
 }
 @media (min-width: 1024px) and (min-height: 1366px) {
-
-.banner-carousel .slick-dots {
-  top: 32% !important;
-}
-.banner-carousel {
-  height: 53vh;
-}
+  .banner-carousel .slick-dots {
+    top: 32% !important;
+  }
+  .banner-carousel {
+    height: 53vh;
+  }
 }
 @media (min-width: 1440px) and (min-height: 975px) {
-
-.banner-carousel .slick-dots {
-  top: 39% !important;
-}
-.banner-carousel .content-box h2, .sec-title h2 {
-  font-size: 34px;
-  line-height: 51px;
-}
+  .banner-carousel .slick-dots {
+    top: 39% !important;
+  }
+  .banner-carousel .content-box h2,
+  .sec-title h2 {
+    font-size: 34px;
+    line-height: 51px;
+  }
 }
 @media (min-width: 1024px) and (min-height: 845px) {
-
-.banner-carousel .content-box h2, .sec-title h2 {
-  font-size: 34px;
-  line-height: 51px;
+  .banner-carousel .content-box h2,
+  .sec-title h2 {
+    font-size: 34px;
+    line-height: 51px;
+  }
 }
-}
-@media screen and (min-width:1440px) {
-  .banner-carousel .content-box h2, .sec-title h2 {
+@media screen and (min-width: 1440px) {
+  .banner-carousel .content-box h2,
+  .sec-title h2 {
     font-size: 33px;
-}
+  }
 }
