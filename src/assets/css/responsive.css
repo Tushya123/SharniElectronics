@@ -1308,7 +1308,7 @@
 }
 @media only screen and (max-width: 426px) {
   .position-slider .content-box {
-    top: 285px !important ;
+    top: 338px !important ;
   }
   .sticky-skype img {
     width: 37px;
@@ -1451,7 +1451,7 @@
   }
 
   .logo-name h3 {
-    font-size: 14px;
+    font-size: 12px !important;
   }
   .product-image-banner {
     margin-top: 17px;
@@ -1951,11 +1951,14 @@
   .logo-box img {
     width: 75px !important;
 }
+.sticky-whatsapp {
+  bottom: 0% !important;
+}
 
 }
-@media (min-width: 375px) and (min-height: 667px) {
+@media (min-width: 375px) and (min-height: 656px) {
   .banner-carousel {
-    height: 87vh;
+    height: 87vh ;
   }
   .sticky-button {
     bottom: 92px;
@@ -1971,9 +1974,10 @@
   }
   .goog-te-gadget-simple {
 
-    font-size: 6pt;
+    font-size: 7pt;
 
   }
+
   .banner-carousel .slick-dots {
 
     top: 55% ;
