@@ -22,6 +22,7 @@ export default function NewsEvent() {
 
     fetchData();
   }, []);
+  const Newsfirst = news.length > 0 ? news[0]._id : null;
 
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
@@ -36,9 +37,9 @@ export default function NewsEvent() {
             <span className="sub-title">News &amp; Events</span>
             <h2>Explore our latest post</h2>
             <div className="btn-box">
-              <button href="#" className="theme-btn">
+              <Link style={{color:"white"}}  to={`/detailNews/${Newsfirst}`} className="theme-btn">
                 View All News
-              </button>
+              </Link>
             </div>
           </div>
           <Row>
