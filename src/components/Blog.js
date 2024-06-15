@@ -38,6 +38,7 @@ export default function Blog() {
         <Container>
           <div className="sec-title">
             <span className="sub-title">Blog</span>
+            <div className="blogDiv">
             <h2>Explore our latest Blog</h2>
             <div className="btn-box">
               <button href="#" className="theme-btn">
@@ -45,6 +46,7 @@ export default function Blog() {
                   View Blog Details
                 </Link>
               </button>
+            </div>
             </div>
           </div>
           <Row className="clearfix">

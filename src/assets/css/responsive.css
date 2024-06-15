@@ -520,6 +520,8 @@
     margin-bottom: 12px;
     margin-right: 0px;
   }
+  
+  
 
   .header-top .top-inner .info-list li:last-child {
     margin-bottom: 0px;
@@ -1253,6 +1255,12 @@
   .google-trans {
     right: 10px;
   }
+  .sec-title .sub-title:before {
+    top: 1px;
+  }
+  .sec-title .sub-title:after {
+    top: -6px;
+  }
   /* .banner-carousel {
     height: 600px;
   } */
@@ -1266,16 +1274,17 @@
     margin: -11px;
   }
 }
-@media only screen and (max-width: 768px) and (min-width:425px) {
+@media only screen and (max-width: 768px) and (min-width: 425px) {
   .position-slider .content-box {
     top: 240px;
   }
   .goog-te-gadget-simple {
-
     font-size: 8pt;
-
   }
-  
+
+  .industries-section .sec-title {
+    padding: 83px 30px 0px 86px;
+  }
   .logo-name h3 {
     font-size: 21px;
   }
@@ -1293,13 +1302,15 @@
   .service-block-one .inner-box .image-box .image img {
     height: 260px;
   }
+  .booking-section .sec-title {
+    margin-top: -99px;
+  }
   .sec-title {
-    margin-top: -37px;
+    margin-top: -7px;
   }
   .scroll-top.open {
-    bottom: 150px !important;
+    bottom: 132px !important;
   }
-
 }
 @media (min-width: 400px) and (min-height: 896px) {
   .position-slider .content-box {
@@ -1312,14 +1323,40 @@
 }
 @media only screen and (max-width: 426px) {
   .position-slider .content-box {
-    top: 338px !important ;
+    top: 206px !important ;
   }
+  .main-footer .widget-section {
+    padding: 0px 0px 40px 0px;
+  }
+  .booking-section .inner-content {
+    margin-bottom: 62px !important;
+  }
+  .banner-carousel .slick-dots {
+    top: 52% !important;
+  }
+  .scroll-top {
+    line-height: 24px;
+  }
+  .scroll-top {
+    width: 35px;
+    height: 35px;
+  }
+  .booking-section .sec-title {
+    margin-bottom: 0px;
+  }
+  .sec-title .sub-title {
+    font-size: 21px;
+  }
+  .industries-section .sec-title {
+    padding: 58px 36px 0px 16px;
+  }
+
   .scroll-top {
     right: 10px;
   }
-.scroll-top.open{
-  bottom: 100px !important;
-}
+  .scroll-top.open {
+    bottom: 100px !important;
+  }
   .sticky-skype img {
     width: 37px;
   }
@@ -1349,7 +1386,7 @@
     margin-right: -52px;
   }
   .header-top .top-inner {
-    display: block;
+    display: none;
   }
   .logo-name h3 {
     font-size: 13px;
@@ -1461,10 +1498,13 @@
   }
 
   .logo-name h3 {
-    font-size: 12px !important;
+    font-size: 14px !important;
   }
   .product-image-banner {
     margin-top: 17px;
+  }
+  .banner-carousel {
+    height: 87vh;
   }
   .industries-section .content-box .shape-box {
     display: none;
@@ -1472,13 +1512,16 @@
 }
 @media only screen and (max-width: 376px) {
   .logo-name h3 {
-    font-size: 11px;
+    font-size: 12px !important;
   }
   .logo-box img {
     width: 37px;
   }
+  .booking-section .content-box {
+    padding-top: 0px;
+  }
   .position-slider .content-box {
-    top: 275px !important;
+    top: 199px !important;
   }
   .sticky-skype img {
     width: 37px;
@@ -1504,7 +1547,7 @@
   }
   .about-section .image-box {
     padding-right: 0px;
-    margin-top: 40px;
+    margin-top: 6px;
   }
   .theme-btn {
     margin-left: 63px !important;
@@ -1522,7 +1565,6 @@
   .producttext {
     /* margin-top: -153px; */
   }
-  
 }
 
 @media (min-width: 768px) and (max-width: 1200px) {
@@ -1558,7 +1600,7 @@
   .banner-carousel {
     height: 79vh;
   }
-  
+
   .banner-carousel .content-box h2 {
     font-size: 50px;
     line-height: 72px;
@@ -1579,24 +1621,37 @@
   .banner-carousel .slick-dots {
     top: 57% !important;
   }
+  .google-trans {
+    right: 1px;
+  }
   .scroll-top.open {
     right: 15px;
   }
+  .scroll-top.open {
+    width: 41px;
+    height: 41px;
+  }
 
-.scroll-top.open{
-  bottom: 130px;
-}
+  .scroll-top.open {
+    bottom: 130px;
+  }
   .banner-carousel .content-box h2 {
     margin-bottom: 16px;
   }
   .banner-carousel .content-box h2,
   .sec-title h2 {
-    font-size: 28px;
+    font-size: 34px;
   }
 
   .sticky-skype {
     right: 9px;
-    bottom: 14%;
+    bottom: 12%;
+  }
+  .sticky-skype img {
+    width: 43px;
+  }
+  .sticky-whatsapp img {
+    width: 43px;
   }
   .sticky-whatsapp {
     bottom: 3%;
@@ -1760,13 +1815,13 @@
   }
   .banner-carousel .content-box .list li h3 {
     font-size: 25px !important;
-}
-.banner-carousel .content-box .list li h4 {
-  font-size: 21px !important;
-}
-.logo-name h3 {
-  font-size: 14px !important;
-}
+  }
+  .banner-carousel .content-box .list li h4 {
+    font-size: 21px !important;
+  }
+  .logo-name h3 {
+    font-size: 14px !important;
+  }
   .sticky-button {
     bottom: 340px !important;
   }
@@ -1783,15 +1838,13 @@
   }
   .logo-name h3 {
     font-size: 11px;
-}
-.sticky-button {
-
-  bottom: 236px;
-
-}
-.sticky-skype {
-  bottom: 28% ;
-}
+  }
+  .sticky-button {
+    bottom: 236px;
+  }
+  .sticky-skype {
+    bottom: 28%;
+  }
   .goog-te-gadget-simple {
     font-size: 6pt !important;
   }
@@ -1802,10 +1855,7 @@
     top: 52% !important;
   }
   .sticky-whatsapp {
-
-    bottom: 21% ;
-
-
+    bottom: 21%;
   }
 }
 @media (min-width: 768px) and (min-height: 1024px) {
@@ -1814,41 +1864,41 @@
   }
   .banner-carousel .slick-dots {
     top: 42% !important;
-}
+  }
   .banner-carousel .content-box h2,
   .sec-title h2 {
     font-size: 39px;
   }
   .logo-box img {
     width: 62px !important;
-}
-.goog-te-gadget-simple {
-  font-size: 8pt !important;
-}
-.logo-name h3 {
-  font-size: 24px !important;
-}
-.banner-carousel .content-box h2 {
-  margin-bottom: 20px !important;
-}
-.banner-carousel {
-  height: 72vh !important;
-}
-.banner-carousel .slick-dots {
-  top: 41% !important;
-}
-.sticky-button {
-  bottom: 452px !important;
-}
-.sticky-skype {
-  bottom: 42% !important;
-}
-.sticky-whatsapp {
-  bottom: 36% !important;
-}
-.position-slider .content-box {
-  top: 289px !important;
-}
+  }
+  .goog-te-gadget-simple {
+    font-size: 8pt !important;
+  }
+  .logo-name h3 {
+    font-size: 24px !important;
+  }
+  .banner-carousel .content-box h2 {
+    margin-bottom: 20px !important;
+  }
+  .banner-carousel {
+    height: 72vh !important;
+  }
+  .banner-carousel .slick-dots {
+    top: 41% !important;
+  }
+  .sticky-button {
+    bottom: 452px !important;
+  }
+  .sticky-skype {
+    bottom: 42% !important;
+  }
+  .sticky-whatsapp {
+    bottom: 36% !important;
+  }
+  .position-slider .content-box {
+    top: 289px !important;
+  }
   .banner-carousel .content-box h2,
   .sec-title h2 {
     font-size: 33px !important;
@@ -1872,13 +1922,13 @@
   }
   .sticky-button {
     bottom: 608px !important;
-}
-.sticky-skype {
-  bottom: 50% !important;
-}
-.sticky-whatsapp {
-  bottom: 45% !important;
-}
+  }
+  .sticky-skype {
+    bottom: 50% !important;
+  }
+  .sticky-whatsapp {
+    bottom: 45% !important;
+  }
 }
 @media (min-width: 540px) and (min-height: 720px) {
   .position-slider .content-box {
@@ -1924,16 +1974,16 @@
   }
   .goog-te-gadget-simple {
     font-size: 9pt !important;
-}
-.sticky-button {
-  bottom: 794px !important;
-}
-.sticky-skype {
-  bottom: 57% !important;
-}
-.sticky-whatsapp {
-  bottom: 52% !important;
-}
+  }
+  .sticky-button {
+    bottom: 794px !important;
+  }
+  .sticky-skype {
+    bottom: 57% !important;
+  }
+  .sticky-whatsapp {
+    bottom: 52% !important;
+  }
 }
 @media (min-width: 1440px) and (min-height: 975px) {
   .banner-carousel .slick-dots {
@@ -1959,24 +2009,23 @@
   }
   .logo-name h3 {
     font-size: 35px !important;
-}
-.goog-te-gadget-simple {
-  font-size: 12pt !important;
-}
+  }
+  .goog-te-gadget-simple {
+    font-size: 12pt !important;
+  }
   .banner-carousel {
     height: 100vh !important;
   }
   /* .logo-box img {
     width: 75px !important;
 } */
-.sticky-whatsapp {
-  bottom: 0% !important;
-}
-
+  .sticky-whatsapp {
+    bottom: 0% !important;
+  }
 }
 @media (min-width: 375px) and (min-height: 656px) {
   .banner-carousel {
-    height: 87vh ;
+    height: 87vh;
   }
   .sticky-button {
     bottom: 92px;
@@ -1991,13 +2040,10 @@
     font-size: 11px;
   }
   .goog-te-gadget-simple {
-
     font-size: 7pt !important;
-
   }
 
   .banner-carousel .slick-dots {
-
-    top: 55% ;
-}
+    top: 55%;
+  }
 }
