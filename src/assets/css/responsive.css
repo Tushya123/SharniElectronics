@@ -1266,7 +1266,7 @@
     margin: -11px;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) and (min-width:425px) {
   .position-slider .content-box {
     top: 240px;
   }
@@ -1296,6 +1296,10 @@
   .sec-title {
     margin-top: -37px;
   }
+  .scroll-top.open {
+    bottom: 150px !important;
+  }
+
 }
 @media (min-width: 400px) and (min-height: 896px) {
   .position-slider .content-box {
@@ -1310,6 +1314,12 @@
   .position-slider .content-box {
     top: 338px !important ;
   }
+  .scroll-top {
+    right: 10px;
+  }
+.scroll-top.open{
+  bottom: 100px !important;
+}
   .sticky-skype img {
     width: 37px;
   }
@@ -1336,7 +1346,7 @@
     height: 315px;
   }
   .about-section .image-box .image-inner {
-    margin-right: -38px;
+    margin-right: -52px;
   }
   .header-top .top-inner {
     display: block;
@@ -1411,7 +1421,7 @@
     width: 47px;
   }
   .goog-te-gadget-simple {
-    font-size: 7pt;
+    font-size: 7pt !important;
   }
   .google-trans {
     right: 0px;
@@ -1548,6 +1558,7 @@
   .banner-carousel {
     height: 79vh;
   }
+  
   .banner-carousel .content-box h2 {
     font-size: 50px;
     line-height: 72px;
@@ -1568,6 +1579,13 @@
   .banner-carousel .slick-dots {
     top: 57% !important;
   }
+  .scroll-top.open {
+    right: 15px;
+  }
+
+.scroll-top.open{
+  bottom: 130px;
+}
   .banner-carousel .content-box h2 {
     margin-bottom: 16px;
   }
@@ -1948,9 +1966,9 @@
   .banner-carousel {
     height: 100vh !important;
   }
-  .logo-box img {
+  /* .logo-box img {
     width: 75px !important;
-}
+} */
 .sticky-whatsapp {
   bottom: 0% !important;
 }
@@ -1974,7 +1992,7 @@
   }
   .goog-te-gadget-simple {
 
-    font-size: 7pt;
+    font-size: 7pt !important;
 
   }
 

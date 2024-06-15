@@ -515,8 +515,9 @@ img {
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1) !important;
 }
 
+
 .scroll-top.open {
-  bottom: 30px;
+  bottom: 170px;
 }
 
 .sec-title {
@@ -13878,7 +13879,7 @@ div#mCSB_1_container {
 
 .sticky-button {
   position: fixed;
-  bottom: 110px;
+  bottom: 80px;
   left: -84px;
   background-color: #fff;
   padding: 10px 20px;
@@ -13924,7 +13925,7 @@ div#mCSB_1_container {
 
 .sticky-skype {
   position: fixed;
-  bottom: 25%;
+  bottom: 15%;
   z-index: 99;
   right: 48px;
 }

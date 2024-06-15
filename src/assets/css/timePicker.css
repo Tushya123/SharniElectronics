@@ -9,18 +9,14 @@
  * 		- $Revision: 1.1 $
  */
 
-
 #ptTimeSelectCntr {
-    display: none;
-    font-size: 12px;
-    margin-left: 0;
-    position: absolute;
-    width: 270px !important;
-    z-index: 9999 !important;
+  display: none;
+  font-size: 12px;
+  margin-left: 0;
+  position: absolute;
+  width: 270px !important;
+  z-index: 9999 !important;
 }
-
-
-
 
 #ptTimeSelectCntr .ui-widget-content {
   background: #fff none repeat scroll 0 0;
@@ -33,7 +29,8 @@
 #ptTimeSelectCntr .ui-widget.ui-widget-content {
   border: 1px solid #ddd !important;
 }
-#ptTimeSelectCntr .ui-widget{}
+#ptTimeSelectCntr .ui-widget {
+}
 #ptTimeSelectCntr .ui-widget-header {
   background: #151515 none repeat scroll 0 0;
   border: 2px solid #252525;
@@ -51,40 +48,29 @@
   text-align: center;
 }
 #ptTimeSelectCntr .ui-widget-header .ui-icon {
-  background-image: url("images/ui-icons_444444_256x240.html") !importent;
+  background-image: url("images/ui-icons_444444_256x240.html");
 }
-
-
-
 
 #ptTimeSelectCntr #ptTimeSelectCloseCntr {
   display: block;
   padding: 0;
 }
 
-
-
-
-
-
 #ptTimeSelectCntr .ui-widget.ui-widget-content {
-	margin-top: 0;
+  margin-top: 0;
 }
 #ptTimeSelectCntr .ptTimeSelectLeftPane.ui-widget-content {
-	border-top:none;
-	border-bottom:none;
-	border-left:none;
-	border-right-width: 2px;
+  border-top: none;
+  border-bottom: none;
+  border-left: none;
+  border-right-width: 2px;
 }
 #ptTimeSelectCntr .ptTimeSelectRightPane.ui-widget-content {
-	border: none;
+  border: none;
 }
 
-
-
-
 /*  content style and  hover style */
-#ptTimeSelectCntr .ptTimeSelectHrCntr a, 
+#ptTimeSelectCntr .ptTimeSelectHrCntr a,
 #ptTimeSelectCntr .ptTimeSelectMinCntr a {
   display: block;
   float: left;
@@ -95,13 +81,11 @@
   text-decoration: none;
   transition: all 500ms ease;
 }
-#ptTimeSelectCntr .ptTimeSelectHrCntr a:hover, 
-#ptTimeSelectCntr .ptTimeSelectMinCntr a:hover{
+#ptTimeSelectCntr .ptTimeSelectHrCntr a:hover,
+#ptTimeSelectCntr .ptTimeSelectMinCntr a:hover {
   background: #43c3ea !important;
   border-color: #43c3ea !important;
 }
-
-
 
 /*  Hour min text style */
 #ptTimeSelectCntr .ptTimeSelectTimeLabelsCntr {
@@ -109,7 +93,6 @@
   font-size: 13px;
   font-weight: 700;
 }
-
 
 /*  Cloase button style */
 #ptTimeSelectCntr #ptTimeSelectCloseCntr a {
@@ -141,24 +124,23 @@
   margin: 2px;
   transition: all 500ms ease;
 }
-#ptTimeSelectCntr .ui-state-default:hover{
-  background: #43c3ea !important; 
-  border-color: #43c3ea !important; 
+#ptTimeSelectCntr .ui-state-default:hover {
+  background: #43c3ea !important;
+  border-color: #43c3ea !important;
 }
-
 
 /*  For time set button css */
 #ptTimeSelectCntr #ptTimeSelectSetButton {
   padding: 0 15px 5px 0;
 }
-#ptTimeSelectSetButton .ui-state-hover{
+#ptTimeSelectSetButton .ui-state-hover {
   background: #d5ac63 !important;
   border: 2px solid #252525 !important;
   border-radius: 0;
   color: #252525 !important;
   font-size: 12px !important;
   font-weight: normal;
-  height: 35px;  
+  height: 35px;
   width: 70px !important;
 }
 #ptTimeSelectCntr #ptTimeSelectSetButton a {
@@ -171,7 +153,7 @@
   color: #fff !important;
   font-size: 12px !important;
   font-weight: normal;
-  height: 35px;  
+  height: 35px;
   width: 70px !important;
   padding: 0;
   margin: 0;
@@ -179,12 +161,6 @@
   text-transform: uppercase;
   transition: all 500ms ease;
 }
-#ptTimeSelectCntr #ptTimeSelectSetButton a:hover{
-  background: #43c3ea !important;  
-} 
-
-
-
-
-
-
+#ptTimeSelectCntr #ptTimeSelectSetButton a:hover {
+  background: #43c3ea !important;
+}

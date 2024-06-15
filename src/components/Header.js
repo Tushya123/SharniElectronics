@@ -27,7 +27,7 @@ export default function Header() {
   } = useSearch();
 
   const handleClose = () => {
-    navigate(`/search?query=""`);
+    // navigate(`/search?query=""`);
     originalHandleClose();
   };
 
