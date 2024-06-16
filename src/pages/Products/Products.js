@@ -84,6 +84,8 @@ export default function Products() {
   };
   console.log("id", id);
   useEffect(() => {
+
+    
     const xyz = localStorage.getItem("selectedProductId");
     fetch(
       `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/list/projectdetail`
