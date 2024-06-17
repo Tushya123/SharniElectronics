@@ -14294,3 +14294,6 @@ input {
   font-size: 34px;
 }
 
+.theme-btn.btn{
+display: none;
+}

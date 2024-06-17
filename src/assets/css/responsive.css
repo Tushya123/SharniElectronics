@@ -82,6 +82,7 @@
   .industries-style-three .industries-block-three .inner-box p {
     font-size: 16px;
   }
+
 }
 
 @media only screen and (max-width: 1200px) {
@@ -519,6 +520,9 @@
   .header-top .top-inner .info-list li {
     margin-bottom: 12px;
     margin-right: 0px;
+  }
+  .theme-btn.btn {
+    display: none;
   }
 
   .header-top .top-inner .info-list li:last-child {
@@ -1247,6 +1251,10 @@
   .position-slider .content-box {
     top: 300px;
   }
+  .theme-btn.btn {
+    display: none;
+  }
+
   .sec-title .sub-title {
     line-height: 29px;
   }
@@ -1292,6 +1300,10 @@
   .about-section .image-box .shape-box .shape-1 {
     top: -22px;
   }
+  .blog{
+    display: flex !important;
+    justify-content: space-between !important;
+  }
 
   .resp-width {
     width: 100%;
@@ -1322,6 +1334,31 @@
 @media only screen and (max-width: 426px) {
   .position-slider .content-box {
     top: 188px !important ;
+  }
+  .slick-prev,
+  .slick-next {
+    top: -81px !important;
+  }
+  .slick-prev {
+    left: unset !important;
+    right: 45px;
+  }
+  .project-style-two, .chooseus-section {
+    padding: 0px 0px 40px 0px;
+}
+  .theme-btn.bn {
+    position: relative;
+    display: none !important;
+  }
+  .theme-btn.btn {
+    display: inline-block !important;
+  }
+  .slick-next {
+    right: 15px !important;
+    left: unset !important;
+  }
+  .page-title {
+    padding-top: 124px;
   }
   .main-footer .widget-section {
     padding: 0px 0px 40px 0px;
@@ -1410,7 +1447,7 @@
     width: 100%;
   }
   .sec-title {
-    margin-top: 10px;
+    margin-top: 38px;
   }
   .blog-grid {
     padding: 20px 0 !important;
@@ -1505,9 +1542,8 @@
     height: 81vh;
   }
   .sidebar-page-container .content-side {
-
     margin-top: 32px;
-}
+  }
   .industries-section .content-box .shape-box {
     display: none;
   }
@@ -1519,6 +1555,10 @@
   }
   .logo-box img {
     width: 37px;
+  }
+  .banner-carousel .content-box h2, .sec-title h2 {
+    font-size: 17px;
+
   }
   .booking-section .content-box {
     padding-top: 0px;
@@ -1559,22 +1599,22 @@
 @media only screen and (max-width: 320px) {
   .logo-name h3 {
     font-size: 10px !important;
-}
-.goog-te-gadget-simple {
-  font-size: 4pt !important;
-}
-.position-slider .content-box {
-  top: 164px !important;
-}
-.banner-carousel {
-  height: 73vh;
-}
-.about-section .image-box .image-inner {
-  margin-right: -15px;
-}
-.theme-btn {
-  margin-left: 42px !important;
-}
+  }
+  .goog-te-gadget-simple {
+    font-size: 4pt !important;
+  }
+  .position-slider .content-box {
+    top: 164px !important;
+  }
+  .banner-carousel {
+    height: 73vh;
+  }
+  .about-section .image-box .image-inner {
+    margin-right: -15px;
+  }
+  .theme-btn {
+    margin-left: 42px !important;
+  }
 }
 @media only screen and (max-width: 918px) {
   .service-block-one .inner-box .image-box .image img {
@@ -1587,6 +1627,13 @@
   }
   .producttext {
     /* margin-top: -153px; */
+  }
+  .theme-btn.btn {
+    display: none;
+  }
+
+  .banner-carousel .slick-dots {
+    top: 48% !important;
   }
 }
 
@@ -1867,7 +1914,7 @@
   }
   .booking-section .sec-title {
     margin-top: -66px;
-}
+  }
   .sticky-skype {
     bottom: 28%;
   }
@@ -1878,7 +1925,7 @@
     height: 64vh !important;
   }
   .banner-carousel .slick-dots {
-    top: 36% !important;
+    /* top: 36% !important; */
   }
   .sticky-whatsapp {
     bottom: 21%;
@@ -2057,9 +2104,8 @@
     bottom: 92px;
   }
   .about-section .image-box {
-
     margin-top: 30px;
-}
+  }
   .sticky-skype {
     bottom: 8%;
   }
@@ -2074,6 +2120,6 @@
   }
 
   .banner-carousel .slick-dots {
-    top: 55%;
+    /* top: 55%; */
   }
 }

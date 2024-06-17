@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Col, Container, Figure, Row} from "react-bootstrap";
+import { Col, Container, Figure, Row } from "react-bootstrap";
 
 export default function Blog() {
   const [Blogs, setBlogs] = useState([]);
@@ -29,7 +29,11 @@ export default function Blog() {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
+    return date.toLocaleDateString("en-US", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
   };
 
   return (
@@ -38,20 +42,30 @@ export default function Blog() {
         <Container>
           <div className="sec-title">
             <span className="sub-title">Blog</span>
-            <div className="blogDiv">
-            <h2>Explore our latest Blog</h2>
-            <div className="btn-box">
-              <button href="#" className="theme-btn">
-                <Link style={{color:"white"}} to={`/blogdetails/${firstBlogId}`}>
-                  View Blog Details
-                </Link>
-              </button>
-            </div>
+            <div className="blog">
+              <h2>Explore our latest Blog</h2>
+              <div className="btn-box">
+                <button href="#" className="theme-btn bn">
+                  <Link
+                    style={{ color: "white" }}
+                    to={`/blogdetails/${firstBlogId}`}
+                  >
+                    View Blog
+                  </Link>
+                </button>
+              </div>
             </div>
           </div>
           <Row className="clearfix">
             {Blogs.map((blog, index) => (
-              <Col lg={6} md={6} sm={12} className="mb-4" key={index} style={{paddingRight:'0px'}}>
+              <Col
+                lg={6}
+                md={6}
+                sm={12}
+                className="mb-4"
+                key={index}
+                style={{ paddingRight: "0px" }}
+              >
                 <div className="news-block-one wow fadeInUp animated">
                   <div className="inner-box">
                     <div className="image-box position-relative">
@@ -88,6 +102,16 @@ export default function Blog() {
                 </div>
               </Col>
             ))}
+            <div className="btn-box">
+              <button href="#" className="theme-btn btn">
+                <Link
+                  style={{ color: "white" }}
+                  to={`/blogdetails/${firstBlogId}`}
+                >
+                  View Blog
+                </Link>
+              </button>
+            </div>
           </Row>
         </Container>
       </section>

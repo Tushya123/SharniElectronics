@@ -184,7 +184,7 @@ export default function Products() {
               </Container>
             </section>
             <Modal
-              show={show}
+              show={show} 
               onHide={handleClose}
               backdrop="static"
               keyboard={false}
