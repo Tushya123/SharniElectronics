@@ -1285,9 +1285,17 @@
   .position-slider .content-box {
     top: 240px;
   }
+  .contact-info-section .lower-box .single-item h3 {
+    display: block;
+    font-size: 20px;
+    line-height: 32px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
   .goog-te-gadget-simple {
     font-size: 8pt;
   }
+  
   .chooseus-section {
     position: relative;
     padding: 63px 0px 90px 0px;
@@ -1324,7 +1332,7 @@
     margin-top: -99px;
   }
   .sec-title {
-    margin-top: -7px;
+    margin-top: 34px;
   }
   .scroll-top.open {
     bottom: 126px !important;
@@ -1341,7 +1349,7 @@
 }
 @media only screen and (max-width: 426px) {
   .position-slider .content-box {
-    top: 188px !important ;
+    top: 231px !important ;
   }
   .slick-prev,
   .slick-next {
@@ -1572,7 +1580,7 @@
     padding-top: 0px;
   }
   .position-slider .content-box {
-    top: 199px !important;
+    top: 173px !important;
   }
   .sticky-skype img {
     width: 37px;
@@ -1672,6 +1680,22 @@
   .banner-carousel .slick-dots {
     top: 48% !important;
   }
+  .contact-info-section .lower-box .single-item h3 {
+    display: block;
+    font-size: 21px;
+    line-height: 32px;
+    font-weight: 500;
+    margin-bottom: 9px;
+}
+  .google-trans {
+    position: absolute;
+    top: 0;
+    z-index: 999;
+    pointer-events: all;
+    right: 135px;
+    border-radius: 5px;
+    background: #fff;
+}
 }
 
 @media (width: 767px) and (min-height: 1024px) {
@@ -1697,10 +1721,10 @@
     height: 79vh;
   } */
   .banner-carousel .slick-dots {
-    top: 57% !important;
+    top: 48% !important;
   }
   .google-trans {
-    right: 1px;
+    right: 13px;
   }
   .scroll-top.open {
     right: 15px;
@@ -1718,7 +1742,7 @@
   }
   .banner-carousel .content-box h2,
   .sec-title h2 {
-    font-size: 34px;
+    font-size: 27px;
   }
 
   .sticky-skype {
@@ -1751,10 +1775,10 @@
     top: 228px !important;
   }
   .banner-carousel .content-box .list li h3 {
-    font-size: 28px !important;
+    font-size: 27px !important;
   }
   .banner-carousel .content-box .list li h4 {
-    font-size: 28px !important;
+    font-size: 27px !important;
   }
 }
 
@@ -1764,7 +1788,7 @@
   }
   .banner-carousel .content-box h2,
   .sec-title h2 {
-    font-size: 25px;
+    font-size: 20px;
   }
   .banner-carousel .content-box .list li h4 {
     font-size: 21px !important;
@@ -2013,7 +2037,7 @@
 }
 @media (min-width: 540px) and (min-height: 720px) {
   .position-slider .content-box {
-    top: 306px !important;
+    top: 280px !important;
   }
   .banner-carousel .content-box h2,
   .sec-title h2 {

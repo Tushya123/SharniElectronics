@@ -13898,7 +13898,7 @@ div#mCSB_1_container {
 
 .sticky-whatsapp {
   position: fixed;
-  bottom: 15%;
+  bottom: 8%;
   z-index: 99;
   right: 48px;
 }
@@ -13926,7 +13926,7 @@ div#mCSB_1_container {
 
 .sticky-skype {
   position: fixed;
-  bottom: 15%;
+  bottom: 8%;
   z-index: 99;
   right: 48px;
 }
