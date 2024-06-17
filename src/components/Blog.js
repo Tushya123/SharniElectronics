@@ -50,7 +50,7 @@ export default function Blog() {
                     style={{ color: "white" }}
                     to={`/blogdetails/${firstBlogId}`}
                   >
-                    View Blog
+                    View All Blog
                   </Link>
                 </button>
               </div>

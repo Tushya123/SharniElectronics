@@ -84,8 +84,6 @@ export default function Products() {
   };
   console.log("id", id);
   useEffect(() => {
-
-    
     const xyz = localStorage.getItem("selectedProductId");
     fetch(
       `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/list/projectdetail`
@@ -184,7 +182,7 @@ export default function Products() {
               </Container>
             </section>
             <Modal
-              show={show} 
+              show={show}
               onHide={handleClose}
               backdrop="static"
               keyboard={false}
@@ -213,7 +211,7 @@ export default function Products() {
                           <Col lg={12} md={6} sm={12} className="form-group">
                             <label>Quantity</label>
                             <input
-                              type="number"
+                              type="text"
                               name="quantity"
                               required
                               placeholder="Enter Quantity"
@@ -267,64 +265,59 @@ export default function Products() {
                           <h3 className="title">Chemical By {letter}</h3>
                         </div>
                         <Row>
-                          {products.map((item, index) => (
-                            <div
-                              key={index}
-                              className={`col-lg-${
-                                products.length === 1 ? "4" : "4"
-                              } col-md-12 col-sm-12 content-side`}
-                            >
-                              <div className="news-block-one">
-                                <div
-                                  className="inner-box"
-                                  style={{ boxShadow: "none" }}
-                                >
-                                  <a
-                                    style={{ color: "red" }}
-                                    className="text"
-                                    href="/productDetails"
-                                    onClick={() =>
-                                      localStorage.setItem(
-                                        "description",
-                                        item.Description
-                                      )
-                                    }
-                                  >
-                                    <h2
-                                      style={{
-                                        overflowWrap: "break-word",
-                                        color: item.IsActive
-                                          ? "#16436f"
-                                          : "red",
-                                      }}
-                                    >
-                                      {item.Description}
-                                    </h2>
-                                  </a>
-                                  <div className="lower-box ">
-                                    <div className="link">
-                                      <a
-                                        type="button"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#inquiryModal"
-                                        onClick={() => {
-                                          setShow(true);
-                                          setname(item.Description);
-                                          setid(item._id);
-                                          setDescription(
-                                            item.ProductDetail.ProductGroup
-                                          );
-                                        }}
-                                      >
-                                        Inquiry
-                                      </a>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          ))}
-                        </Row>
+  {products.map((item, index) => (
+    <div
+      key={index}
+      className={`col-lg-${products.length === 1 ? "4" : "4"} col-md-12 col-sm-12 content-side`}
+    >
+      <div className="news-block-one">
+        <div
+          className="inner-box"
+          style={{ boxShadow: "none" }}
+        >
+          <a
+            style={{ color: "red" }}
+            className="text"
+            href="/productDetails"
+            onClick={() =>
+              localStorage.setItem("description", item.Description)
+            }
+          >
+            <h2
+              style={{
+                overflowWrap: "break-word",
+                color:
+                  item.ProductDetailDescription.length === 0
+                    ? "red"
+                    : "#16436f",
+              }}
+            >
+              {item.Description}
+            </h2>
+          </a>
+          <div className="lower-box ">
+            <div className="link">
+              <a
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#inquiryModal"
+                onClick={() => {
+                  setShow(true);
+                  setname(item.Description);
+                  setid(item._id);
+                  setDescription(item.ProductDetail.ProductGroup);
+                }}
+              >
+                Inquiry
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ))}
+</Row>
+
                       </div>
                     </Container>
                   </section>
