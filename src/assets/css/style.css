@@ -517,7 +517,7 @@ img {
 
 
 .scroll-top.open {
-  bottom: 170px;
+  bottom: 123px;
 }
 
 .sec-title {
@@ -14140,7 +14140,7 @@ input {
 
 .slick-prev,
 .slick-next {
-  top: -50px !important;
+  top: -75px !important;
 }
 .slick-prev {
   left: unset !important;
