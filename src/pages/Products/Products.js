@@ -74,13 +74,13 @@ export default function Products() {
     const numValue = Number(value);
     console.log("numValue", numValue);
     // Check if the value is a positive number
-    if (numValue > 0) {
-      setQuantity(numValue);
+    // if (numValue > 0) {
+      setQuantity(value);
       setError("");
-    } else {
-      // Optionally, provide feedback to the user about the invalid input
-      alert("Quantity must be a positive number.");
-    }
+    // } else {
+    //   // Optionally, provide feedback to the user about the invalid input
+    //   alert("Quantity must be a positive number.");
+    // }
   };
   console.log("id", id);
   useEffect(() => {
