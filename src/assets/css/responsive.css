@@ -2131,7 +2131,7 @@
 }
 @media (min-width: 426px) and (max-width: 500px) {
   .logo-box img {
-    width: 49px;
+    width: 33px;
     height: auto !important;
   }
   .banner-carousel .content-box h2,
@@ -2157,7 +2157,7 @@
     right: 4px;
   }
   .logo-name h3 {
-    font-size: 14px !important;
+    font-size: 16px !important;
 }
   .sticky-whatsapp {
     right: 7px;

@@ -13924,7 +13924,7 @@ div#mCSB_1_container {
 }
 .sticky-skype {
   position: fixed;
-  bottom: 10%;
+  bottom: 5%;
   z-index: 99;
   right: 48px;
 }
