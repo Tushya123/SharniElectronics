@@ -13880,7 +13880,7 @@ div#mCSB_1_container {
 .sticky-button {
   position: fixed;
   bottom: 80px;
-  left: -84px;
+  left: -98px;
   background-color: #fff;
   padding: 10px 20px;
   border-radius: 5px;
@@ -13924,7 +13924,7 @@ div#mCSB_1_container {
 }
 .sticky-skype {
   position: fixed;
-  bottom: 5%;
+  bottom: 10%;
   z-index: 99;
   right: 48px;
 }

@@ -1993,7 +1993,7 @@
   }
   .scroll-top.open {
     bottom: 360px !important;
-}
+  }
   .logo-name h3 {
     font-size: 24px !important;
   }
@@ -2055,7 +2055,7 @@
     text-align: center;
     top: 0px;
     padding-top: 15px;
-}
+  }
 }
 @media (min-width: 540px) and (min-height: 720px) {
   .position-slider .content-box {
@@ -2127,6 +2127,95 @@
   .sec-title h2 {
     font-size: 34px;
     line-height: 51px;
+  }
+}
+@media (min-width: 426px) and (max-width: 500px) {
+  .logo-box img {
+    width: 49px;
+    height: auto !important;
+  }
+  .banner-carousel .content-box h2,
+  .sec-title h2 {
+    font-size: 26px;
+    line-height: 33px;
+    width: 100%;
+    white-space: pre-wrap;
+  }
+  .about-section .image-box {
+    position: relative;
+    display: block;
+    padding-right: 0px;
+  }
+  .banner-carousel .content-box h2,
+  .sec-title h2 {
+    font-size: 24px;
+    line-height: 33px;
+    width: 100%;
+    white-space: pre-wrap;
+  }
+  .scroll-top {
+    right: 4px;
+  }
+  
+  .sticky-whatsapp {
+    right: 7px;
+  }
+  .theme-btn.btn {
+    display: inline-block;
+    left: 113px;
+}
+.theme-btn.bn{
+  display: none;
+}
+  .sticky-skype {
+    position: fixed;
+    bottom: 9%;
+    z-index: 99;
+    right: 8px;
+  }
+  .slick-prev {
+    left: unset !important;
+    right: 63px !important;
+
+  }
+.slick-prev, .slick-next {
+  top: -37px !important;
+}
+  .booking-section .inner-content {
+    position: relative;
+    display: block;
+    background: #fff;
+    margin-bottom: 40px;
+    padding: 39px 30px 40px 30px;
+  }
+  .industries-section .sec-title {
+    padding: 98px 56px 47px 86px;
+  }
+  .sec-title {
+    /* margin-top: 58px; */
+    padding-top: 49px;
+    text-align: center;
+  }
+  .about-section .image-box {
+    margin-bottom: 9px;
+    margin-top: 30px;
+  }
+  .banner-carousel .content-box h2 {
+    margin-bottom: 80px;
+  }
+  .position-slider .content-box {
+    position: absolute;
+    top: 190px !important;
+    z-index: 99;
+  }
+  .header-top .top-inner {
+    display: none;
+  }
+  .banner-carousel .slick-dots {
+    top: 40% !important;
+  }
+  .banner-carousel {
+    height: 79vh;
   }
 }
 @media screen and (min-width: 1440px) {
