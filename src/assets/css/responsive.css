@@ -82,7 +82,6 @@
   .industries-style-three .industries-block-three .inner-box p {
     font-size: 16px;
   }
-
 }
 
 @media only screen and (max-width: 1200px) {
@@ -524,7 +523,6 @@
   .theme-btn.btn {
     display: none;
   }
-  
 
   .header-top .top-inner .info-list li:last-child {
     margin-bottom: 0px;
@@ -1291,22 +1289,22 @@
     line-height: 32px;
     font-weight: 500;
     margin-bottom: 10px;
-}
+  }
   .goog-te-gadget-simple {
     font-size: 8pt;
   }
-  
+
   .chooseus-section {
     position: relative;
     padding: 63px 0px 90px 0px;
-}
-.contact-section.sec-pad {
-  padding: 22px 0px;
-}
+  }
+  .contact-section.sec-pad {
+    padding: 22px 0px;
+  }
 
   .industries-section .sec-title {
     padding: 116px 30px 0px 86px;
-}
+  }
   .logo-name h3 {
     font-size: 21px;
   }
@@ -1316,7 +1314,7 @@
   .about-section .image-box .shape-box .shape-1 {
     top: -22px;
   }
-  .blog{
+  .blog {
     display: flex !important;
     justify-content: space-between !important;
   }
@@ -1349,7 +1347,7 @@
 }
 @media only screen and (max-width: 426px) {
   .position-slider .content-box {
-    top: 142px !important ;
+    top: 231px !important ;
   }
   .slick-prev,
   .slick-next {
@@ -1359,9 +1357,10 @@
     left: unset !important;
     right: 45px;
   }
-  .project-style-two, .chooseus-section {
+  .project-style-two,
+  .chooseus-section {
     padding: 0px 0px 40px 0px;
-}
+  }
   .theme-btn.bn {
     position: relative;
     display: none !important;
@@ -1572,15 +1571,15 @@
   .logo-box img {
     width: 37px;
   }
-  .banner-carousel .content-box h2, .sec-title h2 {
+  .banner-carousel .content-box h2,
+  .sec-title h2 {
     font-size: 17px;
-
   }
   .booking-section .content-box {
     padding-top: 0px;
   }
   .position-slider .content-box {
-    top: 143px !important;
+    top: 173px !important;
   }
   .sticky-skype img {
     width: 37px;
@@ -1686,7 +1685,7 @@
     line-height: 32px;
     font-weight: 500;
     margin-bottom: 9px;
-}
+  }
   .google-trans {
     position: absolute;
     top: 0;
@@ -1695,7 +1694,7 @@
     right: 135px;
     border-radius: 5px;
     background: #fff;
-}
+  }
 }
 
 @media (width: 767px) and (min-height: 1024px) {
@@ -1777,15 +1776,13 @@
   }
   .custom-slider-icon li img {
     width: 49%;
-}
+  }
   .banner-carousel .content-box .list li h3 {
     font-size: 24px !important;
-    line-height: 21px !important;
-
   }
   .banner-carousel .content-box .list li h4 {
     font-size: 24px !important;
-    /* line-height: 21px !important; */
+    line-height: 21px !important;
   }
 }
 
@@ -1836,7 +1833,7 @@
     /* line-height: 44px; */
   }
   .banner-carousel .slick-dots {
-    top: 51% !important;
+    top: 39% !important;
   }
   .banner-carousel {
     height: 77vh !important;
@@ -1848,7 +1845,7 @@
     font-size: 14px !important;
   }
   .sticky-skype {
-    bottom: 33% !important;
+    bottom: 19% !important;
   }
   .banner-carousel .content-box .list li h3 {
     font-size: 25px !important;
@@ -1860,11 +1857,17 @@
     font-size: 7pt;
   }
   .sticky-whatsapp {
-    bottom: 27% !important;
+    bottom: 13% !important;
+  }
+  .scroll-top.open {
+    bottom: 265px !important;
+  }
+  .scroll-top {
+    right: 7px;
   }
 
   .sticky-button {
-    bottom: 316px !important;
+    bottom: 190px !important;
   }
 }
 @media (min-width: 430px) and (min-height: 932px) {
@@ -1932,21 +1935,22 @@
     font-size: 14px !important;
   }
   .sticky-button {
-    bottom: 340px !important;
+    bottom: 227px !important;
   }
   .sticky-skype {
-    bottom: 35% !important;
+    bottom: 22% !important;
   }
   .sticky-whatsapp {
-    bottom: 30% !important;
+    bottom: 16% !important;
   }
 }
+
 @media (min-width: 360px) and (min-height: 740px) {
   .position-slider .content-box {
     top: 349px;
   }
   .logo-name h3 {
-    font-size: 11px;
+    font-size: 11px !important;
   }
   .sticky-button {
     bottom: 85px;
@@ -1987,6 +1991,9 @@
   .goog-te-gadget-simple {
     font-size: 8pt !important;
   }
+  .scroll-top.open {
+    bottom: 360px !important;
+}
   .logo-name h3 {
     font-size: 24px !important;
   }
@@ -2000,13 +2007,13 @@
     top: 41% !important;
   }
   .sticky-button {
-    bottom: 452px !important;
+    bottom: 321px !important;
   }
   .sticky-skype {
-    bottom: 42% !important;
+    bottom: 30% !important;
   }
   .sticky-whatsapp {
-    bottom: 36% !important;
+    bottom: 24% !important;
   }
   .position-slider .content-box {
     top: 289px !important;
@@ -2041,6 +2048,14 @@
   .sticky-whatsapp {
     bottom: 45% !important;
   }
+  .header-style-one .logo-box {
+    position: relative;
+    display: block;
+    left: -91px !important;
+    text-align: center;
+    top: 0px;
+    padding-top: 15px;
+}
 }
 @media (min-width: 540px) and (min-height: 720px) {
   .position-slider .content-box {
@@ -2135,4 +2150,3 @@
     bottom: 0% !important;
   }
 }
-
