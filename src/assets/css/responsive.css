@@ -1349,7 +1349,7 @@
 }
 @media only screen and (max-width: 426px) {
   .position-slider .content-box {
-    top: 231px !important ;
+    top: 142px !important ;
   }
   .slick-prev,
   .slick-next {
@@ -1580,7 +1580,7 @@
     padding-top: 0px;
   }
   .position-slider .content-box {
-    top: 173px !important;
+    top: 143px !important;
   }
   .sticky-skype img {
     width: 37px;
@@ -1773,12 +1773,19 @@
   }
   .position-slider .content-box {
     top: 228px !important;
+    left: 63px;
   }
+  .custom-slider-icon li img {
+    width: 49%;
+}
   .banner-carousel .content-box .list li h3 {
-    font-size: 27px !important;
+    font-size: 24px !important;
+    line-height: 21px !important;
+
   }
   .banner-carousel .content-box .list li h4 {
-    font-size: 27px !important;
+    font-size: 24px !important;
+    /* line-height: 21px !important; */
   }
 }
 
