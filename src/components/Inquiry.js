@@ -211,7 +211,7 @@ export default function Inquiry() {
                             value={formData.Country}
                             onChange={handleChange}
                           >
-                            <option value="">Select Country</option>
+                            <option value="" style={{textAlign:'center'}}>Select Country</option>
                             {countriesArray.map((country) => (
                               <option key={country.label} value={country.value}>
                                 {country.value}

@@ -2156,10 +2156,17 @@
   .scroll-top {
     right: 4px;
   }
-  
+  .logo-name h3 {
+    font-size: 14px !important;
+}
   .sticky-whatsapp {
     right: 7px;
-  }
+  }.banner-carousel .content-box h2, .sec-title h2 {
+    font-size: 24px;
+    line-height: 50px;
+    width: 100%;
+    white-space: pre-wrap;
+}
   .theme-btn.btn {
     display: inline-block;
     left: 113px;
