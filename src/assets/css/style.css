@@ -74,10 +74,10 @@ body {
   background-repeat: no-repeat;
   background-position: center top;
   -webkit-font-smoothing: antialiased;
-  overflow-x:hidden
+  overflow-x: hidden;
 }
 
-.search_setting{
+.search_setting {
   /* top: -36px; */
   z-index: 9;
   width: 100%;
@@ -85,7 +85,7 @@ body {
   padding-left: 35px !important;
 }
 
-.button_setting{
+.button_setting {
   z-index: 99;
   position: relative;
 }
@@ -516,9 +516,8 @@ img {
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1) !important;
 }
 
-
 .scroll-top.open {
-  bottom: 123px;
+  bottom: 40px;
 }
 
 .sec-title {
@@ -13898,7 +13897,7 @@ div#mCSB_1_container {
 
 .sticky-whatsapp {
   position: fixed;
-  bottom: 8%;
+  bottom: 15%;
   z-index: 99;
   right: 48px;
 }
@@ -13923,10 +13922,9 @@ div#mCSB_1_container {
 .scroll-top:hover i {
   color: #fff;
 }
-
 .sticky-skype {
   position: fixed;
-  bottom: 8%;
+  bottom: 25%;
   z-index: 99;
   right: 48px;
 }
@@ -14162,25 +14160,25 @@ input {
   padding-bottom: 19px;
   padding-top: 19px;
 }
-.contact-info{
+.contact-info {
   position: relative;
   padding: 120px 30px 20px 30px;
 }
-.social-links{
+.social-links {
   position: relative;
   padding: 0px 25px;
 }
-.clearfix{
+.clearfix {
   list-style: none;
   padding: 0px;
   margin: 0px;
 }
 
-.upper li{
- text-transform: uppercase;
-} 
+.upper li {
+  text-transform: uppercase;
+}
 
-.offcanvass{
+.offcanvass {
   background-color: #1c2a4d;
 }
 .offcanvas-header {
@@ -14205,7 +14203,7 @@ input {
 
 .menu-box .navigation li {
   /* border-bottom: 1px solid #ccc; */
-  border-top: 1px solid rgba(255, 255, 255, 0.10);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .menu-box .navigation li a {
@@ -14271,13 +14269,13 @@ input {
   position: absolute;
   top: 80px;
 }
-.text-area.error-message{
+.text-area.error-message {
   top: 115px;
 }
-.theme-btn.resp-width{
+.theme-btn.resp-width {
   width: 100%;
 }
-.producttext{
+.producttext {
   font-size: 20px;
   font-weight: 600;
   margin-left: -15px;
@@ -14291,10 +14289,11 @@ input {
   background-color: inherit; /* Remove hover effect */
   cursor: not-allowed;
 }
-.banner-carousel .content-box h2, .sec-title h2{
+.banner-carousel .content-box h2,
+.sec-title h2 {
   font-size: 34px;
 }
 
-.theme-btn.btn{
-display: none;
+.theme-btn.btn {
+  display: none;
 }
