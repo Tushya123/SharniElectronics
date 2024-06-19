@@ -220,7 +220,7 @@
   .cart-section .btn-box button:last-child {
     margin-right: 0px;
     margin-left: 287px !important;
-}
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -519,15 +519,14 @@
   }
 }
 @media only screen and (max-width: 1024px) {
-
-.cart-section .btn-box button:last-child {
-  margin-right: 0px;
-  margin-left: 89px;
-}
-.industries-block:nth-child(3) .industries-block-one .inner-box {
-  border-top: none;
-  padding: 17px;
-}
+  .cart-section .btn-box button:last-child {
+    margin-right: 0px;
+    margin-left: 89px;
+  }
+  .industries-block:nth-child(3) .industries-block-one .inner-box {
+    border-top: none;
+    padding: 17px;
+  }
 }
 
 @media only screen and (max-width: 767px) {
@@ -538,7 +537,9 @@
   .theme-btn.btn {
     display: none;
   }
-
+  .logo-name h3 {
+    font-size: 23px !important;
+}
   .header-top .top-inner .info-list li:last-child {
     margin-bottom: 0px;
   }
@@ -1290,7 +1291,6 @@
   .service-block-one .inner-box .image-box .image img {
     height: 260px !important;
     width: 343px;
-  
   }
   .theme-btn {
     /* margin: -11px; */
@@ -1364,7 +1364,7 @@
 }
 @media only screen and (max-width: 426px) {
   .position-slider .content-box {
-    top: 231px !important ;
+    top: 206px !important ;
   }
   .slick-prev,
   .slick-next {
@@ -1410,6 +1410,7 @@
   }
   .booking-section .sec-title {
     margin-bottom: 0px;
+    margin-top: 5px;
   }
   .sec-title .sub-title {
     font-size: 21px;
@@ -1422,7 +1423,7 @@
     right: 10px;
   }
   .scroll-top.open {
-    bottom: 85px !important;
+    bottom: 111px !important;
   }
   .sticky-skype img {
     width: 37px;
@@ -1572,7 +1573,7 @@
     margin-top: 17px;
   }
   .banner-carousel {
-    height: 81vh;
+    height: 71vh;
   }
   .sidebar-page-container .content-side {
     margin-top: 32px;
@@ -1584,14 +1585,14 @@
 
 @media only screen and (max-width: 376px) {
   .logo-name h3 {
-    font-size: 12px !important;
+    font-size: 11px !important;
   }
   .logo-box img {
     width: 37px;
   }
   .banner-carousel .content-box h2,
   .sec-title h2 {
-    font-size: 17px;
+    font-size: 20px;
   }
   .booking-section .content-box {
     padding-top: 0px;
@@ -1666,7 +1667,7 @@
   }
 
   .banner-carousel .slick-dots {
-    top: 48% !important;
+    top: 38% !important;
   }
 }
 
@@ -1681,7 +1682,7 @@
     text-align: center;
     top: 0px;
     padding-top: 15px;
-}
+  }
 }
 @media (min-width: 390px) and (max-width: 412px) {
   .logo-name h3 {
@@ -1982,7 +1983,7 @@
     bottom: 85px;
   }
   .booking-section .sec-title {
-    margin-top: -66px;
+    margin-top: -10px;
   }
   .sticky-skype {
     bottom: 7%;
@@ -2065,23 +2066,53 @@
   .banner-carousel .slick-dots {
     top: 38% !important;
   }
+  .industries-section .sec-title {
+    padding: 83px 36px 0px 87px;
+}
+.industries-block-one .inner-box {
+  position: relative;
+  display: block;
+  background: #fff;
+  padding: 33px 21px 30px 30px;
+}
+.blog{
+    display: flex;
+    justify-content: space-between;
+
+}
+.booking-section .sec-title {
+  margin-top: -66px;
+  right: -20px;
+}
+.sticky-button {
+  bottom: 444px !important;
+}
+.scroll-top.open {
+  bottom: 479px !important;
+}
+.sticky-whatsapp {
+    bottom: 31% !important;
+}
   .sticky-button {
     bottom: 608px !important;
   }
   .sticky-skype {
-    bottom: 50% !important;
+    bottom: 35% !important;
   }
   .sticky-whatsapp {
-    bottom: 45% !important;
+    bottom: 31% !important;
   }
   .header-style-one .logo-box {
     position: relative;
     display: block;
-    left: -91px !important;
+    left: -21px !important;
     text-align: center;
     top: 0px;
     padding-top: 15px;
   }
+  .google-trans {
+    right: 14px !important;
+}
 }
 @media (min-width: 540px) and (min-height: 720px) {
   .position-slider .content-box {
@@ -2129,13 +2160,22 @@
     font-size: 9pt !important;
   }
   .sticky-button {
-    bottom: 794px !important;
+    bottom: 635px !important;
   }
   .sticky-skype {
-    bottom: 57% !important;
+    bottom: 45% !important;
   }
+  .booking-section .content-box {
+
+    margin-bottom: 300px;
+}
+.booking-section .content-box .rotate-text {
+
+  top: 74px;
+
+}
   .sticky-whatsapp {
-    bottom: 52% !important;
+    bottom: 41% !important;
   }
 }
 @media (min-width: 1440px) and (min-height: 975px) {
@@ -2152,10 +2192,9 @@
   .banner-carousel .content-box h2,
   .sec-title h2 {
     font-size: 34px;
-    
+
     line-height: 51px;
   }
-  
 }
 @media (min-width: 426px) and (max-width: 500px) {
   .logo-box img {
@@ -2186,22 +2225,24 @@
   }
   .logo-name h3 {
     font-size: 16px !important;
-}
+  }
   .sticky-whatsapp {
     right: 7px;
-  }.banner-carousel .content-box h2, .sec-title h2 {
+  }
+  .banner-carousel .content-box h2,
+  .sec-title h2 {
     font-size: 24px;
     line-height: 50px;
     width: 100%;
     white-space: pre-wrap;
-}
+  }
   .theme-btn.btn {
     display: inline-block;
     left: 113px;
-}
-.theme-btn.bn{
-  display: none;
-}
+  }
+  .theme-btn.bn {
+    display: none;
+  }
   .sticky-skype {
     position: fixed;
     bottom: 9%;
@@ -2211,11 +2252,11 @@
   .slick-prev {
     left: unset !important;
     right: 63px !important;
-
   }
-.slick-prev, .slick-next {
-  top: -37px !important;
-}
+  .slick-prev,
+  .slick-next {
+    top: -37px !important;
+  }
   .booking-section .inner-content {
     position: relative;
     display: block;
@@ -2274,3 +2315,4 @@
     bottom: 0% !important;
   }
 }
+

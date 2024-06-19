@@ -4075,7 +4075,7 @@ div#mCSB_1_container {
 .booking-section .content-box {
   position: relative;
   display: block;
-  padding-top: 100px;
+  /* padding-top: 100px; */
   padding-right: 130px;
   margin-bottom: 180px;
 }
