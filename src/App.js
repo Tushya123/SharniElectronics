@@ -55,7 +55,7 @@ function App() {
       <SearchProvider>
         <BrowserRouter>
           <Header />
-          <ScrollToTop/>
+          {/* <ScrollToTop/> */}
           <>
             <Routes>
               <Route path="/" element={<Home />} />

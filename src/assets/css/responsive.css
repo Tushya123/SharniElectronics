@@ -217,6 +217,10 @@
   .service-block-one .inner-box .image-box .image img {
     height: 270px;
   }
+  .cart-section .btn-box button:last-child {
+    margin-right: 0px;
+    margin-left: 287px !important;
+}
 }
 
 @media only screen and (min-width: 768px) {
@@ -513,6 +517,17 @@
   .header-top-three .top-inner {
     justify-content: center;
   }
+}
+@media only screen and (max-width: 1024px) {
+
+.cart-section .btn-box button:last-child {
+  margin-right: 0px;
+  margin-left: 89px;
+}
+.industries-block:nth-child(3) .industries-block-one .inner-box {
+  border-top: none;
+  padding: 17px;
+}
 }
 
 @media only screen and (max-width: 767px) {
@@ -1274,6 +1289,8 @@
   }
   .service-block-one .inner-box .image-box .image img {
     height: 260px !important;
+    width: 343px;
+  
   }
   .theme-btn {
     /* margin: -11px; */
@@ -1330,7 +1347,7 @@
     margin-top: -99px;
   }
   .sec-title {
-    margin-top: 34px;
+    margin-top: -3px;
   }
   .scroll-top.open {
     bottom: 126px !important;
@@ -1656,6 +1673,14 @@
   .service-block-one .inner-box {
     max-width: 292px;
   }
+  .header-style-one .logo-box {
+    position: relative;
+    display: block;
+    left: -24px;
+    text-align: center;
+    top: 0px;
+    padding-top: 15px;
+}
 }
 @media (min-width: 390px) and (max-width: 412px) {
   .logo-name h3 {
@@ -2126,8 +2151,10 @@
   .banner-carousel .content-box h2,
   .sec-title h2 {
     font-size: 34px;
+    
     line-height: 51px;
   }
+  
 }
 @media (min-width: 426px) and (max-width: 500px) {
   .logo-box img {
