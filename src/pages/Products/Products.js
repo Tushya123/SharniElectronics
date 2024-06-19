@@ -74,13 +74,13 @@ export default function Products() {
     const numValue = Number(value);
     console.log("numValue", numValue);
     // Check if the value is a positive number
-    if (numValue > 0) {
-      setQuantity(numValue);
-      setError("");
-    } else {
-      // Optionally, provide feedback to the user about the invalid input
-      alert("Quantity must be a positive number.");
-    }
+    // if (numValue > 0) {
+    setQuantity(value);
+    setError("");
+    // } else {
+    //   // Optionally, provide feedback to the user about the invalid input
+    //   alert("Quantity must be a positive number.");
+    // }
   };
   console.log("id", id);
   useEffect(() => {
@@ -211,7 +211,7 @@ export default function Products() {
                           <Col lg={12} md={6} sm={12} className="form-group">
                             <label>Quantity</label>
                             <input
-                              type="number"
+                              type="text"
                               name="quantity"
                               required
                               placeholder="Enter Quantity"
@@ -272,13 +272,13 @@ export default function Products() {
                                 products.length === 1 ? "4" : "4"
                               } col-md-12 col-sm-12 content-side`}
                             >
-                              <div className="news-block-one" >
+                              <div className="news-block-one">
                                 <div
                                   className="inner-box"
                                   style={{ boxShadow: "none" }}
                                 >
                                   <a
-                                  style={{color:'red'}}
+                                    style={{ color: "red" }}
                                     className="text"
                                     href="/productDetails"
                                     onClick={() =>
@@ -288,14 +288,23 @@ export default function Products() {
                                       )
                                     }
                                   >
-                                    <h2   style={{ overflowWrap: "break-word",color:item.IsActive ? "#16436f" : "red"}}>
+                                    <h2
+                                      style={{
+                                        overflowWrap: "break-word",
+                                        textTransform:'uppercase',
+                                        color:
+                                          item.ProductDetailDescription
+                                            .length === 0
+                                            ? "red"
+                                            : "#16436f",
+                                      }}
+                                    >
                                       {item.Description}
                                     </h2>
                                   </a>
                                   <div className="lower-box ">
                                     <div className="link">
                                       <a
-                                      
                                         type="button"
                                         data-bs-toggle="modal"
                                         data-bs-target="#inquiryModal"

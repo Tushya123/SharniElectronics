@@ -13,7 +13,9 @@ export default function NewsEvent() {
           `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/listonly/Newsletter`
         );
         console.log("Data:", response.data);
-        const activeCertificates = response.data.filter((News) => News.IsActive);
+        const activeCertificates = response.data.filter(
+          (News) => News.IsActive
+        );
         setNews(activeCertificates);
       } catch (error) {
         console.error("Error fetching product data:", error);
@@ -22,6 +24,7 @@ export default function NewsEvent() {
 
     fetchData();
   }, []);
+  const Newsfirst = news.length > 0 ? news[0]._id : null;
 
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
@@ -34,11 +37,18 @@ export default function NewsEvent() {
         <Container>
           <div className="sec-title">
             <span className="sub-title">News &amp; Events</span>
+            <div className="blog">
+
             <h2>Explore our latest post</h2>
             <div className="btn-box">
-              <button href="#" className="theme-btn">
+              <Link
+                style={{ color: "white" }}
+                to={`/detailNews/${Newsfirst}`}
+                className="theme-btn bn"
+              >
                 View All News
-              </button>
+              </Link>
+            </div>
             </div>
           </div>
           <Row>
@@ -78,11 +88,15 @@ export default function NewsEvent() {
                           <li>{formatDate(item.createdAt)}</li>
                         </ul>
                         <h3>
-                          <Link to={`/detailNews/${item._id}`}>{item.Title}</Link>
+                          <Link to={`/detailNews/${item._id}`}>
+                            {item.Title}
+                          </Link>
                         </h3>
                         <div className="lower-box">
                           <div className="link">
-                            <Link to={`/detailNews/${item._id}`}>Read More</Link>
+                            <Link to={`/detailNews/${item._id}`}>
+                              Read More
+                            </Link>
                           </div>
                         </div>
                       </div>
@@ -95,6 +109,15 @@ export default function NewsEvent() {
                 <p>No news available</p>
               </Col>
             )}
+            <div className="btn-box">
+              <Link
+                style={{ color: "white" }}
+                to={`/detailNews/${Newsfirst}`}
+                className="theme-btn btn"
+              >
+                View All News
+              </Link>
+            </div>
           </Row>
         </Container>
       </section>
