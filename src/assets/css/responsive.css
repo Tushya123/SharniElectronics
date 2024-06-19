@@ -1393,7 +1393,7 @@
     padding-top: 124px;
   }
   .main-footer .widget-section {
-    padding: 0px 0px 40px 0px;
+    padding: 0px 0px 0px 0px;
   }
   .booking-section .inner-content {
     margin-bottom: 62px !important;
@@ -1422,7 +1422,7 @@
     right: 10px;
   }
   .scroll-top.open {
-    bottom: 100px !important;
+    bottom: 85px !important;
   }
   .sticky-skype img {
     width: 37px;
@@ -1504,9 +1504,10 @@
   }
   .banner-carousel .content-box h2,
   .sec-title h2 {
-    font-size: 20px;
+    font-size: 19px;
     text-align: center;
     padding: 12px;
+    left: 11px;
   }
   .banner-carousel .content-box .list li h3 {
     font-size: 20px !important;

@@ -8,6 +8,9 @@ import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Preloader from "../../components/PreLoader";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import {
   Image,
   Container,
@@ -23,6 +26,10 @@ export default function Products() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleAddToCartClick = () => {
+    if (quantity <= 0) {
+      toast.error("Quantity must be greater than zero!");
+      return;
+    }
     setIsLoading(true);
     handleAddToCart().finally(() => {
       setIsLoading(false);
@@ -137,8 +144,10 @@ export default function Products() {
       if (storedProductIds.includes(productId)) {
         setShow(false);
       }
+
     } catch (error) {
       console.error("Error adding product to cart:", error);
+
     }
   };
 
@@ -159,6 +168,8 @@ export default function Products() {
     <React.Fragment
       style={{ position: "relative", minHeight: "100%", top: "0px" }}
     >
+      <ToastContainer />
+
       {!data || data?.length < 1 ? (
         <Preloader />
       ) : (
@@ -291,7 +302,7 @@ export default function Products() {
                                     <h2
                                       style={{
                                         overflowWrap: "break-word",
-                                        textTransform:'uppercase',
+                                        textTransform: "uppercase",
                                         color:
                                           item.ProductDetailDescription
                                             .length === 0

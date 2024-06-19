@@ -13,11 +13,14 @@ import skype from "../../assets/images/new-home/skype.png";
 import wp from "../../assets/images/new-home/whatsapp.png";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import Preloader from "../../components/PreLoader";
 
 export default function NewsDetails() {
   const [Blogs, setBlogs] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
 
   const toggleVisibility = () => {
     if (window.pageYOffset > 300) {
@@ -44,12 +47,18 @@ export default function NewsDetails() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setIsLoading(true); // Start loading
+
         const response = await axios.get(
           `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/listonly/Blog`
         );
         setBlogs(response.data);
+        setIsLoading(false); // Stop loading after data is fetched
+
       } catch (error) {
         console.error("Error fetching product data:", error);
+        setIsLoading(false); // Stop loading on error
+
       }
     };
 
@@ -73,7 +82,13 @@ export default function NewsDetails() {
     fetchBlog();
   }, [id]);
 
-  if (!Blogs) return <div>Loading...</div>;
+  if (isLoading) {
+    return <Preloader />;
+  }
+
+  if (!Blogs) {
+    return <div>No blog data available</div>;
+  }
 
   return (
     <div className="boxed_wrapper">
@@ -85,13 +100,13 @@ export default function NewsDetails() {
         ></div>
         <Container>
           <div className="content-box">
-            <h1>{Blogs.Name}</h1>
+            <h1>{Blogs.Title}</h1>
             <ul className="bread-crumb clearfix">
               <li>
                 <Link to="/">Home</Link>
               </li>
               <li>News</li>
-              <li>{Blogs.Title}</li>
+              {/* <li>{Blogs.Title}</li> */}
             </ul>
           </div>
         </Container>

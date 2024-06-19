@@ -131,7 +131,13 @@ export default function Inquiry() {
         </div>
         <Container className="auto-container">
           <Row className="clearfix custom-form">
-            <Col lg={5} md={12} sm={12} className="content-column" style={{paddingLeft:'0px'}}>
+            <Col
+              lg={5}
+              md={12}
+              sm={12}
+              className="content-column"
+              style={{ paddingLeft: "0px" }}
+            >
               <div className="content-box">
                 <span className="rotate-text">contact us</span>
                 <div
@@ -159,7 +165,6 @@ export default function Inquiry() {
                           value={formData.ContactPerson}
                           onChange={handleChange}
                           className={errors.ContactPerson ? "error" : ""}
-                          required=""
                         />
                         {errors.ContactPerson && (
                           <div className="error-message">
@@ -177,7 +182,6 @@ export default function Inquiry() {
                           value={formData.Mobile}
                           onChange={handleChange}
                           className={errors.Mobile ? "error" : ""}
-                          required=""
                         />
                         {errors.Mobile && (
                           <div className="error-message">{errors.Mobile}</div>
@@ -189,7 +193,6 @@ export default function Inquiry() {
                         <input
                           type="email"
                           name="Email"
-                          required=""
                           placeholder="Enter your Email"
                           value={formData.Email}
                           onChange={handleChange}
@@ -211,7 +214,9 @@ export default function Inquiry() {
                             value={formData.Country}
                             onChange={handleChange}
                           >
-                            <option value="" style={{textAlign:'center'}}>Select Country</option>
+                            <option value="" style={{ textAlign: "center" }}>
+                              Select Country
+                            </option>
                             {countriesArray.map((country) => (
                               <option key={country.label} value={country.value}>
                                 {country.value}
@@ -237,7 +242,6 @@ export default function Inquiry() {
                           className={`custom-textarea ${
                             errors.Message ? "error" : ""
                           }`}
-                          required=""
                         ></textarea>
                         {errors.Message && (
                           <div className="error-message text-area">

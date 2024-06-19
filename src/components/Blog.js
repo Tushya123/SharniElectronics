@@ -90,7 +90,7 @@ export default function Blog() {
                         <li className="me-3">{formatDate(blog.createdAt)}</li>
                       </ul>
                       <h3 className="mb-3">
-                        <Link>{blog.Title}</Link>
+                        <Link to={`/blogdetails/${blog._id}`}>{blog.Title}</Link>
                       </h3>
                       <div className="lower-box">
                         <div className="link">

@@ -147,7 +147,7 @@ select,
 textarea {
   font-family: "DM Sans", sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px;
   text-align: center;
   background: transparent;
 }
@@ -4028,7 +4028,7 @@ div#mCSB_1_container {
 }
 
 .booking-section .sec-title {
-  margin-top: 32px;
+  margin-top: -185px;
 }
 
 .booking-section .sec-title .sub-title {
@@ -4137,7 +4137,7 @@ div#mCSB_1_container {
 
 .booking-section .content-box .rotate-text {
   position: absolute;
-  top: 158px;
+  top: 40px;
   right: 0px;
   font-size: 18px;
   line-height: 227px;
@@ -4430,11 +4430,12 @@ div#mCSB_1_container {
 }
 
 .main-footer .about-widget .lower-box {
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding-left: 85px;
-  /* min-height: 78px; */
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 85px;
+    /* min-height: 78px; */
+    margin-bottom: 56px;
 }
 
 .main-footer .about-widget .lower-box .icon-box {
@@ -7164,7 +7165,7 @@ div#mCSB_1_container {
   position: relative;
   display: inline-block;
   float: left;
-  margin: 0px 7.5px 15px 7.5px;
+  margin: 0px 7.5px 15px -0.5px;
 }
 
 .footer-style-two .gallery-widget .image-list li .image {

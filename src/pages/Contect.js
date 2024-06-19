@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../assets/images/new-home/logo.png";
 import Background from "../assets/images/new-home/breadcrumb-img.jpg";
 import footer from "../assets/images/new-home/footer-location-img.jpg";
@@ -8,7 +8,8 @@ import Header from "../components/Header";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Container, Row,Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import Preloader from "../components/PreLoader";
 
 const countriesArray = [
   { label: "DZ", value: "ALGERIA" },
@@ -53,6 +54,7 @@ export default function Contact() {
     Country: "",
     Remark: "",
   });
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -78,10 +80,13 @@ export default function Contact() {
       return;
     }
     try {
+      setIsLoading(true); // Start loading
+
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/create/contactinquiry`,
         formData
       );
+      
       if (response) {
         toast.success("Your application has been submitted successfully!");
         setFormData({
@@ -98,8 +103,11 @@ export default function Contact() {
     } catch (error) {
       console.error("Application submission error:", error);
       toast.error("Application submission failed. Please try again.");
+    } finally {
+      setIsLoading(false); // Stop loading
     }
   };
+
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {
@@ -124,13 +132,20 @@ export default function Contact() {
     };
   }, []);
 
+  useEffect(() => {
+    // Simulate a delay to show the loader
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, []);
 
-
+  if (isLoading) {
+    return <Preloader />;
+  }
 
   return (
     <React.Fragment style={{ position: "relative", minHeight: "100%", top: "0px" }}>
-            <ToastContainer />
-
+      <ToastContainer />
       <div className="boxed_wrapper">
         <section className="page-title">
           <div className="bg-layer" style={{ backgroundImage: `url(${Background})` }}></div>
@@ -148,7 +163,7 @@ export default function Contact() {
           <Container className="auto-container">
             <div className="lower-box">
               <Row className="clearfix">
-              <Col lg={4} md={6} sm={12} className="single-column">
+                <Col lg={4} md={6} sm={12} className="single-column">
                   <div className="single-item">
                     <div className="icon-box">
                       <i className="flaticon-pin"></i>
@@ -199,7 +214,7 @@ export default function Contact() {
         <section className="contact-section sec-pad centred">
           <Container className="auto-container">
             <Row className="clearfix justify-content-center">
-            <Col xl={6} lg={12} md={12} className="inner-column">
+              <Col xl={6} lg={12} md={12} className="inner-column">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10372.815643465836!2d73.16075495016815!3d22.317465242314196!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fcf6c89cabb19%3A0xf803cbcf27adf1aa!2sShreeji%20Pharma%20International!5e0!3m2!1sen!2sin!4v1713952635837!5m2!1sen!2sin"
                   style={{ border: 0, width: "100%", height: 700 }}
@@ -219,7 +234,7 @@ export default function Contact() {
                   <div className="form-inner">
                     <form onSubmit={handleSubmit} noValidate className="needs-validation">
                       <Row className="clearfix">
-                      <Col lg={6} md={12} sm={12} className="form-group">
+                        <Col lg={6} md={12} sm={12} className="form-group">
                           <i className="fa-solid fa-user"></i>
                           <label>Name</label>
                           <input
@@ -339,11 +354,12 @@ export default function Contact() {
           </div>
         </div>
         <button
-            className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
-            onClick={scrollToTop}
-            style={{ display: isVisible ? "block" : "none" }}>
-            <i className="flaticon-up-arrow"></i>
-          </button>
+          className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
+          onClick={scrollToTop}
+          style={{ display: isVisible ? "block" : "none" }}
+        >
+          <i className="flaticon-up-arrow"></i>
+        </button>
       </div>
     </React.Fragment>
   );

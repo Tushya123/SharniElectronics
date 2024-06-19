@@ -4,11 +4,15 @@ import skype from "../../assets/images/new-home/skype.png";
 import wp from "../../assets/images/new-home/whatsapp.png";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import {Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
+import Preloader from "../../components/PreLoader";
 
 export default function BlogsDetails() {
   const [Blogs, setBlogs] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const { id } = useParams();
+  const [blog, setBlog] = useState(null);
 
   const toggleVisibility = () => {
     if (window.pageYOffset > 300) {
@@ -32,7 +36,6 @@ export default function BlogsDetails() {
     };
   }, []);
 
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -49,31 +52,34 @@ export default function BlogsDetails() {
     fetchData();
   }, []);
 
-  const { id } = useParams();
-  console.log(id, "avaniid");
-  const [blog, setBlog] = useState(null);
-  console.log(blog, "blog");
   useEffect(() => {
     const fetchBlog = async () => {
       try {
+        setIsLoading(true); // Start loading
         const response = await axios.get(
           `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/get/Blog/${id}`
         );
         setBlog(response.data);
+        setIsLoading(false); // Stop loading after data is fetched
       } catch (error) {
         console.error("Error fetching blog data:", error);
+        setIsLoading(false); // Stop loading on error
       }
     };
 
     fetchBlog();
   }, [id]);
 
-  if (!blog) return <div>Loading...</div>;
+  if (isLoading) {
+    return <Preloader />;
+  }
+
+  if (!blog) {
+    return <div>No blog data available</div>;
+  }
 
   return (
-    <React.Fragment
-      style={{ position: "relative", minHeight: "100%", top: "0px" }}
-    >
+    <React.Fragment style={{ position: "relative", minHeight: "100%", top: "0px" }}>
       <div className="boxed_wrapper">
         <section className="page-title">
           <div
@@ -82,39 +88,37 @@ export default function BlogsDetails() {
           ></div>
           <Container className="auto-container">
             <div className="content-box">
-              <h1>{blog.Name}</h1>
+              <h1>{blog.Category}</h1>
               <ul className="bread-crumb clearfix">
                 <li>
                   <Link to="/">Home</Link>
                 </li>
                 <li><Link to="/">Blog</Link></li>
-                <li>{blog.Category}</li>
+                {/* <li>{blog.Category}</li> */}
               </ul>
             </div>
           </Container>
         </section>
-        <section class="sidebar-page-container blog-details sec-pad">
-          <Container class="auto-container">
-            <Row class="clearfix">
-            <Col lg={8} md={12} sm={12} className="content-side">
-                <div class="blog-details-content">
-                  <div class="content-one">
-                    <figure class="image-box">
+        <section className="sidebar-page-container blog-details sec-pad">
+          <Container className="auto-container">
+            <Row className="clearfix">
+              <Col lg={8} md={12} sm={12} className="content-side">
+                <div className="blog-details-content">
+                  <div className="content-one">
+                    <figure className="image-box">
                       <img
                         src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${blog.BlogImage}`}
                         alt=""
                       />
                     </figure>
                   </div>
-                  <div class="content-four pb-5">
+                  <div className="content-four pb-5">
                     <h2>{blog.Category}</h2>
-                    {
-                      <span style={{ width: "300px" }}>
-                        {React.createElement("div", {
-                          dangerouslySetInnerHTML: { __html: blog.Description },
-                        })}
-                      </span>
-                    }
+                    <span style={{ width: "300px" }}>
+                      {React.createElement("div", {
+                        dangerouslySetInnerHTML: { __html: blog.Description },
+                      })}
+                    </span>
                     <p></p>
                     <h4>{blog.Title}</h4>
                   </div>
@@ -168,12 +172,12 @@ export default function BlogsDetails() {
         </div>
 
         <button
-            className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
-            onClick={scrollToTop}
-            style={{ display: isVisible ? "block" : "none" }}
-          >
-            <i className="flaticon-up-arrow"></i>
-          </button>
+          className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
+          onClick={scrollToTop}
+          style={{ display: isVisible ? "block" : "none" }}
+        >
+          <i className="flaticon-up-arrow"></i>
+        </button>
       </div>
     </React.Fragment>
   );
