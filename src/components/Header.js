@@ -313,7 +313,7 @@ export default function Header() {
             </div>
           </Container>
         </div>
-      </header>
+      </header> 
 
       <Offcanvas
         className="offcanvas"

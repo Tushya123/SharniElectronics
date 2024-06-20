@@ -79,7 +79,9 @@ export default function BlogsDetails() {
   }
 
   return (
-    <React.Fragment style={{ position: "relative", minHeight: "100%", top: "0px" }}>
+    <React.Fragment
+      style={{ position: "relative", minHeight: "100%", top: "0px" }}
+    >
       <div className="boxed_wrapper">
         <section className="page-title">
           <div
@@ -88,12 +90,14 @@ export default function BlogsDetails() {
           ></div>
           <Container className="auto-container">
             <div className="content-box">
-              <h1>{blog.Category}</h1>
+              <h1>{blog.Title}</h1>
               <ul className="bread-crumb clearfix">
                 <li>
                   <Link to="/">Home</Link>
                 </li>
-                <li><Link to="/">Blog</Link></li>
+                <li>
+                  <Link to="/">Blog</Link>
+                </li>
                 {/* <li>{blog.Category}</li> */}
               </ul>
             </div>
@@ -113,14 +117,14 @@ export default function BlogsDetails() {
                     </figure>
                   </div>
                   <div className="content-four pb-5">
-                    <h2>{blog.Category}</h2>
+                    <h2>{blog.Title}</h2>
+
+                    <h4>{blog.Category}</h4>
                     <span style={{ width: "300px" }}>
                       {React.createElement("div", {
                         dangerouslySetInnerHTML: { __html: blog.Description },
                       })}
                     </span>
-                    <p></p>
-                    <h4>{blog.Title}</h4>
                   </div>
                 </div>
               </Col>
@@ -135,7 +139,7 @@ export default function BlogsDetails() {
                         {Blogs.map((blog) => (
                           <li key={blog._id}>
                             <Link to={`/blogdetails/${blog._id}`}>
-                              {blog.Category}
+                              {blog.Title}
                               <i className="flaticon-right-arrow"></i>
                             </Link>
                           </li>

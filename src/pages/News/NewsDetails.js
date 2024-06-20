@@ -16,11 +16,11 @@ import axios from "axios";
 import Preloader from "../../components/PreLoader";
 
 export default function NewsDetails() {
-  const [Blogs, setBlogs] = useState([]);
+  const [BlogsList, setBlogsList] = useState([]);
+  const [blogDetails, setBlogDetails] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-
 
   const toggleVisibility = () => {
     if (window.pageYOffset > 300) {
@@ -52,13 +52,11 @@ export default function NewsDetails() {
         const response = await axios.get(
           `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/listonly/Blog`
         );
-        setBlogs(response.data);
+        setBlogsList(response.data);
         setIsLoading(false); // Stop loading after data is fetched
-
       } catch (error) {
         console.error("Error fetching product data:", error);
         setIsLoading(false); // Stop loading on error
-
       }
     };
 
@@ -73,7 +71,7 @@ export default function NewsDetails() {
         const response = await axios.get(
           `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/get/Newsletter/${id}`
         );
-        setBlogs(response.data);
+        setBlogDetails(response.data);
       } catch (error) {
         console.error("Error fetching Blogs data:", error);
       }
@@ -86,13 +84,12 @@ export default function NewsDetails() {
     return <Preloader />;
   }
 
-  if (!Blogs) {
+  if (!blogDetails) {
     return <div>No blog data available</div>;
   }
 
   return (
     <div className="boxed_wrapper">
-    
       <section className="page-title">
         <div
           className="bg-layer"
@@ -100,7 +97,7 @@ export default function NewsDetails() {
         ></div>
         <Container>
           <div className="content-box">
-            <h1>{Blogs.Title}</h1>
+            <h1>{blogDetails.Title}</h1>
             <ul className="bread-crumb clearfix">
               <li>
                 <Link to="/">Home</Link>
@@ -119,17 +116,40 @@ export default function NewsDetails() {
                 <div className="content-one">
                   <Figure className="image-box">
                     <Image
-                      src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${Blogs.NewsletterImage}`}
+                      src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${blogDetails.NewsletterImage}`}
                       alt=""
                       fluid
                     />
                   </Figure>
                 </div>
                 <div className="content-four pb-5">
-                  <h2>{Blogs.Title}</h2>
+                  <h2>{blogDetails.Title}</h2>
                   <div
-                    dangerouslySetInnerHTML={{ __html: Blogs.Description }}
+                    dangerouslySetInnerHTML={{
+                      __html: blogDetails.Description,
+                    }}
                   />
+                </div>
+              </div>
+            </Col>
+            <Col lg={4} md={12} sm={12} className="sidebar-side">
+              <div className="blog-sidebar">
+                <div className="sidebar-widget category-widget">
+                  <div className="widget-title">
+                    <h3>News</h3>
+                  </div>
+                  <div className="widget-content">
+                    <ul className="category-list clearfix">
+                      {BlogsList.map((blog) => (
+                        <li key={blog._id}>
+                          <Link to={`/detailNews/${blog._id}`}>
+                            {blogDetails.Title}
+                            <i className="flaticon-right-arrow"></i>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </Col>
