@@ -72,8 +72,10 @@ export default function NewsDetails() {
           `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/get/Newsletter/${id}`
         );
         setBlogDetails(response.data);
+        setIsLoading(false)
       } catch (error) {
         console.error("Error fetching Blogs data:", error);
+        setIsLoading(false)
       }
     };
 

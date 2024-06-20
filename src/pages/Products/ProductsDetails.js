@@ -10,6 +10,7 @@ import { Container, Row, Table, Figure, Button, Col } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 import { jsPDF } from "jspdf";
+import doc from "../../assets/images/unnamed.jpg"
 const description = localStorage.getItem("description");
 
 export default function ProductsDetails() {
@@ -69,14 +70,14 @@ export default function ProductsDetails() {
         `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/download-pdf`,
         { ...productDetailsss },
         {
-          responseType: 'blob',
-          crossOrigin: true
+          responseType: "blob",
+          crossOrigin: true,
         }
       )
       .then((response) => {
-        console.log("response",response)
+        console.log("response", response);
         const url = window.URL.createObjectURL(
-          new Blob([response.data], { type: 'application/pdf' })
+          new Blob([response.data], { type: "application/pdf" })
         );
         const link = document.createElement("a");
         link.href = url;
@@ -159,7 +160,11 @@ export default function ProductsDetails() {
                             {productDetailsss && (
                               <img
                                 style={{ height: "170px" }}
-                                src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${productDetailsss.ImageUrl}`}
+                                src={
+                                  productDetailsss.ImageUrl
+                                    ? `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${productDetailsss.ImageUrl}`
+                                    : doc
+                                }
                                 onLoad={() =>
                                   console.log("Image loaded successfully")
                                 }
@@ -171,17 +176,20 @@ export default function ProductsDetails() {
                           </figure>
                         </Col>
                         <Row>
-                        <Col lg={7} className=" mt-4 product-name align-items-center d-flex">
-                          <h3 className="producttext">
-                            {localStorage.getItem("description")}
-                          </h3>
-                        </Col>
+                          <Col
+                            lg={7}
+                            className=" mt-4 product-name align-items-center d-flex"
+                          >
+                            <h3 className="producttext">
+                              {localStorage.getItem("description")}
+                            </h3>
+                          </Col>
                         </Row>
                         {/* <div className="col-lg-5 col-12 text-right mt-4"></div> */}
                       </Row>
                     </Col>
                     <Col lg={12} className="mt-4">
-                    <div className="table-outer product-detail-table">
+                      <div className="table-outer product-detail-table">
                         <Table responsive className="cart-table">
                           <thead className="cart-header">
                             <tr style={{ padding: "0px" }}>
