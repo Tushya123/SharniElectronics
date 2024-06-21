@@ -45,11 +45,11 @@ export default function Footer() {
 
   return (
     <React.Fragment>
-      <footer className="main-footer footer-style-two py-5">
+      <footer className="main-footer footer-style-two ">
         <Container>
           <div className="widget-section">
             <Row className="clearfix">
-              <Col lg={5} md={6} sm={12} className="mb-4" style={{paddingLeft:'0px'}}>
+              <Col lg={5} md={7} sm={12} className="mb-4" style={{paddingLeft:'0px'}}>
                 <div className="footer-widget about-widget">
                   <div className="widget-title">
                     <h3>About Us</h3>
@@ -69,7 +69,7 @@ export default function Footer() {
                   </div>
                 </div>
               </Col>
-              <Col lg={2} md={6} sm={12} className="mb-4">
+              <Col lg={3} md={5} sm={12} className="mb-4">
                 <div className="footer-widget links-widget">
                   <div className="widget-title">
                     <h3>Quick Links</h3>
@@ -98,7 +98,7 @@ export default function Footer() {
                   </div>
                 </div>
               </Col>
-              <Col lg={5} md={6} sm={12} className="mb-4">
+              <Col lg={4} md={12} sm={12} className="mb-4">
                 <div className="footer-widget gallery-widget">
                   <div className="widget-title">
                     <h3>Gallery</h3>
@@ -131,22 +131,22 @@ export default function Footer() {
             </Row>
           </div>
           <div className="footer-bottom py-0">
-            <Row>
+            <Row className="footerBottomRow">
               <Col
                 lg={6}
-                md={12}
+                md={6}
                 className="text-lg-start text-center mb-3 mb-lg-0"
               >
                 <div className="copyright">
-                  <p className="mb-0">
+                  <p className="mb-0 copyrightTitle">
                     Copyright © 2024 <a href="#">Shreeji Pharma </a> All Rights
                     Reserved
                   </p>
                 </div>
               </Col>
-              <Col lg={6} md={12} className="text-lg-end text-center">
+              <Col lg={6} md={6} className="text-lg-end text-center">
                 <div className="copyright">
-                  <p className="mb-0">
+                  <p className="mb-0 copyrightTitle">
                     Powered By{" "}
                     <a
                       href="https://www.barodaweb.com/"

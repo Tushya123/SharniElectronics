@@ -69,11 +69,11 @@ export default function Blog() {
                 <div className="news-block-one wow fadeInUp animated">
                   <div className="inner-box">
                     <div className="image-box position-relative">
-                      <Figure className="image mb-0">
+                      <Figure className="image  mb-0">
                         <img
                           src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${blog.BlogImage}`}
                           alt={blog.Title}
-                          className="img-fluid"
+                          className="img-fluid blogImg"
                         />
                       </Figure>
                       <div className="link-btn position-absolute">
@@ -108,7 +108,7 @@ export default function Blog() {
                   style={{ color: "white" }}
                   to={`/blogdetails/${firstBlogId}`}
                 >
-                  View Blog
+                 View all blog 
                 </Link>
               </button>
             </div>

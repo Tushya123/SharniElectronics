@@ -242,6 +242,11 @@
   .position-slider .content-box {
     top: 370px;
   }
+  .sticky-skype {
+  
+    bottom: 13%;
+  
+}
 }
 /* @media only screen and (min-width: 1440px) {
   .position-slider .content-box {
@@ -330,11 +335,11 @@
   }
 
   .main-footer .footer-widget {
-    margin: 0px 0px 30px 0px !important;
+    /* margin: 0px 0px 30px 0px !important; */
   }
 
   .main-footer .widget-section {
-    padding-bottom: 58px;
+    padding-bottom: 0px;
   }
 
   .banner-style-two .content-box {
@@ -509,9 +514,17 @@
   .location-style-two .pattern-layer {
     width: 100%;
   }
-
+.footerBottomRow {
+  /* padding: 20px 0px; */
+}
+.blogImg {
+  height: 250px;
+}
   .header-top-three .right-column {
     display: none;
+  }
+  .copyrightTitle {
+    font-size: 13px !important;
   }
 
   .header-top-three .top-inner {
@@ -522,6 +535,9 @@
   .cart-section .btn-box button:last-child {
     margin-right: 0px;
     margin-left: 89px;
+  }
+  .copyrightTitle{
+    font-size: 18px;
   }
   .industries-block:nth-child(3) .industries-block-one .inner-box {
     border-top: none;
@@ -1318,15 +1334,18 @@
   .contact-section.sec-pad {
     padding: 22px 0px;
   }
+  .sec-title{
+    margin-bottom: 0px;
+  }
 
   .industries-section .sec-title {
-    padding: 116px 30px 0px 86px;
+    padding: 30px 30px 0px 86px;
   }
   .logo-name h3 {
     font-size: 21px;
   }
   .industries-block-one .inner-box {
-    margin-top: -29px;
+    /* margin-top: -29px; */
   }
   .about-section .image-box .shape-box .shape-1 {
     top: -22px;
@@ -1350,7 +1369,7 @@
     margin-top: -3px;
   }
   .scroll-top.open {
-    bottom: 126px !important;
+    bottom: 145px !important;
   }
 }
 @media (min-width: 400px) and (min-height: 896px) {
@@ -1480,8 +1499,14 @@
     width: 100%;
   }
   .sec-title {
-    margin-top: 38px;
+    /* margin-top: 38px; */
   }
+  .footer-style-two .footer-widget {
+    margin: 35px 35px 30px 20px !important;
+}
+.copyright{
+  padding: 10px 0px;
+}
   .blog-grid {
     padding: 20px 0 !important;
   }
@@ -1537,7 +1562,7 @@
   }
   .sticky-skype {
     position: fixed;
-    bottom: 8%;
+    bottom: 11%;
     z-index: 99;
     right: 7px;
   }
@@ -1607,7 +1632,7 @@
     width: 37px;
   }
   .sticky-skype {
-    bottom: 8%;
+    bottom: 11%;
   }
   .about-section .image-box .image-inner {
     margin-right: -6px;
@@ -1761,7 +1786,7 @@
   }
 
   .scroll-top.open {
-    bottom: 130px;
+    bottom: 150px;
   }
   .banner-carousel .content-box h2 {
     margin-bottom: 16px;
@@ -1773,7 +1798,7 @@
 
   .sticky-skype {
     right: 9px;
-    bottom: 12%;
+    bottom: 15%;
   }
   .sticky-skype img {
     width: 43px;

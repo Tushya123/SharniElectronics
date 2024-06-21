@@ -155,7 +155,7 @@ export default function Inquiry() {
                 <div className="form-inner">
                   <Form onSubmit={handleSubmit}>
                     <Row className="clearfix">
-                      <Col lg={6} md={12} sm={12} className="form-group">
+                      <Col lg={6} md={6} sm={12} className="form-group">
                         <i className="fa-solid fa-circle-user"></i>
                         <label>Name</label>
                         <input
@@ -172,7 +172,7 @@ export default function Inquiry() {
                           </div>
                         )}{" "}
                       </Col>
-                      <Col lg={6} md={12} sm={12} className="form-group">
+                      <Col lg={6} md={6} sm={12} className="form-group">
                         <i className="fa-solid fa-phone"></i>
                         <label>Number</label>
                         <input
@@ -187,7 +187,7 @@ export default function Inquiry() {
                           <div className="error-message">{errors.Mobile}</div>
                         )}
                       </Col>
-                      <Col lg={6} md={12} sm={12} className="form-group">
+                      <Col lg={6} md={6} sm={12} className="form-group">
                         <i className="fa-solid fa-envelope"></i>
                         <label>Email</label>
                         <input
@@ -203,7 +203,7 @@ export default function Inquiry() {
                         )}
                       </Col>
 
-                      <Col lg={6} md={12} sm={12} className="form-group">
+                      <Col lg={6} md={6} sm={12} className="form-group">
                         <label>Select Country</label>
                         <div className="select-box">
                           <select
