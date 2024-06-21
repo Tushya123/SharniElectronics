@@ -148,7 +148,7 @@ textarea {
   font-family: "DM Sans", sans-serif;
   font-weight: 400;
   font-size: 18px;
-  text-align: center;
+  /* text-align: center; */
   background: transparent;
 }
 
@@ -2076,6 +2076,7 @@ div#mCSB_1_container {
 
 .about-section {
   position: relative;
+  padding: 120px 0px;
 }
 
 .about-section .image-box {
@@ -3768,6 +3769,10 @@ div#mCSB_1_container {
   display: block;
   overflow: hidden;
   background: #16436f;
+  /* height: 340px; */
+}
+.blogImg{
+  height: 340px;
 }
 
 .news-block-one .inner-box .image-box .image img {
@@ -4077,9 +4082,12 @@ div#mCSB_1_container {
   display: block;
   /* padding-top: 100px; */
   padding-right: 130px;
-  margin-bottom: 180px;
+  /* margin-bottom: 180px; */
 }
 
+.copyright{
+  padding: 20px 0px;
+}
 .booking-section .content-box .inner-box h3 {
   display: block;
   font-size: 24px;
@@ -13940,7 +13948,10 @@ div#mCSB_1_container {
 .custom-textarea {
   background: #f0f5f7;
   width: 100%;
-  color: #87898a;
+  padding: 20px;
+  /* height: 65px; */
+  color: #7c8083;
+  font-weight: 500;
 }
 
 .custom-color h3 {
