@@ -941,7 +941,9 @@ img {
 
 .header-top .language .language-list li a:hover {
 }
-
+.btn-close {
+  background-image: url(../../assets/images/icons/VisualEditor_-_Icon_-_Close_-_white.svg.png) !important;
+}
 .main-header .outer-box {
   position: relative;
   display: flex;
@@ -2076,7 +2078,7 @@ div#mCSB_1_container {
 
 .about-section {
   position: relative;
-  padding: 120px 0px;
+  padding: 100px 0px;
 }
 
 .about-section .image-box {
