@@ -862,7 +862,7 @@
   }
 
   .service-details {
-    padding-bottom: 40px;
+    /* padding-bottom: 40px; */
   }
 
   .project-sidebar {
@@ -1335,7 +1335,7 @@
     padding: 22px 0px;
   }
   .sec-title{
-    margin-bottom: 0px;
+    /* margin-bottom: 0px; */
   }
 
   .industries-section .sec-title {
@@ -1353,6 +1353,11 @@
   .blog {
     display: flex !important;
     justify-content: space-between !important;
+    padding-bottom: 20px;
+  }
+  .sec-title h2{
+    /* top: 30px; */
+    left: 15px;
   }
 
   .resp-width {
@@ -1387,7 +1392,10 @@
   }
   .slick-prev,
   .slick-next {
-    top: -81px !important;
+    top: -125px !important;
+  }
+  .contact-info{
+    padding: 30px 30px 20px 30px;
   }
   .slick-prev {
     left: unset !important;
@@ -1490,7 +1498,7 @@
     font-size: 13px;
   }
   .sec-title {
-    padding-top: 30px;
+    /* padding-top: 30px; */
   }
   .sec-title .sub-title {
     margin: 0 auto;
@@ -1500,6 +1508,7 @@
   }
   .sec-title {
     /* margin-top: 38px; */
+    padding-top: 50px;
   }
   .footer-style-two .footer-widget {
     margin: 35px 35px 30px 20px !important;
@@ -1611,6 +1620,9 @@
 @media only screen and (max-width: 376px) {
   .logo-name h3 {
     font-size: 11px !important;
+  }
+  .slick-prev, .slick-next{
+    top: -125px !important;
   }
   .logo-box img {
     width: 37px;

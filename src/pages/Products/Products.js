@@ -264,10 +264,10 @@ export default function Products() {
             </Modal>
             {Object.entries(productsByStartingLetter).map(
               ([letter, products]) => {
-                let paddingValue = Math.max(5, products.length * 2);
+                // let paddingValue = Math.max(5, products.length * 2);
                 return (
                   <section
-                    style={{ padding: `${paddingValue}px`, paddingTop: "30px" }}
+                    // style={{ padding: `${paddingValue}px`, paddingTop: "30px" }}
                     className="sidebar-page-container blog-large-image news-style-two sec-pad product-sec"
                   >
                     <Container className="auto-container">
@@ -345,7 +345,7 @@ export default function Products() {
             )}
 
             {/* <div
-              className="modal fade"
+              className="modal fade"      
               id="inquiryModal"
               tabindex="-1"
               aria-labelledby="exampleModalLabel"
