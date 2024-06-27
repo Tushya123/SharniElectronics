@@ -13,6 +13,7 @@ import { Modal } from "react-bootstrap";
 
 export default function Gallery() {
   const [galleryData, setGalleryData] = useState([]);
+  const [galleryData1, setGalleryData1] = useState([]);
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -48,6 +49,16 @@ export default function Gallery() {
           `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/list/GalleryPhoto`
         );
         const activeCertificates = response.data.filter(Gallery => Gallery.IsActive);
+        const uniqueCategories = activeCertificates.reduce((acc, current) => {
+          const x = acc.find(item => item.Category === current.Category);
+          if (!x) {
+            return acc.concat([current]);
+          } else {
+            return acc;
+          }
+        }, []);
+
+        setGalleryData1(uniqueCategories);
         setGalleryData(activeCertificates);
 
       } catch (error) {
@@ -66,7 +77,7 @@ export default function Gallery() {
 
   return (
     <React.Fragment>
-            {!galleryData || galleryData ?.length < 1 ? (
+            {!galleryData1 || galleryData1 ?.length < 1 ? (
         <Preloader />
       ) : (
         <>
@@ -97,14 +108,14 @@ export default function Gallery() {
                 <div className="service-details-content">
                   <div className="content-five">
                     <Row className="clearfix">
-                      {galleryData.map((item, index) => (
+                      {galleryData1.map((item, index) => (
                         <Col
                         key={index}
                         lg={3}
                         md={6}
                         sm={12}
                         className="project-block gallery mb-4"
-                        onClick={() => handleClick(index)}
+                        onClick={() => handleClick(item.GalleryTypeDetails[0]._id)}
                         >
                           <div className="project-block-one">
                             <div className="inner-box">
@@ -115,7 +126,7 @@ export default function Gallery() {
                                     alt={item.Category}
                                   />
                                 </Figure>
-                                <h5 className="gal-txt">{item.GalleryTypeDetails[0].Category}</h5>
+                                <h5 className="gal-txt ps-3 pt-2">{item.GalleryTypeDetails[0].Category}</h5>
                               </div>
                               <div className="overlay-content">
                                 <div className="image-box">

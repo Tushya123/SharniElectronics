@@ -4,6 +4,7 @@ import { Container, Row, Col, Image } from "react-bootstrap";
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 import Background from "../assets/images/new-home/breadcrumb-img.jpg";
+import { useParams } from 'react-router-dom';
 
 
 export default function ImageView() {
@@ -13,7 +14,8 @@ export default function ImageView() {
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
   const navigate = useNavigate();
-
+const ID=useParams();
+console.log("ID",ID.index)
   const handleClose = () => {
     navigate(-1);
   };
@@ -77,7 +79,8 @@ export default function ImageView() {
                       overflowX: "auto",
                     }}
                   >
-                    {galleryData.map((item, index) => (
+                    {galleryData.filter((type)=>type.Category===ID.index)
+                    .map((item, index) => (
                       <div key={index} style={{ margin: "0 5px" }}>
                         <Image
                           src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${item.imageURL}`}

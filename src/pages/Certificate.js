@@ -120,7 +120,10 @@ export default function Certificate() {
                                 fluid
                               />
                             </Figure>
+                            <div className='text-center'>
                             <h5 className="gal-txt">{item.Title}</h5>
+                            </div>
+                            
                           </div>
                           <div className="overlay-content">
                             <div className="image-box">
