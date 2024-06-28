@@ -6,6 +6,7 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import { Col, Container, Row } from "react-bootstrap";
 import Preloader from "../../components/PreLoader";
+import Stickey from "../../components/Stickey";
 
 export default function BlogsDetails() {
   const [Blogs, setBlogs] = useState([]);
@@ -82,6 +83,7 @@ export default function BlogsDetails() {
     <React.Fragment
       style={{ position: "relative", minHeight: "100%", top: "0px" }}
     >
+    <Stickey />
       <div className="boxed_wrapper">
         <section className="page-title">
           <div
@@ -161,7 +163,7 @@ export default function BlogsDetails() {
             Download Brochure
           </Link>
         </div>
-        <div className="sticky-whatsapp">
+        {/* <div className="sticky-whatsapp">
           <Link
             to="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
             target="_blank"
@@ -173,15 +175,15 @@ export default function BlogsDetails() {
           <Link to="skype:Nilesh.sheth70?Call" target="_blank">
             <img src={skype} className="img-responsive" />
           </Link>
-        </div>
+        </div> */}
 
-        <button
+        {/* <button
           className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
           onClick={scrollToTop}
           style={{ display: isVisible ? "block" : "none" }}
         >
           <i className="flaticon-up-arrow"></i>
-        </button>
+        </button> */}
       </div>
     </React.Fragment>
   );

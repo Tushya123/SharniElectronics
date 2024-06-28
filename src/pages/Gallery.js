@@ -10,6 +10,7 @@ import footer from "../assets/images/new-home/footer-location-img.jpg";
 import skype from "../assets/images/new-home/skype.png";
 import wp from "../assets/images/new-home/whatsapp.png";
 import { Modal } from "react-bootstrap";
+import Stickey from "../components/Stickey";
 
 export default function Gallery() {
   const [galleryData, setGalleryData] = useState([]);
@@ -77,6 +78,7 @@ export default function Gallery() {
 
   return (
     <React.Fragment>
+    <Stickey />
             {!galleryData1 || galleryData1 ?.length < 1 ? (
         <Preloader />
       ) : (
@@ -108,6 +110,7 @@ export default function Gallery() {
                 <div className="service-details-content">
                   <div className="content-five">
                     <Row className="clearfix">
+                
                       {galleryData1.map((item, index) => (
                         <Col
                         key={index}
@@ -187,6 +190,12 @@ export default function Gallery() {
                         </Link>
                       </div>
                       <div className="link">
+                            <Link to="tel:8866002331">
+                              Landline : 0265 3504578 
+                              <i className="flaticon-right-arrow"></i>
+                            </Link>
+                          </div>
+                      <div className="link">
                         <Link to="skype:Nilesh.sheth70?Call">
                           Skype ID: Nilesh.sheth70
                           <i className="flaticon-right-arrow"></i>
@@ -215,7 +224,7 @@ export default function Gallery() {
             Download Brochure
           </Link>
         </div>
-        <div className="sticky-whatsapp">
+        {/* <div className="sticky-whatsapp">
           <Link
             to="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
             target="_blank"
@@ -227,7 +236,7 @@ export default function Gallery() {
           <Link to="skype:Nilesh.sheth70?Call" target="_blank">
             <Image src={skype} className="img-responsive" alt="Skype" />
           </Link>
-        </div>
+        </div> */}
         <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Vadiwadi, Vadodara</Modal.Title>
@@ -246,12 +255,12 @@ export default function Gallery() {
       </Modal>
 
       </div>
-      <button
+      {/* <button
             className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
             onClick={scrollToTop}
             style={{ display: isVisible ? "block" : "none" }}>
             <i className="flaticon-up-arrow"></i>
-          </button>
+          </button> */}
 
       </>
       )}

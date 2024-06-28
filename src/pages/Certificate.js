@@ -16,6 +16,7 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Preloader from "../components/PreLoader";
+import Stickey from "../components/Stickey";
 
 export default function Certificate() {
   const [certificate, setCertificate] = useState([]);
@@ -77,6 +78,7 @@ export default function Certificate() {
     <React.Fragment
       style={{ position: "relative", minHeight: "100%", top: "0px" }}
     >
+    <Stickey />
       {!certificate || certificate?.length < 1 ? (
         <Preloader />
       ) : (
@@ -192,6 +194,12 @@ export default function Certificate() {
                             </Link>
                           </div>
                           <div className="link">
+                            <Link to="tel:8866002331">
+                              Landline : 0265 3504578 
+                              <i className="flaticon-right-arrow"></i>
+                            </Link>
+                          </div>
+                          <div className="link">
                             <Link to="skype:Nilesh.sheth70?Call">
                               Skype ID: Nilesh.sheth70
                               <i className="flaticon-right-arrow"></i>
@@ -224,7 +232,7 @@ export default function Certificate() {
                 Download Brochure
               </Link>
             </div>
-            <div className="sticky-whatsapp">
+            {/* <div className="sticky-whatsapp">
               <Link
                 to="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
                 target="_blank"
@@ -236,7 +244,7 @@ export default function Certificate() {
               <Link to="skype:Nilesh.sheth70?Call" target="_blank">
                 <Image src={skype} className="img-responsive" alt="Skype" />
               </Link>
-            </div>
+            </div> */}
             <Modal show={showModal} onHide={() => setShowModal(false)}>
               <Modal.Header closeButton>
                 <Modal.Title>Vadiwadi, Vadodara</Modal.Title>
@@ -270,13 +278,13 @@ export default function Certificate() {
               </Modal.Body>
             </Modal>
           </div>
-          <button
+          {/* <button
             className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
             onClick={scrollToTop}
             style={{ display: isVisible ? "block" : "none" }}>
         
             <i className="flaticon-up-arrow"></i>
-          </button>
+          </button> */}
 
         </>
       )}

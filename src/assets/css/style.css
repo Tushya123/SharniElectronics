@@ -505,7 +505,7 @@ img {
   line-height: 60px;
   position: fixed;
   bottom: 105%;
-  right: 50px;
+  /* right: 50px; */
   font-size: 16px;
   z-index: 99;
   background: #ffffff;
@@ -517,7 +517,7 @@ img {
 }
 
 .scroll-top.open {
-  bottom: 160px;
+  bottom: 20%;
 }
 
 .sec-title {
@@ -13890,7 +13890,7 @@ div#mCSB_1_container {
 
 .sticky-button {
   position: fixed;
-  bottom: 80px;
+  bottom: 50%;
   left: -98px;
   background-color: #fff;
   padding: 10px 20px;
@@ -14310,4 +14310,48 @@ input {
 
 .theme-btn.btn {
   display: none;
+}
+
+
+.gal-txt{
+  padding: 10px 20px;
+  font-weight: 500;
+}
+
+.gal-type .project-block-one .inner-box .overlay-content .image-box:before{
+  position: absolute;
+  display: none !important ;
+  content: '';
+  background: #fff;
+  width: 106px;
+  height: 60px;
+  right: -1px;
+  bottom: 0px;
+  z-index: 1;
+  clip-path: polygon(0% 100%, 100% 0%, 100% 100%, 0% 100%, 0% 0%);
+}
+
+.stickey-div{
+  position: fixed;
+  bottom: 2%;
+  z-index: 99;
+  right: 20px;
+}
+.sticky-skype2 {
+  /* position: fixed;
+  bottom: 5%;
+  z-index: 99;
+  right: 48px; */
+}
+.sticky-skype2 img {
+  width: 50px;
+}
+.sticky-whatsapp2 {
+  /* position: fixed;
+  bottom: 15%;
+  z-index: 99;
+  right: 48px; */
+}
+.sticky-whatsapp2 img {
+  width: 50px;
 }

@@ -14,6 +14,7 @@ import wp from "../../assets/images/new-home/whatsapp.png";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Preloader from "../../components/PreLoader";
+import Stickey from "../../components/Stickey";
 
 export default function NewsDetails() {
   const [BlogsList, setBlogsList] = useState([]);
@@ -91,6 +92,8 @@ export default function NewsDetails() {
   }
 
   return (
+    <React.Fragment>
+    <Stickey />
     <div className="boxed_wrapper">
       <section className="page-title">
         <div
@@ -167,7 +170,7 @@ export default function NewsDetails() {
           Download Brochure
         </Link>
       </div>
-      <div className="sticky-whatsapp">
+      {/* <div className="sticky-whatsapp">
         <Link
           to="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
           target="_blank"
@@ -179,7 +182,7 @@ export default function NewsDetails() {
         <Link to="skype:Nilesh.sheth70?Call" target="_blank">
           <Image src={skype} className="img-responsive" />
         </Link>
-      </div>
+      </div> */}
 
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
@@ -198,13 +201,14 @@ export default function NewsDetails() {
         </Modal.Body>
       </Modal>
 
-      <button
+      {/* <button
         className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
         onClick={scrollToTop}
         style={{ display: isVisible ? "block" : "none" }}
       >
         <i className="flaticon-up-arrow"></i>
-      </button>
+      </button> */}
     </div>
+    </React.Fragment>
   );
 }

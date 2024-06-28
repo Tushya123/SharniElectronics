@@ -546,6 +546,26 @@
 }
 
 @media only screen and (max-width: 767px) {
+  .scroll-top.open {
+    bottom: 20%;
+    width: 41px;
+    height: 41px; 
+    margin: 5px 0px;
+  }
+  .stickey-div{
+    position: fixed;
+    bottom: 2%;
+    z-index: 99;
+    right: 15px;
+  }
+  .sticky-whatsapp2 {
+    width: 80%;
+  margin: 10px 0px;
+  }
+  .sticky-skype2 {
+    width: 80%;
+  margin: 10px 0px;
+  }
   .header-top .top-inner .info-list li {
     margin-bottom: 12px;
     margin-right: 0px;
@@ -1277,8 +1297,22 @@
     display: none;
   }
 }
+/* @media only screen and (max-width: 1024px) {
+  .sticky-button {
+    position: fixed;
+    bottom: 50%;
+    left: -98px;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 999999;
+    border: #42bd9e solid;
+    transform: rotate(-90deg);
+  }
+} */
 
 @media only screen and (max-width: 1028px) {
+  
   .position-slider .content-box {
     top: 300px;
   }
@@ -1373,9 +1407,9 @@
   .sec-title {
     margin-top: -3px;
   }
-  .scroll-top.open {
+  /* .scroll-top.open {
     bottom: 145px !important;
-  }
+  } */
 }
 @media (min-width: 400px) and (min-height: 896px) {
   .position-slider .content-box {
@@ -1428,13 +1462,13 @@
   .banner-carousel .slick-dots {
     top: 48% !important;
   }
-  .scroll-top {
+  /* .scroll-top {
     line-height: 24px;
   }
   .scroll-top {
     width: 35px;
     height: 35px;
-  }
+  } */
   .booking-section .sec-title {
     margin-bottom: 0px;
     margin-top: 5px;
@@ -1446,12 +1480,12 @@
     padding: 58px 36px 0px 16px;
   }
 
-  .scroll-top {
+  /* .scroll-top {
     right: 10px;
-  }
-  .scroll-top.open {
+  } */
+  /* .scroll-top.open {
     bottom: 111px !important;
-  }
+  } */
   .sticky-skype img {
     width: 37px;
   }
@@ -1583,7 +1617,7 @@
   }
   .sticky-button {
     position: fixed;
-    bottom: 79px;
+    bottom: 50%;
     left: -84px;
     background-color: #fff;
     padding: 6px 14px;
@@ -1789,16 +1823,27 @@
   .google-trans {
     right: 13px;
   }
-  .scroll-top.open {
-    right: 15px;
-  }
-  .scroll-top.open {
-    width: 41px;
-    height: 41px;
-  }
+
 
   .scroll-top.open {
-    bottom: 150px;
+    bottom: 20%;
+    width: 41px;
+    height: 41px; 
+    margin: 5px 0px;
+  }
+  .stickey-div{
+    position: fixed;
+    bottom: 2%;
+    z-index: 99;
+    right: 48px;
+  }
+  .sticky-whatsapp2 {
+    width: 80%;
+  margin: 10px 0px;
+  }
+  .sticky-skype2 {
+    width: 80%;
+  margin: 10px 0px;
   }
   .banner-carousel .content-box h2 {
     margin-bottom: 16px;
@@ -1824,7 +1869,7 @@
   }
   .sticky-button {
     position: fixed;
-    bottom: 83px;
+    bottom: 50%;
     left: -84px;
     background-color: #fff;
     padding: 8px 19px;
@@ -1879,7 +1924,7 @@
     top: 49% !important;
   }
   .sticky-button {
-    bottom: 268px !important;
+    bottom: 50% !important;
   }
   .sticky-whatsapp {
     bottom: 23% !important;
@@ -1923,15 +1968,15 @@
   .sticky-whatsapp {
     bottom: 13% !important;
   }
-  .scroll-top.open {
+  /* .scroll-top.open {
     bottom: 265px !important;
-  }
-  .scroll-top {
+  } */
+  /* .scroll-top {
     right: 7px;
-  }
+  } */
 
   .sticky-button {
-    bottom: 190px !important;
+    bottom: 50% !important;
   }
 }
 @media (min-width: 430px) and (min-height: 932px) {
@@ -1945,7 +1990,7 @@
     top: 45% !important;
   }
   .sticky-button {
-    bottom: 361px !important;
+    bottom: 50% !important;
   }
   .sticky-skype img {
     width: 45px !important;
@@ -1999,7 +2044,7 @@
     font-size: 14px !important;
   }
   .sticky-button {
-    bottom: 227px !important;
+    bottom: 50% !important;
   }
   .sticky-skype {
     bottom: 22% !important;
@@ -2017,7 +2062,7 @@
     font-size: 11px !important;
   }
   .sticky-button {
-    bottom: 85px;
+    bottom: 50%;
   }
   .booking-section .sec-title {
     margin-top: -10px;
@@ -2055,9 +2100,9 @@
   .goog-te-gadget-simple {
     font-size: 8pt !important;
   }
-  .scroll-top.open {
+  /* .scroll-top.open {
     bottom: 360px !important;
-  }
+  } */
   .logo-name h3 {
     font-size: 24px !important;
   }
@@ -2071,7 +2116,7 @@
     top: 41% !important;
   }
   .sticky-button {
-    bottom: 321px !important;
+    bottom: 50% !important;
   }
   .sticky-skype {
     bottom: 30% !important;
@@ -2122,16 +2167,16 @@
   right: -20px;
 }
 .sticky-button {
-  bottom: 444px !important;
+  bottom: 50% !important;
 }
-.scroll-top.open {
+/* .scroll-top.open {
   bottom: 479px !important;
-}
+} */
 .sticky-whatsapp {
     bottom: 31% !important;
 }
   .sticky-button {
-    bottom: 608px !important;
+    bottom: 50% !important;
   }
   .sticky-skype {
     bottom: 35% !important;
@@ -2197,7 +2242,7 @@
     font-size: 9pt !important;
   }
   .sticky-button {
-    bottom: 635px !important;
+    bottom: 50% !important;
   }
   .sticky-skype {
     bottom: 45% !important;
@@ -2257,9 +2302,9 @@
     width: 100%;
     white-space: pre-wrap;
   }
-  .scroll-top {
+  /* .scroll-top {
     right: 4px;
-  }
+  } */
   .logo-name h3 {
     font-size: 16px !important;
   }

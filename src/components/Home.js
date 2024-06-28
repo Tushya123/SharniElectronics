@@ -33,6 +33,7 @@ import {
 } from "react-bootstrap";
 import Preloader from "./PreLoader";
 import { Link } from "react-router-dom";
+import Stickey from "./Stickey";
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
@@ -110,6 +111,7 @@ export default function Home() {
     <React.Fragment
       // style={{ position: "relative", minHeight: "100%", top: "0px" }}
     >
+    <Stickey/>
       {!banner || banner?.length < 1 ? (
         <Preloader />
       ) : (
@@ -227,6 +229,12 @@ export default function Home() {
                               <i className="flaticon-right-arrow"></i>
                             </Link>
                           </div>
+                           <div className="link">
+                            <Link to="tel:8866002331">
+                              Landline : 0265 3504578 
+                              <i className="flaticon-right-arrow"></i>
+                            </Link>
+                          </div>
                           <div className="link">
                             <Link to="skype:Nilesh.sheth70?Call">
                               Skype ID: Nilesh.sheth70
@@ -261,7 +269,7 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="sticky-whatsapp">
+            {/* <div className="sticky-whatsapp">
               <Link
                 to="https://api.whatsapp.com/send?phone=919909247312&amp;text= Hello Shreeji Pharma Team, I am interested in -"
                 target="_blank"
@@ -273,7 +281,7 @@ export default function Home() {
               <Link to="skype:Nilesh.sheth70?Call" target="_blank">
                 <Image src={skype} className="img-responsive" alt="Skype" />
               </Link>
-            </div>
+            </div> */}
 
             <Modal show={showModal} onHide={() => setShowModal(false)}>
               <Modal.Header closeButton>
@@ -292,13 +300,14 @@ export default function Home() {
               </Modal.Body>
             </Modal>
           </div>
-          <button
+          {/* <Stickey/> */}
+          {/* <button
             className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
             onClick={scrollToTop}
             style={{ display: isVisible ? "block" : "none" }}
           >
             <i className="flaticon-up-arrow"></i>
-          </button>
+          </button> */}
         </>
       )}
     </React.Fragment>

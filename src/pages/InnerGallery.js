@@ -53,7 +53,7 @@ console.log("ID",ID.index)
         ></div>
         <Container>
           <div className="content-box">
-            <h1>Events</h1>
+            <h1>Gallery</h1>
             <ul className="bread-crumb clearfix">
               <li>
                 <Link to="/">Home</Link>

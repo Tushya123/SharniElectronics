@@ -9,6 +9,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSearch } from "./SearchProvider";
 import { Container, Form, Col } from "react-bootstrap";
+import Stickey from "../../components/Stickey";
 
 export default function Search() {
   const [productData, setProductData] = useState({
@@ -122,6 +123,7 @@ export default function Search() {
     <React.Fragment
       style={{ position: "relative", minHeight: "100%", top: "0px" }}
     >
+    <Stickey />
       <div className="boxed_wrapper">
         <section className="page-title">
           <div
@@ -331,6 +333,12 @@ export default function Search() {
                         </a>
                       </div>
                       <div className="link">
+                            <Link to="tel:8866002331">
+                              Landline : 0265 3504578 
+                              <i className="flaticon-right-arrow"></i>
+                            </Link>
+                          </div>
+                      <div className="link">
                         <a href="skype:Nilesh.sheth70?Call">
                           Skype ID: Nilesh.sheth70{" "}
                           <i className="flaticon-right-arrow"></i>
@@ -362,7 +370,7 @@ export default function Search() {
             Download Brochure
           </a>
         </div>
-        <div className="sticky-whatsapp">
+        {/* <div className="sticky-whatsapp">
           <a
             href="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
             target="_blank"
@@ -374,14 +382,14 @@ export default function Search() {
           <a href="skype:Nilesh.sheth70?Call" target="_blank">
             <img src={skype} className="img-responsive" />
           </a>
-        </div>
+        </div> */}
       </div>
-      <button 
+      {/* <button 
           className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
           onClick={scrollToTop}
           style={{ display: isVisible ? "block" : "none" }}>
         <i className="flaticon-up-arrow"></i>
-      </button>
+      </button> */}
     </React.Fragment>
   );
 }

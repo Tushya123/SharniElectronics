@@ -10,6 +10,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Container, Row, Col } from "react-bootstrap";
 import Preloader from "../components/PreLoader";
+import Stickey from "../components/Stickey";
 
 const countriesArray = [
   { label: "DZ", value: "ALGERIA" },
@@ -145,6 +146,7 @@ export default function Contact() {
 
   return (
     <React.Fragment style={{ position: "relative", minHeight: "100%", top: "0px" }}>
+    <Stickey />
       <ToastContainer />
       <div className="boxed_wrapper">
         <section className="page-title">
@@ -324,7 +326,7 @@ export default function Contact() {
             Download Brochure
           </a>
         </div>
-        <div className="sticky-whatsapp">
+        {/* <div className="sticky-whatsapp">
           <a href="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -" target="_blank">
             <img src={wp} className="img-responsive" />
           </a>
@@ -333,7 +335,7 @@ export default function Contact() {
           <a href="skype:Nilesh.sheth70?Call" target="_blank">
             <img src={skype} className="img-responsive" />
           </a>
-        </div>
+        </div> */}
         <div className="modal fade" id="exampleModa" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div className="modal-dialog">
             <div className="modal-content custom-model-content">
@@ -353,13 +355,13 @@ export default function Contact() {
             </div>
           </div>
         </div>
-        <button
+        {/* <button
           className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
           onClick={scrollToTop}
           style={{ display: isVisible ? "block" : "none" }}
         >
           <i className="flaticon-up-arrow"></i>
-        </button>
+        </button> */}
       </div>
     </React.Fragment>
   );

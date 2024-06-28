@@ -497,6 +497,12 @@ export default function Products() {
                             </Link>
                           </div>
                           <div className="link">
+                            <Link to="tel:8866002331">
+                              Landline : 0265 3504578 
+                              <i className="flaticon-right-arrow"></i>
+                            </Link>
+                          </div>
+                          <div className="link">
                             <Link to="skype:Nilesh.sheth70?Call">
                               Skype ID: Nilesh.sheth70
                               <i className="flaticon-right-arrow"></i>

@@ -8,6 +8,7 @@ import shape10 from "../assets/images/shape/shape-10.png";
 import footer from "../assets/images/new-home/footer-location-img.jpg";
 import skype from "../assets/images/new-home/skype.png";
 import wp from "../assets/images/new-home/whatsapp.png";
+import Stickey from "../components/Stickey";
 
 export default function Commitment() {
   const [commitments, setCommitments] = useState([]);
@@ -57,6 +58,7 @@ export default function Commitment() {
 
   return (
     <React.Fragment>
+    <Stickey />
       {!commitments || commitments.length < 1 ? (
         <Preloader />
       ) : (
@@ -148,6 +150,12 @@ export default function Commitment() {
                             </Link>
                           </div>
                           <div className="link">
+                            <Link to="tel:8866002331">
+                              Landline : 0265 3504578 
+                              <i className="flaticon-right-arrow"></i>
+                            </Link>
+                          </div>
+                          <div className="link">
                             <Link to="skype:Nilesh.sheth70?Call">
                               Skype ID: Nilesh.sheth70
                               <i className="flaticon-right-arrow"></i>
@@ -180,7 +188,7 @@ export default function Commitment() {
                 Download Brochure
               </Link>
             </div>
-            <div className="sticky-whatsapp">
+            {/* <div className="sticky-whatsapp">
               <Link
                 to="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
                 target="_blank"
@@ -192,7 +200,7 @@ export default function Commitment() {
               <Link to="skype:Nilesh.sheth70?Call" target="_blank">
                 <Image src={skype} className="img-responsive" alt="Skype" />
               </Link>
-            </div>
+            </div> */}
             <Modal show={showModal} onHide={() => setShowModal(false)}>
               <Modal.Header closeButton>
                 <Modal.Title>Vadiwadi, Vadodara</Modal.Title>
@@ -210,13 +218,13 @@ export default function Commitment() {
               </Modal.Body>
             </Modal>
           </div>
-          <button
+          {/* <button
             className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
             onClick={scrollToTop}
             style={{ display: isVisible ? "block" : "none" }}>
           
             <i className="flaticon-up-arrow"></i>
-          </button>
+          </button> */}
         </>
       )}
     </React.Fragment>

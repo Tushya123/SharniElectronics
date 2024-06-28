@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import axios from "axios";
 import { Row, Col } from "reactstrap";
+import Stickey from "../components/Stickey";
 const countriesArray = [
   { label: "DZ", value: "ALGERIA" },
   { label: "AR", value: "ARGENTINA" },
@@ -196,6 +197,7 @@ export default function Cart() {
       <React.Fragment
         style={{ position: "relative", minHeight: "100%", top: "0px" }}
       >
+      <Stickey />
         <ToastContainer />
 
         <div className="boxed_wrapper">
@@ -466,7 +468,7 @@ export default function Cart() {
               Download Brochure
             </a>
           </div>
-          <div className="sticky-whatsapp">
+          {/* <div className="sticky-whatsapp">
             <a
               href="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
               target="_blank"
@@ -478,7 +480,7 @@ export default function Cart() {
             <a href="skype:Nilesh.sheth70?Call" target="_blank">
               <img src={skype} className="img-responsive" />
             </a>
-          </div>
+          </div> */}
 
           <div
             className="modal fade"
@@ -515,13 +517,13 @@ export default function Cart() {
             </div>
           </div>
 
-          <button
+          {/* <button
             className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
             onClick={scrollToTop}
             style={{ display: isVisible ? "block" : "none" }}
           >
             <i className="flaticon-up-arrow"></i>
-          </button>
+          </button> */}
         </div>
       </React.Fragment>
     </>
