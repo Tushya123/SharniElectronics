@@ -6,7 +6,7 @@ import wp from "../assets/images/new-home/whatsapp.png";
 import star from "../assets/images/new-home/star.png";
 import aeo from "../assets/images/new-home/aeo.png";
 import iso from "../assets/images/new-home/iso.png";
-import shape10 from "../assets/images/shape/shape-10.png";
+import shape10 from "../assets/images/shape/shape-10.jpg";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

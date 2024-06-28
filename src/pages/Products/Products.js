@@ -3,7 +3,7 @@ import Background from "../../assets/images/new-home/breadcrumb-img.jpg";
 import footer from "../../assets/images/new-home/footer-location-img.jpg";
 import skype from "../../assets/images/new-home/skype.png";
 import wp from "../../assets/images/new-home/whatsapp.png";
-import shape10 from "../../assets/images/shape/shape-10.png";
+import shape10 from "../../assets/images/shape/shape-10.jpg";
 import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
 import axios from "axios";

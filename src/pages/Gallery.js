@@ -5,7 +5,7 @@ import axios from "axios";
 import Background from "../assets/images/new-home/breadcrumb-img.jpg";
 import { Container, Row, Col, Figure, Image,Button } from "react-bootstrap";
 import Preloader from "../components/PreLoader";
-import shape10 from "../assets/images/shape/shape-10.png";
+import shape10 from "../assets/images/shape/shape-10.jpg";
 import footer from "../assets/images/new-home/footer-location-img.jpg";
 import skype from "../assets/images/new-home/skype.png";
 import wp from "../assets/images/new-home/whatsapp.png";

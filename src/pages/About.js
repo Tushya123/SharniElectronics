@@ -6,7 +6,7 @@ import skype from "../assets/images/new-home/skype.png";
 import wp from "../assets/images/new-home/whatsapp.png";
 import Background1 from "../assets/images/background/funfact-bg.jpg";
 import axios from "axios";
-import shape10 from "../assets/images/shape/shape-10.png";
+import shape10 from "../assets/images/shape/shape-10.jpg";
 import { Link } from "react-router-dom";
 import Preloader from "../components/PreLoader";
 import { Modal } from "react-bootstrap";
