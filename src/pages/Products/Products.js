@@ -10,6 +10,7 @@ import axios from "axios";
 import Preloader from "../../components/PreLoader";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Stickey from "../../components/Stickey";
 
 import {
   Image,
@@ -168,6 +169,8 @@ export default function Products() {
     <React.Fragment
       style={{ position: "relative", minHeight: "100%", top: "0px" }}
     >
+    <Stickey />
+    
       <ToastContainer />
 
       {!data || data?.length < 1 ? (
@@ -533,19 +536,19 @@ export default function Products() {
                 Download Brochure
               </Link>
             </div>
-            <div className="sticky-whatsapp">
+            {/* <div className="sticky-whatsapp">
               <Link
                 to="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
                 target="_blank"
               >
                 <Image src={wp} className="img-responsive" alt="WhatsApp" />
               </Link>
-            </div>
-            <div className="sticky-skype">
+            </div> */}
+            {/* <div className="sticky-skype">
               <Link to="skype:Nilesh.sheth70?Call" target="_blank">
                 <Image src={skype} className="img-responsive" alt="Skype" />
               </Link>
-            </div>
+            </div> */}
             <Modal show={showModal} onHide={() => setShowModal(false)}>
               <Modal.Header closeButton>
                 <Modal.Title>Vadiwadi, Vadodara</Modal.Title>
@@ -563,13 +566,13 @@ export default function Products() {
               </Modal.Body>
             </Modal>
           </div>
-          <button
+          {/* <button
             className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
             onClick={scrollToTop}
             style={{ display: isVisible ? "block" : "none" }}
           >
             <i className="flaticon-up-arrow"></i>
-          </button>
+          </button> */}
         </>
       )}
     </React.Fragment>

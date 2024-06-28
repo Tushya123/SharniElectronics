@@ -55,22 +55,60 @@ export default function Header() {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/list/areatype`
-        );
-        const activeproducts = response.data.filter(
-          (product) => product.IsActive
-        );
+        try {
+            const response = await axios.get(
+                `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/list/areatype`
+            );
+            const activeProducts = response.data.filter(
+                (product) => product.IsActive
+            );
 
-        setProducts(activeproducts);
-      } catch (error) {
-        console.error("Error fetching product data:", error);
-      }
+            // Define the custom order
+            const customOrder = [
+                '6641abe793c69c545ac233e2',
+                '6634b74108aa777d7b59c4c1',
+                '663b598ccc6c2844e6838bbc'
+            ];
+
+            // Sort the active products according to the custom order
+            const sortedProducts = activeProducts.sort((a, b) => {
+                const indexA = customOrder.indexOf(a._id);
+                const indexB = customOrder.indexOf(b._id);
+
+                if (indexA === -1 && indexB === -1) {
+                    // Both items are not in the custom order, sort randomly
+                    return 0.5 - Math.random();
+                }
+
+                if (indexA === -1) return 1; // a is not in the custom order, so b comes first
+                if (indexB === -1) return -1; // b is not in the custom order, so a comes first
+
+                return indexA - indexB;
+            });
+
+            // Separate ordered and unordered products
+            const orderedProducts = sortedProducts.filter(product =>
+                customOrder.includes(product._id)
+            );
+            const unorderedProducts = sortedProducts.filter(product =>
+                !customOrder.includes(product._id)
+            );
+
+            // Shuffle unordered products randomly
+            const shuffledUnorderedProducts = unorderedProducts.sort(() => 0.5 - Math.random());
+
+            // Combine ordered and shuffled unordered products
+            const finalSortedProducts = [...orderedProducts, ...shuffledUnorderedProducts];
+
+            console.log("finalSortedProducts", finalSortedProducts);
+            setProducts(finalSortedProducts);
+        } catch (error) {
+            console.error("Error fetching product data:", error);
+        }
     };
 
     fetchData();
-  }, []);
+}, []);
 
   const [isSticky, setIsSticky] = useState(false);
 
@@ -195,9 +233,6 @@ export default function Header() {
                         <Link>Products</Link>
                         <ul>
                           {products
-                            .sort((a, b) =>
-                              a.ProductGroup.localeCompare(b.ProductGroup)
-                            )
                             .map((product, index) => (
                               <li key={index}>
                                 <Link

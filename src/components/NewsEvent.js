@@ -85,7 +85,7 @@ export default function NewsEvent() {
                           <a>Shreeji Pharma</a>
                         </div>
                         <ul className="post-info clearfix">
-                          <li>{formatDate(item.createdAt)}</li>
+                          <li>{item.NewsDate}</li>
                         </ul>
                         <h3>
                           <Link to={`/detailNews/${item._id}`}>
