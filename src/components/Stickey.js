@@ -98,17 +98,18 @@ export default function Stickey() {
       >
         <i className="flaticon-up-arrow"></i>
       </button>
-    <div className="sticky-whatsapp2">
+   
+            <div className="sticky-skype2">
+              <Link to="skype:Nilesh.sheth70?Call" target="_blank">
+                <Image src={skype} className="img-responsive" alt="Skype" />
+              </Link>
+            </div>
+            <div className="sticky-whatsapp2">
               <Link
                 to="https://api.whatsapp.com/send?phone=919909247312&amp;text= Hello Shreeji Pharma Team, I am interested in -"
                 target="_blank"
               >
                 <Image src={wp} className="img-responsive" alt="WhatsApp" />
-              </Link>
-            </div>
-            <div className="sticky-skype2">
-              <Link to="skype:Nilesh.sheth70?Call" target="_blank">
-                <Image src={skype} className="img-responsive" alt="Skype" />
               </Link>
             </div>
     </div>

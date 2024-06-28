@@ -14342,6 +14342,7 @@ input {
   bottom: 5%;
   z-index: 99;
   right: 48px; */
+  margin:10px 0px;
 }
 .sticky-skype2 img {
   width: 50px;
