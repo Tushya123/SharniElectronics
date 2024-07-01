@@ -19,6 +19,7 @@ import Stickey from "../../components/Stickey";
 export default function NewsDetails() {
   const [BlogsList, setBlogsList] = useState([]);
   const [blogDetails, setBlogDetails] = useState(null);
+  const [blogDetails1, setBlogDetails1] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -53,7 +54,23 @@ export default function NewsDetails() {
         const response = await axios.get(
           `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/listonly/Blog`
         );
+        console.log("nice:",response)
         setBlogsList(response.data);
+        setIsLoading(false); // Stop loading after data is fetched
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+        setIsLoading(false); // Stop loading on error
+      }
+    };
+    const fetchData1 = async () => {
+      try {
+        setIsLoading(true); // Start loading
+
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/listonly/Newsletter`
+        );
+        console.log("nice:",response)
+        setBlogDetails1(response.data);
         setIsLoading(false); // Stop loading after data is fetched
       } catch (error) {
         console.error("Error fetching product data:", error);
@@ -62,6 +79,7 @@ export default function NewsDetails() {
     };
 
     fetchData();
+    fetchData1();
   }, []);
 
   const { id } = useParams();
@@ -72,6 +90,7 @@ export default function NewsDetails() {
         const response = await axios.get(
           `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/get/Newsletter/${id}`
         );
+        console.log("this is",response)
         setBlogDetails(response.data);
         setIsLoading(false)
       } catch (error) {
@@ -145,10 +164,10 @@ export default function NewsDetails() {
                   </div>
                   <div className="widget-content">
                     <ul className="category-list clearfix">
-                      {BlogsList.map((blog) => (
+                      {blogDetails1.map((blog) => (
                         <li key={blog._id}>
                           <Link to={`/detailNews/${blog._id}`}>
-                            {blogDetails.Title}
+                            {blog.Title}
                             <i className="flaticon-right-arrow"></i>
                           </Link>
                         </li>
