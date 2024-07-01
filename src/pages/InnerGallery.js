@@ -5,6 +5,7 @@ import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 import Background from "../assets/images/new-home/breadcrumb-img.jpg";
 import { useParams } from 'react-router-dom';
+import Stickey from "../../src/components/Stickey"
 
 
 export default function ImageView() {
@@ -45,6 +46,8 @@ console.log("ID",ID.index)
   }, []);
 
   return (
+    <React.Fragment>
+    <Stickey />
     <div className="boxed_wrapper">
       <section className="page-title">
         <div
@@ -127,13 +130,14 @@ console.log("ID",ID.index)
         />
       )}
 
-      <button
+      {/* <button
         className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
         onClick={scrollToTop}
         style={{ display: isVisible ? "block" : "none" }}
       >
         <i className="flaticon-up-arrow"></i>
-      </button>
+      </button> */}
     </div>
+    </React.Fragment>
   );
 }
