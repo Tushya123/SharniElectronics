@@ -77,7 +77,7 @@ export default function Contact() {
     e.preventDefault();
     if (!e.target.checkValidity()) {
       e.stopPropagation();
-      e.target.classList.add('was-validated');
+      e.target.classList.add("was-validated");
       return;
     }
     try {
@@ -87,7 +87,7 @@ export default function Contact() {
         `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/create/contactinquiry`,
         formData
       );
-      
+
       if (response) {
         toast.success("Your application has been submitted successfully!");
         setFormData({
@@ -97,7 +97,7 @@ export default function Contact() {
           Country: "",
           Remark: "",
         });
-        e.target.classList.remove('was-validated');
+        e.target.classList.remove("was-validated");
       } else {
         toast.error("Application submission failed. Please try again.");
       }
@@ -145,17 +145,24 @@ export default function Contact() {
   }
 
   return (
-    <React.Fragment style={{ position: "relative", minHeight: "100%", top: "0px" }}>
-    <Stickey />
+    <React.Fragment
+      style={{ position: "relative", minHeight: "100%", top: "0px" }}
+    >
+      <Stickey />
       <ToastContainer />
       <div className="boxed_wrapper">
         <section className="page-title">
-          <div className="bg-layer" style={{ backgroundImage: `url(${Background})` }}></div>
+          <div
+            className="bg-layer"
+            style={{ backgroundImage: `url(${Background})` }}
+          ></div>
           <Container className="auto-container">
             <div className="content-box">
               <h1>Contact</h1>
               <ul className="bread-crumb clearfix">
-                <li><a href="/">Home</a></li>
+                <li>
+                  <a href="/">Home</a>
+                </li>
                 <li>Contact</li>
               </ul>
             </div>
@@ -182,7 +189,13 @@ export default function Contact() {
                     <div className="icon-box">
                       <i className="flaticon-phone-call-1"></i>
                     </div>
-                    <h3><a href="tel:+91 8866002331">+91 8866002331</a></h3>
+                    <h3>Contact Info</h3>
+
+                    <h6>
+                      <a href="tel:+91 8866002331">
+                        +91 8866002331/ 0265 3504578{" "}
+                      </a>
+                    </h6>
                     <p>
                       Mon to Sat: 10.00am to 6.00pm <br /> Sunday: Closed
                     </p>
@@ -195,7 +208,9 @@ export default function Contact() {
                     </div>
                     <h3>
                       <i className="flaticon-dial-pad"></i>
-                      <a href="mailto:contact@shreejipharma.com">contact@shreejipharma.com</a>
+                      <a href="mailto:contact@shreejipharma.com">
+                        contact@shreejipharma.com
+                      </a>
                     </h3>
                     <h3>
                       <i className="fa-brands fa-skype"></i>
@@ -203,7 +218,10 @@ export default function Contact() {
                     </h3>
                     <h3>
                       <i className="fa-brands fa-whatsapp"></i>
-                      <a href="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -" target="_blank">
+                      <a
+                        href="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
+                        target="_blank"
+                      >
                         +91 8866002331
                       </a>
                     </h3>
@@ -234,7 +252,11 @@ export default function Contact() {
                     </h2>
                   </div>
                   <div className="form-inner">
-                    <form onSubmit={handleSubmit} noValidate className="needs-validation">
+                    <form
+                      onSubmit={handleSubmit}
+                      noValidate
+                      className="needs-validation"
+                    >
                       <Row className="clearfix">
                         <Col lg={6} md={12} sm={12} className="form-group">
                           <i className="fa-solid fa-user"></i>
@@ -247,7 +269,9 @@ export default function Contact() {
                             onChange={handleChange}
                             required
                           />
-                          <div className="invalid-feedback">Enter your name!</div>
+                          <div className="invalid-feedback">
+                            Enter your name!
+                          </div>
                         </Col>
                         <Col lg={6} md={12} sm={12} className="form-group">
                           <i className="fa-solid fa-phone"></i>
@@ -261,7 +285,9 @@ export default function Contact() {
                             pattern="\d{10}"
                             required
                           />
-                          <div className="invalid-feedback">Invalid phone number</div>
+                          <div className="invalid-feedback">
+                            Invalid phone number
+                          </div>
                         </Col>
                         <Col lg={6} md={12} sm={12} className="form-group">
                           <i className="fa-solid fa-envelope"></i>
@@ -288,12 +314,17 @@ export default function Contact() {
                             >
                               <option value="">Select Country</option>
                               {countriesArray.map((country) => (
-                                <option key={country.label} value={country.value}>
+                                <option
+                                  key={country.label}
+                                  value={country.value}
+                                >
                                   {country.value}
                                 </option>
                               ))}
                             </select>
-                            <div className="invalid-feedback">Please select your country!</div>
+                            <div className="invalid-feedback">
+                              Please select your country!
+                            </div>
                           </div>
                         </Col>
                         <Col lg={12} md={12} sm={12} className="form-group">
@@ -306,9 +337,16 @@ export default function Contact() {
                             onChange={handleChange}
                             required
                           ></textarea>
-                          <div className="invalid-feedback">Enter your message!</div>
+                          <div className="invalid-feedback">
+                            Enter your message!
+                          </div>
                         </Col>
-                        <Col lg={12} md={12} sm={12} className="form-group message-btn">
+                        <Col
+                          lg={12}
+                          md={12}
+                          sm={12}
+                          className="form-group message-btn"
+                        >
                           <button type="submit" className="theme-btn contact">
                             Submit Here
                           </button>
@@ -321,11 +359,11 @@ export default function Contact() {
             </Row>
           </Container>
         </section>
-        <div className="sticky-button">
+        {/* <div className="sticky-button">
           <a href="assets/catalogue-shreeji-pharma.pdf" target="__blank" download="">
             Download Brochure
           </a>
-        </div>
+        </div> */}
         {/* <div className="sticky-whatsapp">
           <a href="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -" target="_blank">
             <img src={wp} className="img-responsive" />
@@ -336,12 +374,25 @@ export default function Contact() {
             <img src={skype} className="img-responsive" />
           </a>
         </div> */}
-        <div className="modal fade" id="exampleModa" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div
+          className="modal fade"
+          id="exampleModa"
+          tabIndex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
           <div className="modal-dialog">
             <div className="modal-content custom-model-content">
               <div className="modal-header">
-                <h1 className="modal-title fs-5" id="exampleModalLabel">Vadiwadi, Vadodara</h1>
-                <button type="button" className="btn-close custom-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h1 className="modal-title fs-5" id="exampleModalLabel">
+                  Vadiwadi, Vadodara
+                </h1>
+                <button
+                  type="button"
+                  className="btn-close custom-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
               </div>
               <div className="modal-body">
                 <iframe

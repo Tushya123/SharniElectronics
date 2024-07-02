@@ -9,6 +9,7 @@ import { useSearch } from "../pages/Search/SearchProvider";
 import { useNavigate } from "react-router-dom";
 import { Container, Figure, Nav } from "react-bootstrap";
 import { RiArrowUpSLine, RiArrowDownSLine } from "react-icons/ri";
+import { RxCross2 } from "react-icons/rx";
 
 export default function Header() {
   const [products, setProducts] = useState([]);
@@ -51,64 +52,69 @@ export default function Header() {
     }
   }, [localStorage.getItem("productIds")]);
 
-  console.log("prod",prod.length)
+  console.log("prod", prod.length);
 
   useEffect(() => {
     const fetchData = async () => {
-        try {
-            const response = await axios.get(
-                `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/list/areatype`
-            );
-            const activeProducts = response.data.filter(
-                (product) => product.IsActive
-            );
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/list/areatype`
+        );
+        const activeProducts = response.data.filter(
+          (product) => product.IsActive
+        );
 
-            // Define the custom order
-            const customOrder = [
-                '6641abe793c69c545ac233e2',
-                '6634b74108aa777d7b59c4c1',
-                '663b598ccc6c2844e6838bbc'
-            ];
+        // Define the custom order
+        const customOrder = [
+          "6641abe793c69c545ac233e2",
+          "6634b74108aa777d7b59c4c1",
+          "663b598ccc6c2844e6838bbc",
+        ];
 
-            // Sort the active products according to the custom order
-            const sortedProducts = activeProducts.sort((a, b) => {
-                const indexA = customOrder.indexOf(a._id);
-                const indexB = customOrder.indexOf(b._id);
+        // Sort the active products according to the custom order
+        const sortedProducts = activeProducts.sort((a, b) => {
+          const indexA = customOrder.indexOf(a._id);
+          const indexB = customOrder.indexOf(b._id);
 
-                if (indexA === -1 && indexB === -1) {
-                    // Both items are not in the custom order, sort randomly
-                    return 0.5 - Math.random();
-                }
+          if (indexA === -1 && indexB === -1) {
+            // Both items are not in the custom order, sort randomly
+            return 0.5 - Math.random();
+          }
 
-                if (indexA === -1) return 1; // a is not in the custom order, so b comes first
-                if (indexB === -1) return -1; // b is not in the custom order, so a comes first
+          if (indexA === -1) return 1; // a is not in the custom order, so b comes first
+          if (indexB === -1) return -1; // b is not in the custom order, so a comes first
 
-                return indexA - indexB;
-            });
+          return indexA - indexB;
+        });
 
-            // Separate ordered and unordered products
-            const orderedProducts = sortedProducts.filter(product =>
-                customOrder.includes(product._id)
-            );
-            const unorderedProducts = sortedProducts.filter(product =>
-                !customOrder.includes(product._id)
-            );
+        // Separate ordered and unordered products
+        const orderedProducts = sortedProducts.filter((product) =>
+          customOrder.includes(product._id)
+        );
+        const unorderedProducts = sortedProducts.filter(
+          (product) => !customOrder.includes(product._id)
+        );
 
-            // Shuffle unordered products randomly
-            const shuffledUnorderedProducts = unorderedProducts.sort(() => 0.5 - Math.random());
+        // Shuffle unordered products randomly
+        const shuffledUnorderedProducts = unorderedProducts.sort(
+          () => 0.5 - Math.random()
+        );
 
-            // Combine ordered and shuffled unordered products
-            const finalSortedProducts = [...orderedProducts, ...shuffledUnorderedProducts];
+        // Combine ordered and shuffled unordered products
+        const finalSortedProducts = [
+          ...orderedProducts,
+          ...shuffledUnorderedProducts,
+        ];
 
-            console.log("finalSortedProducts", finalSortedProducts);
-            setProducts(finalSortedProducts);
-        } catch (error) {
-            console.error("Error fetching product data:", error);
-        }
+        console.log("finalSortedProducts", finalSortedProducts);
+        setProducts(finalSortedProducts);
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+      }
     };
 
     fetchData();
-}, []);
+  }, []);
 
   const [isSticky, setIsSticky] = useState(false);
 
@@ -232,22 +238,21 @@ export default function Header() {
                       <li className="dropdown">
                         <Link>Products</Link>
                         <ul>
-                          {products
-                            .map((product, index) => (
-                              <li key={index}>
-                                <Link
-                                  onClick={() => {
-                                    window.location.href = "/products";
-                                    localStorage.setItem(
-                                      "selectedProductId",
-                                      product.ProductGroup
-                                    );
-                                  }}
-                                >
-                                  {product.ProductGroup}
-                                </Link>
-                              </li>
-                            ))}
+                          {products.map((product, index) => (
+                            <li key={index}>
+                              <Link
+                                onClick={() => {
+                                  window.location.href = "/products";
+                                  localStorage.setItem(
+                                    "selectedProductId",
+                                    product.ProductGroup
+                                  );
+                                }}
+                              >
+                                {product.ProductGroup}
+                              </Link>
+                            </li>
+                          ))}
                         </ul>
                       </li>
                       <li>
@@ -294,7 +299,13 @@ export default function Header() {
 
                 <Modal show={showModal} onHide={handleClose}>
                   <Modal.Header closeButton>
-                    <div className="upper-box clearfix">
+                    <div
+                      className="upper-box clearfix"
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-evenly",
+                      }}
+                    >
                       <figure className="logo-box pull-left">
                         <a href="#">
                           <img className="searchlogo" src={logo1} alt="Logo" />
@@ -303,7 +314,19 @@ export default function Header() {
                       <div
                         className="close-search pull-right"
                         onClick={handleClose}
-                      ></div>
+                        style={{
+                          cursor: "pointer",
+                          marginLeft: "10px",
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        {" "}
+                        <i
+                          className="fas fa-times"
+                          style={{ fontSize: "20px" }}
+                        ></i>
+                      </div>
                     </div>
                   </Modal.Header>
                   <Modal.Body>
@@ -348,7 +371,7 @@ export default function Header() {
             </div>
           </Container>
         </div>
-      </header> 
+      </header>
 
       <Offcanvas
         className="offcanvas"

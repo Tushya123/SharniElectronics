@@ -38,7 +38,6 @@ export default function Commitment() {
     };
   }, []);
 
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -58,7 +57,7 @@ export default function Commitment() {
 
   return (
     <React.Fragment>
-    <Stickey />
+      <Stickey />
       {!commitments || commitments.length < 1 ? (
         <Preloader />
       ) : (
@@ -87,7 +86,10 @@ export default function Commitment() {
                   <div className="customer-comment mb-0">
                     <Row className="clearfix justify-content-center">
                       {commitments.map((commitment, index) => {
-                        const colClass = (index % 4 === 0 || index % 4 === 3) ? "col-lg-7 col-md-8 col-sm-12 comment-column" : "col-lg-5 col-md-8 col-sm-12 comment-column";
+                        const colClass =
+                          index % 4 === 0 || index % 4 === 3
+                            ? "col-lg-7 col-md-8 col-sm-12 comment-column"
+                            : "col-lg-5 col-md-8 col-sm-12 comment-column";
                         return (
                           <div key={index} className={colClass}>
                             <div className="single-comment-box">
@@ -114,7 +116,12 @@ export default function Commitment() {
             </section>
             <section
               className="locations-section sec-pad text-center"
-              style={{ backgroundImage: `url(${shape10})` }}
+              style={{
+                backgroundImage: `url(${shape10})`,
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+              }}
             >
               <Container>
                 <div className="sec-title">
@@ -151,7 +158,7 @@ export default function Commitment() {
                           </div>
                           <div className="link">
                             <Link to="tel:8866002331">
-                              Landline : 0265 3504578 
+                              Landline : 0265 3504578
                               <i className="flaticon-right-arrow"></i>
                             </Link>
                           </div>
@@ -167,19 +174,17 @@ export default function Commitment() {
                               style={{ color: "#16436f" }}
                             >
                               Locate Us
-                               <i className="flaticon-right-arrow"></i>
+                              <i className="flaticon-right-arrow"></i>
                             </Link>
                           </div>
-
                         </div>
-
                       </div>
                     </div>
                   </Col>
                 </Row>
               </Container>
             </section>
-            <div className="sticky-button">
+            {/* <div className="sticky-button">
               <Link
                 to="assets/catalogue-shreeji-pharma.pdf"
                 target="__blank"
@@ -187,7 +192,7 @@ export default function Commitment() {
               >
                 Download Brochure
               </Link>
-            </div>
+            </div> */}
             {/* <div className="sticky-whatsapp">
               <Link
                 to="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"

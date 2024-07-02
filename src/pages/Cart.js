@@ -197,7 +197,7 @@ export default function Cart() {
       <React.Fragment
         style={{ position: "relative", minHeight: "100%", top: "0px" }}
       >
-      <Stickey />
+        <Stickey />
         <ToastContainer />
 
         <div className="boxed_wrapper">
@@ -459,7 +459,7 @@ export default function Cart() {
             </div>
           </section>
 
-          <div className="sticky-button">
+          {/* <div className="sticky-button">
             <a
               href="assets/catalogue-shreeji-pharma.pdf"
               target="__blank"
@@ -467,7 +467,7 @@ export default function Cart() {
             >
               Download Brochure
             </a>
-          </div>
+          </div> */}
           {/* <div className="sticky-whatsapp">
             <a
               href="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
