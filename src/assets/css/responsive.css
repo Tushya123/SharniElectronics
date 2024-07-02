@@ -547,7 +547,7 @@
 
 @media only screen and (max-width: 767px) {
   .scroll-top.open {
-    bottom: 20%;
+    bottom: 12%;
     width: 41px;
     height: 41px; 
     margin: 5px 0px;
@@ -1326,6 +1326,25 @@
   .google-trans {
     right: 10px;
   }
+  .google-trans-brochure {
+    right: 175px;
+    position: absolute;
+    top: 0;
+    z-index: 999;
+    pointer-events: all;
+    /* right: 260px; */
+    border-radius: 5px;
+    background: #fff;
+    color: #42bd9e;
+    padding: 2px 6px;
+    border: #42bd9e solid;
+  }
+  .google-trans-brochure a{
+    color: #42bd9e;
+    font-weight: bold;
+    font-size: 12px;
+
+  }
   .sec-title .sub-title:before {
     top: 1px;
   }
@@ -1600,6 +1619,11 @@
   .google-trans {
     right: 0px;
   }
+  .google-trans-brochure {
+    right: 0px;
+    top:40px;
+
+  }
   .logo-name h3 {
     font-size: 15px;
   }
@@ -1623,8 +1647,21 @@
     padding: 6px 14px;
     border-radius: 5px;
     z-index: 999999;
+    
     border: #42bd9e solid;
     transform: rotate(-90deg);
+  }
+
+  .brochure-download-link{
+    position: fixed;
+    bottom: 50%;
+    left: -84px;
+    background-color: #fff;
+    padding: 6px 14px;
+    border-radius: 5px;
+    z-index: 999999;
+    border: #42bd9e solid;
+    /* transform: rotate(-90deg); */
   }
 
   .booking-section .inner-content {
@@ -1793,6 +1830,27 @@
     border-radius: 5px;
     background: #fff;
   }
+
+  .google-trans-brochure {
+    position: absolute;
+    top: 0;
+    z-index: 999;
+    pointer-events: all;
+    right: 260px;
+    border-radius: 5px;
+    background: #fff;
+    color: #42bd9e;
+    padding: 2px 6px;
+    border: #42bd9e solid;
+  }
+  .google-trans-brochure a{
+    color: #42bd9e;
+    font-weight: bold;
+    font-size: 12px;
+
+  }
+
+
 }
 
 @media (width: 767px) and (min-height: 1024px) {
@@ -1823,10 +1881,16 @@
   .google-trans {
     right: 13px;
   }
+  .google-trans-brochure {
+    right: 13px;
+    top: 40px;
+
+  }
+
 
 
   .scroll-top.open {
-    bottom: 20%;
+    bottom: 12%;
     width: 41px;
     height: 41px; 
     margin: 5px 0px;
@@ -1894,6 +1958,21 @@
     line-height: 21px !important;
   }
 }
+
+
+@media (min-width: 1030px) and (min-height: 850px) {
+
+  .scroll-top.open {
+    bottom: 16%;
+    width: 41px;
+    height: 41px; 
+    margin: 5px 0px;
+  }
+ 
+}
+
+
+
 
 @media (min-width: 400px) and (min-height: 826px) {
   .banner-carousel {
@@ -2013,6 +2092,11 @@
   }
   .google-trans {
     right: 0px !important;
+  }
+  .google-trans-brochure {
+    right: 0px !important;
+    top: 40px !important;
+
   }
   .logo-box img {
     width: 47px !important;
@@ -2194,6 +2278,10 @@
   }
   .google-trans {
     right: 14px !important;
+}
+.google-trans-brochure {
+  right: 14px !important;
+
 }
 }
 @media (min-width: 540px) and (min-height: 720px) {

@@ -50,9 +50,6 @@ export default function Search() {
     };
   }, []);
 
-
-
-
   const handleClose = () => setShow(false);
   const handleQuantityChange = (event) => {
     setQuantity(event.target.value);
@@ -123,7 +120,7 @@ export default function Search() {
     <React.Fragment
       style={{ position: "relative", minHeight: "100%", top: "0px" }}
     >
-    <Stickey />
+      <Stickey />
       <div className="boxed_wrapper">
         <section className="page-title">
           <div
@@ -167,7 +164,6 @@ export default function Search() {
                           required
                           isDisabled={true}
                           value={name}
-
                           aria-required="true"
                         />
                       </Col>
@@ -179,7 +175,7 @@ export default function Search() {
                           required
                           placeholder="Enter Quantity"
                           aria-required="true"
-                          value={quantity} 
+                          value={quantity}
                           onChange={handleQuantityChange}
                         />
                       </Col>
@@ -292,7 +288,6 @@ export default function Search() {
                   <p>No products found.</p>
                 )}
               </div>
-
             </div>
           </Container>
         </section>
@@ -333,11 +328,11 @@ export default function Search() {
                         </a>
                       </div>
                       <div className="link">
-                            <Link to="tel:8866002331">
-                              Landline : 0265 3504578 
-                              <i className="flaticon-right-arrow"></i>
-                            </Link>
-                          </div>
+                        <Link to="tel:8866002331">
+                          Landline : 0265 3504578
+                          <i className="flaticon-right-arrow"></i>
+                        </Link>
+                      </div>
                       <div className="link">
                         <a href="skype:Nilesh.sheth70?Call">
                           Skype ID: Nilesh.sheth70{" "}
@@ -361,7 +356,7 @@ export default function Search() {
             </div>
           </div>
         </section>
-        <div className="sticky-button">
+        {/* <div className="sticky-button">
           <a
             href="assets/catalogue-shreeji-pharma.pdf"
             target="__blank"
@@ -369,7 +364,7 @@ export default function Search() {
           >
             Download Brochure
           </a>
-        </div>
+        </div> */}
         {/* <div className="sticky-whatsapp">
           <a
             href="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"

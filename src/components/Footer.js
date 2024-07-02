@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Button, Figure, Row, Col, Container } from "react-bootstrap";
-import Lightbox from 'react-image-lightbox';
-import 'react-image-lightbox/style.css';
+import Lightbox from "react-image-lightbox";
+import "react-image-lightbox/style.css";
 
 export default function Footer() {
   const [cmsDesc, setcmsDesc] = useState("");
@@ -49,12 +49,18 @@ export default function Footer() {
         <Container>
           <div className="widget-section">
             <Row className="clearfix">
-              <Col lg={5} md={7} sm={12} className="mb-4" style={{paddingLeft:'0px'}}>
+              <Col
+                lg={5}
+                md={7}
+                sm={12}
+                className="mb-4"
+                style={{ paddingLeft: "0px" }}
+              >
                 <div className="footer-widget about-widget">
                   <div className="widget-title">
                     <h3>About Us</h3>
                   </div>
-                  <div className="text" style={{marginBottom:"-12px"}}>
+                  <div className="text" style={{ marginBottom: "-12px" }}>
                     {React.createElement("div", {
                       dangerouslySetInnerHTML: {
                         __html: `${cmsDesc}<style>p{font-size:19px;font-weight:400}`,
@@ -105,7 +111,7 @@ export default function Footer() {
                   </div>
                   <div className="widget-content">
                     <ul className="image-list list-unstyled d-flex flex-wrap">
-                      {galleryData.map((item, index) => (
+                      {galleryData.slice(0, 12).map((item, index) => (
                         <li key={index} className="me-2 mb-2">
                           <Figure className="image mb-0">
                             <img
@@ -166,11 +172,19 @@ export default function Footer() {
       {lightboxOpen && (
         <Lightbox
           mainSrc={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${galleryData[lightboxIndex].imageURL}`}
-          nextSrc={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${galleryData[(lightboxIndex + 1) % galleryData.length].imageURL}`}
-          prevSrc={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${galleryData[(lightboxIndex + galleryData.length - 1) % galleryData.length].imageURL}`}
+          nextSrc={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${
+            galleryData[(lightboxIndex + 1) % galleryData.length].imageURL
+          }`}
+          prevSrc={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${
+            galleryData[
+              (lightboxIndex + galleryData.length - 1) % galleryData.length
+            ].imageURL
+          }`}
           onCloseRequest={() => setLightboxOpen(false)}
           onMovePrevRequest={() =>
-            setLightboxIndex((lightboxIndex + galleryData.length - 1) % galleryData.length)
+            setLightboxIndex(
+              (lightboxIndex + galleryData.length - 1) % galleryData.length
+            )
           }
           onMoveNextRequest={() =>
             setLightboxIndex((lightboxIndex + 1) % galleryData.length)

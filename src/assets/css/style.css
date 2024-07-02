@@ -517,7 +517,7 @@ img {
 }
 
 .scroll-top.open {
-  bottom: 20%;
+  bottom: 19%;
 }
 
 .sec-title {
@@ -788,7 +788,9 @@ img {
   display: flex;
   align-items: center;
   /* justify-content: space-between; */
-  padding: 10px 21px;
+  padding-top: 10px ;
+  padding-bottom: 10px;
+
   border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
 }
 
@@ -3383,6 +3385,8 @@ div#mCSB_1_container {
   right: -1px;
   bottom: 0px;
   z-index: 1;
+  display : none;
+
   clip-path: polygon(0% 100%, 100% 0%, 100% 100%, 0% 100%, 0% 0%);
 }
 
@@ -4147,16 +4151,16 @@ div#mCSB_1_container {
 
 .booking-section .content-box .rotate-text {
   position: absolute;
-  top: 40px;
-  right: 0px;
-  font-size: 18px;
+  top: 10px;
+  right: 30px;
+  font-size: 16px;
   line-height: 227px;
   font-weight: 500;
   font-family: "Saira", sans-serif;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 0.6px;
-  transform: rotate(-30deg);
+  transform: rotate(-50deg);
 }
 
 .booking-section .inner-content {
@@ -14314,8 +14318,11 @@ input {
 
 
 .gal-txt{
-  padding: 10px 20px;
+  /* padding: 10px 20px; */
   font-weight: 500;
+  padding: 10px 10px;
+ font-size: 17px;
+text-align: center;
 }
 
 .gal-type .project-block-one .inner-box .overlay-content .image-box:before{

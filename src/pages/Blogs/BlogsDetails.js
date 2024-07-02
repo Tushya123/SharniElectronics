@@ -83,7 +83,7 @@ export default function BlogsDetails() {
     <React.Fragment
       style={{ position: "relative", minHeight: "100%", top: "0px" }}
     >
-    <Stickey />
+      <Stickey />
       <div className="boxed_wrapper">
         <section className="page-title">
           <div
@@ -154,7 +154,7 @@ export default function BlogsDetails() {
             </Row>
           </Container>
         </section>
-        <div className="sticky-button">
+        {/* <div className="sticky-button">
           <Link
             to="assets/catalogue-shreeji-pharma.pdf"
             target="__blank"
@@ -162,7 +162,7 @@ export default function BlogsDetails() {
           >
             Download Brochure
           </Link>
-        </div>
+        </div> */}
         {/* <div className="sticky-whatsapp">
           <Link
             to="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"

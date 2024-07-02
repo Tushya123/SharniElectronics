@@ -67,7 +67,7 @@ export default function About() {
     <React.Fragment
       style={{ position: "relative", minHeight: "100%", top: "0px" }}
     >
-    <Stickey />
+      <Stickey />
       {!cmsDesc || cmsDesc?.length < 1 ? (
         <Preloader />
       ) : (
@@ -143,82 +143,89 @@ export default function About() {
               </Container>
             </section>
             <section className="funfact-section text-center">
-        <div
-          className="bg-layer"
-          style={{ backgroundImage: `url(${Background1})` }}
-        ></div>
-        <Container>
-          <div className="sec-title text-light">
-            <span className="sub-title">Interesting Numbers</span>
-            <h2 style={{color:'white'}}>Facts that will blow your mind</h2>
-          </div>
-          <div className="inner-content">
-            <Row className="clearfix">
-              <Col lg={4} md={6} sm={12} className="funfact-block mb-4">
-                <div className="funfact-block-one">
-                  <div className="inner-box">
-                    <div className="icon-box">
-                      <i className="flaticon-rating"></i>
-                    </div>
-                    <div className="count-outer count-box counted">
-                      <span
-                        className="count-text"
-                        data-speed="1500"
-                        data-stop="1000"
-                      >
-                        1000+
-                      </span>
-                    </div>
-                    <h3>Our Happy Clients</h3>
-                  </div>
+              <div
+                className="bg-layer"
+                style={{ backgroundImage: `url(${Background1})` }}
+              ></div>
+              <Container>
+                <div className="sec-title text-light">
+                  <span className="sub-title">Interesting Numbers</span>
+                  <h2 style={{ color: "white" }}>
+                    Facts that will blow your mind
+                  </h2>
                 </div>
-              </Col>
-              <Col lg={4} md={6} sm={12} className="funfact-block mb-4">
-                <div className="funfact-block-one">
-                  <div className="inner-box">
-                    <div className="icon-box">
-                      <i className="flaticon-atom"></i>
-                    </div>
-                    <div className="count-outer count-box counted">
-                      <span
-                        className="count-text"
-                        data-speed="1500"
-                        data-stop="100"
-                      >
-                        100+
-                      </span>
-                    </div>
-                    <h3>Our Quality Products</h3>
-                  </div>
+                <div className="inner-content">
+                  <Row className="clearfix">
+                    <Col lg={4} md={6} sm={12} className="funfact-block mb-4">
+                      <div className="funfact-block-one">
+                        <div className="inner-box">
+                          <div className="icon-box">
+                            <i className="flaticon-rating"></i>
+                          </div>
+                          <div className="count-outer count-box counted">
+                            <span
+                              className="count-text"
+                              data-speed="1500"
+                              data-stop="1000"
+                            >
+                              1000+
+                            </span>
+                          </div>
+                          <h3>Our Happy Clients</h3>
+                        </div>
+                      </div>
+                    </Col>
+                    <Col lg={4} md={6} sm={12} className="funfact-block mb-4">
+                      <div className="funfact-block-one">
+                        <div className="inner-box">
+                          <div className="icon-box">
+                            <i className="flaticon-atom"></i>
+                          </div>
+                          <div className="count-outer count-box counted">
+                            <span
+                              className="count-text"
+                              data-speed="1500"
+                              data-stop="100"
+                            >
+                              100+
+                            </span>
+                          </div>
+                          <h3>Our Quality Products</h3>
+                        </div>
+                      </div>
+                    </Col>
+                    <Col lg={4} md={6} sm={12} className="funfact-block mb-4">
+                      <div className="funfact-block-one">
+                        <div className="inner-box">
+                          <div className="icon-box">
+                            <i className="flaticon-lab"></i>
+                          </div>
+                          <div className="count-outer count-box counted">
+                            <span
+                              className="count-text"
+                              data-speed="1500"
+                              data-stop="100"
+                            >
+                              100
+                            </span>
+                            <span>%</span>
+                          </div>
+                          <h3>Accurate and Precise in Test Results</h3>
+                        </div>
+                      </div>
+                    </Col>
+                  </Row>
                 </div>
-              </Col>
-              <Col lg={4} md={6} sm={12} className="funfact-block mb-4">
-                <div className="funfact-block-one">
-                  <div className="inner-box">
-                    <div className="icon-box">
-                      <i className="flaticon-lab"></i>
-                    </div>
-                    <div className="count-outer count-box counted">
-                      <span
-                        className="count-text"
-                        data-speed="1500"
-                        data-stop="100"
-                      >
-                        100
-                      </span>
-                      <span>%</span>
-                    </div>
-                    <h3>Accurate and Precise in Test Results</h3>
-                  </div>
-                </div>
-              </Col>
-            </Row>
-          </div>
-        </Container>
-      </section>
+              </Container>
+            </section>
             <section
               className="locations-section sec-pad text-center"
-              style={{ backgroundImage: `url(${shape10})` }}
+              style={{
+                backgroundImage: `url(${shape10})`,
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+              }}
             >
               <Container>
                 <div className="sec-title">
@@ -255,7 +262,7 @@ export default function About() {
                           </div>
                           <div className="link">
                             <Link to="tel:8866002331">
-                              Landline : 0265 3504578 
+                              Landline : 0265 3504578
                               <i className="flaticon-right-arrow"></i>
                             </Link>
                           </div>
@@ -265,14 +272,14 @@ export default function About() {
                               <i className="flaticon-right-arrow"></i>
                             </Link>
                           </div>
-                          
+
                           <div className="link">
                             <Link
                               onClick={() => setShowModal(true)}
                               style={{ color: "#16436f" }}
                             >
                               Locate Us
-                               <i className="flaticon-right-arrow"></i>
+                              <i className="flaticon-right-arrow"></i>
                             </Link>
                           </div>
                         </div>
@@ -282,7 +289,7 @@ export default function About() {
                 </Row>
               </Container>
             </section>
-            <div className="sticky-button">
+            {/* <div className="sticky-button">
               <Link
                 to="assets/catalogue-shreeji-pharma.pdf"
                 target="__blank"
@@ -290,7 +297,7 @@ export default function About() {
               >
                 Download Brochure
               </Link>
-            </div>
+            </div> */}
             {/* <div className="sticky-whatsapp">
               <Link
                 to="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"

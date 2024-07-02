@@ -61,7 +61,6 @@ export default function Home() {
     };
   }, []);
 
-
   const settings = {
     dots: true,
     arrows: true,
@@ -109,9 +108,9 @@ export default function Home() {
 
   return (
     <React.Fragment
-      // style={{ position: "relative", minHeight: "100%", top: "0px" }}
+    // style={{ position: "relative", minHeight: "100%", top: "0px" }}
     >
-    <Stickey/>
+      <Stickey />
       {!banner || banner?.length < 1 ? (
         <Preloader />
       ) : (
@@ -194,7 +193,12 @@ export default function Home() {
 
             <section
               className="locations-section sec-pad text-center"
-              style={{ backgroundImage: `url(${shape10})` }}
+              style={{
+                backgroundImage: `url(${shape10})`,
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+              }}
             >
               <Container>
                 <div className="sec-title">
@@ -229,9 +233,9 @@ export default function Home() {
                               <i className="flaticon-right-arrow"></i>
                             </Link>
                           </div>
-                           <div className="link">
+                          <div className="link">
                             <Link to="tel:8866002331">
-                              Landline : 0265 3504578 
+                              Landline : 0265 3504578
                               <i className="flaticon-right-arrow"></i>
                             </Link>
                           </div>
@@ -247,10 +251,9 @@ export default function Home() {
                               style={{ color: "#16436f" }}
                             >
                               Locate Us
-                               <i className="flaticon-right-arrow"></i>
+                              <i className="flaticon-right-arrow"></i>
                             </Link>
                           </div>
-
                         </div>
                       </div>
                     </div>
@@ -259,7 +262,7 @@ export default function Home() {
               </Container>
             </section>
 
-            <div className="sticky-button">
+            {/* <div className="sticky-button">
               <Link
                 to="assets/catalogue-shreeji-pharma.pdf"
                 target="__blank"
@@ -267,7 +270,7 @@ export default function Home() {
               >
                 Download Brochure
               </Link>
-            </div>
+            </div> */}
 
             {/* <div className="sticky-whatsapp">
               <Link

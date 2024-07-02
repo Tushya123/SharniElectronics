@@ -21,7 +21,7 @@ import Stickey from "../components/Stickey";
 export default function Certificate() {
   const [certificate, setCertificate] = useState([]);
   const [selectedCertificate, setSelectedCertificate] = useState(null);
-  const [showModal, setShowModal] = useState(false); 
+  const [showModal, setShowModal] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {
@@ -45,7 +45,6 @@ export default function Certificate() {
       window.removeEventListener("scroll", toggleVisibility);
     };
   }, []);
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,7 +77,7 @@ export default function Certificate() {
     <React.Fragment
       style={{ position: "relative", minHeight: "100%", top: "0px" }}
     >
-    <Stickey />
+      <Stickey />
       {!certificate || certificate?.length < 1 ? (
         <Preloader />
       ) : (
@@ -122,10 +121,9 @@ export default function Certificate() {
                                 fluid
                               />
                             </Figure>
-                            <div className='text-center'>
-                            <h5 className="gal-txt">{item.Title}</h5>
+                            <div className="text-center">
+                              <h5 className="gal-txt">{item.Title}</h5>
                             </div>
-                            
                           </div>
                           <div className="overlay-content">
                             <div className="image-box">
@@ -144,7 +142,10 @@ export default function Certificate() {
                                     handleZoomInClick(item.CertificateImage)
                                   }
                                 >
-                                  <i className="flaticon-zoom-in"></i>
+                                  <i
+                                    className="flaticon-zoom-in"
+                                    style={{ color: "white" }}
+                                  ></i>
                                 </Button>
                               </div>
                             </div>
@@ -158,7 +159,12 @@ export default function Certificate() {
             </section>
             <section
               className="locations-section sec-pad text-center"
-              style={{ backgroundImage: `url(${shape10})` }}
+              style={{
+                backgroundImage: `url(${shape10})`,
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+              }}
             >
               <Container>
                 <div className="sec-title">
@@ -195,7 +201,7 @@ export default function Certificate() {
                           </div>
                           <div className="link">
                             <Link to="tel:8866002331">
-                              Landline : 0265 3504578 
+                              Landline : 0265 3504578
                               <i className="flaticon-right-arrow"></i>
                             </Link>
                           </div>
@@ -211,19 +217,17 @@ export default function Certificate() {
                               style={{ color: "#16436f" }}
                             >
                               Locate Us
-                               <i className="flaticon-right-arrow"></i>
+                              <i className="flaticon-right-arrow"></i>
                             </Link>
                           </div>
-
                         </div>
-
                       </div>
                     </div>
                   </Col>
                 </Row>
               </Container>
             </section>
-            <div className="sticky-button">
+            {/* <div className="sticky-button">
               <Link
                 to="assets/catalogue-shreeji-pharma.pdf"
                 target="__blank"
@@ -231,7 +235,7 @@ export default function Certificate() {
               >
                 Download Brochure
               </Link>
-            </div>
+            </div> */}
             {/* <div className="sticky-whatsapp">
               <Link
                 to="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
@@ -285,7 +289,6 @@ export default function Certificate() {
         
             <i className="flaticon-up-arrow"></i>
           </button> */}
-
         </>
       )}
     </React.Fragment>

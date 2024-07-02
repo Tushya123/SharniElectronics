@@ -40,7 +40,7 @@ import Strenghts from "./components/Strenghts";
 import Facts from "./components/Facts";
 import GoogleTranslate from "./components/GoogleTranslate";
 import ScrollToTop from "./components/ScrollToTop";
-
+import StickyBrochure from "./components/Brochure";
 function App() {
   const [loading, setLoading] = useState(true);
 
@@ -51,8 +51,9 @@ function App() {
 
   return (
     <>
-      <GoogleTranslate />
       <SearchProvider>
+        <GoogleTranslate />
+        <StickyBrochure />
         <BrowserRouter>
           <Header />
           {/* <ScrollToTop/> */}
