@@ -128,7 +128,7 @@ export default function Gallery() {
                                     <Figure className="image-box">
                                       <Image
                                         src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${item.imageURL}`}
-                                        alt={item.Category}
+                                        alt="certificates"
                                       />
                                     </Figure>
                                     <h5 className="gal-txt ps-3 pt-2">

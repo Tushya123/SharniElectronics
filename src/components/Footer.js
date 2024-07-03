@@ -113,7 +113,10 @@ export default function Footer() {
                     <ul className="image-list list-unstyled d-flex flex-wrap">
                       {galleryData.slice(0, 12).map((item, index) => (
                         <li key={index} className="me-2 mb-2">
-                          <Figure className="image mb-0">
+                          <Figure
+                            className="image mb-0"
+                            style={{ border: "1px solid #1C2A4D" }}
+                          >
                             <img
                               src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${item.imageURL}`}
                               alt=""
