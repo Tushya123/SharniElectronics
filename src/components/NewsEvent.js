@@ -38,17 +38,16 @@ export default function NewsEvent() {
           <div className="sec-title">
             <span className="sub-title">News &amp; Events</span>
             <div className="blog">
-
-            <h2>Explore our latest post</h2>
-            <div className="btn-box">
-              <Link
-                style={{ color: "white" }}
-                to={`/detailNews/${Newsfirst}`}
-                className="theme-btn bn"
-              >
-                View All News
-              </Link>
-            </div>
+              <h2>Explore our latest post</h2>
+              {/* <div className="btn-box">
+                <Link
+                  style={{ color: "white" }}
+                  to={`/detailNews/${Newsfirst}`}
+                  className="theme-btn bn"
+                >
+                  View All News
+                </Link>
+              </div> */}
             </div>
           </div>
           <Row>
@@ -75,9 +74,9 @@ export default function NewsEvent() {
                           />
                         </figure>
                         <div className="link-btn">
-                          <Link to={`/detailNews/${item._id}`}>
-                            <i className="flaticon-zoom-in"></i>
-                          </Link>
+                          {/* <Link to={`/detailNews/${item._id}`}> */}
+                          {/* <i className="flaticon-zoom-in"></i> */}
+                          {/* </Link> */}
                         </div>
                       </div>
                       <div className="lower-content">
@@ -88,17 +87,17 @@ export default function NewsEvent() {
                           <li>{item.NewsDate}</li>
                         </ul>
                         <h3>
-                          <Link to={`/detailNews/${item._id}`}>
-                            {item.Title}
-                          </Link>
+                          {/* <Link to={`/detailNews/${item._id}`}> */}
+                          {item.Title}
+                          {/* </Link> */}
                         </h3>
-                        <div className="lower-box">
+                        {/* <div className="lower-box">
                           <div className="link">
                             <Link to={`/detailNews/${item._id}`}>
                               Read More
                             </Link>
                           </div>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>
@@ -109,7 +108,7 @@ export default function NewsEvent() {
                 <p>No news available</p>
               </Col>
             )}
-            <div className="btn-box">
+            {/* <div className="btn-box">
               <Link
                 style={{ color: "white" }}
                 to={`/detailNews/${Newsfirst}`}
@@ -117,7 +116,7 @@ export default function NewsEvent() {
               >
                 View All News
               </Link>
-            </div>
+            </div> */}
           </Row>
         </Container>
       </section>
