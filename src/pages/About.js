@@ -85,7 +85,7 @@ export default function About() {
                     <li>
                       <Link to="/">Home</Link>
                     </li>
-                    <li>AboutUs</li>
+                    <li>About Us</li>
                   </ul>
                 </div>
               </Container>
@@ -267,7 +267,7 @@ export default function About() {
                             </Link>
                           </div>
                           <div className="link">
-                            <Link to="skype:Nilesh.sheth70?Call">
+                            <Link to="skype:Nilesh.sheth70?Chat">
                               Skype ID: Nilesh.sheth70
                               <i className="flaticon-right-arrow"></i>
                             </Link>

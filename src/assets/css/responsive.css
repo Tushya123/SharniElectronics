@@ -549,7 +549,7 @@
 
 @media only screen and (max-width: 767px) {
   .scroll-top.open {
-    bottom: 12%;
+    bottom: 16%;
     width: 41px;
     height: 41px; 
     margin: 5px 0px;
@@ -2018,6 +2018,13 @@ right: 3%;
     margin: 5px 0px;
   }
  
+}
+
+@media (min-width: 768px) and (max-width: 1490px) {
+  .scroll-top.open {
+    bottom: 20% !important;
+   
+  }
 }
 
 

@@ -334,7 +334,7 @@ export default function Search() {
                         </Link>
                       </div>
                       <div className="link">
-                        <a href="skype:Nilesh.sheth70?Call">
+                        <a href="skype:Nilesh.sheth70?Chat">
                           Skype ID: Nilesh.sheth70{" "}
                           <i className="flaticon-right-arrow"></i>
                         </a>

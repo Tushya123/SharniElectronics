@@ -38,7 +38,7 @@ export default function Blog() {
 
   return (
     <React.Fragment>
-      <section className="blog-grid news-style-two py-5">
+      <section className="blog-grid news-style-two py-5 pb-0">
         <Container>
           <div className="sec-title">
             <span className="sub-title">Blog</span>
@@ -90,7 +90,9 @@ export default function Blog() {
                         <li className="me-3">{formatDate(blog.createdAt)}</li>
                       </ul>
                       <h3 className="mb-3">
-                        <Link to={`/blogdetails/${blog._id}`}>{blog.Title}</Link>
+                        <Link to={`/blogdetails/${blog._id}`}>
+                          {blog.Title}
+                        </Link>
                       </h3>
                       <div className="lower-box">
                         <div className="link">
@@ -108,7 +110,7 @@ export default function Blog() {
                   style={{ color: "white" }}
                   to={`/blogdetails/${firstBlogId}`}
                 >
-                 View all blog 
+                  View all blog
                 </Link>
               </button>
             </div>
