@@ -189,13 +189,14 @@ export default function Contact() {
                     <div className="icon-box">
                       <i className="flaticon-phone-call-1"></i>
                     </div>
-                    <h3>Contact Info</h3>
+                    {/* <h3>Contact Info</h3> */}
 
-                    <h6>
+                    <h5>
                       <a href="tel:+91 8866002331">
-                        +91 8866002331/ 0265 3504578{" "}
+                        +91 8866002331/ <br />
+                        0265 3504578{" "}
                       </a>
-                    </h6>
+                    </h5>
                     <p>
                       Mon to Sat: 10.00am to 6.00pm <br /> Sunday: Closed
                     </p>
@@ -214,7 +215,7 @@ export default function Contact() {
                     </h3>
                     <h3>
                       <i className="fa-brands fa-skype"></i>
-                      <a href="skype:Nilesh.sheth70?Call">Nilesh.sheth70</a>
+                      <a href="skype:Nilesh.sheth70?Chat">Nilesh.sheth70</a>
                     </h3>
                     <h3>
                       <i className="fa-brands fa-whatsapp"></i>

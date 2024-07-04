@@ -35,7 +35,6 @@ import Preloader from "./PreLoader";
 import { Link } from "react-router-dom";
 
 export default function Stickey() {
-    
   const [isVisible, setIsVisible] = useState(false);
   const scrollToTop = () => {
     window.scrollTo({
@@ -46,33 +45,30 @@ export default function Stickey() {
 
   return (
     <React.Fragment
-      // style={{ position: "relative", minHeight: "100%", top: "0px" }}
+    // style={{ position: "relative", minHeight: "100%", top: "0px" }}
     >
-    <div>
-    <button
-        className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
-        onClick={scrollToTop}
-        style={{ display: isVisible ? "block" : "none" }}
-      >
-        <i className="flaticon-up-arrow"></i>
-      </button>
-    <div className="sticky-whatsapp">
-              <Link
-                to="https://api.whatsapp.com/send?phone=919909247312&amp;text= Hello Shreeji Pharma Team, I am interested in -"
-                target="_blank"
-              >
-                <Image src={wp} className="img-responsive" alt="WhatsApp" />
-              </Link>
-            </div>
-            <div className="sticky-skype">
-              <Link to="skype:Nilesh.sheth70?Call" target="_blank">
-                <Image src={skype} className="img-responsive" alt="Skype" />
-              </Link>
-            </div>
-    </div>
-       
-
-          
+      <div>
+        <button
+          className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
+          onClick={scrollToTop}
+          style={{ display: isVisible ? "block" : "none" }}
+        >
+          <i className="flaticon-up-arrow"></i>
+        </button>
+        <div className="sticky-whatsapp">
+          <Link
+            to="https://api.whatsapp.com/send?phone=919909247312&amp;text= Hello Shreeji Pharma Team, I am interested in -"
+            target="_blank"
+          >
+            <Image src={wp} className="img-responsive" alt="WhatsApp" />
+          </Link>
+        </div>
+        <div className="sticky-skype">
+          <Link to="skype:Nilesh.sheth70?Chat" target="_blank">
+            <Image src={skype} className="img-responsive" alt="Skype" />
+          </Link>
+        </div>
+      </div>
     </React.Fragment>
   );
 }

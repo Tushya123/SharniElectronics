@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col, Image, Modal, Button } from "react-bootstrap";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 import Background from "../assets/images/new-home/breadcrumb-img.jpg";
@@ -20,7 +20,15 @@ export default function ImageView() {
   const handleClose = () => {
     navigate(-1);
   };
+  const [selectedGalleryImage, setSelectedGalleryImage] = useState(null);
 
+  const handleZoomInClick = (imageURL) => {
+    setSelectedGalleryImage(imageURL);
+  };
+
+  const closeModal = () => {
+    setSelectedGalleryImage(null);
+  };
   const [categories, setCategories] = useState([]);
   const loadDrinkCategories = () => {
     axios
@@ -114,16 +122,35 @@ export default function ImageView() {
                     .map((item, index) => (
                       <>
                         <Col md={4} key={index} className="mb-3">
-                          <Image
-                            src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${item.imageURL}`}
-                            alt={item.Category}
-                            className="img-fluid"
-                            onClick={() => {
-                              setLightboxOpen(true);
-                              setLightboxIndex(index);
-                            }}
-                            style={{ cursor: "pointer" }}
-                          />
+                          <div className="overlay-content">
+                            <div className="image-box">
+                              <Image
+                                src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${item.imageURL}`}
+                                alt={item.Category}
+                                className="img-fluid"
+                                // onClick={() => {
+                                //   setLightboxOpen(true);
+                                //   setLightboxIndex(index);
+                                // }}
+                                // onClick={() => handleZoomInClick(item.imageURL)}
+                                style={{ cursor: "pointer" }}
+                              />
+
+                              {/* <div className="view-btn">
+                                <Button
+                                  variant="link"
+                                  onClick={() =>
+                                    handleZoomInClick(item.imageURL)
+                                  }
+                                >
+                                  <i
+                                    className="flaticon-zoom-in"
+                                    // style={{ color: "white" }}
+                                  ></i>
+                                </Button>
+                              </div> */}
+                            </div>
+                          </div>
                         </Col>
                       </>
                     ))}
@@ -135,6 +162,20 @@ export default function ImageView() {
             {/* </Col> */}
           </Container>
         </section>
+
+        {/* <Modal show={!!selectedGalleryImage} onHide={closeModal}>
+          <Modal.Header closeButton />
+          <Modal.Body>
+            {selectedGalleryImage && (
+              <Image
+                src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${selectedGalleryImage}`}
+                style={{ width: "100%" }}
+                fluid
+              />
+            )}
+          </Modal.Body>
+        </Modal> */}
+
         {lightboxOpen && (
           <Lightbox
             mainSrc={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${galleryData[lightboxIndex].imageURL}`}
