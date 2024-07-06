@@ -11739,8 +11739,11 @@ div#mCSB_1_container {
 }
 
 .service-details-content .image-box {
-  position: relative;
   display: block;
+  position: relative;
+  border: 1px solid #cfcccc;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .service-details-content .image-box img {

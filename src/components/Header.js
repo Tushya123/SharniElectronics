@@ -184,7 +184,7 @@ export default function Header() {
               </ul>
               <ul className="social-links clearfix">
                 <li>
-                  <a href="http://www.facebook.com/SPI7312" target="_blank">
+                  <a href="https://www.facebook.com/profile.php?id=61561764669906" target="_blank">
                     <i className="fa-brands fa-facebook"></i>
                   </a>
                 </li>
@@ -311,7 +311,7 @@ export default function Header() {
                           <img className="searchlogo" src={logo1} alt="Logo" />
                         </a>
                       </figure>
-                      <div
+                      {/* <div
                         className="close-search pull-right"
                         onClick={handleClose}
                         style={{
@@ -326,7 +326,7 @@ export default function Header() {
                           className="fas fa-times"
                           style={{ fontSize: "20px" }}
                         ></i>
-                      </div>
+                      </div> */}
                     </div>
                   </Modal.Header>
                   <Modal.Body>
