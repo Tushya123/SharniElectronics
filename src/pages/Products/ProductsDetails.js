@@ -65,32 +65,32 @@ export default function ProductsDetails() {
     }
   }, [localStorage.getItem("productIds")]);
 
-  const generatePdf = () => {
-    axios
-      .post(
-        `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/download-pdf`,
-        { ...productDetailsss },
-        {
-          responseType: "blob",
-          crossOrigin: true,
-        }
-      )
-      .then((response) => {
-        console.log("response", response);
-        const url = window.URL.createObjectURL(
-          new Blob([response.data], { type: "application/pdf" })
-        );
-        const link = document.createElement("a");
-        link.href = url;
-        link.setAttribute("download", "brochure.pdf");
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link); // Cleanup after download
-      })
-      .catch((error) => {
-        console.error("Error generating PDF: ", error);
-      });
-  };
+  // const generatePdf = () => {
+  //   axios
+  //     .post(
+  //       `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/download-pdf`,
+  //       { ...productDetailsss },
+  //       {
+  //         responseType: "blob",
+  //         crossOrigin: true,
+  //       }
+  //     )
+  //     .then((response) => {
+  //       console.log("response", response);
+  //       const url = window.URL.createObjectURL(
+  //         new Blob([response.data], { type: "application/pdf" })
+  //       );
+  //       const link = document.createElement("a");
+  //       link.href = url;
+  //       link.setAttribute("download", "brochure.pdf");
+  //       document.body.appendChild(link);
+  //       link.click();
+  //       document.body.removeChild(link); // Cleanup after download
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error generating PDF: ", error);
+  //     });
+  // };
 
   return (
     <React.Fragment
@@ -218,14 +218,14 @@ export default function ProductsDetails() {
                   </div>
                 </div>
               </Col>
-              <div className="btn-box clearfix mt-5 text-center">
+              {/* <div className="btn-box clearfix mt-5 text-center">
                 <button
                   className="checkout-btn theme-btn responsive"
                   onClick={generatePdf}
                 >
                   Download Brochure
                 </button>
-              </div>
+              </div> */}
             </Row>
           </Container>
         </section>
