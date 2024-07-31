@@ -13885,8 +13885,8 @@ div#mCSB_1_container {
 
 .custome-logo-box {
   width: fit-content;
-  /*background-color: #eceff7;*/
-  background-color: #eceff7bd;
+  background-color: #eceff7;
+  /* background-color: #eceff7bd; */
   border-radius: 0px 0px 20px 20px;
   top: -15px;
   padding: 10px 10px;

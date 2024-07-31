@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import chooseus from "../assets/images/background/chooseus-bg.jpg";
+import chooseus from "../assets/images/background/th.jpg";
 import shape21 from "../assets/images/shape/shape-21.png";
 
 export default function Strenghts() {
@@ -28,7 +28,7 @@ export default function Strenghts() {
                     <i className="flaticon-check-mark"></i>
                   </div>
                   <h4>
-                    Wide selection of world-class pharmaceutical bulk drugs
+                    Wide selection of world-class Electronic Components
                     offered under one roof.
                   </h4>
                 </div>

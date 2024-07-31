@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import logo from "../assets/images/new-home/logo.png";
+import logo from "../assets/images/new-home/logo1.png";
 import logo1 from "../assets/images/new-home/new-logo.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -153,7 +153,7 @@ export default function Header() {
                 </div>
                 <div className="top-right">
                   <ul className="logo-name clearfix">
-                    <h3>Shreeji Pharma International</h3>
+                    <h3>Sharni Electronics</h3>
                   </ul>
                 </div>
               </Figure>
@@ -171,31 +171,31 @@ export default function Header() {
                   <div className="icon-box">
                     <i className="flaticon-dial-pad"></i>
                   </div>
-                  <a href="tel:8866002331">+918866002331</a>
+                  <a href="tel:9925989113">+919925989113</a>
                 </li>
                 <li className="custom-border">
                   <div className="icon-box">
                     <i className="fa fa-envelope"></i>
                   </div>
-                  <a href="mailto:contact@shreejipharma.com">
-                    contact@shreejipharma.com
+                  <a href="mailto:sales@sharnielectronics.com">
+                    sales@sharnielectronics.com
                   </a>
                 </li>
               </ul>
               <ul className="social-links clearfix">
                 <li>
-                  <a href="https://www.facebook.com/profile.php?id=61561764669906" target="_blank">
+                  <a href="https://www.facebook.com/profile.php?id=100010357608216" target="_blank">
                     <i className="fa-brands fa-facebook"></i>
                   </a>
                 </li>
                 <li>
-                  <a href="https://twitter.com/sheth12" target="_blank">
+                  <a href="https://x.com/TushyaGand52333" target="_blank">
                     <i className="fa-brands fa-square-twitter"></i>
                   </a>
                 </li>
                 <li>
                   <a
-                    href="http://www.linkedin.com/profile/view?id=99777214&amp;trk=tab_pro"
+                    href="https://www.linkedin.com/in/rohan-sharma-216023301/"
                     target="_blank"
                   >
                     <i className="fa-brands fa-linkedin"></i>
@@ -274,7 +274,7 @@ export default function Header() {
                     <div className="icon-box">
                       <i className="flaticon-dial-pad"></i>
                     </div>
-                    <a href="tel:8866002331">+918866002331</a>
+                    <a href="tel:9925989113">+919925989113</a>
                   </li>
                 ) : (
                   <li className="support-box">

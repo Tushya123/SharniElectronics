@@ -30,7 +30,7 @@ export default function Industries() {
                 <Col lg={3} md={6} sm={12} className="industries-block">
                   <div className="industries-block-one"></div>
                 </Col>
-                <Col lg={3} md={6} sm={12} className="industries-block order-1 order-lg-0">
+                {/* <Col lg={3} md={6} sm={12} className="industries-block order-1 order-lg-0">
                   <div className="industries-block-one">
                     <div className="inner-box">
                       <div className="icon-box icon-box1">
@@ -133,7 +133,7 @@ export default function Industries() {
                       </div>
                     </div>
                   </div>
-                </Col>
+                </Col> */}
               </Row>
             </div>
           </div>

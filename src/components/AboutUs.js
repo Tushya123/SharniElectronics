@@ -16,7 +16,7 @@ export default function AboutUs() {
         );
         console.log(res);
         const data = res.data.find(
-          (entry) => entry._id === "663f0071ef85cf304603e046"
+          (entry) => entry._id === "66a8fae876fa4a7722733a41"
         );
         console.log(data);
         setcmsDesc(data.cmsDesc);
@@ -63,7 +63,7 @@ export default function AboutUs() {
               <div className="content-box">
                 <div className="sec-title">
                   <span className="sub-title">
-                    WELCOME TO SHREEJI PHARMA INTERNATIONAL
+                    WELCOME TO Sharni Electronics
                   </span>
                   <h2>About Us</h2>
                 </div>

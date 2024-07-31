@@ -297,10 +297,10 @@ export default function Search() {
           <div className="auto-container">
             <div className="sec-title">
               <span className="sub-title">Locations</span>
-              <h2>
+              {/* <h2>
                 Support across 50+ countries <br />
                 around the world
-              </h2>
+              </h2> */}
             </div>
             <div className="row clearfix justify-content-center">
               <div className="col-lg-6 col-md-6 col-sm-12 location-block mt-5">
@@ -309,33 +309,33 @@ export default function Search() {
                     <figure className="image-box">
                       <img src={footer} alt="" />
                     </figure>
-                    <h6>SHREEJI PHARMA INTERNATIONAL</h6>
+                    <h6>Sharni Electronics</h6>
                     <h3>
                       311, Atlantis Heights, Sarabhai Main Road, Vadiwadi,
                       Vadodara - 390 007, Gujarat, INDIA.
                     </h3>
                     <div className="custom-info">
                       <div className="link">
-                        <a href="mailto:contact@shreejipharma.com">
-                          Email : contact@shreejipharma.com
+                        <a href="mailto:sales@sharnielectronics.com">
+                          Email : sales@sharnielectronics.com
                           <i className="flaticon-right-arrow"></i>
                         </a>
                       </div>
                       <div className="link">
-                        <a href="tel:8866002331">
-                          Contact : +91 8866002331{" "}
+                        <a href="tel:9925989113">
+                          Contact 1 : +91 9925989113{" "}
                           <i className="flaticon-right-arrow"></i>
                         </a>
                       </div>
                       <div className="link">
-                        <Link to="tel:8866002331">
-                          Landline : 0265 3504578
+                        <Link to="tel:9978591864">
+                          Contact 2 : +91 9978591864
                           <i className="flaticon-right-arrow"></i>
                         </Link>
                       </div>
                       <div className="link">
                         <a href="skype:Nilesh.sheth70?Chat">
-                          Skype ID: Nilesh.sheth70{" "}
+                          Linkedin ID:Rohan Sharma{" "}
                           <i className="flaticon-right-arrow"></i>
                         </a>
                       </div>
@@ -367,7 +367,7 @@ export default function Search() {
         </div> */}
         {/* <div className="sticky-whatsapp">
           <a
-            href="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
+            href="https://api.whatsapp.com/send?phone=919925989113&amp;text= Hello Sharni Electronics Team, I am interested in -"
             target="_blank"
           >
             <img src={wp} className="img-responsive" />
