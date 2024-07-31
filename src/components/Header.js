@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import logo from "../assets/images/new-home/logo1.png";
-import logo1 from "../assets/images/new-home/new-logo.png";
+// import logo1 from "../assets/images/new-home/new-logo.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Modal from "react-bootstrap/Modal";
@@ -306,11 +306,11 @@ export default function Header() {
                         justifyContent: "space-evenly",
                       }}
                     >
-                      <figure className="logo-box pull-left">
+                      {/* <figure className="logo-box pull-left">
                         <a href="#">
                           <img className="searchlogo" src={logo1} alt="Logo" />
                         </a>
-                      </figure>
+                      </figure> */}
                       {/* <div
                         className="close-search pull-right"
                         onClick={handleClose}
@@ -382,14 +382,14 @@ export default function Header() {
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>
             <div className="nav-logo">
-              <Link to="/">
+              {/* <Link to="/">
                 <img
                   src={logo1}
                   alt=""
                   title=""
                   style={{ backgroundColor: "white" }}
                 />
-              </Link>
+              </Link> */}
             </div>
           </Offcanvas.Title>
         </Offcanvas.Header>

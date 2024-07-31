@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from "../assets/images/new-home/new-logo.png"
+// import logo from "../assets/images/new-home/new-logo.png"
 
 const Preloader = () => (
   <React.Fragment>
@@ -10,7 +10,7 @@ const Preloader = () => (
         <div className="animation-preloader">
           <div className="spinner"></div>
           <div className="txt-loading">
-            <img src={logo} alt="Loading logo" />
+            {/* <img src={logo} alt="Loading logo" /> */}
           </div>
         </div>
       </div>
