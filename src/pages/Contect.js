@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import logo from "../assets/images/new-home/logo.png";
+import logo from "../assets/images/new-home/logo1.png";
 import Background from "../assets/images/new-home/breadcrumb-img.jpg";
 import footer from "../assets/images/new-home/footer-location-img.jpg";
 import skype from "../assets/images/new-home/skype.png";
@@ -192,9 +192,9 @@ export default function Contact() {
                     {/* <h3>Contact Info</h3> */}
 
                     <h5>
-                      <a href="tel:+91 8866002331">
-                        +91 8866002331/ <br />
-                        0265 3504578{" "}
+                      <a href="tel:+91 9925989113">
+                        +91 9925989113/ <br />
+                        +91 9978591864{" "}
                       </a>
                     </h5>
                     <p>
@@ -209,8 +209,8 @@ export default function Contact() {
                     </div>
                     <h3>
                       <i className="flaticon-dial-pad"></i>
-                      <a href="mailto:contact@shreejipharma.com">
-                        contact@shreejipharma.com
+                      <a href="mailto:sales@sharnielectronics.com">
+                        sales@sharnielectronics.com
                       </a>
                     </h3>
                     <h3>
@@ -220,10 +220,10 @@ export default function Contact() {
                     <h3>
                       <i className="fa-brands fa-whatsapp"></i>
                       <a
-                        href="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
+                        href="https://api.whatsapp.com/send?phone=919925989113&amp;text= Hello Sharni Electronics Team, I am interested in -"
                         target="_blank"
                       >
-                        +91 8866002331
+                        +91 9925989113
                       </a>
                     </h3>
                   </div>
@@ -366,7 +366,7 @@ export default function Contact() {
           </a>
         </div> */}
         {/* <div className="sticky-whatsapp">
-          <a href="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -" target="_blank">
+          <a href="https://api.whatsapp.com/send?phone=919925989113&amp;text= Hello Sharni Electronics Team, I am interested in -" target="_blank">
             <img src={wp} className="img-responsive" />
           </a>
         </div>

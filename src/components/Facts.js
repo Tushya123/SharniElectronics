@@ -11,10 +11,7 @@ export default function Facts() {
           style={{ backgroundImage: `url(${funfact})` }}
         ></div>
         <Container>
-          <div className="sec-title text-light">
-            <span className="sub-title">Interesting Numbers</span>
-            <h2 style={{color:'white'}}>Facts that will blow your mind</h2>
-          </div>
+         
           <div className="inner-content">
             <Row className="clearfix">
               <Col lg={4} md={6} sm={12} className="funfact-block mb-4">

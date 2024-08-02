@@ -65,32 +65,32 @@ export default function ProductsDetails() {
     }
   }, [localStorage.getItem("productIds")]);
 
-  const generatePdf = () => {
-    axios
-      .post(
-        `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/download-pdf`,
-        { ...productDetailsss },
-        {
-          responseType: "blob",
-          crossOrigin: true,
-        }
-      )
-      .then((response) => {
-        console.log("response", response);
-        const url = window.URL.createObjectURL(
-          new Blob([response.data], { type: "application/pdf" })
-        );
-        const link = document.createElement("a");
-        link.href = url;
-        link.setAttribute("download", "brochure.pdf");
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link); // Cleanup after download
-      })
-      .catch((error) => {
-        console.error("Error generating PDF: ", error);
-      });
-  };
+  // const generatePdf = () => {
+  //   axios
+  //     .post(
+  //       `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/download-pdf`,
+  //       { ...productDetailsss },
+  //       {
+  //         responseType: "blob",
+  //         crossOrigin: true,
+  //       }
+  //     )
+  //     .then((response) => {
+  //       console.log("response", response);
+  //       const url = window.URL.createObjectURL(
+  //         new Blob([response.data], { type: "application/pdf" })
+  //       );
+  //       const link = document.createElement("a");
+  //       link.href = url;
+  //       link.setAttribute("download", "brochure.pdf");
+  //       document.body.appendChild(link);
+  //       link.click();
+  //       document.body.removeChild(link); // Cleanup after download
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error generating PDF: ", error);
+  //     });
+  // };
 
   return (
     <React.Fragment
@@ -142,15 +142,15 @@ export default function ProductsDetails() {
                         </Link>
                         <div className="btn-box">
                           <h6 style={{ color: "16436f" }}>
-                            Shreeji Pharma International
+                            Sharni Electronics
                           </h6>
                           <li className="custom-border">
                             <h6 style={{ color: "16436f" }}>
-                              contact@shreejipharma.com
+                              sales@sharnielectronics.com
                             </h6>
                           </li>
                           <li className="support-box custom-border1">
-                            <h6>+918866002331</h6>
+                            <h6>+919925989113</h6>
                           </li>
                         </div>
                       </div>
@@ -218,14 +218,14 @@ export default function ProductsDetails() {
                   </div>
                 </div>
               </Col>
-              <div className="btn-box clearfix mt-5 text-center">
+              {/* <div className="btn-box clearfix mt-5 text-center">
                 <button
                   className="checkout-btn theme-btn responsive"
                   onClick={generatePdf}
                 >
                   Download Brochure
                 </button>
-              </div>
+              </div> */}
             </Row>
           </Container>
         </section>
@@ -241,7 +241,7 @@ export default function ProductsDetails() {
         </div> */}
         {/* <div className="sticky-whatsapp">
           <Link
-            to="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
+            to="https://api.whatsapp.com/send?phone=919925989113&amp;text= Hello Sharni Electronics Team, I am interested in -"
             target="_blank"
           >
             <img src={wp} className="img-responsive" />

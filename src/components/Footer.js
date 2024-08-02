@@ -33,7 +33,7 @@ export default function Footer() {
           `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/listonly/cms`
         );
         const data = res.data.find(
-          (entry) => entry._id === "663f0071ef85cf304603e046"
+          (entry) => entry._id === "66a8fae876fa4a7722733a41"
         );
         setcmsDesc(data.cmsDesc);
       } catch (error) {

@@ -470,7 +470,7 @@ export default function Cart() {
           </div> */}
           {/* <div className="sticky-whatsapp">
             <a
-              href="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
+              href="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Sharni Electronics Team, I am interested in -"
               target="_blank"
             >
               <img src={wp} className="img-responsive" />

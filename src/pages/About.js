@@ -50,7 +50,7 @@ export default function About() {
         );
         console.log(res);
         const data = res.data.find(
-          (entry) => entry._id === "663f4d5fef85cf304603e082"
+          (entry) => entry._id === "66a8fabe76fa4a7722733a3d"
         );
         console.log(data);
         setcmsDesc(data.cmsDesc);
@@ -126,7 +126,7 @@ export default function About() {
                     <div className="content-box">
                       <div className="sec-title">
                         <span className="sub-title">
-                          Welcome to Shreeji Pharma International
+                          Welcome to Sharni Electronics
                         </span>
                         <h2>About US</h2>
                       </div>
@@ -149,7 +149,7 @@ export default function About() {
               ></div>
               <Container>
                 <div className="sec-title text-light">
-                  <span className="sub-title">Interesting Numbers</span>
+                  <span className="sub-title"> Numbers</span>
                   <h2 style={{ color: "white" }}>
                     Facts that will blow your mind
                   </h2>
@@ -230,10 +230,10 @@ export default function About() {
               <Container>
                 <div className="sec-title">
                   <span className="sub-title">Locations</span>
-                  <h2>
+                  {/* <h2>
                     Support across 50+ countries <br />
                     around the world
-                  </h2>
+                  </h2> */}
                 </div>
                 <Row className="clearfix justify-content-center">
                   <Col lg={6} md={6} sm={12} className="location-block mt-5">
@@ -242,33 +242,33 @@ export default function About() {
                         <Figure className="image-box">
                           <Image src={footer} alt="" fluid />
                         </Figure>
-                        <h6>SHREEJI PHARMA INTERNATIONAL</h6>
+                        <h6>Sharni Electronics</h6>
                         <h3>
-                          311, Atlantis Heights, Sarabhai Main Road, Vadiwadi,
-                          Vadodara - 390 007, Gujarat, INDIA.
+                          Company address-B/9 Nityanand park sussen tarsali ring road Vadodara 
+
                         </h3>
                         <div className="custom-info">
                           <div className="link">
-                            <Link to="mailto:contact@shreejipharma.com">
-                              Email : contact@shreejipharma.com
+                            <Link to="mailto:sales@sharnielectronics.com">
+                              Email : sales@sharnielectronics.com
                               <i className="flaticon-right-arrow"></i>
                             </Link>
                           </div>
                           <div className="link">
-                            <Link to="tel:8866002331">
-                              Contact : +91 8866002331
+                            <Link to="tel:9925989113">
+                              Contact 1 : +91 9925989113
                               <i className="flaticon-right-arrow"></i>
                             </Link>
                           </div>
                           <div className="link">
-                            <Link to="tel:8866002331">
-                              Landline : 0265 3504578
+                            <Link to="tel:9925989113">
+                              Contact 2 : +91 9978591864
                               <i className="flaticon-right-arrow"></i>
                             </Link>
                           </div>
                           <div className="link">
-                            <Link to="skype:Nilesh.sheth70?Chat">
-                              Skype ID: Nilesh.sheth70
+                      <Link to="https://www.linkedin.com/in/rohan-sharma-216023301/">
+                              Linkedin ID:Rohan Sharma
                               <i className="flaticon-right-arrow"></i>
                             </Link>
                           </div>
@@ -300,7 +300,7 @@ export default function About() {
             </div> */}
             {/* <div className="sticky-whatsapp">
               <Link
-                to="https://api.whatsapp.com/send?phone=918866002331&amp;text= Hello Shreeji Pharma Team, I am interested in -"
+                to="https://api.whatsapp.com/send?phone=919925989113&amp;text= Hello Sharni Electronics Team, I am interested in -"
                 target="_blank"
               >
                 <Image src={wp} className="img-responsive" alt="WhatsApp" />

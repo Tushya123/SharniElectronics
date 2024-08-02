@@ -57,7 +57,7 @@ export default function Stickey() {
         </button>
         <div className="sticky-whatsapp">
           <Link
-            to="https://api.whatsapp.com/send?phone=919909247312&amp;text= Hello Shreeji Pharma Team, I am interested in -"
+            to="https://api.whatsapp.com/send?phone=919925989113&amp;text= Hello Sharni Electronics Team, I am interested in -"
             target="_blank"
           >
             <Image src={wp} className="img-responsive" alt="WhatsApp" />
