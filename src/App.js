@@ -34,6 +34,7 @@ import NewsEvent from "./components/NewsEvent";
 import NewsDetails from "./pages/News/NewsDetails";
 import { SearchProvider } from "./pages/Search/SearchProvider";
 import Search from "./pages/Search/Search";
+import ServiceGroup from "./pages/Services/ServiceGroup";
 import Preloader from "./components/PreLoader";
 import Industries from "./components/Industries";
 import Strenghts from "./components/Strenghts";
@@ -41,6 +42,7 @@ import Facts from "./components/Facts";
 import GoogleTranslate from "./components/GoogleTranslate";
 import ScrollToTop from "./components/ScrollToTop";
 import StickyBrochure from "./components/Brochure";
+import ServiceDetails from "./pages/Services/ServiceDetails";
 function App() {
   const [loading, setLoading] = useState(true);
 
@@ -53,7 +55,7 @@ function App() {
     <>
       <SearchProvider>
         <GoogleTranslate />
-        <StickyBrochure />
+        {/* <StickyBrochure /> */}
         <BrowserRouter>
           <Header />
           {/* <ScrollToTop/> */}
@@ -64,7 +66,9 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/commitment" element={<Commitment />} />
               <Route path="/products" element={<Products />} />
+              <Route path="/services" element={<ServiceGroup />} />
               <Route path="/productDetails" element={<ProductsDetails />} />
+              <Route path="/serviceDetails" element={<ServiceDetails />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/certificate" element={<Certificate />} />
               <Route path="/contact" element={<Contect />} />

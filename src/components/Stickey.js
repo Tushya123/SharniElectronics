@@ -97,11 +97,11 @@ export default function Stickey() {
           <i className="flaticon-up-arrow"></i>
         </button>
 
-        <div className="sticky-skype2">
+        {/* <div className="sticky-skype2">
           <Link to="skype:Nilesh.sheth70?Chat" target="_blank">
             <Image src={skype} className="img-responsive" alt="Skype" />
           </Link>
-        </div>
+        </div> */}
         <div className="sticky-whatsapp2">
           <Link
             to="https://api.whatsapp.com/send?phone=919925989113&amp;text= Hello Sharni Electronics Team, I am interested in -"

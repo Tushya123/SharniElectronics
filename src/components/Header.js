@@ -13,9 +13,12 @@ import { RxCross2 } from "react-icons/rx";
 
 export default function Header() {
   const [products, setProducts] = useState([]);
+  const [services, setServices] = useState([]);
   const [prod, setProd] = useState([]);
+  const [serv, setServ] = useState([]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showProducts, setShowProducts] = useState(false);
+  const [showServices, setShowServices] = useState(false);
 
   const {
     searchQuery,
@@ -43,6 +46,8 @@ export default function Header() {
 
   const toggleShowProducts = () => {
     setShowProducts((prevShowProducts) => !prevShowProducts);
+  };  const toggleShowServices = () => {
+    setShowServices((prevShowProducts) => !prevShowProducts);
   };
 
   useEffect(() => {
@@ -51,8 +56,14 @@ export default function Header() {
       setProd(JSON.parse(storedProductIds));
     }
   }, [localStorage.getItem("productIds")]);
+  useEffect(() => {
+    const storedServiceIds = localStorage.getItem("serviceIds");
+    if (storedServiceIds) {
+      setServ(JSON.parse(storedServiceIds));
+    }
+  }, [localStorage.getItem("serviceIds")]);
 
-  console.log("prod", prod.length);
+  console.log("serv", serv.length);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -108,6 +119,38 @@ export default function Header() {
 
         console.log("finalSortedProducts", finalSortedProducts);
         setProducts(finalSortedProducts);
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+      }
+    };
+
+    fetchData();
+  }, []); 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/list/servicetype`
+        );
+        const activeProducts = response.data.filter(
+          (product) => product.IsActive
+        );
+
+        // Define the custom order
+       
+
+        // Sort the active products according to the custom order
+       
+        // Separate ordered and unordered products
+       
+      
+        // Shuffle unordered products randomly
+      
+        // Combine ordered and shuffled unordered products
+       
+
+        console.log("finalSortedProducts123", activeProducts);
+        setServices(activeProducts);
       } catch (error) {
         console.error("Error fetching product data:", error);
       }
@@ -182,8 +225,8 @@ export default function Header() {
                   </a>
                 </li>
               </ul>
-              <ul className="social-links clearfix">
-                <li>
+              <ul className="social-links clearfix px-3">
+                {/* <li>
                   <a href="https://www.facebook.com/profile.php?id=100010357608216" target="_blank">
                     <i className="fa-brands fa-facebook"></i>
                   </a>
@@ -192,7 +235,7 @@ export default function Header() {
                   <a href="https://x.com/TushyaGand52333" target="_blank">
                     <i className="fa-brands fa-square-twitter"></i>
                   </a>
-                </li>
+                </li> */}
                 <li>
                   <a
                     href="https://www.linkedin.com/in/rohan-sharma-216023301/"
@@ -233,7 +276,27 @@ export default function Header() {
                         <Link to="/about">About Us</Link>
                       </li>
                       <li>
-                        <Link to="/commitment">Commitment</Link>
+                        <Link to="/commitment">Line Card</Link>
+                      </li>
+                      <li className="dropdown">
+                        <Link>Services</Link>
+                        <ul>
+                          {services.map((product, index) => (
+                            <li key={index}>
+                              <Link
+                                onClick={() => {
+                                  window.location.href = "/services";
+                                  localStorage.setItem(
+                                    "selectedServiceId",
+                                    product.ServiceGroup
+                                  );
+                                }}
+                              >
+                                {product.ServiceGroup}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
                       </li>
                       <li className="dropdown">
                         <Link>Products</Link>
@@ -416,6 +479,45 @@ export default function Header() {
                   </Link>
                 </li>
 
+                <li className="dropdown">
+                  <div onClick={toggleShowProducts}>
+                    <Link className="dropdown-toggle">
+                      Products
+                      <span>
+                        {showProducts ? (
+                          <RiArrowUpSLine />
+                        ) : (
+                          <RiArrowDownSLine />
+                        )}
+                      </span>
+                    </Link>
+                  </div>
+                  {showProducts && (
+                    <ul className="">
+                      {products
+                        .sort((a, b) =>
+                          a.ProductGroup.localeCompare(b.ProductGroup)
+                        )
+                        .map((product, index) => (
+                          <li key={index} className="ps-4">
+                            <Link
+                              style={{ padding: "10px" }}
+                              to="#"
+                              onClick={() => {
+                                window.location.href = "/products";
+                                localStorage.setItem(
+                                  "selectedProductId",
+                                  product.ProductGroup
+                                );
+                              }}
+                            >
+                              {product.ProductGroup}
+                            </Link>
+                          </li>
+                        ))}
+                    </ul>
+                  )}
+                </li>
                 <li className="dropdown">
                   <div onClick={toggleShowProducts}>
                     <Link className="dropdown-toggle">

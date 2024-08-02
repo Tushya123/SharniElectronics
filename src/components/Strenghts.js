@@ -110,7 +110,7 @@ export default function Strenghts() {
                     <i className="flaticon-check-mark"></i>
                   </div>
                   <h4>
-                    We have a long association with the pharma industry &amp;
+                    We have a long association with the Electronics industry &amp;
                     can offer you excellent service.
                   </h4>
                 </div>
