@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import booking from "../assets/images/background/booking-bg.jpg";
-import shape7 from "../assets/images/shape/shape-7.png";
 import shape8 from "../assets/images/shape/shape-8.png";
 import shape9 from "../assets/images/shape/shape-9.png";
 import axios from "axios";
@@ -119,7 +118,8 @@ export default function Inquiry() {
           className="bg-layer"
           style={{ backgroundImage: `url(${booking})` }}
         ></div>
-        <div className="pattern-layer">
+        
+        {/* <div className="pattern-layer">
           <div
             className="pattern-1"
             style={{ backgroundImage: `url(${shape7})` }}
@@ -128,7 +128,7 @@ export default function Inquiry() {
             className="pattern-2"
             style={{ backgroundImage: `url(${shape8})` }}
           ></div>
-        </div>
+        </div>  */}
         <Container className="auto-container">
           <Row className="clearfix custom-form">
             <Col

@@ -311,8 +311,7 @@ export default function Search() {
                     </figure>
                     <h6>Sharni Electronics</h6>
                     <h3>
-                      311, Atlantis Heights, Sarabhai Main Road, Vadiwadi,
-                      Vadodara - 390 007, Gujarat, INDIA.
+                    B/9 Nityanand park sussen tarsali ring road Vadodara
                     </h3>
                     <div className="custom-info">
                       <div className="link">

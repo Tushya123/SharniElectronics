@@ -71,7 +71,7 @@ export default function Footer() {
                     <div className="icon-box me-2">
                       <i className="flaticon-atom-1"></i>
                     </div>
-                    <h5 className="mb-0">ISO 9001-2015 Certified</h5>
+                      
                   </div>
                 </div>
               </Col>
@@ -89,7 +89,7 @@ export default function Footer() {
                         <Link to="/about">About Us</Link>
                       </li>
                       <li>
-                        <Link to="/commitment">Commitment</Link>
+                        <Link to="/commitment">Line Card</Link>
                       </li>
                       <li>
                         <Link to="/products">Products</Link>
@@ -148,7 +148,7 @@ export default function Footer() {
               >
                 <div className="copyright">
                   <p className="mb-0 copyrightTitle">
-                    Copyright © 2024 <a href="#">Shreeji Pharma </a> All Rights
+                    Copyright © 2024 <a href="#">SharniElectronics </a> All Rights
                     Reserved
                   </p>
                 </div>
@@ -156,13 +156,13 @@ export default function Footer() {
               <Col lg={6} md={6} className="text-lg-end text-center">
                 <div className="copyright">
                   <p className="mb-0 copyrightTitle">
-                    Powered By{" "}
+                    Made By{" "}
                     <a
-                      href="https://www.barodaweb.com/"
+                      href="https://www.linkedin.com/in/tushya-gandhi/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Barodaweb | The E-Catalouge Designer
+                      Tushya Gandhi
                     </a>
                   </p>
                 </div>

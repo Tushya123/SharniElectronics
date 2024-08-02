@@ -179,8 +179,7 @@ export default function Contact() {
                     </div>
                     <h3>Location</h3>
                     <p>
-                      311, Atlantis Heights, Sarabhai Main Road, Vadiwadi,
-                      Vadodara - 390 007
+                    B/9 Nityanand park sussen tarsali ring road Vadodara
                     </p>
                   </div>
                 </Col>
@@ -193,7 +192,7 @@ export default function Contact() {
 
                     <h5>
                       <a href="tel:+91 9925989113">
-                        +91 9925989113/ <br />
+                        
                         +91 9978591864{" "}
                       </a>
                     </h5>
@@ -208,15 +207,15 @@ export default function Contact() {
                       <i className="flaticon-message"></i>
                     </div>
                     <h3>
-                      <i className="flaticon-dial-pad"></i>
+                      {/* <i className="flaticon-dial-pad"></i> */}
                       <a href="mailto:sales@sharnielectronics.com">
                         sales@sharnielectronics.com
                       </a>
                     </h3>
-                    <h3>
+                    {/* <h3>
                       <i className="fa-brands fa-skype"></i>
                       <a href="skype:Nilesh.sheth70?Chat">Nilesh.sheth70</a>
-                    </h3>
+                    </h3> */}
                     <h3>
                       <i className="fa-brands fa-whatsapp"></i>
                       <a
@@ -237,7 +236,7 @@ export default function Contact() {
             <Row className="clearfix justify-content-center">
               <Col xl={6} lg={12} md={12} className="inner-column">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10372.815643465836!2d73.16075495016815!3d22.317465242314196!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fcf6c89cabb19%3A0xf803cbcf27adf1aa!2sShreeji%20Pharma%20International!5e0!3m2!1sen!2sin!4v1713952635837!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3692.5732785948676!2d73.2021939743432!3d22.25626374449201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fc5cac078125f%3A0xb8db50355a82afd!2sNityanand%20Park!5e0!3m2!1sen!2sin!4v1722598547251!5m2!1sen!2sin"
                   style={{ border: 0, width: "100%", height: 700 }}
                   allowFullScreen=""
                   loading="lazy"
@@ -386,7 +385,7 @@ export default function Contact() {
             <div className="modal-content custom-model-content">
               <div className="modal-header">
                 <h1 className="modal-title fs-5" id="exampleModalLabel">
-                  Vadiwadi, Vadodara
+                  Tarsali, Vadodara
                 </h1>
                 <button
                   type="button"
@@ -397,7 +396,7 @@ export default function Contact() {
               </div>
               <div className="modal-body">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7381.956093641144!2d73.167648!3d22.31667!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fcf6c89cabb19%3A0xf803cbcf27adf1aa!2sShreeji%20Pharma%20International!5e0!3m2!1sen!2sus!4v1712310707767!5m2!1sen!2sus"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3692.5732785948676!2d73.2021939743432!3d22.25626374449201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fc5cac078125f%3A0xb8db50355a82afd!2sNityanand%20Park!5e0!3m2!1sen!2sin!4v1722598547251!5m2!1sen!2sin"
                   style={{ border: 0, width: 600, height: 450 }}
                   allowFullScreen=""
                   loading="lazy"

@@ -22,7 +22,7 @@ import {
   Spinner,
 } from "react-bootstrap";
 
-export default function Products() {
+export default function ServiceGroup() {
   const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -92,16 +92,16 @@ export default function Products() {
   };
   console.log("id", id);
   useEffect(() => {
-    const xyz = localStorage.getItem("selectedProductId");
+    const xyz = localStorage.getItem("selectedServiceId");
     fetch(
-      `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/list/projectdetail`
+      `${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/api/auth/list/servicedetail`
     )
       .then((response) => response.json())
       .then((data) => {
         data = data.filter(
           (item) =>
-            item.ProductDetail &&
-            item.ProductDetail.ProductGroup === xyz &&
+            item.ServiceDetail &&
+            item.ServiceDetail.ServiceGroup === xyz &&
             item.IsActive
         );
         data.sort((a, b) => a.Description.localeCompare(b.Description));
@@ -188,7 +188,7 @@ export default function Products() {
                     <li>
                       <a href="index.html">Home</a>
                     </li>
-                    <li>Products</li>
+                    <li>Services</li>
                   </ul>
                 </div>
               </Container>
@@ -200,7 +200,7 @@ export default function Products() {
               keyboard={false}
             >
               <Modal.Header closeButton>
-                <Modal.Title>Make Inquiry</Modal.Title>
+                {/* <Modal.Title>Make Inquiry</Modal.Title> */}
               </Modal.Header>
               <Modal.Body>
                 <div className="modal-body">
@@ -209,18 +209,18 @@ export default function Products() {
                       <Form id="contact-form" noValidate>
                         <div className="row clearfix">
                           <Col lg={12} md={6} sm={12} className="form-group">
-                            <label>Product Name</label>
+                            <label>Service Name</label>
                             <input
                               type="text"
                               name="username"
-                              placeholder="Product Name Here"
+                              placeholder="Service Name Here"
                               required
                               isDisabled={true}
                               value={name}
                               aria-required="true"
                             />
                           </Col>
-                          <Col lg={12} md={6} sm={12} className="form-group">
+                          {/* <Col lg={12} md={6} sm={12} className="form-group">
                             <label>Quantity</label>
                             <input
                               type="text"
@@ -230,8 +230,8 @@ export default function Products() {
                               value={quantity}
                               onChange={handleQuantityChange}
                             />
-                          </Col>
-                          <Col
+                          </Col> */}
+                          {/* <Col
                             lg={12}
                             md={12}
                             sm={12}
@@ -255,7 +255,7 @@ export default function Products() {
                                 "Add To Cart"
                               )}
                             </button>
-                          </Col>
+                          </Col> */}
                         </div>
                       </Form>
                     </div>
@@ -274,7 +274,7 @@ export default function Products() {
                     <Container className="auto-container">
                       <div className="pro-list">
                         <div className="sec-title">
-                          <h3 className="title">Components By {letter}</h3>
+                          <h3 className="title">Services By {letter}</h3>
                         </div>
                         <Row>
                           {products.map((item, index) => (
@@ -292,10 +292,10 @@ export default function Products() {
                                   <a
                                     style={{ color: "red" }}
                                     className="text"
-                                    href="/productDetails"
+                                    href="/serviceDetails"
                                     onClick={() =>
                                       localStorage.setItem(
-                                        "description",
+                                        "servicedescription",
                                         item.Description
                                       )
                                     }
@@ -314,7 +314,7 @@ export default function Products() {
                                       {item.Description}
                                     </h2>
                                   </a>
-                                  <div className="lower-box ">
+                                  {/* <div className="lower-box ">
                                     <div className="link">
                                       <a
                                         type="button"
@@ -332,7 +332,7 @@ export default function Products() {
                                         Inquiry
                                       </a>
                                     </div>
-                                  </div>
+                                  </div> */}
                                 </div>
                               </div>
                             </div>
@@ -486,7 +486,7 @@ export default function Products() {
                         </Figure>
                         <h6>Sharni Electronics</h6>
                         <h3>
-                        B/9 Nityanand park sussen tarsali ring road Vadodara 
+                          B/9 Nityanand park sussen tarsali ring road Vadodara 
 
                         </h3>
                         <div className="custom-info">
@@ -554,7 +554,7 @@ export default function Products() {
             </div> */}
             <Modal show={showModal} onHide={() => setShowModal(false)}>
               <Modal.Header closeButton>
-                <Modal.Title>Vadiwadi, Vadodara</Modal.Title>
+                <Modal.Title>Tarsali, Vadodara</Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 <iframe

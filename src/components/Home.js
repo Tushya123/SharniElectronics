@@ -217,7 +217,7 @@ export default function Home() {
                         </Figure>
                         <h6>Sharni Electronics</h6>
                         <h3>
-                          Company address-B/9 Nityanand park sussen tarsali ring road Vadodara 
+                          B/9 Nityanand park sussen tarsali ring road Vadodara 
 
                         </h3>
                         <div className="custom-info">
@@ -288,11 +288,11 @@ export default function Home() {
 
             <Modal show={showModal} onHide={() => setShowModal(false)}>
               <Modal.Header closeButton>
-                <Modal.Title>Vadiwadi, Vadodara</Modal.Title>
+                <Modal.Title>Tarsali, Vadodara</Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7381.956093641144!2d73.167648!3d22.31667!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fcf6c89cabb19%3A0xf803cbcf27adf1aa!2sShreeji%20Pharma%20International!5e0!3m2!1sen!2sus!4v1712310707767!5m2!1sen!2sus"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3692.5732785948676!2d73.2021939743432!3d22.25626374449201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fc5cac078125f%3A0xb8db50355a82afd!2sNityanand%20Park!5e0!3m2!1sen!2sin!4v1722598547251!5m2!1sen!2sin"
                   width="100%"
                   height="450"
                   style={{ border: 0 }}
