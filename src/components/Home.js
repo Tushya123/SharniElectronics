@@ -217,7 +217,7 @@ export default function Home() {
                         </Figure>
                         <h6>Sharni Electronics</h6>
                         <h3>
-                          B/9 Nityanand park sussen tarsali ring road Vadodara 
+                          B/9 Nityanand park sussen Tarsali Ring Road Vadodara 
 
                         </h3>
                         <div className="custom-info">

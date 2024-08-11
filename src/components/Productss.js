@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
 import { Container, Figure } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import image from "../assets/images/shape/capacitor.png";
 
 export default function Products() {
   const arrowStyle = {
@@ -173,7 +174,12 @@ export default function Products() {
                       />
                     </Figure>
                     <div className="icon-box">
-                      <i className="flaticon-biochemistry"></i>
+                    <img
+  style={{ height: '55px',marginLeft:'10px' ,marginTop:'5px'}}  // Comma separates the properties
+  src={image}
+  alt="Icon"
+/>
+
                     </div>
                   </div>
                   <div className="lower-content">

@@ -112,7 +112,7 @@ export default function About() {
                       <div className="text">
                         <div className="inner">
                           <h2>
-                            20<span>+</span>
+                            10<span>+</span>
                           </h2>
                           <h6>
                             Years of <br />

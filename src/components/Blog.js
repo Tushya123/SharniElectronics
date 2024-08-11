@@ -40,7 +40,7 @@ export default function Blog() {
     <React.Fragment>
       <section className="blog-grid news-style-two py-5 pb-0">
         <Container>
-          <div className="sec-title">
+          {/* <div className="sec-title">
             <span className="sub-title">Blog</span>
             <div className="blog">
               <h2>Explore our latest Blog</h2>
@@ -55,7 +55,7 @@ export default function Blog() {
                 </button>
               </div>
             </div>
-          </div>
+          </div> */}
           <Row className="clearfix">
             {Blogs.map((blog, index) => (
               <Col

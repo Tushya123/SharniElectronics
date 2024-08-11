@@ -459,7 +459,7 @@ export default function Header() {
         <Offcanvas.Body>
           <nav className="menu-box">
             <div className="menu-outer">
-              <ul className="navigation clearfix upper">
+              {/* <ul className="navigation clearfix upper">
                 <li>
                   <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
                     Home
@@ -582,20 +582,140 @@ export default function Header() {
                     Contact
                   </Link>
                 </li>
-              </ul>
+              </ul> */}
+              <ul className="navigation clearfix">
+                      <li>
+                        <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
+                      </li>
+                      <li>
+                        <Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>About Us</Link>
+                      </li>
+                      <li>
+                        <Link to="/commitment" onClick={() => setIsMobileMenuOpen(false)}>Line Card</Link>
+                      </li>
+                      {/* <li className="dropdown">
+                        <Link onClick={() => setIsMobileMenuOpen(false)}>Services</Link>
+                        <ul>
+                          {services.map((product, index) => (
+                            <li key={index}>
+                              <Link
+                                onClick={() => {
+                                  window.location.href = "/services";
+                                  localStorage.setItem(
+                                    "selectedServiceId",
+                                    product.ServiceGroup
+                                  );
+                                
+                                }}
+                                
+                              >
+                                {product.ServiceGroup}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </li> */}
+                      <li className="dropdown">
+                  <div onClick={toggleShowServices}>
+                    <Link className="dropdown-toggle">
+                      Services
+                      <span>
+                        {showServices ? (
+                          <RiArrowUpSLine />
+                        ) : (
+                          <RiArrowDownSLine />
+                        )}
+                      </span>
+                    </Link>
+                  </div>
+                  {showServices && (
+                    <ul className="">
+                      {services
+                        .sort((a, b) =>
+                          a.ServiceGroup.localeCompare(b.ServiceGroup)
+                        )
+                        .map((product, index) => (
+                          <li key={index} className="ps-4">
+                            <Link
+                              style={{ padding: "10px" }}
+                              to="#"
+                              onClick={() => {
+                                window.location.href = "/services";
+                                localStorage.setItem(
+                                  "selectedServiceId",
+                                  product.ServiceGroup
+                                );
+                              }}
+                            >
+                              {product.ServiceGroup}
+                            </Link>
+                          </li>
+                        ))}
+                    </ul>
+                  )}
+                </li>       <li className="dropdown">
+                  <div onClick={toggleShowProducts}>
+                    <Link className="dropdown-toggle">
+                      Products
+                      <span>
+                        {showProducts ? (
+                          <RiArrowUpSLine />
+                        ) : (
+                          <RiArrowDownSLine />
+                        )}
+                      </span>
+                    </Link>
+                  </div>
+                  {showProducts && (
+                    <ul className="">
+                      {products
+                        .sort((a, b) =>
+                          a.ProductGroup.localeCompare(b.ProductGroup)
+                        )
+                        .map((product, index) => (
+                          <li key={index} className="ps-4">
+                            <Link
+                              style={{ padding: "10px" }}
+                              to="#"
+                              onClick={() => {
+                                window.location.href = "/products";
+                                localStorage.setItem(
+                                  "selectedProductId",
+                                  product.ProductGroup
+                                );
+                              }}
+                            >
+                              {product.ProductGroup}
+                            </Link>
+                          </li>
+                        ))}
+                    </ul>
+                  )}
+                </li>
+                      
+                      <li>
+                        <Link to="/gallery" onClick={() => setIsMobileMenuOpen(false)}>Gallery</Link>
+                      </li>
+                      <li>
+                        <Link to="/certificate" onClick={() => setIsMobileMenuOpen(false)}>Certificate</Link>
+                      </li>
+                      <li>
+                        <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
+                      </li>
+                    </ul>
             </div>
             <div className="contact-info">
               <h4>Contact Info</h4>
               <ul>
-                <li>Chicago 12, Melborne City, USA</li>
+                <li>B/9 Nityanand park sussen Tarsali Ring Road Vadodara </li>
                 <li>
-                  <a href="tel:+8801682648101" style={{ color: "white" }}>
-                    +88 01682648101
+                  <a href="tel:+919925989113" style={{ color: "white" }}>
+                    +919925989113
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:info@example.com" style={{ color: "white" }}>
-                    info@example.com
+                  <a href="mailto:sales@sharnielectronics.com" style={{ color: "white" }}>
+                  sales@sharnielectronics.com
                   </a>
                 </li>
               </ul>
