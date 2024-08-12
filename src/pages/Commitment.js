@@ -88,25 +88,29 @@ export default function Commitment() {
                       {commitments.map((commitment, index) => {
                         const colClass =
                           index % 4 === 0 || index % 4 === 3
-                            ? "col-lg-7 col-md-8 col-sm-12 comment-column"
-                            : "col-lg-5 col-md-8 col-sm-12 comment-column";
+                            ? "col-lg-4 col-md-6 col-sm-12 comment-column py-4"
+                            : "col-lg-4 col-md-6 col-sm-12 comment-column ";
                         return (
                           <div key={index} className={colClass}>
-                            <div className="single-comment-box">
-                              <div className="inner-box">
-                                <Figure className="comment-thumb">
-                                  <Image
-                                    src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${commitment.CommitmentImage}`}
-                                    alt={`Commitment ${index}`}
-                                  />
-                                </Figure>
+                            
+                            <div className="inner-box">
+                            <Figure className="">
+  <Image
+    src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${commitment.CommitmentImage}`}
+    alt={`Commitment ${index}`}
+    height="200px"
+    width="200px"
+  />
+</Figure>
+
                                 <div className="inner">
-                                  <h3>{commitment.Title}</h3>
-                                  <p>{commitment.Description}</p>
+                                  {/* <h3>{commitment.Title}</h3> */}
+                                  {/* <p>{commitment.Description}</p> */}
                                 </div>
-                              </div>
+                              
                             </div>
                           </div>
+                          
                         );
                       })}
                     </Row>

@@ -93,7 +93,7 @@ export default function About() {
             <section className="about-section sec-pad">
               <Container>
                 <Row className="clearfix justify-content-center">
-                  <Col lg={6} md={8} sm={12} className="image-column">
+                  {/* <Col lg={6} md={8} sm={12} className="image-column">
                     <div className="image-box">
                       <div className="shape-box">
                         <div className="shape shape-1 hexagon_shape"></div>
@@ -121,8 +121,8 @@ export default function About() {
                         </div>
                       </div>
                     </div>
-                  </Col>
-                  <Col lg={6} md={12} sm={12} className="content-column">
+                  </Col> */}
+                  <Col className="content-column">
                     <div className="content-box">
                       <div className="sec-title">
                         <span className="sub-title">

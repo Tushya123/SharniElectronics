@@ -11,6 +11,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Products from "./Productss";
+import LineCard from "./LineCard";
+
 import Header from "./Header";
 import axios from "axios";
 import Blog from "./Blog";
@@ -193,6 +195,7 @@ export default function Home() {
             
             <AboutUs />
             <Products />
+            <LineCard />
             <Industries />
             <Strenghts />
             <Facts />
