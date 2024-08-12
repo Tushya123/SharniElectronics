@@ -171,13 +171,13 @@ export default function LineCard() {
                       <img
                         src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${product.CommitmentImage}`}
                         alt={product.Description}
-                        height="30px"
-                        width="30px"
+                        // height="10px"
+                        // width="10px"
                       />
                     </Figure>
                     <div className="icon-box">
                     <img
-  style={{ height: '55px',marginLeft:'10px' ,marginTop:'5px'}}  // Comma separates the properties
+//   style={{ height: '55px',marginLeft:'10px' ,marginTop:'5px'}}  // Comma separates the properties
   src={image}
   alt="Icon"
 />

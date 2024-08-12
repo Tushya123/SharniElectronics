@@ -110,7 +110,7 @@ export default function Home() {
 
   return (
     <React.Fragment
-    // style={{ position: "relative", minHeight: "100%", top: "0px" }}
+    style={{ position: "relative", minHeight: "100%", top: "0px" }}
     >
       <Stickey />
       {!banner || banner?.length < 1 ? (
@@ -118,8 +118,8 @@ export default function Home() {
       ) : (
         <>
           <div className="boxed_wrapper">
-            
-              {/* <Slider {...settings}>/ */}
+          <section className="banner-carousel banner-style-one">
+              <Slider {...settings}>
                 {banner.map((bannerItem, index) => (
                
                   <div className="slide-item position-slider" key={index}>
@@ -191,7 +191,9 @@ export default function Home() {
                     </Container>
                   </div>
                 ))}
-              {/* </Slider> */}
+              </Slider>
+              </section>
+              
             
             <AboutUs />
             <Products />
