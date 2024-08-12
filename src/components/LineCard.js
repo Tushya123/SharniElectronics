@@ -194,7 +194,7 @@ export default function LineCard() {
                         // );
                       }}
                     >
-                      <h3>{product.Description}</h3>
+                      <h3>{product.Title}</h3>
                     </Link>
                   </div>
                 </div>

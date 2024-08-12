@@ -118,8 +118,8 @@ export default function Home() {
       ) : (
         <>
           <div className="boxed_wrapper">
-          <section className="banner-carousel banner-style-one">
-              <Slider {...settings}>
+          <section className="banner-style-one">
+              {/* <Slider {...settings}> */}
                 {banner.map((bannerItem, index) => (
                
                   <div className="slide-item position-slider" key={index}>
@@ -191,7 +191,7 @@ export default function Home() {
                     </Container>
                   </div>
                 ))}
-              </Slider>
+              {/* </Slider> */}
               </section>
               
             
