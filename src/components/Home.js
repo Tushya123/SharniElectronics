@@ -116,16 +116,25 @@ export default function Home() {
       ) : (
         <>
           <div className="boxed_wrapper">
-            <section className="banner-carousel banner-style-one">
-              <Slider {...settings}>
+            
+              {/* <Slider {...settings}>/ */}
                 {banner.map((bannerItem, index) => (
+               
                   <div className="slide-item position-slider" key={index}>
+                  {console.log("hii",bannerItem.bannerImage)}
                     <div className="image-layer">
-                      <img
-                        src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${bannerItem.bannerImage}`}
-                        className="bannerimage w-100"
-                        alt=""
-                      />
+                    <video
+                    className="img-fluid"
+                    width={"100%"}
+                    autoPlay
+                    loop
+                    muted
+                  >
+                    <source
+                          src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${bannerItem.bannerImage}`}
+                      type="video/mp4"
+                    />
+                  </video>
                     </div>
                     <Container>
                       <div className="content-box">
@@ -180,8 +189,8 @@ export default function Home() {
                     </Container>
                   </div>
                 ))}
-              </Slider>
-            </section>
+              {/* </Slider> */}
+            
             <AboutUs />
             <Products />
             <Industries />
