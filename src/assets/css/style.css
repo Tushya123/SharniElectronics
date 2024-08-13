@@ -2261,7 +2261,7 @@ div#mCSB_1_container {
 }
 
 .service-block-one .inner-box .image-box:before {
-  position: absolute;
+  /* position: absolute; */
   content: "";
   background: #fff;
   width: 130px;

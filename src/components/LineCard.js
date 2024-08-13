@@ -175,14 +175,7 @@ export default function LineCard() {
                         // width="10px"
                       />
                     </Figure>
-                    <div className="icon-box">
-                    <img
-//   style={{ height: '55px',marginLeft:'10px' ,marginTop:'5px'}}  // Comma separates the properties
-  src={image}
-  alt="Icon"
-/>
-
-                    </div>
+              
                   </div>
                   <div className="lower-content">
                     <Link
