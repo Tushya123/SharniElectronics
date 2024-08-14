@@ -17,6 +17,7 @@ const description = localStorage.getItem("description");
 export default function ServiceDetails() {
   const [productDetailsss, setProductDetails] = React.useState(null);
   const [isHidden, setIsHidden] = useState(true);
+  const [cmsDesc, setcmsDesc] = useState("");
   const [prod, setProd] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -52,6 +53,7 @@ export default function ServiceDetails() {
       .then((response) => {
         console.log("huncncjuhenchjbecvbevchj", response);
         setProductDetails(response.data);
+        setcmsDesc(response.data.CkDesc)
       })
       .catch((error) => {
         console.error(error);
@@ -190,7 +192,7 @@ export default function ServiceDetails() {
                         {/* <div className="col-lg-5 col-12 text-right mt-4"></div> */}
                       </Row>
                     </Col>
-                    <Col lg={12} className="mt-4">
+                    {/* <Col lg={12} className="mt-4">
                       <div className="table-outer product-detail-table">
                         <Table responsive className="cart-table">
                           <thead className="cart-header">
@@ -214,7 +216,7 @@ export default function ServiceDetails() {
                           </tbody>
                         </Table>
                       </div>
-                    </Col>
+                    </Col> */}
                   </div>
                 </div>
               </Col>
@@ -229,6 +231,58 @@ export default function ServiceDetails() {
             </Row>
           </Container>
         </section>
+        <section className="about-section sec-pad">
+              <Container>
+                <Row className="clearfix justify-content-center">
+                  {/* <Col lg={6} md={8} sm={12} className="image-column">
+                    <div className="image-box">
+                      <div className="shape-box">
+                        <div className="shape shape-1 hexagon_shape"></div>
+                        <div className="shape shape-2 hexagon_shape"></div>
+                        <div className="shape shape-3 hexagon_shape"></div>
+                      </div>
+                      <div className="image-inner hexagon_shape">
+                        <Figure className="image">
+                          <Image
+                            src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${cmsImage}`}
+                            alt=""
+                            fluid
+                          />
+                        </Figure>
+                      </div>
+                      <div className="text">
+                        <div className="inner">
+                          <h2>
+                            10<span>+</span>
+                          </h2>
+                          <h6>
+                            Years of <br />
+                            Experience
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+                  </Col> */}
+                  <Col className="content-column">
+                    <div className="content-box">
+                      {/* <div className="sec-title">
+                        <span className="sub-title">
+                          Welcome to Sharni Electronics
+                        </span>
+                        <h2>About US</h2>
+                      </div> */}
+                      <div className="text">
+                        {React.createElement("div", {
+                          dangerouslySetInnerHTML: {
+                            __html: `${cmsDesc}<style>p{font-size:24px;font-weight:500}`,
+                          },
+                        })}
+                      </div>
+                    </div>
+                  </Col>
+                </Row>
+              </Container>
+            </section>
 
         {/* <div className="sticky-button">
           <Link

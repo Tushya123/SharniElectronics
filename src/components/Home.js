@@ -161,9 +161,9 @@ export default function Home() {
                             style={{ textAlign: "justify" }}
                           >
                             <li>
-                              <div className="icon-box">
+                              {/* <div className="icon-box">
                                 <i className="flaticon-laboratory-1"></i>
-                              </div>
+                              </div> */}
                               <h3
                                 style={{
                                   color: "white",

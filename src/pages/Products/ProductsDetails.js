@@ -16,6 +16,7 @@ const description = localStorage.getItem("description");
 
 export default function ProductsDetails() {
   const [productDetailsss, setProductDetails] = React.useState(null);
+  const [cmsDesc, setcmsDesc] = useState("");
   const [isHidden, setIsHidden] = useState(true);
   const [prod, setProd] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
@@ -41,6 +42,7 @@ export default function ProductsDetails() {
       window.removeEventListener("scroll", toggleVisibility);
     };
   }, []);
+  
 
   React.useEffect(() => {
     axios
@@ -52,6 +54,8 @@ export default function ProductsDetails() {
       .then((response) => {
         console.log("huncncjuhenchjbecvbevchj", response);
         setProductDetails(response.data);
+        setcmsDesc(response.data.CkDesc);
+        console.log("hii",response.data)
       })
       .catch((error) => {
         console.error(error);
@@ -187,10 +191,10 @@ export default function ProductsDetails() {
                             </h3>
                           </Col>
                         </Row>
-                        {/* <div className="col-lg-5 col-12 text-right mt-4"></div> */}
+                    
                       </Row>
                     </Col>
-                    <Col lg={12} className="mt-4">
+                    {/* <Col lg={12} className="mt-4">
                       <div className="table-outer product-detail-table">
                         <Table responsive className="cart-table">
                           <thead className="cart-header">
@@ -214,52 +218,63 @@ export default function ProductsDetails() {
                           </tbody>
                         </Table>
                       </div>
-                    </Col>
+                    </Col> */}
                   </div>
                 </div>
               </Col>
-              {/* <div className="btn-box clearfix mt-5 text-center">
-                <button
-                  className="checkout-btn theme-btn responsive"
-                  onClick={generatePdf}
-                >
-                  Download Brochure
-                </button>
-              </div> */}
+         
             </Row>
           </Container>
         </section>
+        <section className="about-section sec-pad">
+              <Container>
+                <Row className="clearfix justify-content-center">
+                  {/* <Col lg={6} md={8} sm={12} className="image-column">
+                    <div className="image-box">
+                      <div className="shape-box">
+                        <div className="shape shape-1 hexagon_shape"></div>
+                        <div className="shape shape-2 hexagon_shape"></div>
+                        <div className="shape shape-3 hexagon_shape"></div>
+                      </div>
+                      <div className="image-inner hexagon_shape">
+                        <Figure className="image">
+                          <Image
+                            src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${cmsImage}`}
+                            alt=""
+                            fluid
+                          />
+                        </Figure>
+                      </div>
+                      <div className="text">
+                        <div className="inner">
+                          <h2>
+                            10<span>+</span>
+                          </h2>
+                          <h6>
+                            Years of <br />
+                            Experience
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+                  </Col> */}
+                  <Col className="content-column">
+                    <div className="content-box">
+      
+                      <div className="text">
+                      
+                        {React.createElement("div", {
+                          dangerouslySetInnerHTML: {
+                            __html: `${cmsDesc}<style>p{font-size:30px;font-weight:500;}`,
+                          },
+                        })}
+                      </div>
+                    </div>
+                  </Col>
+                </Row>
+              </Container>
+            </section>
 
-        {/* <div className="sticky-button">
-          <Link
-            to="assets/catalogue-shreeji-pharma.pdf"
-            target="__blank"
-            download=""
-          >
-            Download Brochure
-          </Link>
-        </div> */}
-        {/* <div className="sticky-whatsapp">
-          <Link
-            to="https://api.whatsapp.com/send?phone=919925989113&amp;text= Hello Sharni Electronics Team, I am interested in -"
-            target="_blank"
-          >
-            <img src={wp} className="img-responsive" />
-          </Link>
-        </div>
-        <div className="sticky-skype">
-          <Link to="skype:Nilesh.sheth70?Call" target="_blank">
-            <img src={skype} className="img-responsive" />
-          </Link>
-        </div> */}
-
-        {/* <button
-          className={`scroll-top scroll-to-target ${isVisible ? "open" : ""}`}
-          onClick={scrollToTop}
-          style={{ display: isVisible ? "block" : "none" }}
-        >
-          <i className="flaticon-up-arrow"></i>
-        </button> */}
       </div>
     </React.Fragment>
   );
