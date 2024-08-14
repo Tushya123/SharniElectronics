@@ -171,9 +171,9 @@ export default function Products() {
 
       <ToastContainer />
 
-      {!data || data?.length < 1 ? (
+      {/* {!data || data?.length < 1 ? (
         <Preloader />
-      ) : (
+      ) : ( */}
         <>
           <div className="boxed_wrapper">
             <section className="page-title">
@@ -577,7 +577,7 @@ export default function Products() {
             <i className="flaticon-up-arrow"></i>
           </button> */}
         </>
-      )}
+      {/* )} */}
     </React.Fragment>
   );
 }

@@ -173,14 +173,14 @@ export default function Products() {
                         alt={product.ProductGroup}
                       />
                     </Figure>
-                    <div className="icon-box">
-                    <img
+                    {/* <div className="icon-box"> */}
+                    {/* <img
   style={{ height: '55px',marginLeft:'10px' ,marginTop:'5px'}}  // Comma separates the properties
   src={image}
   alt="Icon"
-/>
+/> */}
 
-                    </div>
+                    {/* </div> */}
                   </div>
                   <div className="lower-content">
                     <Link
