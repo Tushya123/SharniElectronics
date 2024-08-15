@@ -2284,6 +2284,11 @@ div#mCSB_1_container {
   height: 330px;
   object-fit: cover;
   transition: all 500ms ease;
+}.service-block-two .inner-boxx .image-boxx .imagex img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: all 500ms ease;
 }
 .service-block-one .inner-box:hover .image-box .image img {
   opacity: 0.3;
@@ -2336,7 +2341,7 @@ div#mCSB_1_container {
 .service-block-one .inner-box .lower-content {
   position: relative;
   display: block;
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 .service-block-one .inner-box .lower-content h3 {

@@ -164,10 +164,10 @@ export default function LineCard() {
           </div>
           <Slider {...settings}>
             {products.map((product, index) => (
-              <div className="service-block-one" key={index}>
-                <div className="inner-box">
-                  <div className="image-box">
-                    <Figure className="image">
+              <div className="service-block-two" key={index}>
+                <div className="inner-boxx">
+                  <div className="image-boxx">
+                    <Figure className="imagex">
                     <Link
                       onClick={() => {
                         window.location.href = "/commitment";
@@ -179,19 +179,15 @@ export default function LineCard() {
                     >
                       <img
                         src={`${process.env.REACT_APP_API_URL_SHREEJI_PHARMACY}/${product.CommitmentImage}`}
-                        alt={product.Description}
-                        // height="10px"
-                        // width="10px"
+                        
+                        height="10px"
+                        width="10px"
                       />
                       </Link>
                     </Figure>
               
                   </div>
-                  <div className="lower-content">
-                   
-                      {/* <h3>{product.Title}</h3> */}
-                    
-                  </div>
+                 
                 </div>
               </div>
             ))}
