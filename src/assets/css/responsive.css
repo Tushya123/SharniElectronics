@@ -10,6 +10,12 @@
   .header-style-one .btn-box {
     right: 30px;
   }
+  .top-resp{
+    color: white;
+    font-size: 50px;
+    line-height: 75px;
+    font-weight: 500;
+  }
 }
 
 @media only screen and (max-width: 1699px) {
@@ -80,6 +86,12 @@
     left: 0px;
     width: 100%;
   }
+  .top-resp{
+    color: white;
+    font-size: 44px;
+    line-height: 73px;
+    font-weight: 500;
+  }
 
   .industries-style-three .industries-block-three .inner-box p {
     font-size: 16px;
@@ -89,6 +101,12 @@
 @media only screen and (max-width: 1200px) {
   .header-lower.sticky-header {
     display: block !important;
+  }
+  .top-resp{
+    color: white;
+    font-size: 40px;
+    line-height: 63px;
+    font-weight: 500;
   }
   .main-menu,
   .main-header.style-one .outer-container:before {
@@ -213,8 +231,22 @@
     width: max-content;
   }
 }
+@media (min-width: 768px) and (max-width: 992px) {
+  .top-resp{
+    color: white;
+    font-size: 32px;
+    line-height: 50px;
+    font-weight: 500;
+  }
+}
 
 @media (min-width: 425px) and (max-width: 768px) {
+  .top-resp{
+    color: white;
+    font-size: 30px;
+    line-height: 43px;
+    font-weight: 500;
+  }
   .service-section .slick-initialized .slick-slide {
     padding: 20px;
   }
@@ -554,6 +586,13 @@
 }
 
 @media only screen and (max-width: 767px) {
+  .top-resp{
+    color: white;
+    font-size: 20px;
+    line-height: 69px;
+    font-weight: 500;
+    margin-top:-46px;
+  }
   .scroll-top.open {
     bottom: 16%;
     width: 41px;
@@ -1463,6 +1502,13 @@ right: 3%;
   } */
 }
 @media (min-width: 400px) and (min-height: 896px) {
+  .top-resp{
+    color: white;
+    font-size: 20px;
+    line-height: 69px;
+    font-weight: 500;
+    margin-top:-46px;
+  }
   .position-slider .content-box {
     top: 303px !important ;
   }
@@ -1720,6 +1766,13 @@ right: 3%;
   .industries-section .content-box .shape-box {
     display: none;
   }
+  .top-resp{
+    color: white;
+    font-size: 13px;
+    line-height: 74px;
+    font-weight: 500;
+    margin-top:-58px;
+  }
 }
 
 @media only screen and (max-width: 376px) {
@@ -1790,6 +1843,13 @@ right: 3%;
   }
   .theme-btn {
     margin-left: 42px !important;
+  }
+  .top-resp{
+    color: white;
+    font-size: 13px;
+    line-height: 67px;
+    font-weight: 500;
+    margin-top:-52px;
   }
 }
 @media only screen and (max-width: 918px) {

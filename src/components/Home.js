@@ -165,22 +165,13 @@ export default function Home() {
                                 <i className="flaticon-laboratory-1"></i>
                               </div> */}
                               <h3
-                                style={{
-                                  color: "white",
-                                  fontSize: "27px",
-                                  lineHeight: "44px",
-                                  fontWeight: 500,
-                                }}
+                              className="top-resp"
+                               
                               >
                                 100+
                               </h3>
                               <h4
-                                style={{
-                                  color: "white",
-                                  fontSize: "27px",
-                                  lineHeight: "44px",
-                                  fontWeight: 500,
-                                }}
+                               className="top-resp"
                               >
                                 Quality Product
                               </h4>
