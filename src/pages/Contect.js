@@ -191,7 +191,7 @@ export default function Contact() {
                     {/* <h3>Contact Info</h3> */}
 
                     <h5>
-                      <a href="tel:+91 9925989113">
+                      <a href="tel:+91 93287 10379">
                         
                         +91 9978591864{" "}
                       </a>
@@ -222,7 +222,7 @@ export default function Contact() {
                         href="https://api.whatsapp.com/send?phone=919925989113&amp;text= Hello Sharni Electronics Team, I am interested in -"
                         target="_blank"
                       >
-                        +91 9925989113
+                        +91 93287 10379
                       </a>
                     </h3>
                   </div>

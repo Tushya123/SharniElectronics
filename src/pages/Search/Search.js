@@ -321,8 +321,8 @@ export default function Search() {
                         </a>
                       </div>
                       <div className="link">
-                        <a href="tel:9925989113">
-                          Contact 1 : +91 9925989113{" "}
+                        <a href="tel:93287 10379">
+                          Contact 1 : +91 93287 10379{" "}
                           <i className="flaticon-right-arrow"></i>
                         </a>
                       </div>

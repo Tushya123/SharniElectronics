@@ -214,7 +214,7 @@ export default function Header() {
                   <div className="icon-box">
                     <i className="flaticon-dial-pad"></i>
                   </div>
-                  <a href="tel:9925989113">+919925989113</a>
+                  <a href="tel:93287 10379">+919925989113</a>
                 </li>
                 <li className="custom-border">
                   <div className="icon-box">
@@ -337,7 +337,7 @@ export default function Header() {
                     <div className="icon-box">
                       <i className="flaticon-dial-pad"></i>
                     </div>
-                    <a href="tel:9925989113">+919925989113</a>
+                    <a href="tel:93287 10379">+919925989113</a>
                   </li>
                 ) : (
                   <li className="support-box">

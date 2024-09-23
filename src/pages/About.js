@@ -255,13 +255,13 @@ export default function About() {
                             </Link>
                           </div>
                           <div className="link">
-                            <Link to="tel:9925989113">
-                              Contact 1 : +91 9925989113
+                            <Link to="tel:93287 10379">
+                              Contact 1 : +91 93287 10379
                               <i className="flaticon-right-arrow"></i>
                             </Link>
                           </div>
                           <div className="link">
-                            <Link to="tel:9925989113">
+                            <Link to="tel:93287 10379">
                               Contact 2 : +91 9978591864
                               <i className="flaticon-right-arrow"></i>
                             </Link>
