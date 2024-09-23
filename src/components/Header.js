@@ -214,7 +214,7 @@ export default function Header() {
                   <div className="icon-box">
                     <i className="flaticon-dial-pad"></i>
                   </div>
-                  <a href="tel:93287 10379">+919925989113</a>
+                  <a href="tel:93287 10379">+919328710379</a>
                 </li>
                 <li className="custom-border">
                   <div className="icon-box">
@@ -337,7 +337,7 @@ export default function Header() {
                     <div className="icon-box">
                       <i className="flaticon-dial-pad"></i>
                     </div>
-                    <a href="tel:93287 10379">+919925989113</a>
+                    <a href="tel:93287 10379">+919328710379</a>
                   </li>
                 ) : (
                   <li className="support-box">
@@ -709,8 +709,8 @@ export default function Header() {
               <ul>
                 <li>B/9 Nityanand park sussen Tarsali Ring Road Vadodara </li>
                 <li>
-                  <a href="tel:+919925989113" style={{ color: "white" }}>
-                    +919925989113
+                  <a href="tel:+919328710379" style={{ color: "white" }}>
+                    +919328710379
                   </a>
                 </li>
                 <li>

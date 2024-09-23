@@ -152,7 +152,7 @@ export default function ServiceDetails() {
                             </h6>
                           </li>
                           <li className="support-box custom-border1">
-                            <h6>+919925989113</h6>
+                            <h6>+919328710379</h6>
                           </li>
                         </div>
                       </div>
